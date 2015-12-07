@@ -8,6 +8,9 @@ baseurl: "/blog"
   # - name:           "Download"
     # href:           "//github.com/gfjaru/Kiko/releases"
 
+sass:
+    style: compressed
+
 # Scopes
 defaults:
   -
