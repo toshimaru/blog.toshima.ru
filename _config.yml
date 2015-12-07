@@ -1,5 +1,5 @@
-name:               "blog"
-baseurl:            "/blog"
+name: "toshimaru"
+baseurl: "/blog"
 
 # Navigation
 # nav:
@@ -12,13 +12,13 @@ baseurl:            "/blog"
 defaults:
   -
     scope:
-      path:         ""
-      type:         "pages"
+      path: ""
+      type: "pages"
     values:
-      layout:       "page"
+      layout: "page"
   -
     scope:
-      path:         ""
-      type:         "posts"
+      path: ""
+      type: "posts"
     values:
-      layout:       "post"
+      layout: "post"
