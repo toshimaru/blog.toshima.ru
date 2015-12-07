@@ -1,28 +1,12 @@
-# # # # # # # #
-#   K i k o   #
-# # # # # # # #
-
-# Basic
-name:               "Kiko"
-
-# URL
-baseurl:            ""
-#baseurl:            "" #For Root Domain
-permalink:          /:year/:month/:day/:title.html
-
-# Markdown
-markdown:           rdiscount
+name:               "blog"
+baseurl:            "/blog"
 
 # Navigation
-nav:
-  - name:           "About"
-    href:           "//kiko.gfjaru.com/about"
-  - name:           "Download"
-    href:           "//github.com/gfjaru/Kiko/releases"
-
-# Sass
-sass:
-  style:            :compressed
+# nav:
+  # - name:           "About"
+    # href:           "//kiko.gfjaru.com/about"
+  # - name:           "Download"
+    # href:           "//github.com/gfjaru/Kiko/releases"
 
 # Scopes
 defaults:
