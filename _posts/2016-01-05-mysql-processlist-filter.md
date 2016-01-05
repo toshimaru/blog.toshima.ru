@@ -8,7 +8,7 @@ You can see MySQL processes by `show processlist`.
 show processlist;
 {% endhighlight %}
 
-But, it cannot be filtered. If you'd like to retrieve processes like usual SQL syntax, it can be replaced with:
+But, it can't be filtered. If you'd like to retrieve processes like usual SQL syntax, it can be replaced with:
 
 {% highlight sql %}
 SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST;
@@ -17,7 +17,8 @@ SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST;
 Now, you can filter process with `WHERE` clause.
 
 {% highlight sql %}
-SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST WHERE DB = 'development' AND USER = 'myuser';
+SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST 
+WHERE DB = 'development' AND USER = 'myuser';
 {% endhighlight %}
 
 See also
