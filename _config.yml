@@ -1,4 +1,5 @@
 title: "Toshimaru's blog"
+url: "https://toshimaru.net"
 baseurl: "/blog"
 
 # Navigation
@@ -9,7 +10,7 @@ baseurl: "/blog"
     # href:           "//github.com/gfjaru/Kiko/releases"
 
 sass:
-    style: compressed
+  style: compressed
 
 # Scopes
 defaults:
