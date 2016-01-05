@@ -4,21 +4,21 @@ title: Filter MySQL processlist
 
 You can see MySQL processes by `show processlist`.
 
-```sql
+{% highlight sql %}
 show processlist;
-```
+{% endhighlight %}
 
 But, it cannot be filtered. If you'd like to retrieve processes like usual SQL syntax, it can be replaced with:
 
-```sql
+{% highlight sql %}
 SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST;
-```
+{% endhighlight %}
 
 Now, you can filter process with `WHERE` clause.
 
-```sql
+{% highlight sql %}
 SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST WHERE DB = 'development' AND USER = 'myuser';
-```
+{% endhighlight %}
 
 See also
 ---
