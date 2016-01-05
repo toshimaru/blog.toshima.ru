@@ -1,5 +1,6 @@
 ---
 title: Filter MySQL processlist
+categories: mysql
 ---
 
 You can see MySQL processes by `show processlist`.
@@ -17,7 +18,7 @@ SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST;
 Now, you can filter process with `WHERE` clause.
 
 {% highlight sql %}
-SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST 
+SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST
 WHERE DB = 'development' AND USER = 'myuser';
 {% endhighlight %}
 
