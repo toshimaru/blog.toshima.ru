@@ -1,14 +1,8 @@
 title: "Toshimaru's blog"
 url: "https://toshimaru.net"
 baseurl: "/blog"
-
-# Navigation
-# nav:
-  # - name:           "About"
-    # href:           "//kiko.gfjaru.com/about"
-  # - name:           "Download"
-    # href:           "//github.com/gfjaru/Kiko/releases"
-
+description: >
+  Toshimaru's blog. Where there's a will, there's a way.
 sass:
   style: compressed
 
@@ -26,3 +20,10 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+
+# Navigation
+# nav:
+  # - name:           "About"
+    # href:           "//kiko.gfjaru.com/about"
+  # - name:           "Download"
+    # href:           "//github.com/gfjaru/Kiko/releases"
