@@ -1,6 +1,6 @@
 ---
 title: Filter MySQL processlist
-categories: mysql
+tags: mysql
 ---
 
 You can see MySQL processes by `show processlist`.
