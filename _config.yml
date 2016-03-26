@@ -5,6 +5,8 @@ description: >
   Toshimaru's blog. Where there's a will, there's a way.
 sass:
   style: compressed
+gems:
+  - jekyll-sitemap
 
 # Scopes
 defaults:
