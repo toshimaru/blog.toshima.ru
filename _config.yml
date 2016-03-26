@@ -2,12 +2,13 @@ title: "Toshimaru's blog"
 url: "https://toshimaru.net"
 baseurl: "/blog"
 description: >
-  Toshimaru's blog. Where there's a will, there's a way.
+  Where there's a will, there's a way.
 sass:
   style: compressed
 gems:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Scopes
 defaults:
