@@ -6,9 +6,10 @@ description: >
 sass:
   style: compressed
 gems:
-  - jekyll-sitemap
   - jekyll-feed
+  - jekyll-mentions
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Scopes
 defaults:
