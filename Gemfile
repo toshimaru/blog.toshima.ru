@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 group :jekyll_plugins do
+  gem 'jekyll-compose'
   gem 'jekyll-feed'
   gem 'jekyll-mentions'
   gem 'jekyll-seo-tag'
