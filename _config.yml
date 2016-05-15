@@ -11,6 +11,12 @@ gems:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+exclude:
+- .travis.yml
+- Gemfile
+- Gemfile.lock
+- README.md
+
 # Scopes
 defaults:
   -
@@ -28,7 +34,7 @@ defaults:
 
 # Navigation
 # nav:
-  # - name:           "About"
-    # href:           "//kiko.gfjaru.com/about"
-  # - name:           "Download"
-    # href:           "//github.com/gfjaru/Kiko/releases"
+#   - name:           "About"
+#     href:           "//kiko.gfjaru.com/about"
+#   - name:           "Download"
+#     href:           "//github.com/gfjaru/Kiko/releases"
