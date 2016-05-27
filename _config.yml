@@ -16,6 +16,10 @@ exclude:
 - Gemfile.lock
 - README.md
 
+# GitHub Flavored Markdown
+kramdown:
+  input: GFM
+
 # Scopes
 defaults:
   -
