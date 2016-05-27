@@ -1,6 +1,5 @@
-title: "Toshimaru's blog"
-url: "https://toshimaru.net"
-baseurl: "/blog"
+title: "Toshimaru's Blog"
+url: "http://blog.toshima.ru"
 description: >
   Where there's a will, there's a way.
 sass:
