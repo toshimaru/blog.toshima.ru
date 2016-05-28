@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/toshimaru/jekyll-compose.git
+  revision: 005b2afe87639fa764265d0f095c71f357190b51
+  branch: feature/post-template
+  specs:
+    jekyll-compose (0.4.1)
+      jekyll (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -22,8 +30,6 @@ GEM
       mercenary (~> 0.3.3)
       rouge (~> 1.7)
       safe_yaml (~> 1.0)
-    jekyll-compose (0.4.1)
-      jekyll (>= 2.5.0)
     jekyll-feed (0.5.1)
     jekyll-mentions (1.1.2)
       html-pipeline (~> 2.3)
@@ -62,7 +68,7 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll
-  jekyll-compose
+  jekyll-compose!
   jekyll-feed
   jekyll-mentions
   jekyll-seo-tag
