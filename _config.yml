@@ -15,6 +15,7 @@ exclude:
 - Gemfile.lock
 - Rakefile
 - README.md
+- vendor
 
 # GitHub Flavored Markdown
 kramdown:
