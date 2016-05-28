@@ -46,6 +46,7 @@ GEM
     minitest (5.8.4)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    rake (11.1.2)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
@@ -66,6 +67,7 @@ DEPENDENCIES
   jekyll-mentions
   jekyll-seo-tag
   jekyll-sitemap
+  rake
 
 BUNDLED WITH
    1.11.2

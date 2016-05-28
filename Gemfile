@@ -9,3 +9,7 @@ group :jekyll_plugins do
   gem 'jekyll'
   # gem 'github-pages'
 end
+
+group :development do
+  gem 'rake'
+end
