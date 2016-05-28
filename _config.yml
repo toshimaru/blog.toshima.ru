@@ -14,6 +14,7 @@ exclude:
 - .travis.yml
 - Gemfile
 - Gemfile.lock
+- Rakefile
 - README.md
 
 # GitHub Flavored Markdown
