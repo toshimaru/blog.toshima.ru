@@ -5,6 +5,7 @@ description: >
 sass:
   style: compressed
 gems:
+  - jekyll-archives
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
