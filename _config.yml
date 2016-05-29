@@ -22,6 +22,9 @@ exclude:
 kramdown:
   input: GFM
 
+jekyll-archives:
+  enabled: [year, month, tags]
+
 # Scopes
 defaults:
   -
