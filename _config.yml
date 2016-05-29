@@ -5,6 +5,7 @@ description: >
 sass:
   style: compressed
 gems:
+  - jekyll-archives
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
@@ -20,6 +21,9 @@ exclude:
 # GitHub Flavored Markdown
 kramdown:
   input: GFM
+
+jekyll-archives:
+  enabled: [year, month, tags]
 
 # Scopes
 defaults:

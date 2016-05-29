@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<header class="masthead">
+  <h1 class="masthead-title--small">
+    <a href="{{ site.baseurl }}/">{{ site.title }}</a>
+  </h1>
+</header>
+<div class="content page">
+  <h1 class="page-title">{{ page.title }}</h1>
+  {% for post in page.posts %}
+  <div class="list-item">
+    <h2 class="list-post-title">
+      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+    </h2>
+    <div class="list-post-date">
+      <time>{{ post.date | date_to_string }}</time>
+    </div>
+  </div>
+  {% endfor %}
+</div>
