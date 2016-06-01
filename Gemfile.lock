@@ -23,6 +23,8 @@ GEM
     jekyll-archives (2.1.0)
       jekyll (>= 2.4)
     jekyll-feed (0.5.1)
+    jekyll-include_sass (0.0.1)
+      jekyll (~> 3.0)
     jekyll-sass-converter (1.4.0)
       sass (~> 3.4)
     jekyll-seo-tag (2.0.0)
@@ -52,6 +54,7 @@ DEPENDENCIES
   jekyll-archives
   jekyll-compose!
   jekyll-feed
+  jekyll-include_sass
   jekyll-seo-tag
   jekyll-sitemap
   rake

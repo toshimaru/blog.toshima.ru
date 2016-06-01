@@ -9,6 +9,7 @@ gems:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-include_sass
 
 exclude:
 - .travis.yml
