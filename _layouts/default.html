@@ -7,8 +7,7 @@
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <style amp-custom>
-    {% capture include_to_sassify %}{% include style.scss %}{% endcapture %}
-    {{ include_to_sassify | scssify }}
+    {% include_sass style.scss %}
     </style>
     {% seo %}
   </head>
