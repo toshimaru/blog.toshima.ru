@@ -10,18 +10,23 @@ gems:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-include_sass
-
 exclude:
-- .travis.yml
-- Gemfile
-- Gemfile.lock
-- Rakefile
-- README.md
-- vendor
+  - .travis.yml
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
+  - README.md
+  - vendor
 
 # GitHub Flavored Markdown
 kramdown:
   input: GFM
+
+# jekyll-seo
+twitter:
+  username: toshimaru_e
+author:
+  twitter: toshimaru_e
 
 jekyll-archives:
   enabled: [year, month, tags]
