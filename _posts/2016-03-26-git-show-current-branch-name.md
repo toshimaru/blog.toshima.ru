@@ -5,19 +5,23 @@ tags: git
 
 You can get current branch name in git as follows:
 
-    git rev-parse --abbrev-ref HEAD
+```bash
+$ git rev-parse --abbrev-ref HEAD
+```
 
 For example,
 
-    $ git branch
-    * gh-pages
-      master
+```bash
+$ git branch
+* gh-pages
+  master
 
-    $ git rev-parse --abbrev-ref HEAD
-    gh-pages
+$ git rev-parse --abbrev-ref HEAD
+gh-pages
 
-    $ echo "Your current branch is $(git rev-parse --abbrev-ref HEAD)."
-    Your current branch is gh-pages.
+$ echo "Your current branch is $(git rev-parse --abbrev-ref HEAD)."
+Your current branch is gh-pages.
+```
 
 See also
 ---

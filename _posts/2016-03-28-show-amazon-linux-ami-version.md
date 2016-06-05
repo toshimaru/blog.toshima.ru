@@ -6,8 +6,8 @@ tags: aws
 `/etc/issue`
 ---
 
-```
-[toshimaru@portal-web-web1 ~]$ cat /etc/issue
+```bash
+$ cat /etc/issue
 Amazon Linux AMI release 2015.09
 Kernel \r on an \m
 ```
@@ -15,8 +15,8 @@ Kernel \r on an \m
 `/etc/system-release`
 ---
 
-```
-[toshimaru@portal-web-web1 ~]$ cat /etc/system-release
+```bash
+$ cat /etc/system-release
 Amazon Linux AMI release 2015.09
 ```
 

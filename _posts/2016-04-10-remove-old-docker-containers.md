@@ -1,12 +1,12 @@
 ---
-title: Remove old docker containers 
+title: Remove old docker containers
 tags: docker
 ---
 
 When you run `docker ps -a`, you might have too many containers and want to remove old containers. you can remove those continers as below:
 
 ```bash
-docker rm `docker ps -aq`
+$ docker rm `docker ps -aq`
 ```
 
 If specified continer is running, you will get an error:

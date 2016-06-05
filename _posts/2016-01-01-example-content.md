@@ -18,14 +18,22 @@ Nunc nec aliquam tellus. Etiam faucibus magna nibh, ut fermentum velit consectet
 Nullam vehicula iaculis tortor, in cursus enim auctor vitae. Duis semper pulvinar justo, at vestibulum dolor. Cras fermentum nibh quis nisl imperdiet ornare. Sed nisi nunc, dictum sit amet gravida in, finibus rhoncus orci. Donec scelerisque commodo turpis ac venenatis.
 
 {% highlight js %}
-
 function trigger_alert(){
   alert("Lorem Ipsum dolor sit amet");
 }
 
 trigger_alert();
-
 {% endhighlight %}
+
+or
+
+```js
+function trigger_alert(){
+  alert("Lorem Ipsum dolor sit amet");
+}
+
+trigger_alert();
+```
 
 ### Golem
 Quisque sodales euismod nibh, gravida venenatis nibh dignissim eget. Morbi gravida enim vel lectus aliquet aliquet.
@@ -40,7 +48,7 @@ Cras fermentum nibh quis nisl imperdiet ornare. Sed nisi nunc, dictum sit amet g
 2. Cum sociis natoque penatibus.
 3. Maecenas sed diam eget risus.
 
-Nam ante lacus, ornare ut lacus in, aliquet gravida orci. Donec non dignissim elit. Integer facilisis lorem sed porttitor elementum. Etiam a eleifend justo. 
+Nam ante lacus, ornare ut lacus in, aliquet gravida orci. Donec non dignissim elit. Integer facilisis lorem sed porttitor elementum. Etiam a eleifend justo.
 
 <dl>
   <dt>HyperText Markup Language (HTML)</dt>
