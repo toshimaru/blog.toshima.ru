@@ -4,8 +4,7 @@
           box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
 }
@@ -23,7 +22,6 @@ html {
 
 body {
   color: #515151;
-  background-color: #fff;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -197,31 +195,6 @@ figure {
 
 .highlight pre {
   margin-bottom: 0;
-}
-
-.gist .gist-file {
-  font-family: Menlo, Monaco, "Courier New", monospace;
-}
-
-.gist .markdown-body {
-  padding: 15px;
-}
-
-.gist pre {
-  padding: 0;
-  background-color: transparent;
-}
-
-.gist .gist-file .gist-data {
-  font-size: .8rem;
-  line-height: 1.4;
-}
-
-.gist code {
-  padding: 0;
-  color: inherit;
-  background-color: transparent;
-  border-radius: 0;
 }
 
 img {
