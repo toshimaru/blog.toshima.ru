@@ -1,3 +1,6 @@
+# clone repo:
+#   git clone git@github.com:toshimaru/blog.toshima.ru.git -b gh-pages _deploy
+
 desc 'deploy static pages to gh-pages'
 task :deploy do
   cd('_deploy') { sh 'git pull origin gh-pages' }
