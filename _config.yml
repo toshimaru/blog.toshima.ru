@@ -8,9 +8,10 @@ sass:
 gems:
   - jekyll-archives
   - jekyll-feed
+  - jekyll-gist
+  - jekyll-include_sass
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-include_sass
 exclude:
   - .travis.yml
   - Gemfile
