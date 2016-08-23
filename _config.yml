@@ -1,5 +1,6 @@
 title: "Toshimaru's Blog"
 url: "http://blog.toshima.ru"
+destination: ./docs
 description: >
   Where there's a will, there's a way.
 sass:

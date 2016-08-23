@@ -6,7 +6,6 @@ tags: activerecord rails
 
 Active Record provides a `column_names` method to show column names of a Model.
 
-
 ```rb
 User.column_names
 # => ["id", "name", "email", "password_digest", "created_at", "updated_at"]
