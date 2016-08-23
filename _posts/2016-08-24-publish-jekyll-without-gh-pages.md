@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Publish Jekyll without gh-pages branch
-description: Github releases supports variety of sources of Github Pages in Github blog, which allows developer to publish Github Pages without gh-pages branch. Since this feature, you can publish your Jekyll site without using gh-pages branch and Github deployment can be more simpler now. Build page on docs directory First step: Configure build destination.
+title: Publish Jekyll site without gh-pages branch
+description: "Github releases supports variety of sources of Github Pages in Github blog, which allows developer to publish Github Pages without gh-pages branch. Since this feature, you can publish your Jekyll site without using gh-pages branch and Github deployment can be more simpler now. Build page on docs directory First step: Configure build destination."
 tags: jekyll github
 ---
 
@@ -37,7 +37,25 @@ Last step: Change Github Pages source from your repository setting.
 
 ![change Github Pages source](/images/doc-gh-pages.png)
 
-You will see your Github Pages on your own published pages. Happy Jekylling :heart:
+You will see your Github Pages on your own published pages. Happy Jekylling <3
+
+## Pro tip
+
+By using [rake](https://github.com/ruby/rake), you can deploy your Jekyll site with a command.
+
+```rb
+# Rakefile
+desc 'deploy Jekyll site to Github Pages'
+task :deploy do
+  sh 'bundle exec jekyll clean'
+  sh 'bundle exec jekyll build'
+  sh 'git add ./docs'
+  sh 'git commit -m \'Update\''
+  sh 'git push origin master'
+end
+```
+
+In this task, `rake deploy` builds Jekyll site and push it to Github for you.
 
 ## See also
 
