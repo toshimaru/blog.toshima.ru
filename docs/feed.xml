@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.2.1">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2016-08-23T22:54:00+09:00</updated><id>http://blog.toshima.ru/</id><title>Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.2.1">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2016-08-23T23:32:10+09:00</updated><id>http://blog.toshima.ru/</id><title>Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
 </subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title>Get URL simply in Ruby</title><link href="http://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html" rel="alternate" type="text/html" title="Get URL simply in Ruby" /><published>2016-08-09T00:00:00+09:00</published><updated>2016-08-09T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/08/09/get-uri-in-ruby</id><content type="html" xml:base="http://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html">&lt;h2 id=&quot;get-url&quot;&gt;GET URL&lt;/h2&gt;
 
 &lt;p&gt;To &lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; URL and the response simply in Ruby:&lt;/p&gt;
@@ -42,7 +42,41 @@
 &lt;h2 id=&quot;see-also&quot;&gt;See also&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/5575970/activerecord-list-columns-in-table-from-console&quot;&gt;sql - ActiveRecord: List columns in table from console - Stack Overflow&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="activerecord" /><category term="rails" /><summary>Active Record provides a column_names method to show column names of a Model.</summary></entry><entry><title>Installing MySQL 5.7 on CircleCI</title><link href="http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html" rel="alternate" type="text/html" title="Installing MySQL 5.7 on CircleCI" /><published>2016-06-15T00:00:00+09:00</published><updated>2016-06-15T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci</id><content type="html" xml:base="http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html">&lt;p&gt;CircleCI doesn’t support MySQL 5.7 by default.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="activerecord" /><category term="rails" /><summary>Active Record provides a column_names method to show column names of a Model.</summary></entry><entry><title>Installing MySQL 5.7 on CircleCI</title><link href="http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html" rel="alternate" type="text/html" title="Installing MySQL 5.7 on CircleCI" /><published>2016-06-15T00:00:00+09:00</published><updated>2016-06-15T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci</id><content type="html" xml:base="http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html">&lt;h2 id=&quot;update&quot;&gt;[UPDATE]&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://s3.amazonaws.com/circle-downloads/install-mysql5.7-circleci.sh&quot;&gt;Original script&lt;/a&gt; currently doesn’t work because it refers to &lt;code class=&quot;highlighter-rouge&quot;&gt;mysql-5.7-dmr&lt;/code&gt;&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; which is outdated.&lt;/p&gt;
+
+&lt;p&gt;Please use &lt;a href=&quot;https://gist.github.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/&quot;&gt;my forked script&lt;/a&gt;.&lt;/p&gt;
+
+&lt;noscript&gt;&lt;pre&gt;#!/bin/bash
+set -x
+set -e
+
+export DEBIAN_FRONTEND=noninteractive
+
+curl -LO https://dev.mysql.com/get/mysql-apt-config_0.7.3-1_all.deb
+echo mysql-apt-config mysql-apt-config/select-product          select Apply              | sudo debconf-set-selections
+echo mysql-apt-config mysql-apt-config/select-server           select mysql-5.7          | sudo debconf-set-selections
+echo mysql-apt-config mysql-apt-config/select-connector-python select none               | sudo debconf-set-selections
+echo mysql-apt-config mysql-apt-config/select-workbench        select none               | sudo debconf-set-selections
+echo mysql-apt-config mysql-apt-config/select-utilities        select none               | sudo debconf-set-selections
+echo mysql-apt-config mysql-apt-config/select-connector-odbc   select connector-odbc-x.x | sudo debconf-set-selections
+sudo -E dpkg -i mysql-apt-config_0.7.3-1_all.deb
+sudo apt-get update
+echo mysql-community-server mysql-community-server/re-root-pass password ${mysql_root_password} | sudo debconf-set-selections
+echo mysql-community-server mysql-community-server/root-pass    password ${mysql_root_password} | sudo debconf-set-selections
+sudo -E apt-get -y install mysql-community-server
+
+echo &amp;quot;Checking installed version.....&amp;quot;
+mysql -D mysql -e &amp;quot;SELECT version()&amp;quot;
+echo &amp;quot;Done!!&amp;quot;&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835.js&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;The raw source is: &lt;a href=&quot;https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh&quot;&gt;https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;CircleCI doesn’t support MySQL 5.7 by default.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://discuss.circleci.com/users/kimh/activity&quot;&gt;kimh&lt;/a&gt;, CircleCI employee, created a script to install MySQL 5.7 on CircleCI.&lt;/p&gt;
 
@@ -50,7 +84,7 @@
 
 &lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;s&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;curl -sSL https://s3.amazonaws.com/circle-downloads/install-mysql5.7-circleci.sh | sh&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;curl -sSL https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh | sh&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -58,13 +92,17 @@
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(snip)
 ..
- * MySQL Community Server 5.7.8-rc is started
-Setting up mysql-server (5.7.8-rc-1ubuntu12.04) ...
+* MySQL Community Server 5.7.14 is started
+Setting up mysql-server (5.7.14-1ubuntu12.04) ...
+Setting up libmysqlclient20 (5.7.14-1ubuntu12.04) ...
+Setting up libmysqlclient-dev (5.7.14-1ubuntu12.04) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
 + echo Checking installed version.....
 Checking installed version.....
 + mysql -D mysql -e SELECT version()
 version()
-5.7.8-rc
+5.7.14
 + echo Done!!
 Done!!
 &lt;/code&gt;&lt;/pre&gt;
@@ -73,9 +111,18 @@ Done!!
 &lt;p&gt;Then, you can use MySQL 5.7 on CircleCI container.&lt;/p&gt;
 
 &lt;h2 id=&quot;see-also&quot;&gt;See also&lt;/h2&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://discuss.circleci.com/t/installing-mysql-5-7/1021&quot;&gt;Installing MySQL 5.7 - Build Environment - CircleCI Community Discussion&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="circleci" /><category term="mysql" /><summary>CircleCI doesn’t support MySQL 5.7 by default.</summary></entry><entry><title>Fix Jekyll build error: Invalid date error</title><link href="http://blog.toshima.ru/2016/06/13/fix-jekyll-invalid-date.html" rel="alternate" type="text/html" title="Fix Jekyll build error: Invalid date error" /><published>2016-06-13T00:00:00+09:00</published><updated>2016-06-13T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/06/13/fix-jekyll-invalid-date</id><content type="html" xml:base="http://blog.toshima.ru/2016/06/13/fix-jekyll-invalid-date.html">&lt;p&gt;When I ran &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt;, I got an error:&lt;/p&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;DMR means development milestone release. ref. &lt;a href=&quot;https://dev.mysql.com/doc/mysql-development-cycle/en/development-milestone-releases.html&quot;&gt;MySQL :: MySQL Development Cycle :: 6 Development Milestone Releases&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="circleci" /><category term="mysql" /><summary>[UPDATE]</summary></entry><entry><title>Fix Jekyll build error: Invalid date error</title><link href="http://blog.toshima.ru/2016/06/13/fix-jekyll-invalid-date.html" rel="alternate" type="text/html" title="Fix Jekyll build error: Invalid date error" /><published>2016-06-13T00:00:00+09:00</published><updated>2016-06-13T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/06/13/fix-jekyll-invalid-date</id><content type="html" xml:base="http://blog.toshima.ru/2016/06/13/fix-jekyll-invalid-date.html">&lt;p&gt;When I ran &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt;, I got an error:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: blog.toshima.ru/_config.yml
             Source: blog.toshima.ru

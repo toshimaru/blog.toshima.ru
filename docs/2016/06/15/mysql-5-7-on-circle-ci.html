@@ -15,8 +15,8 @@
     <!-- Begin Jekyll SEO tag v2.0.0 -->
 <title>Installing MySQL 5.7 on CircleCI - Toshimaru’s Blog</title>
 <meta property="og:title" content="Installing MySQL 5.7 on CircleCI" />
-<meta name="description" content="CircleCI doesn’t support MySQL 5.7 by default." />
-<meta property="og:description" content="CircleCI doesn’t support MySQL 5.7 by default." />
+<meta name="description" content="CircleCI doesn’t support MySQL 5.7 by default. To install MySQL 5.7, add below configuration to your circle.yml." />
+<meta property="og:description" content="CircleCI doesn’t support MySQL 5.7 by default. To install MySQL 5.7, add below configuration to your circle.yml." />
 <link rel="canonical" href="http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html" />
 <meta property="og:url" content="http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
@@ -31,7 +31,7 @@
     "@type": "BlogPosting",
     "headline": "Installing MySQL 5.7 on CircleCI",
     "datePublished": "2016-06-15T00:00:00+09:00",
-    "description": "CircleCI doesn’t support MySQL 5.7 by default.",
+    "description": "CircleCI doesn’t support MySQL 5.7 by default. To install MySQL 5.7, add below configuration to your circle.yml.",
     "url": "http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html"
   }
 </script>
@@ -76,7 +76,41 @@
   </div>
 
   <div class="post-body">
-    <p>CircleCI doesn’t support MySQL 5.7 by default.</p>
+    <h2 id="update">[UPDATE]</h2>
+
+<p><a href="https://s3.amazonaws.com/circle-downloads/install-mysql5.7-circleci.sh">Original script</a> currently doesn’t work because it refers to <code class="highlighter-rouge">mysql-5.7-dmr</code><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> which is outdated.</p>
+
+<p>Please use <a href="https://gist.github.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/">my forked script</a>.</p>
+
+<noscript><pre>#!/bin/bash
+set -x
+set -e
+
+export DEBIAN_FRONTEND=noninteractive
+
+curl -LO https://dev.mysql.com/get/mysql-apt-config_0.7.3-1_all.deb
+echo mysql-apt-config mysql-apt-config/select-product          select Apply              | sudo debconf-set-selections
+echo mysql-apt-config mysql-apt-config/select-server           select mysql-5.7          | sudo debconf-set-selections
+echo mysql-apt-config mysql-apt-config/select-connector-python select none               | sudo debconf-set-selections
+echo mysql-apt-config mysql-apt-config/select-workbench        select none               | sudo debconf-set-selections
+echo mysql-apt-config mysql-apt-config/select-utilities        select none               | sudo debconf-set-selections
+echo mysql-apt-config mysql-apt-config/select-connector-odbc   select connector-odbc-x.x | sudo debconf-set-selections
+sudo -E dpkg -i mysql-apt-config_0.7.3-1_all.deb
+sudo apt-get update
+echo mysql-community-server mysql-community-server/re-root-pass password ${mysql_root_password} | sudo debconf-set-selections
+echo mysql-community-server mysql-community-server/root-pass    password ${mysql_root_password} | sudo debconf-set-selections
+sudo -E apt-get -y install mysql-community-server
+
+echo &quot;Checking installed version.....&quot;
+mysql -D mysql -e &quot;SELECT version()&quot;
+echo &quot;Done!!&quot;</pre></noscript>
+<script src="https://gist.github.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835.js"> </script>
+
+<p>The raw source is: <a href="https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh">https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh</a></p>
+
+<hr />
+
+<p>CircleCI doesn’t support MySQL 5.7 by default.</p>
 
 <p><a href="https://discuss.circleci.com/users/kimh/activity">kimh</a>, CircleCI employee, created a script to install MySQL 5.7 on CircleCI.</p>
 
@@ -84,7 +118,7 @@
 
 <div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">dependencies</span><span class="pi">:</span>
   <span class="s">pre</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">curl -sSL https://s3.amazonaws.com/circle-downloads/install-mysql5.7-circleci.sh | sh</span>
+    <span class="pi">-</span> <span class="s">curl -sSL https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh | sh</span>
 </code></pre>
 </div>
 
@@ -92,13 +126,17 @@
 
 <div class="highlighter-rouge"><pre class="highlight"><code>(snip)
 ..
- * MySQL Community Server 5.7.8-rc is started
-Setting up mysql-server (5.7.8-rc-1ubuntu12.04) ...
+* MySQL Community Server 5.7.14 is started
+Setting up mysql-server (5.7.14-1ubuntu12.04) ...
+Setting up libmysqlclient20 (5.7.14-1ubuntu12.04) ...
+Setting up libmysqlclient-dev (5.7.14-1ubuntu12.04) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
 + echo Checking installed version.....
 Checking installed version.....
 + mysql -D mysql -e SELECT version()
 version()
-5.7.8-rc
+5.7.14
 + echo Done!!
 Done!!
 </code></pre>
@@ -107,9 +145,18 @@ Done!!
 <p>Then, you can use MySQL 5.7 on CircleCI container.</p>
 
 <h2 id="see-also">See also</h2>
+
 <ul>
   <li><a href="https://discuss.circleci.com/t/installing-mysql-5-7/1021">Installing MySQL 5.7 - Build Environment - CircleCI Community Discussion</a></li>
 </ul>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>DMR means development milestone release. ref. <a href="https://dev.mysql.com/doc/mysql-development-cycle/en/development-milestone-releases.html">MySQL :: MySQL Development Cycle :: 6 Development Milestone Releases</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
   </div>
 
