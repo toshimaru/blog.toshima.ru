@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.2.1">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2016-08-24T01:06:32+09:00</updated><id>http://blog.toshima.ru/</id><title>Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title>Publish Jekyll without gh-pages branch</title><link href="http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html" rel="alternate" type="text/html" title="Publish Jekyll without gh-pages branch" /><published>2016-08-24T00:00:00+09:00</published><updated>2016-08-24T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages</id><content type="html" xml:base="http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html">&lt;p&gt;Github releases supports &lt;a href=&quot;https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/&quot;&gt;variety of sources of Github Pages&lt;/a&gt; in &lt;a href=&quot;https://github.com/blog/2233-publish-your-project-documentation-with-github-pages&quot;&gt;Github blog&lt;/a&gt;, which allows developer to publish Github Pages without &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; branch. Since this feature, you can publish your Jekyll site without using &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; branch and Github deployment can be more simpler now.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.2.1">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2016-08-24T01:12:23+09:00</updated><id>http://blog.toshima.ru/</id><title>Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title>Publish Jekyll site without gh-pages branch</title><link href="http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html" rel="alternate" type="text/html" title="Publish Jekyll site without gh-pages branch" /><published>2016-08-24T00:00:00+09:00</published><updated>2016-08-24T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages</id><content type="html" xml:base="http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html">&lt;p&gt;Github releases supports &lt;a href=&quot;https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/&quot;&gt;variety of sources of Github Pages&lt;/a&gt; in &lt;a href=&quot;https://github.com/blog/2233-publish-your-project-documentation-with-github-pages&quot;&gt;Github blog&lt;/a&gt;, which allows developer to publish Github Pages without &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; branch. Since this feature, you can publish your Jekyll site without using &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; branch and Github deployment can be more simpler now.&lt;/p&gt;
 
 &lt;h2 id=&quot;build-page-on-docs-directory&quot;&gt;Build page on docs directory&lt;/h2&gt;
 
@@ -31,7 +31,25 @@ Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
 
 &lt;p&gt;&lt;img src=&quot;/images/doc-gh-pages.png&quot; alt=&quot;change Github Pages source&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;You will see your Github Pages on your own published pages. Happy Jekylling :heart:&lt;/p&gt;
+&lt;p&gt;You will see your Github Pages on your own published pages. Happy Jekylling &amp;lt;3&lt;/p&gt;
+
+&lt;h2 id=&quot;pro-tip&quot;&gt;Pro tip&lt;/h2&gt;
+
+&lt;p&gt;By using &lt;a href=&quot;https://github.com/ruby/rake&quot;&gt;rake&lt;/a&gt;, you can deploy your Jekyll site with a command.&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Rakefile&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;desc&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'deploy Jekyll site to Github Pages'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:deploy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bundle exec jekyll clean'&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bundle exec jekyll build'&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'git add ./docs'&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'git commit -m \'Update\''&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'git push origin master'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In this task, &lt;code class=&quot;highlighter-rouge&quot;&gt;rake deploy&lt;/code&gt; builds Jekyll site and push it to Github for you.&lt;/p&gt;
 
 &lt;h2 id=&quot;see-also&quot;&gt;See also&lt;/h2&gt;
 
