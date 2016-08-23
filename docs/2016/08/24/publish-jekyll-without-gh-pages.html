@@ -13,15 +13,15 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Toshimaru’s Blog - Where there’s a will, there’s a way.</title>
-<meta property="og:title" content="Toshimaru’s Blog" />
-<meta name="description" content="Where there’s a will, there’s a way." />
-<meta property="og:description" content="Where there’s a will, there’s a way." />
-<link rel="canonical" href="http://blog.toshima.ru/2016/08/" />
-<meta property="og:url" content="http://blog.toshima.ru/2016/08/" />
+<title>Publish Jekyll without gh-pages branch - Toshimaru’s Blog</title>
+<meta property="og:title" content="Publish Jekyll without gh-pages branch" />
+<meta name="description" content="Github releases supports variety of sources of Github Pages in Github blog, which allows developer to publish Github Pages without gh-pages branch. Since this feature, you can publish your Jekyll site without using gh-pages branch and Github deployment can be more simpler now. Build page on docs directory First step: Configure build destination." />
+<meta property="og:description" content="Github releases supports variety of sources of Github Pages in Github blog, which allows developer to publish Github Pages without gh-pages branch. Since this feature, you can publish your Jekyll site without using gh-pages branch and Github deployment can be more simpler now. Build page on docs directory First step: Configure build destination." />
+<link rel="canonical" href="http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html" />
+<meta property="og:url" content="http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-08-01T00:00:00+09:00" />
+<meta property="article:published_time" content="2016-08-24T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
@@ -29,10 +29,10 @@
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Toshimaru’s Blog",
-    "datePublished": "2016-08-01T00:00:00+09:00",
-    "description": "Where there’s a will, there’s a way.",
-    "url": "http://blog.toshima.ru/2016/08/"
+    "headline": "Publish Jekyll without gh-pages branch",
+    "datePublished": "2016-08-24T00:00:00+09:00",
+    "description": "Github releases supports variety of sources of Github Pages in Github blog, which allows developer to publish Github Pages without gh-pages branch. Since this feature, you can publish your Jekyll site without using gh-pages branch and Github deployment can be more simpler now. Build page on docs directory First step: Configure build destination.",
+    "url": "http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -58,27 +58,71 @@
       <header class="masthead">
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
-<div class="content page">
-  <h1 class="page-title"></h1>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/08/24/publish-jekyll-without-gh-pages.html">Publish Jekyll without gh-pages branch</a>
-    </h2>
-    <div class="list-post-date">
+<div class="content post">
+  <h1 class="post-title">Publish Jekyll without gh-pages branch</h1>
+  <div class="post-meta">
+    <div class="post-date">
       <time>24 Aug 2016</time>
     </div>
-  </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/08/09/get-uri-in-ruby.html">Get URL simply in Ruby</a>
-    </h2>
-    <div class="list-post-date">
-      <time>09 Aug 2016</time>
+    <div class="post-tags">
+      <ul class="tags">
+        
+          <li><a href="/tag/jekyll" class="tag">jekyll</a></li>
+        
+          <li><a href="/tag/github" class="tag">github</a></li>
+        
+      </ul>
     </div>
   </div>
-  
+
+  <div class="post-body">
+    <p>Github releases supports <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">variety of sources of Github Pages</a> in <a href="https://github.com/blog/2233-publish-your-project-documentation-with-github-pages">Github blog</a>, which allows developer to publish Github Pages without <code class="highlighter-rouge">gh-pages</code> branch. Since this feature, you can publish your Jekyll site without using <code class="highlighter-rouge">gh-pages</code> branch and Github deployment can be more simpler now.</p>
+
+<h2 id="build-page-on-docs-directory">Build page on docs directory</h2>
+
+<p>First step: Configure build destination.</p>
+
+<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="c1"># _config.yml</span>
+<span class="s">destination</span><span class="pi">:</span> <span class="s">./docs</span>
+</code></pre>
+</div>
+
+<p>Now Jekyll pages are built on <code class="highlighter-rouge">./docs</code> directory.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ jekyll build
+Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
+            Source: /Users/toshimaru/blog.toshima.ru
+       Destination: ./docs
+ Incremental build: disabled. Enable with --incremental
+      Generating...
+                    done in 4.078 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+</code></pre>
+</div>
+
+<p>Yay, you are almost ready to publish the pages.</p>
+
+<h2 id="use-docs-instead-of-gh-pages-branch">Use docs instead of gh-pages branch</h2>
+
+<p>Last step: Change Github Pages source from your repository setting.</p>
+
+<p><img src="/images/doc-gh-pages.png" alt="change Github Pages source" /></p>
+
+<p>You will see your Github Pages on your own published pages. Happy Jekylling :heart:</p>
+
+<h2 id="see-also">See also</h2>
+
+<ul>
+  <li><a href="https://jekyllrb.com/docs/configuration/">Configuration - Jekyll • Simple, blog-aware, static sites</a></li>
+</ul>
+
+  </div>
+
+  <div class="social-share">
+    <amp-social-share type="twitter"></amp-social-share>
+    <amp-social-share type="facebook"></amp-social-share>
+    <amp-social-share type="gplus"></amp-social-share>
+  </div>
 </div>
 
     </div>
