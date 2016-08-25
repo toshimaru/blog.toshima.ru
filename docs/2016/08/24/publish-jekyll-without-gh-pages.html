@@ -76,11 +76,11 @@
   </div>
 
   <div class="post-body">
-    <p>Github releases supports <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">variety of sources of Github Pages</a> in <a href="https://github.com/blog/2233-publish-your-project-documentation-with-github-pages">Github blog</a>, which allows developer to publish Github Pages without <code class="highlighter-rouge">gh-pages</code> branch. Since this feature, you can publish your Jekyll site without using <code class="highlighter-rouge">gh-pages</code> branch and Github deployment can be more simpler now.</p>
+    <p>Github announced <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">variety of sources of Github Pages</a> is supported in <a href="https://github.com/blog/2233-publish-your-project-documentation-with-github-pages">their official blog</a>. It allows developers to publish Github Pages with master branch instead of <code class="highlighter-rouge">gh-pages</code> branch. Since this feature, you can publish your Jekyll site without using <code class="highlighter-rouge">gh-pages</code> branch and Github Pages deployment now can be much simpler.</p>
 
 <h2 id="build-page-on-docs-directory">Build page on docs directory</h2>
 
-<p>First step: Configure build destination.</p>
+<p><strong>First step</strong>: Configure build destination.</p>
 
 <div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="c1"># _config.yml</span>
 <span class="s">destination</span><span class="pi">:</span> <span class="s">./docs</span>
@@ -104,15 +104,15 @@ Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
 
 <h2 id="use-docs-instead-of-gh-pages-branch">Use docs instead of gh-pages branch</h2>
 
-<p>Last step: Change Github Pages source from your repository setting.</p>
+<p><strong>Last step</strong>: Change Github Pages source in your repository setting.</p>
 
 <p><img src="/images/doc-gh-pages.png" alt="change Github Pages source" /></p>
 
 <p>You will see your Github Pages on your own published pages. Happy Jekylling &lt;3</p>
 
-<h2 id="pro-tip">Pro tip</h2>
+<h2 id="pro-tip">Pro Tip</h2>
 
-<p>By using <a href="https://github.com/ruby/rake">rake</a>, you can deploy your Jekyll site with a command.</p>
+<p>By using <a href="https://github.com/ruby/rake">rake</a>, you can deploy your Jekyll site with one command, <code class="highlighter-rouge">rake deploy</code>.</p>
 
 <div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="c1"># Rakefile</span>
 <span class="n">desc</span> <span class="s1">'deploy Jekyll site to Github Pages'</span>
@@ -126,7 +126,7 @@ Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
 </code></pre>
 </div>
 
-<p>In this task, <code class="highlighter-rouge">rake deploy</code> builds Jekyll site and push it to Github for you.</p>
+<p>In this task, <code class="highlighter-rouge">rake deploy</code> builds Jekyll site and push it to Github for you. This is useful if you’d like to release your site on CI such as TravisCI, CircleCi.</p>
 
 <h2 id="see-also">See also</h2>
 
