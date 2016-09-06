@@ -27,7 +27,7 @@ GEM
       safe_yaml (~> 1.0)
     jekyll-archives (2.1.0)
       jekyll (>= 2.4)
-    jekyll-feed (0.6.0)
+    jekyll-feed (0.7.0)
     jekyll-gist (1.4.0)
       octokit (~> 4.2)
     jekyll-include_sass (0.1.0)
