@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Get URL simply in Ruby
+title: Get response from URL simply in Ruby
 tags: ruby
 ---
 
-## GET URL
+## GET response from URL
 
 To `GET` URL and the response simply in Ruby:
 
@@ -19,7 +19,17 @@ response = Net::HTTP.get(uri)
 1. parse URL from URI string
 2. `Net::HTTP.get` the parsed URL
 
-## GET JSON-response URL
+## GET status code from URL
+
+```rb
+require 'net/http'
+require 'uri'
+
+uri = URI.parse('https://google.com/')
+Net::HTTP.get_response(uri).code
+```
+
+## GET JSON-response from URL
 
 ```rb
 require 'net/http'
