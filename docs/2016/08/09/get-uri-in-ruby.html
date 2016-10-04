@@ -13,10 +13,10 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Get URL simply in Ruby - Toshimaru’s Blog</title>
-<meta property="og:title" content="Get URL simply in Ruby" />
-<meta name="description" content="GET URL" />
-<meta property="og:description" content="GET URL" />
+<title>Get response from URL simply in Ruby - Toshimaru’s Blog</title>
+<meta property="og:title" content="Get response from URL simply in Ruby" />
+<meta name="description" content="GET response from URL" />
+<meta property="og:description" content="GET response from URL" />
 <link rel="canonical" href="http://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html" />
 <meta property="og:url" content="http://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
@@ -29,9 +29,9 @@
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Get URL simply in Ruby",
+    "headline": "Get response from URL simply in Ruby",
     "datePublished": "2016-08-09T00:00:00+09:00",
-    "description": "GET URL",
+    "description": "GET response from URL",
     "url": "http://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html"
   }
 </script>
@@ -59,7 +59,7 @@
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
 <div class="content post">
-  <h1 class="post-title">Get URL simply in Ruby</h1>
+  <h1 class="post-title">Get response from URL simply in Ruby</h1>
   <div class="post-meta">
     <div class="post-date">
       <time>09 Aug 2016</time>
@@ -74,7 +74,7 @@
   </div>
 
   <div class="post-body">
-    <h2 id="get-url">GET URL</h2>
+    <h2 id="get-response-from-url">GET response from URL</h2>
 
 <p>To <code class="highlighter-rouge">GET</code> URL and the response simply in Ruby:</p>
 
@@ -91,7 +91,17 @@
   <li><code class="highlighter-rouge">Net::HTTP.get</code> the parsed URL</li>
 </ol>
 
-<h2 id="get-json-response-url">GET JSON-response URL</h2>
+<h2 id="get-status-code-from-url">GET status code from URL</h2>
+
+<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'uri'</span>
+
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="s1">'https://google.com/'</span><span class="p">)</span>
+<span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">get_response</span><span class="p">(</span><span class="n">uri</span><span class="p">).</span><span class="nf">code</span>
+</code></pre>
+</div>
+
+<h2 id="get-json-response-from-url">GET JSON-response from URL</h2>
 
 <div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'uri'</span>
