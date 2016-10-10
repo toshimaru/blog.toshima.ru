@@ -405,6 +405,9 @@ tbody tr:nth-child(odd) th {
 }
 
 .social-share {
+  amp-social-share {
+    margin-right: 20px;
+  }
 }
 
 .highlight .hll { background-color: #ffffcc }
