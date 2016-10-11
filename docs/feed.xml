@@ -1,5 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://blog.toshima.ru/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.2.1">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2016-10-04T17:09:59+09:00</updated><id>http://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title type="html">Publish Jekyll site without gh-pages branch</title><link href="http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html" rel="alternate" type="text/html" title="Publish Jekyll site without gh-pages branch" /><published>2016-08-24T00:00:00+09:00</published><updated>2016-08-24T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages</id><content type="html" xml:base="http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html">&lt;p&gt;Github announced &lt;a href=&quot;https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/&quot;&gt;variety of sources of Github Pages&lt;/a&gt; is supported in &lt;a href=&quot;https://github.com/blog/2233-publish-your-project-documentation-with-github-pages&quot;&gt;their official blog&lt;/a&gt;. It allows developers to publish Github Pages with master branch instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; branch. Since this feature, you can publish your Jekyll site without using &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; branch and Github Pages deployment now can be much simpler.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://blog.toshima.ru/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.2.1">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2016-10-11T11:35:55+09:00</updated><id>http://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title type="html">Generate Ed25519 SSH key</title><link href="http://blog.toshima.ru/2016/10/10/generate-ed25519-ssh-key.html" rel="alternate" type="text/html" title="Generate Ed25519 SSH key" /><published>2016-10-10T00:00:00+09:00</published><updated>2016-10-10T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/10/10/generate-ed25519-ssh-key</id><content type="html" xml:base="http://blog.toshima.ru/2016/10/10/generate-ed25519-ssh-key.html">&lt;p&gt;Using Ed25519 as SSH key is recommended because it has:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;High security level. This system has a 2^128 security target; breaking it has similar difficulty to breaking NIST P-256, RSA with ~3000-bit keys, strong 128-bit block ciphers, etc.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;via. &lt;a href=&quot;http://ed25519.cr.yp.to/&quot;&gt;Ed25519: high-speed high-security signatures&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;environment&quot;&gt;Environment&lt;/h2&gt;
+
+&lt;p&gt;Mac OS X El Capitan&lt;/p&gt;
+
+&lt;h2 id=&quot;ssh-version&quot;&gt;SSH version&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh -V
+OpenSSH_6.9p1, LibreSSL 2.1.8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;generate-ed25519-ssh&quot;&gt;Generate Ed25519 SSH&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen -t ed25519
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen -t ed25519
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/Users/toshi/.ssh/id_ed25519):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /Users/toshi/.ssh/id_ed25519.
+Your public key has been saved in /Users/toshi/.ssh/id_ed25519.pub.
+The key fingerprint is:
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+The key's randomart image is:
++--[ED25519 256]--+
+| xxx xxx xxx xxx |
+| xxx xxx xxx xxx |
+| xxx xxx xxx xxx |
+| xxx xxx xxx xxx |
+| xxx xxx xxx xxx |
+| xxx xxx xxx xxx |
+| xxx xxx xxx xxx |
+| xxx xxx xxx xxx |
+| xxx xxx xxx xxx |
++----[SHA256]-----+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then, your private key should be at &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/id_ed25519&lt;/code&gt; and your public key should be at &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/id_ed25519.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;see-also&quot;&gt;See also&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/EdDSA&quot;&gt;EdDSA - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="ssh" /><category term="security" /><summary type="html">Using Ed25519 as SSH key is recommended because it has:</summary></entry><entry><title type="html">Publish Jekyll site without gh-pages branch</title><link href="http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html" rel="alternate" type="text/html" title="Publish Jekyll site without gh-pages branch" /><published>2016-08-24T00:00:00+09:00</published><updated>2016-08-24T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages</id><content type="html" xml:base="http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html">&lt;p&gt;Github announced &lt;a href=&quot;https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/&quot;&gt;variety of sources of Github Pages&lt;/a&gt; is supported in &lt;a href=&quot;https://github.com/blog/2233-publish-your-project-documentation-with-github-pages&quot;&gt;their official blog&lt;/a&gt;. It allows developers to publish Github Pages with master branch instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; branch. Since this feature, you can publish your Jekyll site without using &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; branch and Github Pages deployment now can be much simpler.&lt;/p&gt;
 
 &lt;h2 id=&quot;build-page-on-docs-directory&quot;&gt;Build page on docs directory&lt;/h2&gt;
 
@@ -262,15 +319,4 @@ NoMethodError: private method `p_method' called for #&amp;lt;Foo:0x007fd660b9de8
 &lt;/div&gt;
 
 &lt;h2 id=&quot;see-also&quot;&gt;See also&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/17236796/how-to-remove-old-docker-containers&quot;&gt;How to remove old Docker containers - Stack Overflow&lt;/a&gt;&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="docker" /><summary type="html">When you run docker ps -a, you might have too many containers and want to remove old containers. you can remove those continers as below:</summary></entry><entry><title type="html">how to fix uglifier Bundler::GemRequireError</title><link href="http://blog.toshima.ru/2016/04/09/rails-new-uglifier-error.html" rel="alternate" type="text/html" title="how to fix uglifier Bundler::GemRequireError" /><published>2016-04-09T00:00:00+09:00</published><updated>2016-04-09T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/04/09/rails-new-uglifier-error</id><content type="html" xml:base="http://blog.toshima.ru/2016/04/09/rails-new-uglifier-error.html">&lt;p&gt;I got an error below when I tried to run &lt;code class=&quot;highlighter-rouge&quot;&gt;rails server&lt;/code&gt; after running &lt;code class=&quot;highlighter-rouge&quot;&gt;rails new&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;web_1 | /usr/local/lib/ruby/gems/2.3.0/gems/bundler-1.11.2/lib/bundler/runtime.rb:80:in `rescue in block (2 levels) in require': There was an error while trying to load the gem 'uglifier'. (Bundler::GemRequireError)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;All you need to do is the uncomment &lt;code class=&quot;highlighter-rouge&quot;&gt;# gem 'therubyracer', platforms: :ruby&lt;/code&gt; in your &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# See https://github.com/rails/execjs#readme for more supported runtimes&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'therubyracer'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;platforms: :ruby&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="rails" /><summary type="html">I got an error below when I tried to run rails server after running rails new.</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/17236796/how-to-remove-old-docker-containers&quot;&gt;How to remove old Docker containers - Stack Overflow&lt;/a&gt;&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="docker" /><summary type="html">When you run docker ps -a, you might have too many containers and want to remove old containers. you can remove those continers as below:</summary></entry></feed>
