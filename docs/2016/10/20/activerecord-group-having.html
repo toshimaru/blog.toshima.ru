@@ -13,15 +13,15 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Toshimaru’s Blog - Where there’s a will, there’s a way.</title>
-<meta property="og:title" content="Toshimaru’s Blog" />
-<meta name="description" content="Where there’s a will, there’s a way." />
-<meta property="og:description" content="Where there’s a will, there’s a way." />
-<link rel="canonical" href="http://blog.toshima.ru/2016/10/" />
-<meta property="og:url" content="http://blog.toshima.ru/2016/10/" />
+<title>Build group_by and having query with ActiveRecord - Toshimaru’s Blog</title>
+<meta property="og:title" content="Build group_by and having query with ActiveRecord" />
+<meta name="description" content="Want to build query which has group by and having(like below) with ActiveRecord?" />
+<meta property="og:description" content="Want to build query which has group by and having(like below) with ActiveRecord?" />
+<link rel="canonical" href="http://blog.toshima.ru/2016/10/20/activerecord-group-having.html" />
+<meta property="og:url" content="http://blog.toshima.ru/2016/10/20/activerecord-group-having.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-10-01T00:00:00+09:00" />
+<meta property="article:published_time" content="2016-10-20T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
@@ -29,10 +29,10 @@
   {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    "headline": "Toshimaru’s Blog",
-    "datePublished": "2016-10-01T00:00:00+09:00",
-    "description": "Where there’s a will, there’s a way.",
-    "url": "http://blog.toshima.ru/2016/10/"
+    "headline": "Build group_by and having query with ActiveRecord",
+    "datePublished": "2016-10-20T00:00:00+09:00",
+    "description": "Want to build query which has group by and having(like below) with ActiveRecord?",
+    "url": "http://blog.toshima.ru/2016/10/20/activerecord-group-having.html"
   }
 </script>
 <!-- End Jekyll SEO tag -->
@@ -58,27 +58,50 @@
       <header class="masthead">
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
-<div class="content page">
-  <h1 class="page-title"></h1>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/10/20/activerecord-group-having.html">Build group_by and having query with ActiveRecord</a>
-    </h2>
-    <div class="list-post-date">
+<div class="content post">
+  <h1 class="post-title">Build group_by and having query with ActiveRecord</h1>
+  <div class="post-meta">
+    <div class="post-date">
       <time>20 Oct 2016</time>
     </div>
-  </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/10/10/generate-ed25519-ssh-key.html">Generate Ed25519 SSH key</a>
-    </h2>
-    <div class="list-post-date">
-      <time>10 Oct 2016</time>
+    <div class="post-tags">
+      <ul class="tags">
+        
+          <li><a href="/tag/activerecord" class="tag">activerecord</a></li>
+        
+      </ul>
     </div>
   </div>
-  
+
+  <div class="post-body">
+    <p>Want to build query which has <code class="highlighter-rouge">group by</code> and <code class="highlighter-rouge">having</code>(like below) with ActiveRecord?</p>
+
+<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">bar</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>  
+<span class="k">FROM</span> <span class="n">tables</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">foo</span><span class="p">,</span> <span class="n">bar</span>
+<span class="k">HAVING</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>You can build it by using <code class="highlighter-rouge">group</code> and <code class="highlighter-rouge">having</code> which are <code class="highlighter-rouge">ActiveRecord::QueryMethods</code>.</p>
+
+<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="no">ActiveRecordModel</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="ss">:foo</span><span class="p">,</span> <span class="ss">:bar</span><span class="p">).</span><span class="nf">having</span><span class="p">(</span><span class="s2">"count(*) &gt; 1"</span><span class="p">).</span><span class="nf">count</span>
+</code></pre>
+</div>
+
+<h2 id="see-also">See also</h2>
+
+<ul>
+  <li><a href="http://apidock.com/rails/ActiveRecord/QueryMethods">ActiveRecord::QueryMethods - APIdock</a></li>
+</ul>
+
+  </div>
+
+  <div class="social-share">
+    <amp-social-share type="twitter"></amp-social-share>
+    <amp-social-share type="facebook"></amp-social-share>
+    <amp-social-share type="gplus"></amp-social-share>
+  </div>
 </div>
 
     </div>
