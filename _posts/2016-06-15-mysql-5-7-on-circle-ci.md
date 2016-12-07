@@ -5,6 +5,14 @@ description: CircleCI doesn’t support MySQL 5.7 by default. To install MySQL 5
 tags: circleci mysql
 ---
 
+## [UPDATE 2]
+
+Current best approach is changing CircleCI **Build Environment** to the latest version which is `Ubuntu 14.04`.
+
+[Ubuntu 14.04 (Trusty) - CircleCI](https://circleci.com/docs/build-image-trusty/)
+
+This build image has MySQL 5.7.x by default.
+
 ## [UPDATE]
 
 [Original script](https://s3.amazonaws.com/circle-downloads/install-mysql5.7-circleci.sh) currently doesn't work because it refers to `mysql-5.7-dmr`[^1] which is outdated.
