@@ -13,23 +13,25 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Toshimaru’s Blog - Where there’s a will, there’s a way.</title>
-<meta property="og:title" content="Toshimaru’s Blog" />
-<meta name="description" content="Where there’s a will, there’s a way." />
-<meta property="og:description" content="Where there’s a will, there’s a way." />
-<link rel="canonical" href="http://blog.toshima.ru/" />
-<meta property="og:url" content="http://blog.toshima.ru/" />
+<title>Merge arrays in ES6 way - Toshimaru’s Blog</title>
+<meta property="og:title" content="Merge arrays in ES6 way" />
+<meta name="description" content="How can we merge some arrays in JavaScript?" />
+<meta property="og:description" content="How can we merge some arrays in JavaScript?" />
+<link rel="canonical" href="http://blog.toshima.ru/2017/03/24/es6-array-merge.html" />
+<meta property="og:url" content="http://blog.toshima.ru/2017/03/24/es6-array-merge.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-03-24T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
-"@type": "WebSite",
-"name": "Toshimaru’s Blog",
-"headline": "Toshimaru’s Blog",
-"description": "Where there’s a will, there’s a way.",
-"url": "http://blog.toshima.ru/"}</script>
+"@type": "BlogPosting",
+"headline": "Merge arrays in ES6 way",
+"datePublished": "2017-03-24T00:00:00+09:00",
+"description": "How can we merge some arrays in JavaScript?",
+"url": "http://blog.toshima.ru/2017/03/24/es6-array-merge.html"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -52,204 +54,88 @@
 
     <div class="container">
       <header class="masthead">
-  <h1 class="masthead-title"><a href="/">Toshimaru's Blog</a></h1>
-  <nav class="masthead-nav">
-    
-  </nav>
+  <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
-<div class="content list">
-
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2017/03/24/es6-array-merge.html">Merge arrays in ES6 way</a>
-    </h2>
-    <div class="list-post-date">
+<div class="content post">
+  <h1 class="post-title">Merge arrays in ES6 way</h1>
+  <div class="post-meta">
+    <div class="post-date">
       <time>24 Mar 2017</time>
     </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/12/16/mysqldump-command.html">mysqldump command for existing Rails app</a>
-    </h2>
-    <div class="list-post-date">
-      <time>16 Dec 2016</time>
+    <div class="post-tags">
+      <ul class="tags">
+        
+          <li><a href="/tag/javascript" class="tag">javascript</a></li>
+        
+      </ul>
     </div>
   </div>
 
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/11/26/display-disk-usage-command-on-mac.html">Display disk usage on macOS with du command</a>
-    </h2>
-    <div class="list-post-date">
-      <time>26 Nov 2016</time>
-    </div>
+  <div class="post-body">
+    <p>How can we merge some arrays in JavaScript?</p>
+
+<h2 id="old-way">Old Way</h2>
+
+<h3 id="merge-2-arrays">Merge 2 Arrays</h3>
+
+<p>You can use <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/concat">concat</a> to merge arrays.</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">ary1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nx">ary2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nx">ary1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">ary2</span><span class="p">)</span>
+<span class="c1">// [ 1, 2, 2, 3 ]</span>
+</code></pre>
+</div>
+
+<h3 id="merge-multiple-arrays">Merge Multiple Arrays</h3>
+
+<p><code class="highlighter-rouge">concat</code> can take multiple arrays as arguments.</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">ary1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">ary2</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="c1">// [ 1, 2, 2, 3, 5, 6, 7 ]</span>
+</code></pre>
+</div>
+
+<h2 id="es6-way">ES6 way</h2>
+
+<p>You can use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator">Spread syntax</a> to merge arrays in ES6(ES2015). This way is easier and more readable.</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">ary1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nx">ary2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">[...</span><span class="nx">ary1</span><span class="p">,</span> <span class="p">...</span><span class="nx">ary2</span><span class="p">]</span>
+<span class="c1">// [ 1, 2, 2, 3 ]</span>
+</code></pre>
+</div>
+
+<p>You can merge multiple arrays as much as you want.</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="p">[...</span><span class="nx">ary1</span><span class="p">,</span> <span class="p">...</span><span class="nx">ary2</span><span class="p">,</span> <span class="p">...</span><span class="nx">ary3</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>Also, you can use combination of <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/push">push</a> and spread syntax.</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">ary1</span><span class="p">.</span><span class="nx">push</span><span class="p">(...</span><span class="nx">ary2</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ary1</span><span class="p">)</span>
+<span class="c1">// [ 1, 2, 2, 3 ]</span>
+</code></pre>
+</div>
+
+<p>This changes <code class="highlighter-rouge">ary1</code> value, so you should use this way when you want to merge another array into an array. In this case, <code class="highlighter-rouge">ary2</code> is merged into <code class="highlighter-rouge">ary1</code>.</p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="https://gist.github.com/yesvods/51af798dd1e7058625f4">Merge Arrays in one with ES6 Array spread</a></li>
+</ul>
+
   </div>
 
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/11/18/escape-erb-tag-in-erb.html">Escape ERB tag string in ERB file</a>
-    </h2>
-    <div class="list-post-date">
-      <time>18 Nov 2016</time>
-    </div>
+  <div class="social-share">
+    <amp-social-share type="twitter"></amp-social-share>
+    <amp-social-share type="facebook"></amp-social-share>
+    <amp-social-share type="gplus"></amp-social-share>
   </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/11/07/bundler-gist-shorthand.html">Bundler Github/Gist shorthand</a>
-    </h2>
-    <div class="list-post-date">
-      <time>07 Nov 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/10/20/activerecord-group-having.html">Build group_by and having query with ActiveRecord</a>
-    </h2>
-    <div class="list-post-date">
-      <time>20 Oct 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/10/10/generate-ed25519-ssh-key.html">Generate Ed25519 SSH key</a>
-    </h2>
-    <div class="list-post-date">
-      <time>10 Oct 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/08/24/publish-jekyll-without-gh-pages.html">Publish Jekyll site without gh-pages branch</a>
-    </h2>
-    <div class="list-post-date">
-      <time>24 Aug 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/08/09/get-uri-in-ruby.html">Get HTML/JSON response from URL simply in Ruby</a>
-    </h2>
-    <div class="list-post-date">
-      <time>09 Aug 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/06/18/active-record-model-columns.html">Show Active Record Model column names</a>
-    </h2>
-    <div class="list-post-date">
-      <time>18 Jun 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/06/15/mysql-5-7-on-circle-ci.html">Installing MySQL 5.7 on CircleCI</a>
-    </h2>
-    <div class="list-post-date">
-      <time>15 Jun 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/06/13/fix-jekyll-invalid-date.html">Fix Jekyll build error: Invalid date error</a>
-    </h2>
-    <div class="list-post-date">
-      <time>13 Jun 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/06/12/how-to-disable-layout-in-jekyll.html">How to disable layout in Jekyll</a>
-    </h2>
-    <div class="list-post-date">
-      <time>12 Jun 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/06/05/how-to-disable-turbolinks-in-rails.html">How to disable turbolinks in rails new</a>
-    </h2>
-    <div class="list-post-date">
-      <time>05 Jun 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/04/28/ruby-private-method-in-module.html">Private method in module in Ruby</a>
-    </h2>
-    <div class="list-post-date">
-      <time>28 Apr 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/04/10/remove-old-docker-containers.html">Remove old docker containers</a>
-    </h2>
-    <div class="list-post-date">
-      <time>10 Apr 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/04/09/rails-new-uglifier-error.html">how to fix uglifier Bundler::GemRequireError</a>
-    </h2>
-    <div class="list-post-date">
-      <time>09 Apr 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/03/28/show-amazon-linux-ami-version.html">Show Amazon Linux AMI version using a command</a>
-    </h2>
-    <div class="list-post-date">
-      <time>28 Mar 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/03/26/git-show-current-branch-name.html">Get current branch name in Git</a>
-    </h2>
-    <div class="list-post-date">
-      <time>26 Mar 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/01/05/mysql-processlist-filter.html">Filter MySQL processlist</a>
-    </h2>
-    <div class="list-post-date">
-      <time>05 Jan 2016</time>
-    </div>
-  </div>
-
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/01/01/example-content.html">Example content</a>
-    </h2>
-    <div class="list-post-date">
-      <time>01 Jan 2016</time>
-    </div>
-  </div>
-
-
 </div>
 
     </div>

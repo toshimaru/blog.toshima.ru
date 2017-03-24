@@ -1,5 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://blog.toshima.ru/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2016-12-31T01:29:13+09:00</updated><id>http://blog.toshima.ru//</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title type="html">mysqldump command for existing Rails app</title><link href="http://blog.toshima.ru/2016/12/16/mysqldump-command.html" rel="alternate" type="text/html" title="mysqldump command for existing Rails app" /><published>2016-12-16T00:00:00+09:00</published><updated>2016-12-16T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/12/16/mysqldump-command</id><content type="html" xml:base="http://blog.toshima.ru/2016/12/16/mysqldump-command.html">&lt;h2 id=&quot;environment&quot;&gt;Environment&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2017-03-24T14:14:56+09:00</updated><id>http://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title type="html">Merge arrays in ES6 way</title><link href="http://blog.toshima.ru/2017/03/24/es6-array-merge.html" rel="alternate" type="text/html" title="Merge arrays in ES6 way" /><published>2017-03-24T00:00:00+09:00</published><updated>2017-03-24T00:00:00+09:00</updated><id>http://blog.toshima.ru/2017/03/24/es6-array-merge</id><content type="html" xml:base="http://blog.toshima.ru/2017/03/24/es6-array-merge.html">&lt;p&gt;How can we merge some arrays in JavaScript?&lt;/p&gt;
+
+&lt;h2 id=&quot;old-way&quot;&gt;Old Way&lt;/h2&gt;
+
+&lt;h3 id=&quot;merge-2-arrays&quot;&gt;Merge 2 Arrays&lt;/h3&gt;
+
+&lt;p&gt;You can use &lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/concat&quot;&gt;concat&lt;/a&gt; to merge arrays.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// [ 1, 2, 2, 3 ]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;merge-multiple-arrays&quot;&gt;Merge Multiple Arrays&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;concat&lt;/code&gt; can take multiple arrays as arguments.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// [ 1, 2, 2, 3, 5, 6, 7 ]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;es6-way&quot;&gt;ES6 way&lt;/h2&gt;
+
+&lt;p&gt;You can use &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator&quot;&gt;Spread syntax&lt;/a&gt; to merge arrays in ES6(ES2015). This way is easier and more readable.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// [ 1, 2, 2, 3 ]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You can merge multiple arrays as much as you want.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Also, you can use combination of &lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/push&quot;&gt;push&lt;/a&gt; and spread syntax.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// [ 1, 2, 2, 3 ]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This changes &lt;code class=&quot;highlighter-rouge&quot;&gt;ary1&lt;/code&gt; value, so you should use this way when you want to merge another array into an array. In this case, &lt;code class=&quot;highlighter-rouge&quot;&gt;ary2&lt;/code&gt; is merged into &lt;code class=&quot;highlighter-rouge&quot;&gt;ary1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gist.github.com/yesvods/51af798dd1e7058625f4&quot;&gt;Merge Arrays in one with ES6 Array spread&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="javascript" /><summary type="html">How can we merge some arrays in JavaScript?</summary></entry><entry><title type="html">mysqldump command for existing Rails app</title><link href="http://blog.toshima.ru/2016/12/16/mysqldump-command.html" rel="alternate" type="text/html" title="mysqldump command for existing Rails app" /><published>2016-12-16T00:00:00+09:00</published><updated>2016-12-16T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/12/16/mysqldump-command</id><content type="html" xml:base="http://blog.toshima.ru/2016/12/16/mysqldump-command.html">&lt;h2 id=&quot;environment&quot;&gt;Environment&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Rails 5.0.0.1&lt;/li&gt;
@@ -301,92 +356,4 @@ Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
 &lt;h2 id=&quot;see-also&quot;&gt;See also&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/5575970/activerecord-list-columns-in-table-from-console&quot;&gt;sql - ActiveRecord: List columns in table from console - Stack Overflow&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="activerecord" /><category term="rails" /><summary type="html">Active Record provides a column_names method to show column names of a Model.</summary></entry><entry><title type="html">Installing MySQL 5.7 on CircleCI</title><link href="http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html" rel="alternate" type="text/html" title="Installing MySQL 5.7 on CircleCI" /><published>2016-06-15T00:00:00+09:00</published><updated>2016-06-15T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci</id><content type="html" xml:base="http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html">&lt;h2 id=&quot;update-2&quot;&gt;[UPDATE 2]&lt;/h2&gt;
-
-&lt;p&gt;Current best approach is changing CircleCI &lt;strong&gt;Build Environment&lt;/strong&gt; to the latest version which is &lt;code class=&quot;highlighter-rouge&quot;&gt;Ubuntu 14.04&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://circleci.com/docs/build-image-trusty/&quot;&gt;Ubuntu 14.04 (Trusty) - CircleCI&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;This build image has MySQL 5.7.x by default.&lt;/p&gt;
-
-&lt;h2 id=&quot;update&quot;&gt;[UPDATE]&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://s3.amazonaws.com/circle-downloads/install-mysql5.7-circleci.sh&quot;&gt;Original script&lt;/a&gt; currently doesn’t work because it refers to &lt;code class=&quot;highlighter-rouge&quot;&gt;mysql-5.7-dmr&lt;/code&gt;&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; which is outdated.&lt;/p&gt;
-
-&lt;p&gt;Please use &lt;a href=&quot;https://gist.github.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/&quot;&gt;my forked script&lt;/a&gt;.&lt;/p&gt;
-
-&lt;noscript&gt;&lt;pre&gt;#!/bin/bash
-set -x
-set -e
-
-export DEBIAN_FRONTEND=noninteractive
-
-curl -LO https://dev.mysql.com/get/mysql-apt-config_0.7.3-1_all.deb
-echo mysql-apt-config mysql-apt-config/select-product          select Apply              | sudo debconf-set-selections
-echo mysql-apt-config mysql-apt-config/select-server           select mysql-5.7          | sudo debconf-set-selections
-echo mysql-apt-config mysql-apt-config/select-connector-python select none               | sudo debconf-set-selections
-echo mysql-apt-config mysql-apt-config/select-workbench        select none               | sudo debconf-set-selections
-echo mysql-apt-config mysql-apt-config/select-utilities        select none               | sudo debconf-set-selections
-echo mysql-apt-config mysql-apt-config/select-connector-odbc   select connector-odbc-x.x | sudo debconf-set-selections
-sudo -E dpkg -i mysql-apt-config_0.7.3-1_all.deb
-sudo apt-get update
-echo mysql-community-server mysql-community-server/re-root-pass password ${mysql_root_password} | sudo debconf-set-selections
-echo mysql-community-server mysql-community-server/root-pass    password ${mysql_root_password} | sudo debconf-set-selections
-sudo -E apt-get -y install mysql-community-server
-
-echo &amp;quot;Checking installed version.....&amp;quot;
-mysql -D mysql -e &amp;quot;SELECT version()&amp;quot;
-echo &amp;quot;Done!!&amp;quot;&lt;/pre&gt;&lt;/noscript&gt;
-&lt;script src=&quot;https://gist.github.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835.js&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;The raw source is: &lt;a href=&quot;https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh&quot;&gt;https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;CircleCI doesn’t support MySQL 5.7 by default.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://discuss.circleci.com/users/kimh/activity&quot;&gt;kimh&lt;/a&gt;, CircleCI employee, created a script to install MySQL 5.7 on CircleCI.&lt;/p&gt;
-
-&lt;p&gt;To use this script, add below configuration to your &lt;code class=&quot;highlighter-rouge&quot;&gt;circle.yml&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;curl -sSL https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh | sh&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The output on CircleCI is:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(snip)
-..
-* MySQL Community Server 5.7.14 is started
-Setting up mysql-server (5.7.14-1ubuntu12.04) ...
-Setting up libmysqlclient20 (5.7.14-1ubuntu12.04) ...
-Setting up libmysqlclient-dev (5.7.14-1ubuntu12.04) ...
-Processing triggers for libc-bin ...
-ldconfig deferred processing now taking place
-+ echo Checking installed version.....
-Checking installed version.....
-+ mysql -D mysql -e SELECT version()
-version()
-5.7.14
-+ echo Done!!
-Done!!
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then, you can use MySQL 5.7 on CircleCI container.&lt;/p&gt;
-
-&lt;h2 id=&quot;see-also&quot;&gt;See also&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://discuss.circleci.com/t/installing-mysql-5-7/1021&quot;&gt;Installing MySQL 5.7 - Build Environment - CircleCI Community Discussion&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;DMR means development milestone release. ref. &lt;a href=&quot;https://dev.mysql.com/doc/mysql-development-cycle/en/development-milestone-releases.html&quot;&gt;MySQL :: MySQL Development Cycle :: 6 Development Milestone Releases&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="circleci" /><category term="mysql" /><summary type="html">[UPDATE 2]</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="activerecord" /><category term="rails" /><summary type="html">Active Record provides a column_names method to show column names of a Model.</summary></entry></feed>
