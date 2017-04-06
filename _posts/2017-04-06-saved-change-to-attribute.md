@@ -14,6 +14,39 @@ DEPRECATION WARNING: The behavior of `attribute_changed?` inside of after callba
 
 As the messages says, using `saved_change_to_attribute?` instead of `attribute_changed?` is recommended.
 
+## Example
+
+Let's say you write code like this:
+
+```rb
+class Post < ApplicationRecord
+  after_update :deprecation_after_update
+
+  def deprecation_after_update
+    # Post has title column
+    if title_changed?
+      # ...
+    end
+  end
+end
+```
+
+Then you need to rewrite it like this:
+
+```rb
+if saved_change_to_title?
+  # ...
+end
+```
+
+or
+
+```rb
+if aved_change_to_attribute?(:title)
+  # ...
+end
+```
+
 ## Why this change needed?
 
 [sgrif](https://github.com/sgrif) explains why on GitHub issue: [Deprecate the behavior of AR::Dirty inside of after_(create\|update\|save) callbacks by sgrif · Pull Request #25337 · rails/rails](https://github.com/rails/rails/pull/25337)
