@@ -117,6 +117,25 @@
 </code></pre>
 </div>
 
+<h2 id="use-attribute_before_last_save-instead-of-attribute_was">Use <code class="highlighter-rouge">attribute_before_last_save</code> instead of <code class="highlighter-rouge">attribute_was</code></h2>
+
+<p>Also, <code class="highlighter-rouge">attribute_was</code> is deprecated in Rails 5.1. which is one of methods in <a href="http://api.rubyonrails.org/classes/ActiveModel/Dirty.html">ActiveModel::Dirty</a>.</p>
+
+<p>The deprecation message is:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>DEPRECATION WARNING: The behavior of `attribute_was` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `attribute_before_last_save` instead.
+</code></pre>
+</div>
+
+<p>As message says, we need to replace <code class="highlighter-rouge">*attribute_was</code> with <code class="highlighter-rouge">attribute_before_last_save</code>.</p>
+
+<p>For example:</p>
+
+<div class="language-diff highlighter-rouge"><pre class="highlight"><code><span class="gd">-title_was
+</span><span class="gi">+title_before_last_save
+</span></code></pre>
+</div>
+
 <h2 id="why-this-change-needed">Why this change needed?</h2>
 
 <p><a href="https://github.com/sgrif">sgrif</a> explains why on GitHub issue: <a href="https://github.com/rails/rails/pull/25337">Deprecate the behavior of AR::Dirty inside of after_(create|update|save) callbacks by sgrif · Pull Request #25337 · rails/rails</a></p>
