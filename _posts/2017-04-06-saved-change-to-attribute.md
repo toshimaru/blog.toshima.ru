@@ -42,7 +42,7 @@ end
 or
 
 ```rb
-if aved_change_to_attribute?(:title)
+if saved_change_to_attribute?(:title)
   # ...
 end
 ```
@@ -57,7 +57,7 @@ The deprecation message is:
 DEPRECATION WARNING: The behavior of `attribute_was` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `attribute_before_last_save` instead.
 ```
 
-As message says, we need to replace `*attribute_was` with `attribute_before_last_save`.
+As message says, we need to replace `attribute_was` with `attribute_before_last_save`.
 
 For example:
 
