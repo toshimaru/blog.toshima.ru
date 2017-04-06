@@ -84,6 +84,39 @@
 
 <p>As the messages says, using <code class="highlighter-rouge">saved_change_to_attribute?</code> instead of <code class="highlighter-rouge">attribute_changed?</code> is recommended.</p>
 
+<h2 id="example">Example</h2>
+
+<p>Let’s say you write code like this:</p>
+
+<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="n">after_update</span> <span class="ss">:deprecation_after_update</span>
+
+  <span class="k">def</span> <span class="nf">deprecation_after_update</span>
+    <span class="c1"># Post has title column</span>
+    <span class="k">if</span> <span class="n">title_changed?</span>
+      <span class="c1"># ...</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>Then you need to rewrite it like this:</p>
+
+<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="n">saved_change_to_title?</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>or</p>
+
+<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="n">aved_change_to_attribute?</span><span class="p">(</span><span class="ss">:title</span><span class="p">)</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
 <h2 id="why-this-change-needed">Why this change needed?</h2>
 
 <p><a href="https://github.com/sgrif">sgrif</a> explains why on GitHub issue: <a href="https://github.com/rails/rails/pull/25337">Deprecate the behavior of AR::Dirty inside of after_(create|update|save) callbacks by sgrif · Pull Request #25337 · rails/rails</a></p>
