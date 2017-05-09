@@ -37,7 +37,7 @@ GEM
       jekyll (~> 3.0)
     jekyll-sass-converter (1.5.0)
       sass (~> 3.4)
-    jekyll-seo-tag (2.2.1)
+    jekyll-seo-tag (2.2.3)
       jekyll (~> 3.3)
     jekyll-sitemap (1.1.1)
       jekyll (~> 3.3)
@@ -79,6 +79,7 @@ DEPENDENCIES
   jekyll-seo-tag
   jekyll-sitemap
   rake
+
 
 BUNDLED WITH
    1.14.6
