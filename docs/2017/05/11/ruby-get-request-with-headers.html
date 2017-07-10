@@ -13,21 +13,21 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.2.3 -->
-<title>Installing MySQL 5.7 on CircleCI | Toshimaru’s Blog</title>
-<meta property="og:title" content="Installing MySQL 5.7 on CircleCI" />
+<title>ruby-get-request-with-headers | Toshimaru’s Blog</title>
+<meta property="og:title" content="ruby-get-request-with-headers" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="CircleCI doesn’t support MySQL 5.7 by default. To install MySQL 5.7, add below configuration to your circle.yml." />
-<meta property="og:description" content="CircleCI doesn’t support MySQL 5.7 by default. To install MySQL 5.7, add below configuration to your circle.yml." />
-<link rel="canonical" href="http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html" />
-<meta property="og:url" content="http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html" />
+<meta name="description" content="uri = URI.parse(&quot;https://84.38.185.251:9262/send&quot;) http = Net::HTTP.new(uri.host, uri.port) request = Net::HTTP::Get.new(uri.request_uri) http.use_ssl = true response = http.request(request) http://stackoverflow.com/questions/23080164/eoferror-end-of-file-reached-in-ruby-on-rails-with-http-request" />
+<meta property="og:description" content="uri = URI.parse(&quot;https://84.38.185.251:9262/send&quot;) http = Net::HTTP.new(uri.host, uri.port) request = Net::HTTP::Get.new(uri.request_uri) http.use_ssl = true response = http.request(request) http://stackoverflow.com/questions/23080164/eoferror-end-of-file-reached-in-ruby-on-rails-with-http-request" />
+<link rel="canonical" href="http://blog.toshima.ru/2017/05/11/ruby-get-request-with-headers.html" />
+<meta property="og:url" content="http://blog.toshima.ru/2017/05/11/ruby-get-request-with-headers.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-06-15T00:00:00+09:00" />
+<meta property="article:published_time" content="2017-05-11T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Installing MySQL 5.7 on CircleCI","author":{"@type":"Person","name":null},"datePublished":"2016-06-15T00:00:00+09:00","dateModified":"2016-06-15T00:00:00+09:00","description":"CircleCI doesn’t support MySQL 5.7 by default. To install MySQL 5.7, add below configuration to your circle.yml.","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html"},"url":"http://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"ruby-get-request-with-headers","author":{"@type":"Person","name":null},"datePublished":"2017-05-11T00:00:00+09:00","dateModified":"2017-05-11T00:00:00+09:00","description":"uri = URI.parse(&quot;https://84.38.185.251:9262/send&quot;) http = Net::HTTP.new(uri.host, uri.port) request = Net::HTTP::Get.new(uri.request_uri) http.use_ssl = true response = http.request(request) http://stackoverflow.com/questions/23080164/eoferror-end-of-file-reached-in-ruby-on-rails-with-http-request","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.toshima.ru/2017/05/11/ruby-get-request-with-headers.html"},"url":"http://blog.toshima.ru/2017/05/11/ruby-get-request-with-headers.html"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="http://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -54,112 +54,27 @@
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
 <div class="content post">
-  <h1 class="post-title">Installing MySQL 5.7 on CircleCI</h1>
+  <h1 class="post-title">ruby-get-request-with-headers</h1>
   <div class="post-meta">
     <div class="post-date">
-      <time>15 Jun 2016</time>
+      <time>11 May 2017</time>
     </div>
     <div class="post-tags">
       <ul class="tags">
-        
-          <li><a href="/tag/circleci" class="tag">circleci</a></li>
-        
-          <li><a href="/tag/mysql" class="tag">mysql</a></li>
         
       </ul>
     </div>
   </div>
 
   <div class="post-body">
-    <h2 id="update-2">[UPDATE 2]</h2>
-
-<p>Current best approach is changing CircleCI <strong>Build Environment</strong> to the latest version which is <code class="highlighter-rouge">Ubuntu 14.04</code>.</p>
-
-<p><a href="https://circleci.com/docs/build-image-trusty/">Ubuntu 14.04 (Trusty) - CircleCI</a></p>
-
-<p>This build image has MySQL 5.7.x by default.</p>
-
-<h2 id="update">[UPDATE]</h2>
-
-<p><a href="https://s3.amazonaws.com/circle-downloads/install-mysql5.7-circleci.sh">Original script</a> currently doesn’t work because it refers to <code class="highlighter-rouge">mysql-5.7-dmr</code><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> which is outdated.</p>
-
-<p>Please use <a href="https://gist.github.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/">my forked script</a>.</p>
-
-<noscript><pre>#!/bin/bash
-set -x
-set -e
-
-export DEBIAN_FRONTEND=noninteractive
-
-curl -LO https://dev.mysql.com/get/mysql-apt-config_0.7.3-1_all.deb
-echo mysql-apt-config mysql-apt-config/select-product          select Apply              | sudo debconf-set-selections
-echo mysql-apt-config mysql-apt-config/select-server           select mysql-5.7          | sudo debconf-set-selections
-echo mysql-apt-config mysql-apt-config/select-connector-python select none               | sudo debconf-set-selections
-echo mysql-apt-config mysql-apt-config/select-workbench        select none               | sudo debconf-set-selections
-echo mysql-apt-config mysql-apt-config/select-utilities        select none               | sudo debconf-set-selections
-echo mysql-apt-config mysql-apt-config/select-connector-odbc   select connector-odbc-x.x | sudo debconf-set-selections
-sudo -E dpkg -i mysql-apt-config_0.7.3-1_all.deb
-sudo apt-get update
-echo mysql-community-server mysql-community-server/re-root-pass password ${mysql_root_password} | sudo debconf-set-selections
-echo mysql-community-server mysql-community-server/root-pass    password ${mysql_root_password} | sudo debconf-set-selections
-sudo -E apt-get -y install mysql-community-server
-
-echo &quot;Checking installed version.....&quot;
-mysql -D mysql -e &quot;SELECT version()&quot;
-echo &quot;Done!!&quot;</pre></noscript>
-<script src="https://gist.github.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835.js"> </script>
-
-<p>The raw source is: <a href="https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh">https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh</a></p>
-
-<hr />
-
-<p>CircleCI doesn’t support MySQL 5.7 by default.</p>
-
-<p><a href="https://discuss.circleci.com/users/kimh/activity">kimh</a>, CircleCI employee, created a script to install MySQL 5.7 on CircleCI.</p>
-
-<p>To use this script, add below configuration to your <code class="highlighter-rouge">circle.yml</code>:</p>
-
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">dependencies</span><span class="pi">:</span>
-  <span class="s">pre</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">curl -sSL https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh | sh</span>
+    <div class="highlighter-rouge"><pre class="highlight"><code>uri = URI.parse("https://84.38.185.251:9262/send")
+http = Net::HTTP.new(uri.host, uri.port)
+request = Net::HTTP::Get.new(uri.request_uri)
+http.use_ssl = true
+response = http.request(request)
 </code></pre>
 </div>
-
-<p>The output on CircleCI is:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>(snip)
-..
-* MySQL Community Server 5.7.14 is started
-Setting up mysql-server (5.7.14-1ubuntu12.04) ...
-Setting up libmysqlclient20 (5.7.14-1ubuntu12.04) ...
-Setting up libmysqlclient-dev (5.7.14-1ubuntu12.04) ...
-Processing triggers for libc-bin ...
-ldconfig deferred processing now taking place
-+ echo Checking installed version.....
-Checking installed version.....
-+ mysql -D mysql -e SELECT version()
-version()
-5.7.14
-+ echo Done!!
-Done!!
-</code></pre>
-</div>
-
-<p>Then, you can use MySQL 5.7 on CircleCI container.</p>
-
-<h2 id="see-also">See also</h2>
-
-<ul>
-  <li><a href="https://discuss.circleci.com/t/installing-mysql-5-7/1021">Installing MySQL 5.7 - Build Environment - CircleCI Community Discussion</a></li>
-</ul>
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>DMR means development milestone release. ref. <a href="https://dev.mysql.com/doc/mysql-development-cycle/en/development-milestone-releases.html">MySQL :: MySQL Development Cycle :: 6 Development Milestone Releases</a>&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+<p>http://stackoverflow.com/questions/23080164/eoferror-end-of-file-reached-in-ruby-on-rails-with-http-request</p>
 
   </div>
 
