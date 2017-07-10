@@ -5,7 +5,7 @@ description: >
   Where there's a will, there's a way.
 sass:
   style: compressed
-gems:
+plugins:
   - jekyll-archives
   - jekyll-feed
   - jekyll-gist
