@@ -1,12 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2017-07-10T15:49:27+09:00</updated><id>http://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title type="html">ruby-get-request-with-headers</title><link href="http://blog.toshima.ru/2017/05/11/ruby-get-request-with-headers.html" rel="alternate" type="text/html" title="ruby-get-request-with-headers" /><published>2017-05-11T00:00:00+09:00</published><updated>2017-05-11T00:00:00+09:00</updated><id>http://blog.toshima.ru/2017/05/11/ruby-get-request-with-headers</id><content type="html" xml:base="http://blog.toshima.ru/2017/05/11/ruby-get-request-with-headers.html">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;uri = URI.parse(&quot;https://84.38.185.251:9262/send&quot;)
-http = Net::HTTP.new(uri.host, uri.port)
-request = Net::HTTP::Get.new(uri.request_uri)
-http.use_ssl = true
-response = http.request(request)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;http://stackoverflow.com/questions/23080164/eoferror-end-of-file-reached-in-ruby-on-rails-with-http-request&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><summary type="html">uri = URI.parse(&quot;https://84.38.185.251:9262/send&quot;) http = Net::HTTP.new(uri.host, uri.port) request = Net::HTTP::Get.new(uri.request_uri) http.use_ssl = true response = http.request(request) http://stackoverflow.com/questions/23080164/eoferror-end-of-file-reached-in-ruby-on-rails-with-http-request</summary></entry><entry><title type="html">unix-signals</title><link href="http://blog.toshima.ru/2017/05/02/unix-signals.html" rel="alternate" type="text/html" title="unix-signals" /><published>2017-05-02T00:00:00+09:00</published><updated>2017-05-02T00:00:00+09:00</updated><id>http://blog.toshima.ru/2017/05/02/unix-signals</id><content type="html" xml:base="http://blog.toshima.ru/2017/05/02/unix-signals.html"></content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><summary type="html"></summary></entry><entry><title type="html">Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1</title><link href="http://blog.toshima.ru/2017/04/06/saved-change-to-attribute.html" rel="alternate" type="text/html" title="Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1" /><published>2017-04-06T00:00:00+09:00</published><updated>2017-04-06T00:00:00+09:00</updated><id>http://blog.toshima.ru/2017/04/06/saved-change-to-attribute</id><content type="html" xml:base="http://blog.toshima.ru/2017/04/06/saved-change-to-attribute.html">&lt;p&gt;As of &lt;a href=&quot;http://edgeguides.rubyonrails.org/5_1_release_notes.html&quot;&gt;Ruby on Rails 5.1&lt;/a&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;attribute_changed?&lt;/code&gt; ActiveRecord method will be deprecated.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2017-07-12T01:17:50+09:00</updated><id>http://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title type="html">Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1</title><link href="http://blog.toshima.ru/2017/04/06/saved-change-to-attribute.html" rel="alternate" type="text/html" title="Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1" /><published>2017-04-06T00:00:00+09:00</published><updated>2017-04-06T00:00:00+09:00</updated><id>http://blog.toshima.ru/2017/04/06/saved-change-to-attribute</id><content type="html" xml:base="http://blog.toshima.ru/2017/04/06/saved-change-to-attribute.html">&lt;p&gt;As of &lt;a href=&quot;http://edgeguides.rubyonrails.org/5_1_release_notes.html&quot;&gt;Ruby on Rails 5.1&lt;/a&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;attribute_changed?&lt;/code&gt; ActiveRecord method will be deprecated.&lt;/p&gt;
 
 &lt;p&gt;The deprecation message:&lt;/p&gt;
 
@@ -315,4 +308,106 @@ The key's randomart image is:
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/EdDSA&quot;&gt;EdDSA - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="ssh" /><category term="security" /><summary type="html">Using Ed25519 as SSH key is recommended because it has:</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="ssh" /><category term="security" /><summary type="html">Using Ed25519 as SSH key is recommended because it has:</summary></entry><entry><title type="html">Publish Jekyll site without gh-pages branch</title><link href="http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html" rel="alternate" type="text/html" title="Publish Jekyll site without gh-pages branch" /><published>2016-08-24T00:00:00+09:00</published><updated>2016-08-24T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages</id><content type="html" xml:base="http://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html">&lt;p&gt;Github announced &lt;a href=&quot;https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/&quot;&gt;variety of sources of Github Pages&lt;/a&gt; is supported in &lt;a href=&quot;https://github.com/blog/2233-publish-your-project-documentation-with-github-pages&quot;&gt;their official blog&lt;/a&gt;. It allows developers to publish Github Pages with master branch instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; branch. Since this feature, you can publish your Jekyll site without using &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; branch and Github Pages deployment now can be much simpler.&lt;/p&gt;
+
+&lt;h2 id=&quot;build-page-on-docs-directory&quot;&gt;Build page on docs directory&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;First step&lt;/strong&gt;: Configure build destination.&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# _config.yml&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;destination&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./docs&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now Jekyll pages are built on &lt;code class=&quot;highlighter-rouge&quot;&gt;./docs&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll build
+Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
+            Source: /Users/toshimaru/blog.toshima.ru
+       Destination: ./docs
+ Incremental build: disabled. Enable with --incremental
+      Generating...
+                    done in 4.078 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Yay, you are almost ready to publish the pages.&lt;/p&gt;
+
+&lt;h2 id=&quot;use-docs-instead-of-gh-pages-branch&quot;&gt;Use docs instead of gh-pages branch&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Last step&lt;/strong&gt;: Change Github Pages source in your repository setting.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/doc-gh-pages.png&quot; alt=&quot;change Github Pages source&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You will see your Github Pages on your own published pages. Happy Jekylling &amp;lt;3&lt;/p&gt;
+
+&lt;h2 id=&quot;pro-tip&quot;&gt;Pro Tip&lt;/h2&gt;
+
+&lt;p&gt;By using &lt;a href=&quot;https://github.com/ruby/rake&quot;&gt;rake&lt;/a&gt;, you can deploy your Jekyll site with one command, &lt;code class=&quot;highlighter-rouge&quot;&gt;rake deploy&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Rakefile&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;desc&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'deploy Jekyll site to Github Pages'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:deploy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bundle exec jekyll clean'&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bundle exec jekyll build'&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'git add ./docs'&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'git commit -m \'Update\''&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'git push origin master'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In this task, &lt;code class=&quot;highlighter-rouge&quot;&gt;rake deploy&lt;/code&gt; builds Jekyll site and push it to Github for you. This is useful if you’d like to release your site on CI such as TravisCI, CircleCi.&lt;/p&gt;
+
+&lt;h2 id=&quot;see-also&quot;&gt;See also&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/docs/configuration/&quot;&gt;Configuration - Jekyll • Simple, blog-aware, static sites&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="jekyll" /><category term="github" /><summary type="html">Github announced variety of sources of Github Pages is supported in their official blog. It allows developers to publish Github Pages with master branch instead of gh-pages branch. Since this feature, you can publish your Jekyll site without using gh-pages branch and Github Pages deployment now can be much simpler.</summary></entry><entry><title type="html">Get HTML/JSON response from URL simply in Ruby</title><link href="http://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html" rel="alternate" type="text/html" title="Get HTML/JSON response from URL simply in Ruby" /><published>2016-08-09T00:00:00+09:00</published><updated>2016-08-09T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/08/09/get-uri-in-ruby</id><content type="html" xml:base="http://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html">&lt;h2 id=&quot;get-html-response-from-url&quot;&gt;GET HTML response from URL&lt;/h2&gt;
+
+&lt;p&gt;To &lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; URL and the response simply in Ruby:&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'net/http'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'uri'&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;URI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'https://google.com/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Parse URL from URI string&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Net::HTTP.get&lt;/code&gt; the parsed URL&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;get-http-status-code-from-url&quot;&gt;GET HTTP status code from URL&lt;/h2&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'net/http'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'uri'&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;URI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'https://google.com/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;code&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;get_response&lt;/code&gt; method returns &lt;code class=&quot;highlighter-rouge&quot;&gt;Net::HTTPResponse&lt;/code&gt; which has methods like &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;body&lt;/code&gt;, etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;get-json-response-from-url&quot;&gt;GET JSON response from URL&lt;/h2&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'net/http'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'uri'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'json'&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;URI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://www.example.com/sample.json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ruby-doc.org/stdlib-2.3.3/libdoc/net/http/rdoc/Net/HTTP.html&quot;&gt;Class: Net::HTTP (Ruby 2.3.3)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[JAPANESE] &lt;a href=&quot;http://qiita.com/awakia/items/bd8c1385115df27c15fa&quot;&gt;RubyでJSON形式の結果が返ってくるURLをParseする - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="ruby" /><summary type="html">GET HTML response from URL</summary></entry></feed>
