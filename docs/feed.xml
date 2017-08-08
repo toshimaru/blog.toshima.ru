@@ -1,5 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.0">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2017-07-12T01:17:50+09:00</updated><id>http://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title type="html">Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1</title><link href="http://blog.toshima.ru/2017/04/06/saved-change-to-attribute.html" rel="alternate" type="text/html" title="Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1" /><published>2017-04-06T00:00:00+09:00</published><updated>2017-04-06T00:00:00+09:00</updated><id>http://blog.toshima.ru/2017/04/06/saved-change-to-attribute</id><content type="html" xml:base="http://blog.toshima.ru/2017/04/06/saved-change-to-attribute.html">&lt;p&gt;As of &lt;a href=&quot;http://edgeguides.rubyonrails.org/5_1_release_notes.html&quot;&gt;Ruby on Rails 5.1&lt;/a&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;attribute_changed?&lt;/code&gt; ActiveRecord method will be deprecated.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.1">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2017-08-08T13:55:43+09:00</updated><id>http://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title type="html">Using less without word-wrap</title><link href="http://blog.toshima.ru/2017/08/08/less-without-word-wrap.html" rel="alternate" type="text/html" title="Using less without word-wrap" /><published>2017-08-08T00:00:00+09:00</published><updated>2017-08-08T00:00:00+09:00</updated><id>http://blog.toshima.ru/2017/08/08/less-without-word-wrap</id><content type="html" xml:base="http://blog.toshima.ru/2017/08/08/less-without-word-wrap.html">&lt;p&gt;When you open up a file with less, word-wrap is sometimes annoying.&lt;/p&gt;
+
+&lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;less&lt;/span&gt;&lt;span class=&quot;kv&quot;&gt; longtext.txt
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/less1.png&quot; alt=&quot;less1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can open it without word-wrap by passing &lt;code class=&quot;highlighter-rouge&quot;&gt;-S&lt;/code&gt; option.&lt;/p&gt;
+
+&lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;less&lt;/span&gt;&lt;span class=&quot;kv&quot;&gt; -S longtext.txt
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/less2.png&quot; alt=&quot;less2&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://superuser.com/questions/272818/how-to-turn-off-word-wrap-in-less&quot;&gt;linux - How to turn off word-wrap in less - Super User&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="less" /><category term="linux" /><summary type="html">When you open up a file with less, word-wrap is sometimes annoying.</summary></entry><entry><title type="html">Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1</title><link href="http://blog.toshima.ru/2017/04/06/saved-change-to-attribute.html" rel="alternate" type="text/html" title="Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1" /><published>2017-04-06T00:00:00+09:00</published><updated>2017-04-06T00:00:00+09:00</updated><id>http://blog.toshima.ru/2017/04/06/saved-change-to-attribute</id><content type="html" xml:base="http://blog.toshima.ru/2017/04/06/saved-change-to-attribute.html">&lt;p&gt;As of &lt;a href=&quot;http://edgeguides.rubyonrails.org/5_1_release_notes.html&quot;&gt;Ruby on Rails 5.1&lt;/a&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;attribute_changed?&lt;/code&gt; ActiveRecord method will be deprecated.&lt;/p&gt;
 
 &lt;p&gt;The deprecation message:&lt;/p&gt;
 
@@ -364,50 +384,4 @@ Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/docs/configuration/&quot;&gt;Configuration - Jekyll • Simple, blog-aware, static sites&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="jekyll" /><category term="github" /><summary type="html">Github announced variety of sources of Github Pages is supported in their official blog. It allows developers to publish Github Pages with master branch instead of gh-pages branch. Since this feature, you can publish your Jekyll site without using gh-pages branch and Github Pages deployment now can be much simpler.</summary></entry><entry><title type="html">Get HTML/JSON response from URL simply in Ruby</title><link href="http://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html" rel="alternate" type="text/html" title="Get HTML/JSON response from URL simply in Ruby" /><published>2016-08-09T00:00:00+09:00</published><updated>2016-08-09T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/08/09/get-uri-in-ruby</id><content type="html" xml:base="http://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html">&lt;h2 id=&quot;get-html-response-from-url&quot;&gt;GET HTML response from URL&lt;/h2&gt;
-
-&lt;p&gt;To &lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; URL and the response simply in Ruby:&lt;/p&gt;
-
-&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'net/http'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'uri'&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;URI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'https://google.com/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Parse URL from URI string&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Net::HTTP.get&lt;/code&gt; the parsed URL&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;get-http-status-code-from-url&quot;&gt;GET HTTP status code from URL&lt;/h2&gt;
-
-&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'net/http'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'uri'&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;URI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'https://google.com/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;code&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;get_response&lt;/code&gt; method returns &lt;code class=&quot;highlighter-rouge&quot;&gt;Net::HTTPResponse&lt;/code&gt; which has methods like &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;body&lt;/code&gt;, etc.&lt;/p&gt;
-
-&lt;h2 id=&quot;get-json-response-from-url&quot;&gt;GET JSON response from URL&lt;/h2&gt;
-
-&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'net/http'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'uri'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'json'&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;URI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http://www.example.com/sample.json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://ruby-doc.org/stdlib-2.3.3/libdoc/net/http/rdoc/Net/HTTP.html&quot;&gt;Class: Net::HTTP (Ruby 2.3.3)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;[JAPANESE] &lt;a href=&quot;http://qiita.com/awakia/items/bd8c1385115df27c15fa&quot;&gt;RubyでJSON形式の結果が返ってくるURLをParseする - Qiita&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="ruby" /><summary type="html">GET HTML response from URL</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="jekyll" /><category term="github" /><summary type="html">Github announced variety of sources of Github Pages is supported in their official blog. It allows developers to publish Github Pages with master branch instead of gh-pages branch. Since this feature, you can publish your Jekyll site without using gh-pages branch and Github Pages deployment now can be much simpler.</summary></entry></feed>
