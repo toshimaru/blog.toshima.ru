@@ -1,5 +1,120 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.1">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2017-08-10T14:42:16+09:00</updated><id>http://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title type="html">Show SQL queries in rails console</title><link href="http://blog.toshima.ru/2017/08/10/show-sql-in-rails-console.html" rel="alternate" type="text/html" title="Show SQL queries in rails console" /><published>2017-08-10T00:00:00+09:00</published><updated>2017-08-10T00:00:00+09:00</updated><id>http://blog.toshima.ru/2017/08/10/show-sql-in-rails-console</id><content type="html" xml:base="http://blog.toshima.ru/2017/08/10/show-sql-in-rails-console.html">&lt;p&gt;When you set &lt;code class=&quot;highlighter-rouge&quot;&gt;log_level&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;:info&lt;/code&gt; (mostly on production server), the SQL outputs are disabled in &lt;code class=&quot;highlighter-rouge&quot;&gt;rails console&lt;/code&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2017-08-17T01:19:47+09:00</updated><id>http://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><entry><title type="html">Get starged with docker on Mac</title><link href="http://blog.toshima.ru/2017/08/16/docker-getting-started-on-mac.html" rel="alternate" type="text/html" title="Get starged with docker on Mac" /><published>2017-08-16T00:00:00+09:00</published><updated>2017-08-16T00:00:00+09:00</updated><id>http://blog.toshima.ru/2017/08/16/docker-getting-started-on-mac</id><content type="html" xml:base="http://blog.toshima.ru/2017/08/16/docker-getting-started-on-mac.html">&lt;p&gt;Let’s get starged with docker on Mac.&lt;/p&gt;
+
+&lt;h2 id=&quot;install-docker&quot;&gt;Install Docker&lt;/h2&gt;
+
+&lt;p&gt;First of all, install docker.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ brew install docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then, run &lt;code class=&quot;highlighter-rouge&quot;&gt;docker info&lt;/code&gt; to make sure &lt;a href=&quot;https://docs.docker.com/&quot;&gt;docker&lt;/a&gt; is installed.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;docker&lt;/span&gt;&lt;span class=&quot;kv&quot;&gt; info
+&lt;/span&gt;Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Hmm, docker is installed, but it gets error.&lt;/p&gt;
+
+&lt;h2 id=&quot;install-docker-machine&quot;&gt;Install Docker Machine&lt;/h2&gt;
+
+&lt;p&gt;To solve this, we need to create a machine for Docker. let’s install &lt;a href=&quot;https://docs.docker.com/machine/&quot;&gt;docker-machine&lt;/a&gt; with &lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;virtualbox&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ brew install docker-machine
+$ brew cask install virtualbox
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;create-docker-machine-on-mac&quot;&gt;Create Docker Machine on Mac&lt;/h2&gt;
+
+&lt;p&gt;Okay, then, create default machine with virtualbox driver.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;docker-machine&lt;/span&gt;&lt;span class=&quot;kv&quot;&gt; create --driver virtualbox default
+&lt;/span&gt;Running pre-create checks...
+Creating machine...
+(default) Copying /Users/toshimaru/.docker/machine/cache/boot2docker.iso to /Users/toshimaru/.docker/machine/machines/default/boot2docker.iso...
+(default) Creating VirtualBox VM...
+(default) Creating SSH key...
+(default) Starting the VM...
+(default) Check network to re-create if needed...
+(default) Waiting for an IP...
+Waiting for machine to be running, this may take a few minutes...
+Detecting operating system of created instance...
+Waiting for SSH to be available...
+Detecting the provisioner...
+Provisioning with boot2docker...
+Copying certs to the local machine directory...
+Copying certs to the remote machine...
+Setting Docker configuration on the remote daemon...
+Checking connection to Docker...
+Docker is up and running!
+To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env default
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It says:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;run: docker-machine env default&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;docker-machine&lt;/span&gt;&lt;span class=&quot;kv&quot;&gt; env default
+&lt;/span&gt;export DOCKER_TLS_VERIFY=&quot;1&quot;
+export DOCKER_HOST=&quot;tcp://192.168.x.x:xxxx&quot;
+export DOCKER_CERT_PATH=&quot;/Users/toshimaru/.docker/machine/machines/default&quot;
+export DOCKER_MACHINE_NAME=&quot;default&quot;
+&lt;span class=&quot;ni&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Run&lt;/span&gt;&lt;span class=&quot;kv&quot;&gt; this command to configure your shell:
+&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;# &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;eval&lt;/span&gt;&lt;span class=&quot;kv&quot;&gt; $(docker-machine env default)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The output says:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Run this command to configure your shell:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ eval $(docker-machine env default)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;docker-is-ready&quot;&gt;Docker is ready&lt;/h2&gt;
+
+&lt;p&gt;Docker is ready to run.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 0
+Server Version: 17.06.0-ce
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Yay! docker command finally works!&lt;/p&gt;
+
+&lt;h2 id=&quot;docker-status&quot;&gt;Docker Status&lt;/h2&gt;
+
+&lt;h3 id=&quot;docker-machine-status&quot;&gt;docker-machine status&lt;/h3&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;docker-machine&lt;/span&gt;&lt;span class=&quot;kv&quot;&gt; status
+&lt;/span&gt;Running
+&lt;span class=&quot;w&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;docker-machine&lt;/span&gt;&lt;span class=&quot;kv&quot;&gt; ls
+&lt;/span&gt;NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS
+default   -        virtualbox   Running   tcp://192.x.x.x:xxx           v17.06.0-ce
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;docker-status-1&quot;&gt;docker status&lt;/h3&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;docker&lt;/span&gt;&lt;span class=&quot;kv&quot;&gt; ps
+&lt;/span&gt;CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="docker" /><category term="mac" /><summary type="html">Let’s get starged with docker on Mac.</summary></entry><entry><title type="html">Show SQL queries in rails console</title><link href="http://blog.toshima.ru/2017/08/10/show-sql-in-rails-console.html" rel="alternate" type="text/html" title="Show SQL queries in rails console" /><published>2017-08-10T00:00:00+09:00</published><updated>2017-08-10T00:00:00+09:00</updated><id>http://blog.toshima.ru/2017/08/10/show-sql-in-rails-console</id><content type="html" xml:base="http://blog.toshima.ru/2017/08/10/show-sql-in-rails-console.html">&lt;p&gt;When you set &lt;code class=&quot;highlighter-rouge&quot;&gt;log_level&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;:info&lt;/code&gt; (mostly on production server), the SQL outputs are disabled in &lt;code class=&quot;highlighter-rouge&quot;&gt;rails console&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Rails Configuration&lt;/span&gt;
 &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
@@ -308,61 +423,4 @@ NoMethodError: undefined method `escaped?' for main:Object
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://apidock.com/rails/ActiveRecord/QueryMethods&quot;&gt;ActiveRecord::QueryMethods - APIdock&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="activerecord" /><summary type="html">Want to build query which has group by and having(like below) with ActiveRecord?</summary></entry><entry><title type="html">Generate Ed25519 SSH key</title><link href="http://blog.toshima.ru/2016/10/10/generate-ed25519-ssh-key.html" rel="alternate" type="text/html" title="Generate Ed25519 SSH key" /><published>2016-10-10T00:00:00+09:00</published><updated>2016-10-10T00:00:00+09:00</updated><id>http://blog.toshima.ru/2016/10/10/generate-ed25519-ssh-key</id><content type="html" xml:base="http://blog.toshima.ru/2016/10/10/generate-ed25519-ssh-key.html">&lt;p&gt;Using Ed25519 as SSH key is recommended because it has:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;High security level. This system has a 2^128 security target; breaking it has similar difficulty to breaking NIST P-256, RSA with ~3000-bit keys, strong 128-bit block ciphers, etc.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;via. &lt;a href=&quot;http://ed25519.cr.yp.to/&quot;&gt;Ed25519: high-speed high-security signatures&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;environment&quot;&gt;Environment&lt;/h2&gt;
-
-&lt;p&gt;Mac OS X El Capitan&lt;/p&gt;
-
-&lt;h2 id=&quot;ssh-version&quot;&gt;SSH version&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh -V
-OpenSSH_6.9p1, LibreSSL 2.1.8
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;generate-ed25519-ssh&quot;&gt;Generate Ed25519 SSH&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen -t ed25519
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Output:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen -t ed25519
-Generating public/private ed25519 key pair.
-Enter file in which to save the key (/Users/toshi/.ssh/id_ed25519):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /Users/toshi/.ssh/id_ed25519.
-Your public key has been saved in /Users/toshi/.ssh/id_ed25519.pub.
-The key fingerprint is:
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-The key's randomart image is:
-+--[ED25519 256]--+
-| xxx xxx xxx xxx |
-| xxx xxx xxx xxx |
-| xxx xxx xxx xxx |
-| xxx xxx xxx xxx |
-| xxx xxx xxx xxx |
-| xxx xxx xxx xxx |
-| xxx xxx xxx xxx |
-| xxx xxx xxx xxx |
-| xxx xxx xxx xxx |
-+----[SHA256]-----+
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then, your private key should be at &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/id_ed25519&lt;/code&gt; and your public key should be at &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/id_ed25519.pub&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;see-also&quot;&gt;See also&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/EdDSA&quot;&gt;EdDSA - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="ssh" /><category term="security" /><summary type="html">Using Ed25519 as SSH key is recommended because it has:</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;toshimaru_e&quot;}</name></author><category term="activerecord" /><summary type="html">Want to build query which has group by and having(like below) with ActiveRecord?</summary></entry></feed>

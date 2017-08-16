@@ -13,21 +13,21 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.2.3 -->
-<title>Toshimaru’s Blog | Where there’s a will, there’s a way.</title>
-<meta property="og:title" content="Toshimaru’s Blog" />
+<title>Get starged with docker on Mac | Toshimaru’s Blog</title>
+<meta property="og:title" content="Get starged with docker on Mac" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Where there’s a will, there’s a way." />
-<meta property="og:description" content="Where there’s a will, there’s a way." />
-<link rel="canonical" href="http://blog.toshima.ru/2017/08/" />
-<meta property="og:url" content="http://blog.toshima.ru/2017/08/" />
+<meta name="description" content="Let’s get starged with docker on Mac." />
+<meta property="og:description" content="Let’s get starged with docker on Mac." />
+<link rel="canonical" href="http://blog.toshima.ru/2017/08/16/docker-getting-started-on-mac.html" />
+<meta property="og:url" content="http://blog.toshima.ru/2017/08/16/docker-getting-started-on-mac.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-08-01T00:00:00+09:00" />
+<meta property="article:published_time" content="2017-08-16T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Toshimaru’s Blog","author":{"@type":"Person","name":null},"datePublished":"2017-08-01T00:00:00+09:00","dateModified":"2017-08-01T00:00:00+09:00","description":"Where there’s a will, there’s a way.","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.toshima.ru/2017/08/"},"url":"http://blog.toshima.ru/2017/08/"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Get starged with docker on Mac","author":{"@type":"Person","name":null},"datePublished":"2017-08-16T00:00:00+09:00","dateModified":"2017-08-16T00:00:00+09:00","description":"Let’s get starged with docker on Mac.","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.toshima.ru/2017/08/16/docker-getting-started-on-mac.html"},"url":"http://blog.toshima.ru/2017/08/16/docker-getting-started-on-mac.html"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="http://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -53,36 +53,148 @@
       <header class="masthead">
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
-<div class="content page">
-  <h1 class="page-title"></h1>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2017/08/16/docker-getting-started-on-mac.html">Get starged with docker on Mac</a>
-    </h2>
-    <div class="list-post-date">
+<div class="content post">
+  <h1 class="post-title">Get starged with docker on Mac</h1>
+  <div class="post-meta">
+    <div class="post-date">
       <time>16 Aug 2017</time>
     </div>
-  </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2017/08/10/show-sql-in-rails-console.html">Show SQL queries in rails console</a>
-    </h2>
-    <div class="list-post-date">
-      <time>10 Aug 2017</time>
+    <div class="post-tags">
+      <ul class="tags">
+        
+          <li><a href="/tag/docker" class="tag">docker</a></li>
+        
+          <li><a href="/tag/mac" class="tag">mac</a></li>
+        
+      </ul>
     </div>
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2017/08/08/less-without-word-wrap.html">Using less without word-wrap</a>
-    </h2>
-    <div class="list-post-date">
-      <time>08 Aug 2017</time>
-    </div>
+
+  <div class="post-body">
+    <p>Let’s get starged with docker on Mac.</p>
+
+<h2 id="install-docker">Install Docker</h2>
+
+<p>First of all, install docker.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ brew install docker
+</code></pre>
+</div>
+
+<p>Then, run <code class="highlighter-rouge">docker info</code> to make sure <a href="https://docs.docker.com/">docker</a> is installed.</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">docker</span><span class="kv"> info
+</span>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+</code></pre>
+</div>
+
+<p>Hmm, docker is installed, but it gets error.</p>
+
+<h2 id="install-docker-machine">Install Docker Machine</h2>
+
+<p>To solve this, we need to create a machine for Docker. let’s install <a href="https://docs.docker.com/machine/">docker-machine</a> with <a href="https://www.virtualbox.org/">virtualbox</a>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ brew install docker-machine
+$ brew cask install virtualbox
+</code></pre>
+</div>
+
+<h2 id="create-docker-machine-on-mac">Create Docker Machine on Mac</h2>
+
+<p>Okay, then, create default machine with virtualbox driver.</p>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">docker-machine</span><span class="kv"> create --driver virtualbox default
+</span>Running pre-create checks...
+Creating machine...
+(default) Copying /Users/toshimaru/.docker/machine/cache/boot2docker.iso to /Users/toshimaru/.docker/machine/machines/default/boot2docker.iso...
+(default) Creating VirtualBox VM...
+(default) Creating SSH key...
+(default) Starting the VM...
+(default) Check network to re-create if needed...
+(default) Waiting for an IP...
+Waiting for machine to be running, this may take a few minutes...
+Detecting operating system of created instance...
+Waiting for SSH to be available...
+Detecting the provisioner...
+Provisioning with boot2docker...
+Copying certs to the local machine directory...
+Copying certs to the remote machine...
+Setting Docker configuration on the remote daemon...
+Checking connection to Docker...
+Docker is up and running!
+To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env default
+</code></pre>
+</div>
+
+<p>It says:</p>
+
+<blockquote>
+  <p>run: docker-machine env default</p>
+</blockquote>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">docker-machine</span><span class="kv"> env default
+</span>export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.x.x:xxxx"
+export DOCKER_CERT_PATH="/Users/toshimaru/.docker/machine/machines/default"
+export DOCKER_MACHINE_NAME="default"
+<span class="ni"># </span><span class="nc">Run</span><span class="kv"> this command to configure your shell:
+</span><span class="ni"># </span><span class="nc">eval</span><span class="kv"> $(docker-machine env default)
+</span></code></pre>
+</div>
+
+<p>The output says:</p>
+
+<blockquote>
+  <p>Run this command to configure your shell:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ eval $(docker-machine env default)
+</code></pre>
+</div>
+
+<h2 id="docker-is-ready">Docker is ready</h2>
+
+<p>Docker is ready to run.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 0
+Server Version: 17.06.0-ce
+</code></pre>
+</div>
+
+<p>Yay! docker command finally works!</p>
+
+<h2 id="docker-status">Docker Status</h2>
+
+<h3 id="docker-machine-status">docker-machine status</h3>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">docker-machine</span><span class="kv"> status
+</span>Running
+<span class="w">$ </span><span class="nc">docker-machine</span><span class="kv"> ls
+</span>NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS
+default   -        virtualbox   Running   tcp://192.x.x.x:xxx           v17.06.0-ce
+</code></pre>
+</div>
+
+<h3 id="docker-status-1">docker status</h3>
+
+<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">docker</span><span class="kv"> ps
+</span>CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+...
+</code></pre>
+</div>
+
   </div>
-  
+
+  <div class="social-share">
+    <amp-social-share type="twitter"></amp-social-share>
+    <amp-social-share type="facebook"></amp-social-share>
+    <amp-social-share type="gplus"></amp-social-share>
+  </div>
 </div>
 
     </div>
