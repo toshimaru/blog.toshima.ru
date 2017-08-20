@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Get starged with docker on Mac
+title: Get started with docker on Mac
 tags: docker mac
 ---
 
-Let's get starged with docker on Mac.
+Let's get started with docker on Mac.
 
 ## Install Docker
 
