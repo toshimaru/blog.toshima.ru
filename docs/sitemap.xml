@@ -105,6 +105,10 @@
 <lastmod>2017-08-18T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://blog.toshima.ru/2017/09/22/ssl-expiration-check-via-command-line.html</loc>
+<lastmod>2017-09-22T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://blog.toshima.ru/</loc>
 </url>
 <url>
@@ -171,6 +175,9 @@
 <loc>http://blog.toshima.ru/tag/linux/</loc>
 </url>
 <url>
+<loc>http://blog.toshima.ru/tag/ssl/</loc>
+</url>
+<url>
 <loc>http://blog.toshima.ru/2016/</loc>
 </url>
 <url>
@@ -199,6 +206,9 @@
 </url>
 <url>
 <loc>http://blog.toshima.ru/2017/</loc>
+</url>
+<url>
+<loc>http://blog.toshima.ru/2017/09/</loc>
 </url>
 <url>
 <loc>http://blog.toshima.ru/2017/08/</loc>
