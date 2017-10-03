@@ -71,22 +71,19 @@
   <div class="post-body">
     <p>You can see MySQL processes by <code class="highlighter-rouge">show processlist</code>.</p>
 
-<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">show</span> <span class="n">processlist</span><span class="p">;</span>
-</code></pre>
-</div>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">show</span> <span class="n">processlist</span><span class="p">;</span>
+</code></pre></div></div>
 
 <p>But, it can’t be filtered. If you’d like to retrieve processes like usual SQL syntax, it can be replaced with:</p>
 
-<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">PROCESSLIST</span><span class="p">;</span>
-</code></pre>
-</div>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">PROCESSLIST</span><span class="p">;</span>
+</code></pre></div></div>
 
 <p>Now, you can filter process with <code class="highlighter-rouge">WHERE</code> clause.</p>
 
-<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">PROCESSLIST</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">PROCESSLIST</span>
 <span class="k">WHERE</span> <span class="n">DB</span> <span class="o">=</span> <span class="s1">'development'</span> <span class="k">AND</span> <span class="k">USER</span> <span class="o">=</span> <span class="s1">'myuser'</span><span class="p">;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="see-also">See also</h2>
 <ul>

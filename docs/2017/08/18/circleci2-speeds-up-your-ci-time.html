@@ -81,81 +81,77 @@
 
 <p>Circle 1.0 configuration is very simple.</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="c1"># circle.yml</span>
-<span class="s">machine</span><span class="pi">:</span>
-  <span class="s">ruby</span><span class="pi">:</span>
-    <span class="s">version</span><span class="pi">:</span> <span class="s">2.4.1</span>
-<span class="s">general</span><span class="pi">:</span>
-  <span class="s">artifacts</span><span class="pi">:</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># circle.yml</span>
+<span class="na">machine</span><span class="pi">:</span>
+  <span class="na">ruby</span><span class="pi">:</span>
+    <span class="na">version</span><span class="pi">:</span> <span class="s">2.4.1</span>
+<span class="na">general</span><span class="pi">:</span>
+  <span class="na">artifacts</span><span class="pi">:</span>
     <span class="pi">-</span> <span class="s">coverage</span>
     <span class="pi">-</span> <span class="s">tmp/capybara</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="after-circle-20-configuration">After: Circle 2.0 configuration</h2>
 
 <p>Circle 2.0 configuration becomes a bit overwhelming, but I’ll explain it one by one.</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="c1"># .circleci/config.yml</span>
-<span class="s">jobs</span><span class="pi">:</span>
-  <span class="s">build</span><span class="pi">:</span>
-    <span class="s">working_directory</span><span class="pi">:</span> <span class="s">~/app</span>
-    <span class="s">docker</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">image</span><span class="pi">:</span> <span class="s">circleci/ruby:2.4-node</span>
-        <span class="s">environment</span><span class="pi">:</span>
-          <span class="s">RAILS_ENV</span><span class="pi">:</span> <span class="s">test</span>
-          <span class="s">PHANTOM_JS_VERSION</span><span class="pi">:</span> <span class="s">2.1.1</span>
-    <span class="s">steps</span><span class="pi">:</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .circleci/config.yml</span>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="na">working_directory</span><span class="pi">:</span> <span class="s">~/app</span>
+    <span class="na">docker</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">image</span><span class="pi">:</span> <span class="s">circleci/ruby:2.4-node</span>
+        <span class="na">environment</span><span class="pi">:</span>
+          <span class="na">RAILS_ENV</span><span class="pi">:</span> <span class="s">test</span>
+          <span class="na">PHANTOM_JS_VERSION</span><span class="pi">:</span> <span class="s">2.1.1</span>
+    <span class="na">steps</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">checkout</span>
-      <span class="pi">-</span> <span class="s">run</span><span class="pi">:</span>
-          <span class="s">name</span><span class="pi">:</span> <span class="s">Install PhantomJS</span>
-          <span class="s">command</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span>
+          <span class="na">name</span><span class="pi">:</span> <span class="s">Install PhantomJS</span>
+          <span class="na">command</span><span class="pi">:</span> <span class="pi">|</span>
             <span class="no">mkdir -p ~/.phantomjs/${PHANTOM_JS_VERSION}</span>
             <span class="no">curl -L --output ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64.tar.bz2</span>
             <span class="no">tar xfvj ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 -C ~/.phantomjs/${PHANTOM_JS_VERSION}/</span>
             <span class="no">chmod ugo+x ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs</span>
             <span class="no">sudo ln -sf ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs</span>
       <span class="c1"># Restore bundle cache</span>
-      <span class="pi">-</span> <span class="s">type</span><span class="pi">:</span> <span class="s">cache-restore</span>
-        <span class="s">key</span><span class="pi">:</span> <span class="s">bundle-{{ checksum "Gemfile.lock" }}</span>
+      <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">cache-restore</span>
+        <span class="na">key</span><span class="pi">:</span> <span class="s">bundle-{{ checksum "Gemfile.lock" }}</span>
       <span class="c1"># Bundle install dependencies</span>
-      <span class="pi">-</span> <span class="s">run</span><span class="pi">:</span> <span class="s">bundle install --path vendor/bundle</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">bundle install --path vendor/bundle</span>
       <span class="c1"># Store bundle cache</span>
-      <span class="pi">-</span> <span class="s">type</span><span class="pi">:</span> <span class="s">cache-save</span>
-        <span class="s">key</span><span class="pi">:</span> <span class="s">bundle-{{ checksum "Gemfile.lock" }}</span>
-        <span class="s">paths</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">cache-save</span>
+        <span class="na">key</span><span class="pi">:</span> <span class="s">bundle-{{ checksum "Gemfile.lock" }}</span>
+        <span class="na">paths</span><span class="pi">:</span>
           <span class="pi">-</span> <span class="s">vendor/bundle</span>
       <span class="c1"># Database setup</span>
-      <span class="pi">-</span> <span class="s">run</span><span class="pi">:</span> <span class="s">bundle exec rails db:create db:schema:load</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec rails db:create db:schema:load</span>
       <span class="c1"># RSpec</span>
-      <span class="pi">-</span> <span class="s">run</span><span class="pi">:</span> <span class="s">bundle exec rspec</span>
-      <span class="pi">-</span> <span class="s">store_artifacts</span><span class="pi">:</span>
-          <span class="s">path</span><span class="pi">:</span> <span class="s">coverage</span>
-      <span class="pi">-</span> <span class="s">store_artifacts</span><span class="pi">:</span>
-          <span class="s">path</span><span class="pi">:</span> <span class="s">tmp/capybara</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec rspec</span>
+      <span class="pi">-</span> <span class="na">store_artifacts</span><span class="pi">:</span>
+          <span class="na">path</span><span class="pi">:</span> <span class="s">coverage</span>
+      <span class="pi">-</span> <span class="na">store_artifacts</span><span class="pi">:</span>
+          <span class="na">path</span><span class="pi">:</span> <span class="s">tmp/capybara</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="working-directory">Working Directory</h3>
 
 <p>First of all, set your <code class="highlighter-rouge">working_directory</code>, any name is okay.</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">working_directory</span><span class="pi">:</span> <span class="s">~/app</span>
-</code></pre>
-</div>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">working_directory</span><span class="pi">:</span> <span class="s">~/app</span>
+</code></pre></div></div>
 
 <h3 id="docker-image">docker image</h3>
 
 <p>Then, you need to specify base docker image on CircleCI 2. In this case, I used CircleCI official docker image listed <a href="https://hub.docker.com/r/circleci/ruby/tags/">here</a>(All available images are listed <a href="https://hub.docker.com/u/circleci/">here</a>).</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">docker</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">image</span><span class="pi">:</span> <span class="s">circleci/ruby:2.4-node</span>
-    <span class="s">environment</span><span class="pi">:</span>
-      <span class="s">RAILS_ENV</span><span class="pi">:</span> <span class="s">test</span>
-      <span class="s">PHANTOM_JS_VERSION</span><span class="pi">:</span> <span class="s">2.1.1</span>
-</code></pre>
-</div>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">docker</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">image</span><span class="pi">:</span> <span class="s">circleci/ruby:2.4-node</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">RAILS_ENV</span><span class="pi">:</span> <span class="s">test</span>
+      <span class="na">PHANTOM_JS_VERSION</span><span class="pi">:</span> <span class="s">2.1.1</span>
+</code></pre></div></div>
 
 <p>In <code class="highlighter-rouge">environment</code> section, I configured environment variables for the base image.</p>
 
@@ -163,55 +159,51 @@
 
 <p>This line means checkout your code base from the repository.</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">checkout</span>
-</code></pre>
-</div>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="s">checkout</span>
+</code></pre></div></div>
 
 <h3 id="bundle-cache-configuration">Bundle cache configuration</h3>
 
 <p>As of CircleCI 2, you need to configured cache setting by yourself. In my Rails project, bundler is used, so I configured bundle install cache as below.</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Restore bundle cache</span>
-<span class="pi">-</span> <span class="s">type</span><span class="pi">:</span> <span class="s">cache-restore</span>
-  <span class="s">key</span><span class="pi">:</span> <span class="s">bundle-{{ checksum "Gemfile.lock" }}</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Restore bundle cache</span>
+<span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">cache-restore</span>
+  <span class="na">key</span><span class="pi">:</span> <span class="s">bundle-{{ checksum "Gemfile.lock" }}</span>
 
 <span class="c1"># Bundle install dependencies</span>
-<span class="pi">-</span> <span class="s">run</span><span class="pi">:</span> <span class="s">bundle install --path vendor/bundle</span>
+<span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">bundle install --path vendor/bundle</span>
 
 <span class="c1"># Store bundle cache</span>
-<span class="pi">-</span> <span class="s">type</span><span class="pi">:</span> <span class="s">cache-save</span>
-  <span class="s">key</span><span class="pi">:</span> <span class="s">bundle-{{ checksum "Gemfile.lock" }}</span>
-  <span class="s">paths</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">cache-save</span>
+  <span class="na">key</span><span class="pi">:</span> <span class="s">bundle-{{ checksum "Gemfile.lock" }}</span>
+  <span class="na">paths</span><span class="pi">:</span>
     <span class="pi">-</span> <span class="s">vendor/bundle</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="rails-testing">Rails testing</h3>
 
 <p>Rails database setup and runnning RSpec:</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Database setup</span>
-<span class="pi">-</span> <span class="s">run</span><span class="pi">:</span> <span class="s">bundle exec rails db:create db:schema:load</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Database setup</span>
+<span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec rails db:create db:schema:load</span>
 <span class="c1"># RSpec</span>
-<span class="pi">-</span> <span class="s">run</span><span class="pi">:</span> <span class="s">bundle exec rspec</span>
-</code></pre>
-</div>
+<span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec rspec</span>
+</code></pre></div></div>
 
 <h4 id="phantomjs">PhantomJS</h4>
 
 <p>I used <a href="https://github.com/teampoltergeist/poltergeist">poltergeist</a> as a Capybara javascript driver. It requires PhantomJS as a dependency but official Ruby docker image doesn’t include PhantomJS, so I needed to install PhantomJS by myself.</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">run</span><span class="pi">:</span>
-    <span class="s">name</span><span class="pi">:</span> <span class="s">Install PhantomJS</span>
-    <span class="s">command</span><span class="pi">:</span> <span class="pi">|</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">run</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">Install PhantomJS</span>
+    <span class="na">command</span><span class="pi">:</span> <span class="pi">|</span>
       <span class="no">mkdir -p ~/.phantomjs/${PHANTOM_JS_VERSION}</span>
       <span class="no">curl -L --output ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64.tar.bz2</span>
       <span class="no">tar xfvj ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 -C ~/.phantomjs/${PHANTOM_JS_VERSION}/</span>
       <span class="no">chmod ugo+x ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs</span>
       <span class="no">sudo ln -sf ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>I created environment variable of PhantomJS version(<code class="highlighter-rouge">PHANTOM_JS_VERSION</code>) so that we can upgrade PhantomJS version easily.</p>
 
@@ -219,12 +211,11 @@
 
 <p>You can upload artifacts by specifying <code class="highlighter-rouge">store_artifacts</code> and the <code class="highlighter-rouge">path</code>.</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="pi">-</span> <span class="s">store_artifacts</span><span class="pi">:</span>
-    <span class="s">path</span><span class="pi">:</span> <span class="s">coverage</span>
-<span class="pi">-</span> <span class="s">store_artifacts</span><span class="pi">:</span>
-    <span class="s">path</span><span class="pi">:</span> <span class="s">tmp/capybara</span>
-</code></pre>
-</div>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">store_artifacts</span><span class="pi">:</span>
+    <span class="na">path</span><span class="pi">:</span> <span class="s">coverage</span>
+<span class="pi">-</span> <span class="na">store_artifacts</span><span class="pi">:</span>
+    <span class="na">path</span><span class="pi">:</span> <span class="s">tmp/capybara</span>
+</code></pre></div></div>
 
 <h2 id="comparison">Comparison</h2>
 

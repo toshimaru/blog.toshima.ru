@@ -119,15 +119,14 @@ echo &quot;Done!!&quot;</pre></noscript>
 
 <p>To use this script, add below configuration to your <code class="highlighter-rouge">circle.yml</code>:</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">dependencies</span><span class="pi">:</span>
-  <span class="s">pre</span><span class="pi">:</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">dependencies</span><span class="pi">:</span>
+  <span class="na">pre</span><span class="pi">:</span>
     <span class="pi">-</span> <span class="s">curl -sSL https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh | sh</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The output on CircleCI is:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>(snip)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(snip)
 ..
 * MySQL Community Server 5.7.14 is started
 Setting up mysql-server (5.7.14-1ubuntu12.04) ...
@@ -142,8 +141,7 @@ version()
 5.7.14
 + echo Done!!
 Done!!
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Then, you can use MySQL 5.7 on CircleCI container.</p>
 

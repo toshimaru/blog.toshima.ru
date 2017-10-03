@@ -71,7 +71,7 @@
   <div class="post-body">
     <p>When I ran <code class="highlighter-rouge">jekyll build</code>, I got an error:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Configuration file: blog.toshima.ru/_config.yml
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Configuration file: blog.toshima.ru/_config.yml
             Source: blog.toshima.ru
        Destination: blog.toshima.ru/_site
  Incremental build: disabled. Enable with --incremental
@@ -79,16 +79,14 @@
              ERROR: YOUR SITE COULD NOT BE BUILT:
                     ------------------------------------
                     Invalid date '&lt;%= Time.now.strftime('%Y-%m-%d %H:%M:%S %z') %&gt;': Document 'gems/jekyll-3.1.6/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb' does not have a valid date in the YAML front matter.
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This is because I didn’t exclude <code class="highlighter-rouge">vendor</code> directory in <code class="highlighter-rouge">_config.yml</code>, so I added the following Configuration:</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">exclude</span><span class="pi">:</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">exclude</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">...</span>
   <span class="pi">-</span> <span class="s">vendor</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This fixes Jekyll build error.</p>
 

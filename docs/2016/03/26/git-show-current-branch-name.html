@@ -71,23 +71,21 @@
   <div class="post-body">
     <p>You can get current branch name in git as follows:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git rev-parse --abbrev-ref HEAD
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git rev-parse <span class="nt">--abbrev-ref</span> HEAD
+</code></pre></div></div>
 
 <p>For example,</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git branch
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git branch
 <span class="k">*</span> gh-pages
   master
 
-<span class="gp">$ </span>git rev-parse --abbrev-ref HEAD
+<span class="nv">$ </span>git rev-parse <span class="nt">--abbrev-ref</span> HEAD
 gh-pages
 
-<span class="gp">$ </span><span class="nb">echo</span> <span class="s2">"Your current branch is </span><span class="k">$(</span>git rev-parse --abbrev-ref HEAD<span class="k">)</span><span class="s2">."</span>
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"Your current branch is </span><span class="k">$(</span>git rev-parse <span class="nt">--abbrev-ref</span> HEAD<span class="k">)</span><span class="s2">."</span>
 Your current branch is gh-pages.
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="see-also">See also</h2>
 <ul>

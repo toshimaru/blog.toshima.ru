@@ -77,46 +77,41 @@
 
 <p>You can use <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/concat">concat</a> to merge arrays.</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">ary1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ary1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="nx">ary2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="nx">ary1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">ary2</span><span class="p">)</span>
 <span class="c1">// [ 1, 2, 2, 3 ]</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="merge-multiple-arrays">Merge Multiple Arrays</h3>
 
 <p><code class="highlighter-rouge">concat</code> can take multiple arrays as arguments.</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">ary1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">ary2</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ary1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">ary2</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
 <span class="c1">// [ 1, 2, 2, 3, 5, 6, 7 ]</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="es6-way">ES6 way</h2>
 
 <p>You can use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator">Spread syntax</a> to merge arrays in ES6(ES2015). This way is easier and more readable.</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">ary1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ary1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="nx">ary2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="p">[...</span><span class="nx">ary1</span><span class="p">,</span> <span class="p">...</span><span class="nx">ary2</span><span class="p">]</span>
 <span class="c1">// [ 1, 2, 2, 3 ]</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>You can merge multiple arrays as much as you want.</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="p">[...</span><span class="nx">ary1</span><span class="p">,</span> <span class="p">...</span><span class="nx">ary2</span><span class="p">,</span> <span class="p">...</span><span class="nx">ary3</span><span class="p">]</span>
-</code></pre>
-</div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[...</span><span class="nx">ary1</span><span class="p">,</span> <span class="p">...</span><span class="nx">ary2</span><span class="p">,</span> <span class="p">...</span><span class="nx">ary3</span><span class="p">]</span>
+</code></pre></div></div>
 
 <p>Also, you can use combination of <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/push">push</a> and spread syntax.</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">ary1</span><span class="p">.</span><span class="nx">push</span><span class="p">(...</span><span class="nx">ary2</span><span class="p">)</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ary1</span><span class="p">.</span><span class="nx">push</span><span class="p">(...</span><span class="nx">ary2</span><span class="p">)</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ary1</span><span class="p">)</span>
 <span class="c1">// [ 1, 2, 2, 3 ]</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This changes <code class="highlighter-rouge">ary1</code> value, so you should use this way when you want to merge another array into an array. In this case, <code class="highlighter-rouge">ary2</code> is merged into <code class="highlighter-rouge">ary1</code>.</p>
 

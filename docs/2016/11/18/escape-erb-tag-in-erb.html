@@ -73,20 +73,18 @@
   <div class="post-body">
     <p>How can we output erb tag string like <code class="highlighter-rouge">&lt;% erb %&gt;</code> in erb file without being interpreted as erb? You can do this by using double percent <code class="highlighter-rouge">&lt;%% %&gt;</code>!</p>
 
-<div class="language-erb highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;%%</span> <span class="n">escaped</span> <span class="cp">%&gt;</span>
-</code></pre>
-</div>
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%%</span> <span class="n">escaped</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
 
 <p>Let’s look at how it changes on <code class="highlighter-rouge">irb</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$  irb
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$  irb
 &gt;  ERB.new("&lt;%% escaped? %&gt;").result
 =&gt; "&lt;% escaped? %&gt;"
 &gt;  ERB.new("&lt;% escaped? %&gt;").result
 NoMethodError: undefined method `escaped?' for main:Object
 	from (erb):1:in `&lt;main&gt;'
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><code class="highlighter-rouge">&lt;%%</code> becomes string without an error.</p>
 

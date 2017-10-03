@@ -73,13 +73,12 @@
   <div class="post-body">
     <p>You can get disk usage on MacOS by using <code class="highlighter-rouge">du</code> command.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ du -d 1 -h
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ du -d 1 -h
 200M  ./Amazon Music.app
 6.1M  ./Android File Transfer.app
 1.9M  ./App Store.app
 ...
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><code class="highlighter-rouge">-d</code> option means depth. <code class="highlighter-rouge">du</code> outputs result for all files which is too much, so <code class="highlighter-rouge">-d 1</code> option is needed.</p>
 
@@ -89,12 +88,11 @@
 
 <p>If you want to filter result by unit:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>du -d 1 -h | grep -e "\dG"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>du -d 1 -h | grep -e "\dG"
 2.0G  ./iMovie.app
 1.3G  ./iPhoto.app
 8.2G  .
-</code></pre>
-</div>
+</code></pre></div></div>
 
   </div>
 

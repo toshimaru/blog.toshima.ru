@@ -71,18 +71,16 @@
   <div class="post-body">
     <p>Want to build query which has <code class="highlighter-rouge">group by</code> and <code class="highlighter-rouge">having</code>(like below) with ActiveRecord?</p>
 
-<div class="language-sql highlighter-rouge"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">bar</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>  
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">bar</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>  
 <span class="k">FROM</span> <span class="n">tables</span>
 <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">foo</span><span class="p">,</span> <span class="n">bar</span>
 <span class="k">HAVING</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>You can build it by using <code class="highlighter-rouge">group</code> and <code class="highlighter-rouge">having</code> which are <code class="highlighter-rouge">ActiveRecord::QueryMethods</code>.</p>
 
-<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="no">ActiveRecordModel</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="ss">:foo</span><span class="p">,</span> <span class="ss">:bar</span><span class="p">).</span><span class="nf">having</span><span class="p">(</span><span class="s2">"count(*) &gt; 1"</span><span class="p">).</span><span class="nf">count</span>
-</code></pre>
-</div>
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveRecordModel</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="ss">:foo</span><span class="p">,</span> <span class="ss">:bar</span><span class="p">).</span><span class="nf">having</span><span class="p">(</span><span class="s2">"count(*) &gt; 1"</span><span class="p">).</span><span class="nf">count</span>
+</code></pre></div></div>
 
 <h2 id="see-also">See also</h2>
 

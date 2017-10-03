@@ -73,13 +73,12 @@
 
 <p>To <code class="highlighter-rouge">GET</code> URL and the response simply in Ruby:</p>
 
-<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'uri'</span>
 
 <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://google.com/'</span><span class="p">)</span>
 <span class="n">response</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ol>
   <li>Parse URL from URI string</li>
@@ -88,27 +87,25 @@
 
 <h2 id="get-http-status-code-from-url">GET HTTP status code from URL</h2>
 
-<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'uri'</span>
 
 <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://google.com/'</span><span class="p">)</span>
 <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">get_response</span><span class="p">(</span><span class="n">uri</span><span class="p">).</span><span class="nf">code</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><code class="highlighter-rouge">get_response</code> method returns <code class="highlighter-rouge">Net::HTTPResponse</code> which has methods like <code class="highlighter-rouge">code</code>, <code class="highlighter-rouge">body</code>, etc.</p>
 
 <h2 id="get-json-response-from-url">GET JSON response from URL</h2>
 
-<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'json'</span>
 
 <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'http://www.example.com/sample.json'</span><span class="p">)</span>
 <span class="n">json</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">(</span><span class="n">json</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="reference">Reference</h2>
 

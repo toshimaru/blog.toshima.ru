@@ -77,14 +77,13 @@
 
 <p><strong>First step</strong>: Configure build destination.</p>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="c1"># _config.yml</span>
-<span class="s">destination</span><span class="pi">:</span> <span class="s">./docs</span>
-</code></pre>
-</div>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _config.yml</span>
+<span class="na">destination</span><span class="pi">:</span> <span class="s">./docs</span>
+</code></pre></div></div>
 
 <p>Now Jekyll pages are built on <code class="highlighter-rouge">./docs</code> directory.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ jekyll build
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ jekyll build
 Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
             Source: /Users/toshimaru/blog.toshima.ru
        Destination: ./docs
@@ -92,8 +91,7 @@ Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
       Generating...
                     done in 4.078 seconds.
  Auto-regeneration: disabled. Use --watch to enable.
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Yay, you are almost ready to publish the pages.</p>
 
@@ -109,7 +107,7 @@ Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
 
 <p>By using <a href="https://github.com/ruby/rake">rake</a>, you can deploy your Jekyll site with one command, <code class="highlighter-rouge">rake deploy</code>.</p>
 
-<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="c1"># Rakefile</span>
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Rakefile</span>
 <span class="n">desc</span> <span class="s1">'deploy Jekyll site to Github Pages'</span>
 <span class="n">task</span> <span class="ss">:deploy</span> <span class="k">do</span>
   <span class="n">sh</span> <span class="s1">'bundle exec jekyll clean'</span>
@@ -118,8 +116,7 @@ Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
   <span class="n">sh</span> <span class="s1">'git commit -m \'Update\''</span>
   <span class="n">sh</span> <span class="s1">'git push origin master'</span>
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In this task, <code class="highlighter-rouge">rake deploy</code> builds Jekyll site and push it to Github for you. This is useful if you’d like to release your site on CI such as TravisCI, CircleCi.</p>
 

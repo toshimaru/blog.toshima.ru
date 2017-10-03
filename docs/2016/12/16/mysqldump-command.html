@@ -81,9 +81,8 @@
 
 <p>The following command generates <code class="highlighter-rouge">dump.sql</code> for existing Rails app.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>mysqldump -u <span class="o">{</span>USER_NAME<span class="o">}</span> -h <span class="o">{</span>HOST_NAME<span class="o">}</span> -p --no-create-info --ignore-table<span class="o">=</span>DATABASE_NAME.schema_migrations --ignore-table<span class="o">=</span>DATABASE_NAME.ar_internal_metadata <span class="o">{</span>DATABASE_NAME<span class="o">}</span> &gt; dump.sql
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysqldump <span class="nt">-u</span> <span class="o">{</span>USER_NAME<span class="o">}</span> <span class="nt">-h</span> <span class="o">{</span>HOST_NAME<span class="o">}</span> <span class="nt">-p</span> <span class="nt">--no-create-info</span> <span class="nt">--ignore-table</span><span class="o">=</span>DATABASE_NAME.schema_migrations <span class="nt">--ignore-table</span><span class="o">=</span>DATABASE_NAME.ar_internal_metadata <span class="o">{</span>DATABASE_NAME<span class="o">}</span> <span class="o">&gt;</span> dump.sql
+</code></pre></div></div>
 
 <h3 id="variables">Variables</h3>
 
@@ -110,10 +109,9 @@
 
 <h2 id="how-to-import-dumpsql">How to import dump.sql</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ bundle exec rails db:reset
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle exec rails db:reset
 $ mysql -u root DATABASE_NAME &lt; ./dump.sql
-</code></pre>
-</div>
+</code></pre></div></div>
 
   </div>
 

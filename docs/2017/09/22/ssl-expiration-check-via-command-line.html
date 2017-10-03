@@ -75,10 +75,9 @@
 
 <p>Let’s check <code class="highlighter-rouge">google.com:443</code> certificate expiration date using <code class="highlighter-rouge">openssl</code>.</p>
 
-<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">openssl</span><span class="kv"> s_client -connect google.com:443 &lt; /dev/null 2&gt; /dev/null | openssl x509 -text | grep "After"
-</span>            Not After : Dec  6 17:09:00 2017 GMT
-</code></pre>
-</div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> openssl s_client <span class="nt">-connect</span> google.com:443 &lt; /dev/null 2&gt; /dev/null | openssl x509 <span class="nt">-text</span> | <span class="nb">grep</span> <span class="s2">"After"</span>
+<span class="go">            Not After : Dec  6 17:09:00 2017 GMT
+</span></code></pre></div></div>
 
 <p><code class="highlighter-rouge">Dec  6 17:09:00 2017 GMT</code> is expiration date.</p>
 

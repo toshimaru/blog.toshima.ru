@@ -77,16 +77,14 @@
 
 <p>First of all, install docker.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ brew install docker
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install docker
+</code></pre></div></div>
 
 <p>Then, run <code class="highlighter-rouge">docker info</code> to make sure <a href="https://docs.docker.com/">docker</a> is installed.</p>
 
-<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">docker</span><span class="kv"> info
-</span>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
-</code></pre>
-</div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker info
+<span class="go">Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+</span></code></pre></div></div>
 
 <p>Hmm, docker is installed, but it gets error.</p>
 
@@ -94,17 +92,16 @@
 
 <p>To solve this, we need to create a machine for Docker. let’s install <a href="https://docs.docker.com/machine/">docker-machine</a> with <a href="https://www.virtualbox.org/">virtualbox</a>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ brew install docker-machine
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install docker-machine
 $ brew cask install virtualbox
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="create-docker-machine-on-mac">Create Docker Machine on Mac</h2>
 
 <p>Okay, then, create default machine with virtualbox driver.</p>
 
-<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">docker-machine</span><span class="kv"> create --driver virtualbox default
-</span>Running pre-create checks...
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">--driver</span> virtualbox default
+<span class="go">Running pre-create checks...
 Creating machine...
 (default) Copying /Users/toshimaru/.docker/machine/cache/boot2docker.iso to /Users/toshimaru/.docker/machine/machines/default/boot2docker.iso...
 (default) Creating VirtualBox VM...
@@ -123,8 +120,7 @@ Setting Docker configuration on the remote daemon...
 Checking connection to Docker...
 Docker is up and running!
 To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env default
-</code></pre>
-</div>
+</span></code></pre></div></div>
 
 <p>It says:</p>
 
@@ -132,15 +128,14 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
   <p>run: docker-machine env default</p>
 </blockquote>
 
-<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">docker-machine</span><span class="kv"> env default
-</span>export DOCKER_TLS_VERIFY="1"
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine env default
+<span class="go">export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.x.x:xxxx"
 export DOCKER_CERT_PATH="/Users/toshimaru/.docker/machine/machines/default"
 export DOCKER_MACHINE_NAME="default"
-<span class="ni"># </span><span class="nc">Run</span><span class="kv"> this command to configure your shell:
-</span><span class="ni"># </span><span class="nc">eval</span><span class="kv"> $(docker-machine env default)
-</span></code></pre>
-</div>
+</span><span class="gp">#</span> Run this <span class="nb">command </span>to configure your shell:
+<span class="gp">#</span> <span class="nb">eval</span> <span class="k">$(</span>docker-machine env default<span class="k">)</span>
+</code></pre></div></div>
 
 <p>The output says:</p>
 
@@ -148,23 +143,21 @@ export DOCKER_MACHINE_NAME="default"
   <p>Run this command to configure your shell:</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ eval $(docker-machine env default)
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ eval $(docker-machine env default)
+</code></pre></div></div>
 
 <h2 id="docker-is-ready">Docker is ready</h2>
 
 <p>Docker is ready to run.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ docker info
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker info
 Containers: 0
  Running: 0
  Paused: 0
  Stopped: 0
 Images: 0
 Server Version: 17.06.0-ce
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Yay! docker command finally works!</p>
 
@@ -172,21 +165,19 @@ Server Version: 17.06.0-ce
 
 <h3 id="docker-machine-status">docker-machine status</h3>
 
-<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">docker-machine</span><span class="kv"> status
-</span>Running
-<span class="w">$ </span><span class="nc">docker-machine</span><span class="kv"> ls
-</span>NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine status
+<span class="go">Running
+</span><span class="gp">$</span> docker-machine <span class="nb">ls</span>
+<span class="go">NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS
 default   -        virtualbox   Running   tcp://192.x.x.x:xxx           v17.06.0-ce
-</code></pre>
-</div>
+</span></code></pre></div></div>
 
 <h3 id="docker-status-1">docker status</h3>
 
-<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">docker</span><span class="kv"> ps
-</span>CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-...
-</code></pre>
-</div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker ps
+<span class="go">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+</span><span class="c">...
+</span></code></pre></div></div>
 
   </div>
 

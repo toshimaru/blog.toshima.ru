@@ -71,7 +71,7 @@
   <div class="post-body">
     <p>In Ruby, private method can be defined in module:</p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Hoge</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Hoge</span>
   <span class="kp">private</span>
 
   <span class="k">def</span> <span class="nf">p_method</span>
@@ -82,17 +82,15 @@
 <span class="k">class</span> <span class="nc">Foo</span>
   <span class="kp">include</span> <span class="no">Hoge</span>
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Try it on IRB.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>irb(main)&gt; Foo.new.p_method
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb(main)&gt; Foo.new.p_method
 NoMethodError: private method `p_method' called for #&lt;Foo:0x007fd660b9de88&gt;
 	from (irb):13
 	from /Users/toshi/.rbenv/versions/2.2.4/bin/irb:11:in `&lt;main&gt;'
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>As expected, private method defined in <code class="highlighter-rouge">Hoge</code> module cannot be called from <code class="highlighter-rouge">Foo</code> instance.</p>
 
