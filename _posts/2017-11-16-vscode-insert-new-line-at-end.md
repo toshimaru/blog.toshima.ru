@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Visual Studio Code]How to Insert New Line at the End of File"
+title: "Visual Studio Code: How to Insert New Line at the End of File"
 tags: vscode
 ---
 
