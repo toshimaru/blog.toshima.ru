@@ -28,6 +28,7 @@ kramdown:
 twitter:
   username: toshimaru_e
 author:
+  name: toshimaru
   twitter: toshimaru_e
 
 jekyll-archives:
