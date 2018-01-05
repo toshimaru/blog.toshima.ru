@@ -13,21 +13,23 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.4.0 -->
-<title>linux | Toshimaru’s Blog</title>
+<title>Run Rails Database Console | Toshimaru’s Blog</title>
 <meta name="generator" content="Jekyll v3.6.2" />
-<meta property="og:title" content="linux" />
+<meta property="og:title" content="Run Rails Database Console" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Where there’s a will, there’s a way." />
-<meta property="og:description" content="Where there’s a will, there’s a way." />
-<link rel="canonical" href="http://blog.toshima.ru/tag/linux/" />
-<meta property="og:url" content="http://blog.toshima.ru/tag/linux/" />
+<meta name="description" content="rails dbconsole opens database console for you based on your application database.yml." />
+<meta property="og:description" content="rails dbconsole opens database console for you based on your application database.yml." />
+<link rel="canonical" href="http://blog.toshima.ru/2018/01/05/rails-dbconsole.html" />
+<meta property="og:url" content="http://blog.toshima.ru/2018/01/05/rails-dbconsole.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-01-05T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"description":"Where there’s a will, there’s a way.","author":{"@type":"Person","name":"toshimaru"},"@type":"WebPage","url":"http://blog.toshima.ru/tag/linux/","headline":"linux","@context":"http://schema.org"}</script>
+{"description":"rails dbconsole opens database console for you based on your application database.yml.","author":{"@type":"Person","name":"toshimaru"},"@type":"BlogPosting","url":"http://blog.toshima.ru/2018/01/05/rails-dbconsole.html","headline":"Run Rails Database Console","dateModified":"2018-01-05T00:00:00+09:00","datePublished":"2018-01-05T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.toshima.ru/2018/01/05/rails-dbconsole.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="http://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -53,18 +55,62 @@
       <header class="masthead">
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
-<div class="content page">
-  <h1 class="page-title">linux</h1>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2017/08/08/less-without-word-wrap.html">Using less without word-wrap</a>
-    </h2>
-    <div class="list-post-date">
-      <time>08 Aug 2017</time>
+<div class="content post">
+  <h1 class="post-title">Run Rails Database Console</h1>
+  <div class="post-meta">
+    <div class="post-date">
+      <time>05 Jan 2018</time>
+    </div>
+    <div class="post-tags">
+      <ul class="tags">
+        
+          <li><a href="/tag/rails" class="tag">rails</a></li>
+        
+      </ul>
     </div>
   </div>
-  
+
+  <div class="post-body">
+    <p><code class="highlighter-rouge">rails dbconsole</code> opens database console for you based on your application <code class="highlighter-rouge">database.yml</code>.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> rails dbconsole
+<span class="go">Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+</span><span class="gp">Welcome to the MySQL monitor.  Commands end with ;</span> or <span class="se">\g</span><span class="nb">.</span>
+<span class="go">Your MySQL connection id is 6
+Server version: 5.6.x MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+</span><span class="gp">Type 'help;</span><span class="s1">' or '</span><span class="se">\h</span><span class="s1">' for help. Type '</span><span class="se">\c</span><span class="s1">' to clear the current input statement.
+</span><span class="go">
+</span><span class="gp">mysql&gt;</span> show databases<span class="p">;</span>
+<span class="go">+--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+3 rows in set (0.00 sec)
+</span></code></pre></div></div>
+
+<p>This is useful to validate your <code class="highlighter-rouge">database.yml</code> configuration.</p>
+
+<p>ref. <a href="http://guides.rubyonrails.org/command_line.html#rails-dbconsole">The Rails Command Line — Ruby on Rails Guides</a></p>
+
+  </div>
+
+  <div class="social-share">
+    <amp-social-share type="twitter"></amp-social-share>
+    <amp-social-share type="facebook"></amp-social-share>
+    <amp-social-share type="gplus"></amp-social-share>
+  </div>
 </div>
 
     </div>
