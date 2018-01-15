@@ -14,7 +14,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Remove old docker containers | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v3.6.2" />
+<meta name="generator" content="Jekyll v3.7.0" />
 <meta property="og:title" content="Remove old docker containers" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -73,7 +73,7 @@
   <div class="post-body">
     <p>When you run <code class="highlighter-rouge">docker ps -a</code>, you might have too many containers and want to remove old containers. you can remove those continers as below:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker rm <span class="sb">`</span>docker ps <span class="nt">-aq</span><span class="sb">`</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker <span class="nb">rm</span> <span class="sb">`</span>docker ps <span class="nt">-aq</span><span class="sb">`</span>
 </code></pre></div></div>
 
 <p>If specified continer is running, you will get an error:</p>

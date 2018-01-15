@@ -14,7 +14,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Get started with docker on Mac | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v3.6.2" />
+<meta name="generator" content="Jekyll v3.7.0" />
 <meta property="og:title" content="Get started with docker on Mac" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -130,13 +130,13 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
   <p>run: docker-machine env default</p>
 </blockquote>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine env default
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine <span class="nb">env </span>default
 <span class="go">export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.x.x:xxxx"
 export DOCKER_CERT_PATH="/Users/toshimaru/.docker/machine/machines/default"
 export DOCKER_MACHINE_NAME="default"
 </span><span class="gp">#</span> Run this <span class="nb">command </span>to configure your shell:
-<span class="gp">#</span> <span class="nb">eval</span> <span class="k">$(</span>docker-machine env default<span class="k">)</span>
+<span class="gp">#</span> <span class="nb">eval</span> <span class="k">$(</span>docker-machine <span class="nb">env </span>default<span class="k">)</span>
 </code></pre></div></div>
 
 <p>The output says:</p>
