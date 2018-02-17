@@ -1,5 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.0">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2018-01-15T14:34:21+09:00</updated><id>http://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">Run Rails Database Console</title><link href="http://blog.toshima.ru/2018/01/05/rails-dbconsole.html" rel="alternate" type="text/html" title="Run Rails Database Console" /><published>2018-01-05T00:00:00+09:00</published><updated>2018-01-05T00:00:00+09:00</updated><id>http://blog.toshima.ru/2018/01/05/rails-dbconsole</id><content type="html" xml:base="http://blog.toshima.ru/2018/01/05/rails-dbconsole.html">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails dbconsole&lt;/code&gt; opens database console for you based on your application &lt;code class=&quot;highlighter-rouge&quot;&gt;database.yml&lt;/code&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="http://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2018-02-17T16:50:06+09:00</updated><id>http://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">MySQL Load CSV Data into Table</title><link href="http://blog.toshima.ru/2018/02/17/mysql-load-data-infile.html" rel="alternate" type="text/html" title="MySQL Load CSV Data into Table" /><published>2018-02-17T00:00:00+09:00</published><updated>2018-02-17T00:00:00+09:00</updated><id>http://blog.toshima.ru/2018/02/17/mysql-load-data-infile</id><content type="html" xml:base="http://blog.toshima.ru/2018/02/17/mysql-load-data-infile.html">&lt;h2 id=&quot;environment&quot;&gt;Environment&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MySQL 5.7&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;load-data-infile&quot;&gt;LOAD DATA INFILE&lt;/h2&gt;
+
+&lt;p&gt;If you want to import CSV data into MySQL table, it’d be good to use MySQL &lt;code class=&quot;highlighter-rouge&quot;&gt;LOAD DATA INFILE&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;ref. &lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/load-data.html&quot;&gt;MySQL :: MySQL 5.7 Reference Manual :: 13.2.6 LOAD DATA INFILE Syntax&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s use it on the command line.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;LOAD DATA INFILE './data.csv' INTO TABLE db_development.users(email, password);&quot;&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;ERROR 1290 (HY000) at line 1: The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;But I’ve got an error, which says &lt;em&gt;The MySQL server is running with the –secure-file-priv option&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;load-data-local-infile&quot;&gt;LOAD DATA LOCAL INFILE&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/40630313&quot;&gt;A stackoverflow answer&lt;/a&gt; says it’s good to use &lt;code class=&quot;highlighter-rouge&quot;&gt;LOAD DATA LOCAL&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;LOAD DATA LOCAL INFILE './data.csv' INTO TABLE db_development.users(email, password);&quot;&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;ERROR 1148 (42000) at line 1: The used command is not allowed with this MySQL version
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Hmm, we’ve got another error, which says &lt;em&gt;The used command is not allowed with this MySQL version&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;local-infile-option&quot;&gt;local-infile option&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/10762399&quot;&gt;Another answer&lt;/a&gt; says it should be used with &lt;code class=&quot;highlighter-rouge&quot;&gt;--local-infile&lt;/code&gt; option.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;--local-infile&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;LOAD DATA LOCAL INFILE './data.csv' INTO TABLE db_development.users(email, password);&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It worked, but imported data was a bit wrong because I didn’t specify fields separator. The CSV data was separated by comma(&lt;code class=&quot;highlighter-rouge&quot;&gt;,&lt;/code&gt;), so let’s specify comma.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;--local-infile&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;LOAD DATA LOCAL INFILE './data.csv' INTO TABLE db_development.users FIELDS TERMINATED BY ',' (email, password);&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It properly worked!&lt;/p&gt;
+
+&lt;h2 id=&quot;other-reference&quot;&gt;Other Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/command-line-options.html&quot;&gt;MySQL :: MySQL 5.7 Reference Manual :: 4.2.4 Using Options on the Command Line&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="mysql" /><summary type="html">Environment</summary></entry><entry><title type="html">Run Rails Database Console</title><link href="http://blog.toshima.ru/2018/01/05/rails-dbconsole.html" rel="alternate" type="text/html" title="Run Rails Database Console" /><published>2018-01-05T00:00:00+09:00</published><updated>2018-01-05T00:00:00+09:00</updated><id>http://blog.toshima.ru/2018/01/05/rails-dbconsole</id><content type="html" xml:base="http://blog.toshima.ru/2018/01/05/rails-dbconsole.html">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails dbconsole&lt;/code&gt; opens database console for you based on your application &lt;code class=&quot;highlighter-rouge&quot;&gt;database.yml&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; rails dbconsole
 &lt;span class=&quot;go&quot;&gt;Reading table information for completion of table and column names
@@ -511,54 +559,4 @@ default   -        virtualbox   Running   tcp://192.x.x.x:xxx           v17.06.0
 
 &lt;h2 id=&quot;why-this-change-needed&quot;&gt;Why this change needed?&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/sgrif&quot;&gt;sgrif&lt;/a&gt; explains why on GitHub issue: &lt;a href=&quot;https://github.com/rails/rails/pull/25337&quot;&gt;Deprecate the behavior of AR::Dirty inside of after_(create|update|save) callbacks by sgrif · Pull Request #25337 · rails/rails&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="rails" /><category term="activerecord" /><summary type="html">As of Ruby on Rails 5.1, attribute_changed? ActiveRecord method will be deprecated.</summary></entry><entry><title type="html">Merge arrays in ES6 way</title><link href="http://blog.toshima.ru/2017/03/24/es6-array-merge.html" rel="alternate" type="text/html" title="Merge arrays in ES6 way" /><published>2017-03-24T00:00:00+09:00</published><updated>2017-03-24T00:00:00+09:00</updated><id>http://blog.toshima.ru/2017/03/24/es6-array-merge</id><content type="html" xml:base="http://blog.toshima.ru/2017/03/24/es6-array-merge.html">&lt;p&gt;How can we merge some arrays in JavaScript?&lt;/p&gt;
-
-&lt;h2 id=&quot;old-way&quot;&gt;Old Way&lt;/h2&gt;
-
-&lt;h3 id=&quot;merge-2-arrays&quot;&gt;Merge 2 Arrays&lt;/h3&gt;
-
-&lt;p&gt;You can use &lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/concat&quot;&gt;concat&lt;/a&gt; to merge arrays.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// [ 1, 2, 2, 3 ]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;merge-multiple-arrays&quot;&gt;Merge Multiple Arrays&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;concat&lt;/code&gt; can take multiple arrays as arguments.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// [ 1, 2, 2, 3, 5, 6, 7 ]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;es6-way&quot;&gt;ES6 way&lt;/h2&gt;
-
-&lt;p&gt;You can use &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator&quot;&gt;Spread syntax&lt;/a&gt; to merge arrays in ES6(ES2015). This way is easier and more readable.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// [ 1, 2, 2, 3 ]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can merge multiple arrays as much as you want.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Also, you can use combination of &lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/push&quot;&gt;push&lt;/a&gt; and spread syntax.&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ary1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// [ 1, 2, 2, 3 ]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This changes &lt;code class=&quot;highlighter-rouge&quot;&gt;ary1&lt;/code&gt; value, so you should use this way when you want to merge another array into an array. In this case, &lt;code class=&quot;highlighter-rouge&quot;&gt;ary2&lt;/code&gt; is merged into &lt;code class=&quot;highlighter-rouge&quot;&gt;ary1&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://gist.github.com/yesvods/51af798dd1e7058625f4&quot;&gt;Merge Arrays in one with ES6 Array spread&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="javascript" /><summary type="html">How can we merge some arrays in JavaScript?</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://github.com/sgrif&quot;&gt;sgrif&lt;/a&gt; explains why on GitHub issue: &lt;a href=&quot;https://github.com/rails/rails/pull/25337&quot;&gt;Deprecate the behavior of AR::Dirty inside of after_(create|update|save) callbacks by sgrif · Pull Request #25337 · rails/rails&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="rails" /><category term="activerecord" /><summary type="html">As of Ruby on Rails 5.1, attribute_changed? ActiveRecord method will be deprecated.</summary></entry></feed>
