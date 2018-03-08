@@ -4,6 +4,8 @@ title: Run Rails Database Console
 tags: rails
 ---
 
+## rails dbconsole
+
 `rails dbconsole` opens database console for you based on your application `database.yml`.
 
 ```console
@@ -36,4 +38,18 @@ mysql> show databases;
 
 This is useful to validate your `database.yml` configuration.
 
-ref. [The Rails Command Line — Ruby on Rails Guides](http://guides.rubyonrails.org/command_line.html#rails-dbconsole)
+
+## rails db
+
+You can also use `rails db` command.
+
+```console
+$ rails db
+SQLite version 3.19.3 2017-06-27 16:48:08
+Enter ".help" for usage hints.
+sqlite>
+```
+
+## Reference
+
+- [The Rails Command Line — Ruby on Rails Guides](http://guides.rubyonrails.org/command_line.html#rails-dbconsole)
