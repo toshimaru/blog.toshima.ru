@@ -18,8 +18,8 @@
 <meta property="og:title" content="Run Rails Database Console" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="rails dbconsole opens database console for you based on your application database.yml." />
-<meta property="og:description" content="rails dbconsole opens database console for you based on your application database.yml." />
+<meta name="description" content="rails dbconsole" />
+<meta property="og:description" content="rails dbconsole" />
 <link rel="canonical" href="http://blog.toshima.ru/2018/01/05/rails-dbconsole.html" />
 <meta property="og:url" content="http://blog.toshima.ru/2018/01/05/rails-dbconsole.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
@@ -29,7 +29,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"url":"http://blog.toshima.ru/2018/01/05/rails-dbconsole.html","headline":"Run Rails Database Console","dateModified":"2018-01-05T00:00:00+09:00","datePublished":"2018-01-05T00:00:00+09:00","author":{"@type":"Person","name":"toshimaru"},"description":"rails dbconsole opens database console for you based on your application database.yml.","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.toshima.ru/2018/01/05/rails-dbconsole.html"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"description":"rails dbconsole","author":{"@type":"Person","name":"toshimaru"},"@type":"BlogPosting","url":"http://blog.toshima.ru/2018/01/05/rails-dbconsole.html","headline":"Run Rails Database Console","dateModified":"2018-01-05T00:00:00+09:00","datePublished":"2018-01-05T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.toshima.ru/2018/01/05/rails-dbconsole.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="http://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -71,7 +71,9 @@
   </div>
 
   <div class="post-body">
-    <p><code class="highlighter-rouge">rails dbconsole</code> opens database console for you based on your application <code class="highlighter-rouge">database.yml</code>.</p>
+    <h2 id="rails-dbconsole">rails dbconsole</h2>
+
+<p><code class="highlighter-rouge">rails dbconsole</code> opens database console for you based on your application <code class="highlighter-rouge">database.yml</code>.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> rails dbconsole
 <span class="go">Reading table information for completion of table and column names
@@ -102,7 +104,21 @@ owners.
 
 <p>This is useful to validate your <code class="highlighter-rouge">database.yml</code> configuration.</p>
 
-<p>ref. <a href="http://guides.rubyonrails.org/command_line.html#rails-dbconsole">The Rails Command Line — Ruby on Rails Guides</a></p>
+<h2 id="rails-db">rails db</h2>
+
+<p>You can also use <code class="highlighter-rouge">rails db</code> command.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> rails db
+<span class="go">SQLite version 3.19.3 2017-06-27 16:48:08
+Enter ".help" for usage hints.
+</span><span class="gp">sqlite&gt;</span>
+</code></pre></div></div>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="http://guides.rubyonrails.org/command_line.html#rails-dbconsole">The Rails Command Line — Ruby on Rails Guides</a></li>
+</ul>
 
   </div>
 
