@@ -69,7 +69,9 @@
   </div>
 
   <div class="post-body">
-    <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Schema</span><span class="p">.</span><span class="nf">define</span> <span class="k">do</span>
+    <h2 id="schemarb">schema.rb</h2>
+
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Schema</span><span class="p">.</span><span class="nf">define</span> <span class="k">do</span>
 
   <span class="n">create_table</span> <span class="s2">"posts"</span><span class="p">,</span> <span class="ss">force: :cascade</span><span class="p">,</span> <span class="ss">options: </span><span class="s2">"ENGINE=InnoDB DEFAULT CHARSET=utf8"</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
     <span class="n">t</span><span class="p">.</span><span class="nf">bigint</span> <span class="s2">"user_id"</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
@@ -96,6 +98,10 @@
 
 <h2 id="事例１">事例１</h2>
 
+<p>全ユーザーの中から2017年以降の登録ユーザーへ100ポイントを付与する</p>
+
+<h3 id="オリジナルコード">オリジナルコード</h3>
+
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
   <span class="k">if</span> <span class="n">user</span><span class="p">.</span><span class="nf">created_at</span> <span class="o">&gt;=</span> <span class="no">Date</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">2017</span><span class="p">)</span>
     <span class="n">user</span><span class="p">.</span><span class="nf">point</span> <span class="o">+=</span> <span class="mi">100</span>
@@ -105,6 +111,10 @@
 </code></pre></div></div>
 
 <h2 id="事例２">事例２</h2>
+
+<p>ユーザー毎の記事のいいね数（like_count）合計が多い順でTOP100ユーザーをユーザー名、いいね数とともに出力する</p>
+
+<h3 id="オリジナルコード-1">オリジナルコード</h3>
 
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">user_like_counts</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
@@ -119,6 +129,23 @@
   <span class="p">.</span><span class="nf">take</span><span class="p">(</span><span class="mi">100</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">u</span><span class="o">|</span>
     <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">u</span><span class="p">[</span><span class="ss">:name</span><span class="p">]</span><span class="si">}</span><span class="s2">(</span><span class="si">#{</span><span class="n">u</span><span class="p">[</span><span class="ss">:total_like_count</span><span class="p">]</span><span class="si">}</span><span class="s2">)"</span>
   <span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="事例３">事例３</h2>
+
+<p>ユーザー毎の記事のいいね数（like_count）合計が多い順でTOP500ユーザーのユーザーID一覧を出力する。</p>
+
+<h3 id="オリジナルコード-2">オリジナルコード</h3>
+
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">user_ids</span> <span class="o">=</span> 
+  <span class="no">Post</span><span class="p">.</span><span class="nf">includes</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+      <span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="ss">:user_id</span><span class="p">)</span>
+      <span class="p">.</span><span class="nf">select</span><span class="p">(</span><span class="s2">"user_id, SUM(like_count) AS like_count"</span><span class="p">)</span>
+      <span class="p">.</span><span class="nf">order</span><span class="p">(</span><span class="s2">"like_count DESC"</span><span class="p">)</span>
+      <span class="p">.</span><span class="nf">limit</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+  <span class="n">post</span><span class="p">.</span><span class="nf">user</span><span class="p">.</span><span class="nf">id</span>
+<span class="k">end</span>
+<span class="nb">p</span> <span class="n">user_ids</span>
 </code></pre></div></div>
 
   </div>
