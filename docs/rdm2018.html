@@ -133,7 +133,7 @@
 
 <h2 id="事例３">事例３</h2>
 
-<p>ユーザー毎の記事のいいね数（like_count）合計が多い順でTOP500ユーザーのユーザーID一覧を出力する。</p>
+<p>ユーザー毎の記事のいいね数（like_count）合計が多い順でTOP3000ユーザーのユーザーID一覧を出力する。</p>
 
 <h3 id="オリジナルコード-2">オリジナルコード</h3>
 
@@ -142,7 +142,7 @@
       <span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="ss">:user_id</span><span class="p">)</span>
       <span class="p">.</span><span class="nf">select</span><span class="p">(</span><span class="s2">"user_id, SUM(like_count) AS like_count"</span><span class="p">)</span>
       <span class="p">.</span><span class="nf">order</span><span class="p">(</span><span class="s2">"like_count DESC"</span><span class="p">)</span>
-      <span class="p">.</span><span class="nf">limit</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+      <span class="p">.</span><span class="nf">limit</span><span class="p">(</span><span class="mi">3000</span><span class="p">).</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
   <span class="n">post</span><span class="p">.</span><span class="nf">user</span><span class="p">.</span><span class="nf">id</span>
 <span class="k">end</span>
 <span class="nb">p</span> <span class="n">user_ids</span>
