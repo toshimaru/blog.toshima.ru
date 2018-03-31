@@ -12,6 +12,7 @@ plugins:
   - jekyll-include_sass
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-redirect-from
 exclude:
   - .travis.yml
   - Gemfile
@@ -19,7 +20,6 @@ exclude:
   - Rakefile
   - README.md
   - vendor
-
 # GitHub Flavored Markdown
 kramdown:
   input: GFM
