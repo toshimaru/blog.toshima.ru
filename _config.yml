@@ -13,6 +13,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-redirect-from
+  - kramdown-amp
 exclude:
   - .travis.yml
   - Gemfile
