@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2018-05-05T02:54:28+09:00</updated><id>https://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.1">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2018-06-02T11:20:39+09:00</updated><id>https://blog.toshima.ru/</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
 </subtitle><author><name>toshimaru</name></author><entry><title type="html">MySQL Load CSV Data into Table</title><link href="https://blog.toshima.ru/2018/02/17/mysql-load-data-infile.html" rel="alternate" type="text/html" title="MySQL Load CSV Data into Table" /><published>2018-02-17T00:00:00+09:00</published><updated>2018-02-17T00:00:00+09:00</updated><id>https://blog.toshima.ru/2018/02/17/mysql-load-data-infile</id><content type="html" xml:base="https://blog.toshima.ru/2018/02/17/mysql-load-data-infile.html">&lt;h2 id=&quot;environment&quot;&gt;Environment&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -138,7 +138,7 @@ Enter &quot;.help&quot; for usage hints.
 
 &lt;p&gt;I’ve accomplished 3 times faster CI build time on &lt;a href=&quot;https://github.com/toshimaru/RailsTwitterClone&quot;&gt;my public project&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/circleci2.png&quot; alt=&quot;faster build time&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;amp-img src=&quot;/images/circleci2.png&quot; alt=&quot;faster build time&quot; width='1702' height='996' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
 
 &lt;p&gt;Here is how I configured my &lt;code class=&quot;highlighter-rouge&quot;&gt;circle.yml&lt;/code&gt;.&lt;/p&gt;
 
@@ -284,7 +284,7 @@ Enter &quot;.help&quot; for usage hints.
 
 &lt;h2 id=&quot;comparison&quot;&gt;Comparison&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/circleci2-2.png&quot; alt=&quot;circleci 1 to 2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;amp-img src=&quot;/images/circleci2-2.png&quot; alt=&quot;circleci 1 to 2&quot; width='1400' height='274' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -504,14 +504,14 @@ default   -        virtualbox   Running   tcp://192.x.x.x:xxx           v17.06.0
 &lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; less longtext.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/less1.png&quot; alt=&quot;less1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;amp-img src=&quot;/images/less1.png&quot; alt=&quot;less1&quot; width='1110' height='860' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
 
 &lt;p&gt;You can open it without word-wrap by passing &lt;code class=&quot;highlighter-rouge&quot;&gt;-S&lt;/code&gt; option.&lt;/p&gt;
 
 &lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; less &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; longtext.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/less2.png&quot; alt=&quot;less2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;amp-img src=&quot;/images/less2.png&quot; alt=&quot;less2&quot; width='1250' height='716' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 
