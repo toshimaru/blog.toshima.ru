@@ -46,7 +46,7 @@ GEM
       octokit (~> 4.2)
     jekyll-include_sass (0.1.0)
       jekyll (~> 3.0)
-    jekyll-redirect-from (0.13.0)
+    jekyll-redirect-from (0.14.0)
       jekyll (~> 3.3)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
