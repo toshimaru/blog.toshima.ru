@@ -38,20 +38,11 @@ jobs:
   build:
     working_directory: ~/app
     docker:
-      - image: circleci/ruby:2.4-node
+      - image: circleci/ruby:2.5-node-browsers
         environment:
           RAILS_ENV: test
-          PHANTOM_JS_VERSION: 2.1.1
     steps:
       - checkout
-      - run:
-          name: Install PhantomJS
-          command: |
-            mkdir -p ~/.phantomjs/${PHANTOM_JS_VERSION}
-            curl -L --output ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64.tar.bz2
-            tar xfvj ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 -C ~/.phantomjs/${PHANTOM_JS_VERSION}/
-            chmod ugo+x ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs
-            sudo ln -sf ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs
       # Restore bundle cache
       - type: cache-restore
         key: bundle-{{ checksum "Gemfile.lock" }}
@@ -87,10 +78,9 @@ Then, you need to specify base docker image on CircleCI 2. In this case, I used 
 
 ```yml
 docker:
-  - image: circleci/ruby:2.4-node
+  - image: circleci/ruby:2.5-node-browsers
     environment:
       RAILS_ENV: test
-      PHANTOM_JS_VERSION: 2.1.1
 ```
 
 In `environment` section, I configured environment variables for the base image.
@@ -105,7 +95,7 @@ This line means checkout your code base from the repository.
 
 ### Bundle cache configuration
 
-As of CircleCI 2, you need to configured cache setting by yourself. In my Rails project, bundler is used, so I configured bundle install cache as below.
+As of CircleCI 2, you need to configured cache setting by yourself. In my Rails project, bundler is used, so I configured bundle install cache as the following.
 
 ```yml
 # Restore bundle cache
@@ -135,9 +125,11 @@ Rails database setup and runnning RSpec:
 - run: bundle exec rspec
 ```
 
-#### PhantomJS
+### PhantomJS
 
-I used [poltergeist](https://github.com/teampoltergeist/poltergeist) as a Capybara javascript driver. It requires PhantomJS as a dependency but official Ruby docker image doesn't include PhantomJS, so I needed to install PhantomJS by myself.
+**Update: If you use `circleci/ruby:2.5-node-browsers` docker image, PhantomJS is bundled in the image. Therefore, you don't have to follow the following step.**
+
+~~I used [poltergeist](https://github.com/teampoltergeist/poltergeist) as a Capybara javascript driver. It requires PhantomJS as a dependency but official Ruby docker image doesn't include PhantomJS, so I needed to install PhantomJS by myself.~~
 
 ```yml
 - run:
@@ -150,7 +142,7 @@ I used [poltergeist](https://github.com/teampoltergeist/poltergeist) as a Capyba
       sudo ln -sf ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs
 ```
 
-I created environment variable of PhantomJS version(`PHANTOM_JS_VERSION`) so that we can upgrade PhantomJS version easily.
+~~I created environment variable of PhantomJS version(`PHANTOM_JS_VERSION`) so that we can upgrade PhantomJS version easily.~~
 
 ### Artifacts
 
@@ -169,16 +161,16 @@ You can upload artifacts by specifying `store_artifacts` and the `path`.
 
 | CircleCI 1.0 Phase | [CircleCI 1.0](https://circleci.com/gh/toshimaru/RailsTwitterClone/197) |  [CircleCI 2.0](https://circleci.com/gh/toshimaru/RailsTwitterClone/264) | improvement |
 | --- | --- | --- | --- |
-| INFRASTRUCTURE | 25sec | 1sec | **25x faster**{:.green} |
-| CHECKOUT | 10sec | 1sec | **10x faster**{:.green} |
-| MACHINE(cache restore) | 15sec | 3sec | **5x faster**{:.green} |
-| DEPENDENCIES(bundle install) | 6sec | 1sec | **6x faster**{:.green} |
-| DATABASE | 11sec | 6sec | **2x faseter**{:.green} |
-| TEST(RSpec) | 20sec | 22sec | - |
-| TEARDOWN(artifacts) | 26sec | 1sec | **26x fasetr**{:.green} |
+| INFRASTRUCTURE | 25 sec | 1 sec | **25x faster**{:.green} |
+| CHECKOUT | 10 sec | 1 sec | **10x faster**{:.green} |
+| MACHINE(cache restore) | 15 sec | 3 sec | **5x faster**{:.green} |
+| DEPENDENCIES(bundle install) | 6 sec | 1 sec | **6x faster**{:.green} |
+| DATABASE | 11 sec | 6 sec | **2x faseter**{:.green} |
+| TEST(RSpec) | 20 sec | 22 sec | - |
+| TEARDOWN(artifacts) | 26 sec | 1 sec | **26x fasetr**{:.green} |
 | **Total build time on CircleCI** | **02:02** | **00:40** | **3x faster**{:.green} |
 
-\* 0sec is rounded to 1sec
+\* 0 sec is rounded to 1 sec
 
 ## Conclusion
 
