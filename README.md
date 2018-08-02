@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/toshimaru/blog.toshima.ru.svg)](https://travis-ci.org/toshimaru/blog.toshima.ru)
-[![Dependency Status](https://gemnasium.com/badges/github.com/toshimaru/blog.toshima.ru.svg)](https://gemnasium.com/github.com/toshimaru/blog.toshima.ru)
 
 # blog.toshima.ru
 
