@@ -102,20 +102,11 @@
   <span class="na">build</span><span class="pi">:</span>
     <span class="na">working_directory</span><span class="pi">:</span> <span class="s">~/app</span>
     <span class="na">docker</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">image</span><span class="pi">:</span> <span class="s">circleci/ruby:2.4-node</span>
+      <span class="pi">-</span> <span class="na">image</span><span class="pi">:</span> <span class="s">circleci/ruby:2.5-node-browsers</span>
         <span class="na">environment</span><span class="pi">:</span>
           <span class="na">RAILS_ENV</span><span class="pi">:</span> <span class="s">test</span>
-          <span class="na">PHANTOM_JS_VERSION</span><span class="pi">:</span> <span class="s">2.1.1</span>
     <span class="na">steps</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">checkout</span>
-      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span>
-          <span class="na">name</span><span class="pi">:</span> <span class="s">Install PhantomJS</span>
-          <span class="na">command</span><span class="pi">:</span> <span class="pi">|</span>
-            <span class="no">mkdir -p ~/.phantomjs/${PHANTOM_JS_VERSION}</span>
-            <span class="no">curl -L --output ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64.tar.bz2</span>
-            <span class="no">tar xfvj ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 -C ~/.phantomjs/${PHANTOM_JS_VERSION}/</span>
-            <span class="no">chmod ugo+x ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs</span>
-            <span class="no">sudo ln -sf ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs</span>
       <span class="c1"># Restore bundle cache</span>
       <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">cache-restore</span>
         <span class="na">key</span><span class="pi">:</span> <span class="s">bundle-{{ checksum "Gemfile.lock" }}</span>
@@ -149,10 +140,9 @@
 <p>Then, you need to specify base docker image on CircleCI 2. In this case, I used CircleCI official docker image listed <a href="https://hub.docker.com/r/circleci/ruby/tags/">here</a>(All available images are listed <a href="https://hub.docker.com/u/circleci/">here</a>).</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">docker</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">image</span><span class="pi">:</span> <span class="s">circleci/ruby:2.4-node</span>
+  <span class="pi">-</span> <span class="na">image</span><span class="pi">:</span> <span class="s">circleci/ruby:2.5-node-browsers</span>
     <span class="na">environment</span><span class="pi">:</span>
       <span class="na">RAILS_ENV</span><span class="pi">:</span> <span class="s">test</span>
-      <span class="na">PHANTOM_JS_VERSION</span><span class="pi">:</span> <span class="s">2.1.1</span>
 </code></pre></div></div>
 
 <p>In <code class="highlighter-rouge">environment</code> section, I configured environment variables for the base image.</p>
@@ -166,7 +156,7 @@
 
 <h3 id="bundle-cache-configuration">Bundle cache configuration</h3>
 
-<p>As of CircleCI 2, you need to configured cache setting by yourself. In my Rails project, bundler is used, so I configured bundle install cache as below.</p>
+<p>As of CircleCI 2, you need to configured cache setting by yourself. In my Rails project, bundler is used, so I configured bundle install cache as the following.</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Restore bundle cache</span>
 <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">cache-restore</span>
@@ -193,9 +183,11 @@
 <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec rspec</span>
 </code></pre></div></div>
 
-<h4 id="phantomjs">PhantomJS</h4>
+<h3 id="phantomjs">PhantomJS</h3>
 
-<p>I used <a href="https://github.com/teampoltergeist/poltergeist">poltergeist</a> as a Capybara javascript driver. It requires PhantomJS as a dependency but official Ruby docker image doesn’t include PhantomJS, so I needed to install PhantomJS by myself.</p>
+<p><strong>Update: If you use <code class="highlighter-rouge">circleci/ruby:2.5-node-browsers</code> docker image, PhantomJS is bundled in the image. Therefore, you don’t have to follow the following step.</strong></p>
+
+<p><del>I used <a href="https://github.com/teampoltergeist/poltergeist">poltergeist</a> as a Capybara javascript driver. It requires PhantomJS as a dependency but official Ruby docker image doesn’t include PhantomJS, so I needed to install PhantomJS by myself.</del></p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">run</span><span class="pi">:</span>
     <span class="na">name</span><span class="pi">:</span> <span class="s">Install PhantomJS</span>
@@ -207,7 +199,7 @@
       <span class="no">sudo ln -sf ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs</span>
 </code></pre></div></div>
 
-<p>I created environment variable of PhantomJS version(<code class="highlighter-rouge">PHANTOM_JS_VERSION</code>) so that we can upgrade PhantomJS version easily.</p>
+<p><del>I created environment variable of PhantomJS version(<code class="highlighter-rouge">PHANTOM_JS_VERSION</code>) so that we can upgrade PhantomJS version easily.</del></p>
 
 <h3 id="artifacts">Artifacts</h3>
 
@@ -235,44 +227,44 @@
   <tbody>
     <tr>
       <td>INFRASTRUCTURE</td>
-      <td>25sec</td>
-      <td>1sec</td>
+      <td>25 sec</td>
+      <td>1 sec</td>
       <td><strong class="green">25x faster</strong></td>
     </tr>
     <tr>
       <td>CHECKOUT</td>
-      <td>10sec</td>
-      <td>1sec</td>
+      <td>10 sec</td>
+      <td>1 sec</td>
       <td><strong class="green">10x faster</strong></td>
     </tr>
     <tr>
       <td>MACHINE(cache restore)</td>
-      <td>15sec</td>
-      <td>3sec</td>
+      <td>15 sec</td>
+      <td>3 sec</td>
       <td><strong class="green">5x faster</strong></td>
     </tr>
     <tr>
       <td>DEPENDENCIES(bundle install)</td>
-      <td>6sec</td>
-      <td>1sec</td>
+      <td>6 sec</td>
+      <td>1 sec</td>
       <td><strong class="green">6x faster</strong></td>
     </tr>
     <tr>
       <td>DATABASE</td>
-      <td>11sec</td>
-      <td>6sec</td>
+      <td>11 sec</td>
+      <td>6 sec</td>
       <td><strong class="green">2x faseter</strong></td>
     </tr>
     <tr>
       <td>TEST(RSpec)</td>
-      <td>20sec</td>
-      <td>22sec</td>
+      <td>20 sec</td>
+      <td>22 sec</td>
       <td>-</td>
     </tr>
     <tr>
       <td>TEARDOWN(artifacts)</td>
-      <td>26sec</td>
-      <td>1sec</td>
+      <td>26 sec</td>
+      <td>1 sec</td>
       <td><strong class="green">26x fasetr</strong></td>
     </tr>
     <tr>
@@ -284,7 +276,7 @@
   </tbody>
 </table>
 
-<p>* 0sec is rounded to 1sec</p>
+<p>* 0 sec is rounded to 1 sec</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
