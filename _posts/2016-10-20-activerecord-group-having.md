@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Build group_by and having query with ActiveRecord
-tags: activerecord
+tags: activerecord rails
 ---
 
 Want to build query which has `group by` and `having`(like below) with ActiveRecord?
@@ -21,4 +21,4 @@ ActiveRecordModel.group(:foo, :bar).having("count(*) > 1").count
 
 ## See also
 
-- [ActiveRecord::QueryMethods - APIdock](http://apidock.com/rails/ActiveRecord/QueryMethods)
+- [ActiveRecord::QueryMethods - APIdock](https://api.rubyonrails.org/classes/ActiveRecord/QueryMethods.html)
