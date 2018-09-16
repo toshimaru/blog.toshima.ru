@@ -90,6 +90,8 @@
 
 <h2 id="docker-run">docker run</h2>
 
+<p>Then, run <code class="highlighter-rouge">docker run</code>.</p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker run --name mysql -e MYSQL_ROOT_PASSWORD=xxxx -p 3306:3306 mysql:8.0
 </code></pre></div></div>
 
@@ -97,13 +99,13 @@
 
 <h2 id="connect-to-mysql">Connect to MySQL</h2>
 
-<p>Let’s conect to MySQL run by docker.</p>
+<p>Finally, let’s conect to MySQL run by docker.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> mysql <span class="nt">-h</span> 127.0.0.1 <span class="nt">-u</span> root <span class="nt">-p</span>
 <span class="go">Enter password:
 ERROR 2059 (HY000): Authentication plugin 'caching_sha2_password' cannot be loaded: dlopen(/usr/local/Cellar/mysql/5.7.22/lib/plugin/caching_sha2_password.so, 2): image not found
 </span></code></pre></div></div>
-<p>But we’ve got an error. This is because mysql server version and client version are differenct and those encryption methods are differenct.</p>
+<p>But we’ve got an error. This is because mysql server version and client version are different and those encryption methods are different.</p>
 
 <p>Let’s connect to mysql on docker.</p>
 
