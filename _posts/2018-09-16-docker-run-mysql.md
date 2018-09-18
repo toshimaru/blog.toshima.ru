@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Run MySQL on Docker and Connect to MySQL
-tags: mysql docker 
+title: Run and Connect to MySQL on Docker
+tags: mysql docker
 ---
 
-I wanted to run MySQL 8.0.x on docker aside from MySQL 5.7 running on localhost, so I'll give a instruction for it.
+I wanted to run MySQL 8.0.x on docker aside from MySQL 5.7 running on my localhost, so I'll give a instruction for it.
 
 ## docker pull
 
@@ -53,7 +53,6 @@ mysql>
 ```
 
 It works!
-
 
 ## Reference
 
