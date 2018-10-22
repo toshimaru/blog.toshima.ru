@@ -10,7 +10,7 @@ If you wanna check SSL certificate expiration date for specific domain via comma
 Let's check `google.com:443` certificate expiration date using `openssl`.
 
 ```console
-$ openssl s_client -connect google.com:443 < /dev/null 2> /dev/null | openssl x509 -text | grep "After"
+$ openssl s_client -connect google.com:443 -servername google.com < /dev/null 2> /dev/null | openssl x509 -text | grep "After"
             Not After : Dec  6 17:09:00 2017 GMT
 ```
 
