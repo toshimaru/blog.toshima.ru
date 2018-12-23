@@ -4,7 +4,7 @@ gem 'jekyll'
 
 group :jekyll_plugins do
   gem 'jekyll-archives'
-  gem 'jekyll-compose', github: 'toshimaru/jekyll-compose', branch: 'feature/post-template'
+  gem 'jekyll-compose'
   gem 'jekyll-feed'
   gem 'jekyll-gist'
   gem 'jekyll-include_sass'
