@@ -52,6 +52,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+      image: https://avatars2.githubusercontent.com/u/803398
 
 # Navigation
 # nav:
