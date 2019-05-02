@@ -38,7 +38,7 @@ GEM
       jekyll (>= 3.7, < 5.0)
     jekyll-gist (1.5.0)
       octokit (~> 4.2)
-    jekyll-include_sass (0.1.0)
+    jekyll-include_sass (0.2.0)
       jekyll (~> 3.0)
     jekyll-redirect-from (0.15.0)
       jekyll (>= 3.3, < 5.0)
