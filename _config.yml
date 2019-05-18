@@ -37,6 +37,7 @@ jekyll-archives:
 
 post_front_matter:
   tags:
+    - tags: ''
 
 # Scopes
 defaults:
