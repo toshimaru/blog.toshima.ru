@@ -141,6 +141,10 @@
 <lastmod>2018-09-16T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>https://blog.toshima.ru/2019/05/17/google-app-engine-gcloud-commands.html</loc>
+<lastmod>2019-05-17T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>https://blog.toshima.ru/</loc>
 </url>
 <url>
@@ -213,6 +217,9 @@
 <loc>https://blog.toshima.ru/tag/vscode/</loc>
 </url>
 <url>
+<loc>https://blog.toshima.ru/tag/google-app-engine/</loc>
+</url>
+<url>
 <loc>https://blog.toshima.ru/2016/</loc>
 </url>
 <url>
@@ -277,5 +284,11 @@
 </url>
 <url>
 <loc>https://blog.toshima.ru/2018/01/</loc>
+</url>
+<url>
+<loc>https://blog.toshima.ru/2019/</loc>
+</url>
+<url>
+<loc>https://blog.toshima.ru/2019/05/</loc>
 </url>
 </urlset>
