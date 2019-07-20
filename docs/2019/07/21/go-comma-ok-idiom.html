@@ -15,26 +15,26 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Show SQL queries in rails console | Toshimaru’s Blog</title>
+<title>[Go]comma ok idiom | Toshimaru’s Blog</title>
 <meta name="generator" content="Jekyll v3.8.6" />
-<meta property="og:title" content="Show SQL queries in rails console" />
+<meta property="og:title" content="[Go]comma ok idiom" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="When you set log_level :info (mostly on production server), the SQL outputs are disabled in rails console." />
-<meta property="og:description" content="When you set log_level :info (mostly on production server), the SQL outputs are disabled in rails console." />
-<link rel="canonical" href="https://blog.toshima.ru/2017/08/10/show-sql-in-rails-console.html" />
-<meta property="og:url" content="https://blog.toshima.ru/2017/08/10/show-sql-in-rails-console.html" />
+<meta name="description" content="Have you ever seen Go code like this?" />
+<meta property="og:description" content="Have you ever seen Go code like this?" />
+<link rel="canonical" href="https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html" />
+<meta property="og:url" content="https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
 <meta property="og:image" content="https://avatars2.githubusercontent.com/u/803398" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-08-10T00:00:00+09:00" />
+<meta property="article:published_time" content="2019-07-21T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="https://avatars2.githubusercontent.com/u/803398" />
-<meta property="twitter:title" content="Show SQL queries in rails console" />
+<meta property="twitter:title" content="[Go]comma ok idiom" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"dateModified":"2017-08-10T00:00:00+09:00","datePublished":"2017-08-10T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2017/08/10/show-sql-in-rails-console.html"},"url":"https://blog.toshima.ru/2017/08/10/show-sql-in-rails-console.html","image":"https://avatars2.githubusercontent.com/u/803398","author":{"@type":"Person","name":"toshimaru"},"description":"When you set log_level :info (mostly on production server), the SQL outputs are disabled in rails console.","@type":"BlogPosting","headline":"Show SQL queries in rails console","@context":"https://schema.org"}</script>
+{"dateModified":"2019-07-21T00:00:00+09:00","datePublished":"2019-07-21T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html"},"url":"https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html","image":"https://avatars2.githubusercontent.com/u/803398","author":{"@type":"Person","name":"toshimaru"},"description":"Have you ever seen Go code like this?","@type":"BlogPosting","headline":"[Go]comma ok idiom","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -63,55 +63,95 @@
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
 <div class="content post">
-  <h1 class="post-title">Show SQL queries in rails console</h1>
+  <h1 class="post-title">[Go]comma ok idiom</h1>
   <div class="post-meta">
     <div class="post-date">
-      <time>10 Aug 2017</time>
+      <time>21 Jul 2019</time>
     </div>
     <div class="post-tags">
       <ul class="tags">
         
-          <li><a href="/tag/rails" class="tag">rails</a></li>
+          <li><a href="/tag/go" class="tag">go</a></li>
         
       </ul>
     </div>
   </div>
 
   <div class="post-body">
-    <p>When you set <code class="highlighter-rouge">log_level</code> <code class="highlighter-rouge">:info</code> (mostly on production server), the SQL outputs are disabled in <code class="highlighter-rouge">rails console</code>.</p>
+    <p>Have you ever seen Go code like this?</p>
 
-<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Rails Configuration</span>
-<span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span>
-  <span class="o">...</span>
-  <span class="n">config</span><span class="p">.</span><span class="nf">log_level</span> <span class="o">=</span> <span class="ss">:info</span>
-  <span class="o">...</span>
-<span class="k">end</span>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">seconds</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">timeZone</span><span class="p">[</span><span class="n">tz</span><span class="p">];</span> <span class="n">ok</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">seconds</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="no">Model</span><span class="p">.</span><span class="nf">count</span>
-<span class="o">=&gt;</span> <span class="mi">12345</span>
+<p>This is called “comma ok” idiom</p>
+
+<blockquote>
+  <p>For obvious reasons this is called the “comma ok” idiom.</p>
+</blockquote>
+
+<p>via. <a href="https://golang.org/doc/effective_go.html">Effective Go - The Go Programming Language</a></p>
+
+<h2 id="simple-map">Simple Map</h2>
+
+<p>Let’s take a deeper look.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">timeZone</span> <span class="o">=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+        <span class="s">"UTC"</span><span class="o">:</span> <span class="m">0</span> <span class="o">*</span> <span class="m">60</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span>
+        <span class="s">"EST"</span><span class="o">:</span> <span class="o">-</span><span class="m">5</span> <span class="o">*</span> <span class="m">60</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span>
+        <span class="s">"CST"</span><span class="o">:</span> <span class="o">-</span><span class="m">6</span> <span class="o">*</span> <span class="m">60</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span>
+        <span class="s">"MST"</span><span class="o">:</span> <span class="o">-</span><span class="m">7</span> <span class="o">*</span> <span class="m">60</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span>
+        <span class="s">"PST"</span><span class="o">:</span> <span class="o">-</span><span class="m">8</span> <span class="o">*</span> <span class="m">60</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="n">val1</span> <span class="o">=</span> <span class="n">timeZone</span><span class="p">[</span><span class="s">"PST"</span><span class="p">]</span>
+<span class="k">var</span> <span class="n">val2</span> <span class="o">=</span> <span class="n">timeZone</span><span class="p">[</span><span class="s">"invalid"</span><span class="p">]</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"val1: %d val2: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>If you want to see SQL generated by <code class="highlighter-rouge">Model.count</code>, you need to set logger level manually.</p>
+<p>The output is:</p>
 
-<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">level</span> <span class="o">=</span> <span class="ss">:debug</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val1: -28800 val2: 0
 </code></pre></div></div>
 
-<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">level</span> <span class="o">=</span> <span class="ss">:debug</span>
-<span class="o">=&gt;</span> <span class="ss">:debug</span>
+<p>If the key is found in map, it returns the value, otherwise, it returns zero value - in this examaple it returns <code class="highlighter-rouge">0</code>.</p>
 
-<span class="o">&gt;</span> <span class="no">Model</span><span class="p">.</span><span class="nf">count</span>
-   <span class="p">(</span><span class="mf">1.8</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span> <span class="no">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="no">FROM</span> <span class="sb">`models`</span>
-<span class="o">=&gt;</span> <span class="mi">12345</span>
+<h2 id="multiple-assignment">Multiple Assignment</h2>
+
+<p>How about multiple assignment? let’s see an examaple.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">val1</span><span class="p">,</span> <span class="n">ok1</span> <span class="o">=</span> <span class="n">timeZone</span><span class="p">[</span><span class="s">"PST"</span><span class="p">]</span>
+<span class="k">var</span> <span class="n">val2</span><span class="p">,</span> <span class="n">ok2</span> <span class="o">=</span> <span class="n">timeZone</span><span class="p">[</span><span class="s">"invalid"</span><span class="p">]</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"val1: %d ok1: %t val2: %d ok2: %t</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">val1</span><span class="p">,</span> <span class="n">ok1</span><span class="p">,</span> <span class="n">val2</span><span class="p">,</span> <span class="n">ok2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Now, you can check the queries in <code class="highlighter-rouge">rails console</code>.</p>
+<p>The output is:</p>
 
-<h2 id="reference">Reference</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val1: -28800 ok1: true val2: 0 ok2: false
+</code></pre></div></div>
 
-<ul>
-  <li><a href="http://guides.rubyonrails.org/debugging_rails_applications.html#log-levels">Log Levels - Debugging Rails Applications — Ruby on Rails Guides</a></li>
-</ul>
+<p>If the key is found in map, it returns the value with <code class="highlighter-rouge">true</code>, otherwise, it returns <code class="highlighter-rouge">0</code> with <code class="highlighter-rouge">false</code>.</p>
+
+<h2 id="comma-ok-idiom">comma ok idiom</h2>
+
+<p>Let’s back to the first exmaple:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">seconds</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">timeZone</span><span class="p">[</span><span class="n">tz</span><span class="p">];</span> <span class="n">ok</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">seconds</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This means that if the key(<code class="highlighter-rouge">tz</code>) is found in <code class="highlighter-rouge">timeZone</code> map, it returns <code class="highlighter-rouge">seconds</code> with  <code class="highlighter-rouge">true</code>(<code class="highlighter-rouge">ok</code>).</p>
+
+<p>This idiom is handy when you’d like to configure fallback value:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">seconds</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">timeZone</span><span class="p">[</span><span class="n">tz</span><span class="p">];</span> <span class="n">ok</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">seconds</span>
+<span class="p">}</span>
+
+<span class="n">log</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"unknown time zone:"</span><span class="p">,</span> <span class="n">tz</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">fallbackValue</span>
+</code></pre></div></div>
 
   </div>
 
