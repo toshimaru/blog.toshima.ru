@@ -16,7 +16,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>CircleCI 2 speeds up your CI build time drastically | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v3.8.6" />
+<meta name="generator" content="Jekyll v4.0.0.pre.beta1" />
 <meta property="og:title" content="CircleCI 2 speeds up your CI build time drastically" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"dateModified":"2017-08-18T00:00:00+09:00","datePublished":"2017-08-18T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2017/08/18/circleci2-speeds-up-your-ci-time.html"},"url":"https://blog.toshima.ru/2017/08/18/circleci2-speeds-up-your-ci-time.html","image":"https://avatars2.githubusercontent.com/u/803398","author":{"@type":"Person","name":"toshimaru"},"description":"CircleCI 2 has been released, which makes your CI faster and flexible.","@type":"BlogPosting","headline":"CircleCI 2 speeds up your CI build time drastically","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":"https://avatars2.githubusercontent.com/u/803398","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2017/08/18/circleci2-speeds-up-your-ci-time.html"},"url":"https://blog.toshima.ru/2017/08/18/circleci2-speeds-up-your-ci-time.html","author":{"@type":"Person","name":"toshimaru"},"description":"CircleCI 2 has been released, which makes your CI faster and flexible.","headline":"CircleCI 2 speeds up your CI build time drastically","dateModified":"2017-08-18T00:00:00+09:00","datePublished":"2017-08-18T00:00:00+09:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -199,11 +199,11 @@
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">run</span><span class="pi">:</span>
     <span class="na">name</span><span class="pi">:</span> <span class="s">Install PhantomJS</span>
     <span class="na">command</span><span class="pi">:</span> <span class="pi">|</span>
-      <span class="no">mkdir -p ~/.phantomjs/${PHANTOM_JS_VERSION}</span>
-      <span class="no">curl -L --output ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64.tar.bz2</span>
-      <span class="no">tar xfvj ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 -C ~/.phantomjs/${PHANTOM_JS_VERSION}/</span>
-      <span class="no">chmod ugo+x ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs</span>
-      <span class="no">sudo ln -sf ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs</span>
+      <span class="s">mkdir -p ~/.phantomjs/${PHANTOM_JS_VERSION}</span>
+      <span class="s">curl -L --output ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64.tar.bz2</span>
+      <span class="s">tar xfvj ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 -C ~/.phantomjs/${PHANTOM_JS_VERSION}/</span>
+      <span class="s">chmod ugo+x ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs</span>
+      <span class="s">sudo ln -sf ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs</span>
 </code></pre></div></div>
 
 <p><del>I created environment variable of PhantomJS version(<code class="highlighter-rouge">PHANTOM_JS_VERSION</code>) so that we can upgrade PhantomJS version easily.</del></p>
