@@ -1,5 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0.pre.beta1">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2019-08-05T14:57:40+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">[Go]comma ok idiom</title><link href="https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html" rel="alternate" type="text/html" title="[Go]comma ok idiom" /><published>2019-07-21T00:00:00+09:00</published><updated>2019-07-21T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom</id><content type="html" xml:base="https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html">&lt;p&gt;Have you ever seen Go code like this?&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0.pre.beta1">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2019-08-08T16:36:25+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">Enable Go Module Cache on TravisCI</title><link href="https://blog.toshima.ru/2019/08/08/enable-go-module-cache-on-travisci.html" rel="alternate" type="text/html" title="Enable Go Module Cache on TravisCI" /><published>2019-08-08T00:00:00+09:00</published><updated>2019-08-08T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/08/08/enable-go-module-cache-on-travisci</id><content type="html" xml:base="https://blog.toshima.ru/2019/08/08/enable-go-module-cache-on-travisci.html">&lt;p&gt;&lt;amp-img src=&quot;/images/go-mod-cache.png&quot; alt=&quot;Go Mod Cache before/after&quot; width='1636' height='338' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;enbale-go-module-cache-on-travisci&quot;&gt;Enbale Go Module Cache on TravisCI&lt;/h2&gt;
+
+&lt;p&gt;To enbale Go module cache, set &lt;code class=&quot;highlighter-rouge&quot;&gt;$GOPATH/pkg/mod&lt;/code&gt; as TravisCI cache directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;directories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$GOPATH/pkg/mod&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;whole-travisyml-sample&quot;&gt;Whole &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; Sample&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;go&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;go&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1.12.x&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;directories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$GOPATH/pkg/mod&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;GO111MODULE=on&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;install&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;go mod download&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;go test ./...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/coredns/coredns/pull/2686/files&quot;&gt;Add &lt;code class=&quot;highlighter-rouge&quot;&gt;$GOPATH/pkg/mod&lt;/code&gt; to Travis CI cache by yongtang · Pull Request #2686 · coredns/coredns&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="go" /><summary type="html">Enbale Go Module Cache on TravisCI</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry><entry><title type="html">[Go]comma ok idiom</title><link href="https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html" rel="alternate" type="text/html" title="[Go]comma ok idiom" /><published>2019-07-21T00:00:00+09:00</published><updated>2019-07-21T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom</id><content type="html" xml:base="https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html">&lt;p&gt;Have you ever seen Go code like this?&lt;/p&gt;
 
 &lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;seconds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timeZone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;seconds&lt;/span&gt;
@@ -422,17 +458,4 @@ Enter &quot;.help&quot; for usage hints.
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/44704968/visual-studio-code-insert-new-line-at-the-end-of-files&quot;&gt;Visual Studio Code — Insert New Line at the End of Files - Stack Overflow&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="vscode" /><summary type="html">Aftre openning “Settings”, add a line to configuration JSON as follows:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry><entry><title type="html">MySQL: Insert Result of Select query</title><link href="https://blog.toshima.ru/2017/10/16/mysql-insert-result-of-select.html" rel="alternate" type="text/html" title="MySQL: Insert Result of Select query" /><published>2017-10-16T00:00:00+09:00</published><updated>2017-10-16T00:00:00+09:00</updated><id>https://blog.toshima.ru/2017/10/16/mysql-insert-result-of-select</id><content type="html" xml:base="https://blog.toshima.ru/2017/10/16/mysql-insert-result-of-select.html">&lt;p&gt;You don’t need to use &lt;code class=&quot;highlighter-rouge&quot;&gt;VALUES&lt;/code&gt; after &lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT INTO&lt;/code&gt;. Just use &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT&lt;/code&gt; after &lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT INTO&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INTO&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;table_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;col2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;col1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;col2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;another_table_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/insert-select.html&quot;&gt;MySQL :: MySQL 5.7 Reference Manual :: 13.2.5.1 INSERT … SELECT Syntax&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="mysql" /><summary type="html">You don’t need to use VALUES after INSERT INTO. Just use SELECT after INSERT INTO.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry></feed>
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="vscode" /><summary type="html">Aftre openning “Settings”, add a line to configuration JSON as follows:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry></feed>
