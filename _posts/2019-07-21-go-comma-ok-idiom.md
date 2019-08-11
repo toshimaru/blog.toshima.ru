@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Go]comma ok idiom"
+title: "[Go]Comma OK Idiom"
 tags: go
 ---
 
@@ -12,7 +12,7 @@ if seconds, ok := timeZone[tz]; ok {
 }
 ```
 
-This is called “comma ok” idiom
+This is called **“comma ok” idiom**.
 
 > For obvious reasons this is called the “comma ok” idiom.
 

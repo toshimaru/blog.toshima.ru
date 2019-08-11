@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Select unique values from a column in ActiveRecord
+title: Select Unique Values from a Column in ActiveRecord
 tags: activerecord rails
 ---
 
