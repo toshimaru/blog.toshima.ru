@@ -1,5 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0.pre.beta1">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2019-08-08T16:36:25+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">Enable Go Module Cache on TravisCI</title><link href="https://blog.toshima.ru/2019/08/08/enable-go-module-cache-on-travisci.html" rel="alternate" type="text/html" title="Enable Go Module Cache on TravisCI" /><published>2019-08-08T00:00:00+09:00</published><updated>2019-08-08T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/08/08/enable-go-module-cache-on-travisci</id><content type="html" xml:base="https://blog.toshima.ru/2019/08/08/enable-go-module-cache-on-travisci.html">&lt;p&gt;&lt;amp-img src=&quot;/images/go-mod-cache.png&quot; alt=&quot;Go Mod Cache before/after&quot; width='1636' height='338' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0.pre.beta1">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2019-08-11T18:52:56+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">How to Measure Code Coverage on CodeClimate in Go</title><link href="https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html" rel="alternate" type="text/html" title="How to Measure Code Coverage on CodeClimate in Go" /><published>2019-08-11T00:00:00+09:00</published><updated>2019-08-11T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage</id><content type="html" xml:base="https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html">&lt;p&gt;Would you like to measure code coverage on &lt;a href=&quot;https://codeclimate.com/&quot;&gt;Code Climate&lt;/a&gt; in Go?&lt;/p&gt;
+
+&lt;p&gt;&lt;amp-img src=&quot;/images/coverage.png&quot; alt=&quot;coverage&quot; width='1584' height='1256' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;viewing-coverage-result&quot;&gt;Viewing Coverage Result&lt;/h2&gt;
+
+&lt;p&gt;All you need to is adding &lt;code class=&quot;highlighter-rouge&quot;&gt;-coverprofile c.out&lt;/code&gt; option to &lt;code class=&quot;highlighter-rouge&quot;&gt;go test&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ go test ./... -coverprofile c.out
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;c.out&lt;/code&gt; is a test coverage result file.&lt;/p&gt;
+
+&lt;h2 id=&quot;sending-coverage-result&quot;&gt;Sending Coverage Result&lt;/h2&gt;
+
+&lt;p&gt;This is a sample to send coverage result on TravisCI.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; ./cc-test-reporter
+&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x ./cc-test-reporter
+./cc-test-reporter before-build
+&lt;span class=&quot;c&quot;&gt;# RUN TEST HERE&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# go test ./... -coverprofile c.out&lt;/span&gt;
+./cc-test-reporter after-build &lt;span class=&quot;nt&quot;&gt;--exit-code&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$TRAVIS_TEST_RESULT&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;sample-setting-for-travisci&quot;&gt;Sample Setting for TravisCI&lt;/h2&gt;
+
+&lt;p&gt;Whole sample for TravisCI:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;go&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;before_script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 &amp;gt; ./cc-test-reporter&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;chmod +x ./cc-test-reporter&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./cc-test-reporter before-build&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;go test ./... -coverprofile c.out&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;after_script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/codeclimate/test-reporter/blob/master/examples/go_examples.md&quot;&gt;test-reporter/go_examples.md at master · codeclimate/test-reporter&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.golang.org/cover&quot;&gt;The cover story - The Go Blog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.codeclimate.com/docs/configuring-test-coverage&quot;&gt;Configuring Test Coverage&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;see-also&quot;&gt;See Also&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/2019/08/08/enable-go-module-cache-on-travisci.html&quot;&gt;Enable Go Module Cache on TravisCI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="go" /><summary type="html">Would you like to measure code coverage on Code Climate in Go?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry><entry><title type="html">Enable Go Module Cache on TravisCI</title><link href="https://blog.toshima.ru/2019/08/08/enable-go-module-cache-on-travisci.html" rel="alternate" type="text/html" title="Enable Go Module Cache on TravisCI" /><published>2019-08-08T00:00:00+09:00</published><updated>2019-08-08T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/08/08/enable-go-module-cache-on-travisci</id><content type="html" xml:base="https://blog.toshima.ru/2019/08/08/enable-go-module-cache-on-travisci.html">&lt;p&gt;&lt;amp-img src=&quot;/images/go-mod-cache.png&quot; alt=&quot;Go Mod Cache before/after&quot; width='1636' height='338' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;enbale-go-module-cache-on-travisci&quot;&gt;Enbale Go Module Cache on TravisCI&lt;/h2&gt;
 
@@ -35,14 +87,14 @@
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/coredns/coredns/pull/2686/files&quot;&gt;Add &lt;code class=&quot;highlighter-rouge&quot;&gt;$GOPATH/pkg/mod&lt;/code&gt; to Travis CI cache by yongtang · Pull Request #2686 · coredns/coredns&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="go" /><summary type="html">Enbale Go Module Cache on TravisCI</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry><entry><title type="html">[Go]comma ok idiom</title><link href="https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html" rel="alternate" type="text/html" title="[Go]comma ok idiom" /><published>2019-07-21T00:00:00+09:00</published><updated>2019-07-21T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom</id><content type="html" xml:base="https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html">&lt;p&gt;Have you ever seen Go code like this?&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="go" /><summary type="html">Enbale Go Module Cache on TravisCI</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry><entry><title type="html">[Go]Comma OK Idiom</title><link href="https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html" rel="alternate" type="text/html" title="[Go]Comma OK Idiom" /><published>2019-07-21T00:00:00+09:00</published><updated>2019-07-21T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom</id><content type="html" xml:base="https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html">&lt;p&gt;Have you ever seen Go code like this?&lt;/p&gt;
 
 &lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;seconds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timeZone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;seconds&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This is called “comma ok” idiom&lt;/p&gt;
+&lt;p&gt;This is called &lt;strong&gt;“comma ok” idiom&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;For obvious reasons this is called the “comma ok” idiom.&lt;/p&gt;
@@ -292,7 +344,7 @@ owners.
 &lt;span class=&quot;go&quot;&gt;[mysqld]
 &lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;#&lt;/span&gt; Only allow connections from localhost
 &lt;span class=&quot;go&quot;&gt;bind-address = 127.0.0.1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>toshimaru</name></author><category term="mysql" /><summary type="html">MySQL Version</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry><entry><title type="html">Select unique values from a column in ActiveRecord</title><link href="https://blog.toshima.ru/2018/08/04/activerecord-distinct-pluck.html" rel="alternate" type="text/html" title="Select unique values from a column in ActiveRecord" /><published>2018-08-04T00:00:00+09:00</published><updated>2018-08-04T00:00:00+09:00</updated><id>https://blog.toshima.ru/2018/08/04/activerecord-distinct-pluck</id><content type="html" xml:base="https://blog.toshima.ru/2018/08/04/activerecord-distinct-pluck.html">&lt;p&gt;IF you want to select unique values from a column in ActiveRecord, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;distinct&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;pluck&lt;/code&gt;.&lt;/p&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>toshimaru</name></author><category term="mysql" /><summary type="html">MySQL Version</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry><entry><title type="html">Select Unique Values from a Column in ActiveRecord</title><link href="https://blog.toshima.ru/2018/08/04/activerecord-distinct-pluck.html" rel="alternate" type="text/html" title="Select Unique Values from a Column in ActiveRecord" /><published>2018-08-04T00:00:00+09:00</published><updated>2018-08-04T00:00:00+09:00</updated><id>https://blog.toshima.ru/2018/08/04/activerecord-distinct-pluck</id><content type="html" xml:base="https://blog.toshima.ru/2018/08/04/activerecord-distinct-pluck.html">&lt;p&gt;IF you want to select unique values from a column in ActiveRecord, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;distinct&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;pluck&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;distinct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pluck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -446,16 +498,4 @@ Enter &quot;.help&quot; for usage hints.
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://guides.rubyonrails.org/command_line.html#rails-dbconsole&quot;&gt;The Rails Command Line — Ruby on Rails Guides&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="rails" /><summary type="html">rails dbconsole</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry><entry><title type="html">Visual Studio Code: How to Insert New Line at the End of File</title><link href="https://blog.toshima.ru/2017/11/16/vscode-insert-new-line-at-end.html" rel="alternate" type="text/html" title="Visual Studio Code: How to Insert New Line at the End of File" /><published>2017-11-16T00:00:00+09:00</published><updated>2017-11-16T00:00:00+09:00</updated><id>https://blog.toshima.ru/2017/11/16/vscode-insert-new-line-at-end</id><content type="html" xml:base="https://blog.toshima.ru/2017/11/16/vscode-insert-new-line-at-end.html">&lt;p&gt;Aftre openning “Settings”, add a line to configuration JSON as follows:&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;files.insertFinalNewline&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;refefence&quot;&gt;Refefence&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/44704968/visual-studio-code-insert-new-line-at-the-end-of-files&quot;&gt;Visual Studio Code — Insert New Line at the End of Files - Stack Overflow&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="vscode" /><summary type="html">Aftre openning “Settings”, add a line to configuration JSON as follows:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry></feed>
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="rails" /><summary type="html">rails dbconsole</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry></feed>

@@ -15,26 +15,26 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>[Go]Comma OK Idiom | Toshimaru’s Blog</title>
+<title>How to Measure Code Coverage on CodeClimate in Go | Toshimaru’s Blog</title>
 <meta name="generator" content="Jekyll v4.0.0.pre.beta1" />
-<meta property="og:title" content="[Go]Comma OK Idiom" />
+<meta property="og:title" content="How to Measure Code Coverage on CodeClimate in Go" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Have you ever seen Go code like this?" />
-<meta property="og:description" content="Have you ever seen Go code like this?" />
-<link rel="canonical" href="https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html" />
-<meta property="og:url" content="https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html" />
+<meta name="description" content="Would you like to measure code coverage on Code Climate in Go?" />
+<meta property="og:description" content="Would you like to measure code coverage on Code Climate in Go?" />
+<link rel="canonical" href="https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html" />
+<meta property="og:url" content="https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
 <meta property="og:image" content="https://avatars2.githubusercontent.com/u/803398" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-07-21T00:00:00+09:00" />
+<meta property="article:published_time" content="2019-08-11T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="https://avatars2.githubusercontent.com/u/803398" />
-<meta property="twitter:title" content="[Go]Comma OK Idiom" />
+<meta property="twitter:title" content="How to Measure Code Coverage on CodeClimate in Go" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"url":"https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html","headline":"[Go]Comma OK Idiom","dateModified":"2019-07-21T00:00:00+09:00","datePublished":"2019-07-21T00:00:00+09:00","image":"https://avatars2.githubusercontent.com/u/803398","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/07/21/go-comma-ok-idiom.html"},"author":{"@type":"Person","name":"toshimaru"},"description":"Have you ever seen Go code like this?","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"url":"https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html","headline":"How to Measure Code Coverage on CodeClimate in Go","dateModified":"2019-08-11T00:00:00+09:00","datePublished":"2019-08-11T00:00:00+09:00","image":"https://avatars2.githubusercontent.com/u/803398","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html"},"author":{"@type":"Person","name":"toshimaru"},"description":"Would you like to measure code coverage on Code Climate in Go?","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -63,10 +63,10 @@
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
 <div class="content post">
-  <h1 class="post-title">[Go]Comma OK Idiom</h1>
+  <h1 class="post-title">How to Measure Code Coverage on CodeClimate in Go</h1>
   <div class="post-meta">
     <div class="post-date">
-      <time>21 Jul 2019</time>
+      <time>11 Aug 2019</time>
     </div>
     <div class="post-tags">
       <ul class="tags">
@@ -78,80 +78,59 @@
   </div>
 
   <div class="post-body">
-    <p>Have you ever seen Go code like this?</p>
+    <p>Would you like to measure code coverage on <a href="https://codeclimate.com/">Code Climate</a> in Go?</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">seconds</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">timeZone</span><span class="p">[</span><span class="n">tz</span><span class="p">];</span> <span class="n">ok</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">seconds</span>
-<span class="p">}</span>
+<p><amp-img src="/images/coverage.png" alt="coverage" width='1584' height='1256' layout='responsive'></amp-img></p>
+
+<h2 id="viewing-coverage-result">Viewing Coverage Result</h2>
+
+<p>All you need to is adding <code class="highlighter-rouge">-coverprofile c.out</code> option to <code class="highlighter-rouge">go test</code> command.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ go test ./... -coverprofile c.out
 </code></pre></div></div>
 
-<p>This is called <strong>“comma ok” idiom</strong>.</p>
+<p><code class="highlighter-rouge">c.out</code> is a test coverage result file.</p>
 
-<blockquote>
-  <p>For obvious reasons this is called the “comma ok” idiom.</p>
-</blockquote>
+<h2 id="sending-coverage-result">Sending Coverage Result</h2>
 
-<p>via. <a href="https://golang.org/doc/effective_go.html">Effective Go - The Go Programming Language</a></p>
+<p>This is a sample to send coverage result on TravisCI.</p>
 
-<h2 id="simple-map">Simple Map</h2>
-
-<p>Let’s take a deeper look.</p>
-
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">timeZone</span> <span class="o">=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
-        <span class="s">"UTC"</span><span class="o">:</span> <span class="m">0</span> <span class="o">*</span> <span class="m">60</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span>
-        <span class="s">"EST"</span><span class="o">:</span> <span class="o">-</span><span class="m">5</span> <span class="o">*</span> <span class="m">60</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span>
-        <span class="s">"CST"</span><span class="o">:</span> <span class="o">-</span><span class="m">6</span> <span class="o">*</span> <span class="m">60</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span>
-        <span class="s">"MST"</span><span class="o">:</span> <span class="o">-</span><span class="m">7</span> <span class="o">*</span> <span class="m">60</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span>
-        <span class="s">"PST"</span><span class="o">:</span> <span class="o">-</span><span class="m">8</span> <span class="o">*</span> <span class="m">60</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="k">var</span> <span class="n">val1</span> <span class="o">=</span> <span class="n">timeZone</span><span class="p">[</span><span class="s">"PST"</span><span class="p">]</span>
-<span class="k">var</span> <span class="n">val2</span> <span class="o">=</span> <span class="n">timeZone</span><span class="p">[</span><span class="s">"invalid"</span><span class="p">]</span>
-<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"val1: %d val2: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">)</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-L</span> https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 <span class="o">&gt;</span> ./cc-test-reporter
+<span class="nb">chmod</span> +x ./cc-test-reporter
+./cc-test-reporter before-build
+<span class="c"># RUN TEST HERE</span>
+<span class="c"># go test ./... -coverprofile c.out</span>
+./cc-test-reporter after-build <span class="nt">--exit-code</span> <span class="nv">$TRAVIS_TEST_RESULT</span>
 </code></pre></div></div>
 
-<p>The output is:</p>
+<h2 id="sample-setting-for-travisci">Sample Setting for TravisCI</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val1: -28800 val2: 0
+<p>Whole sample for TravisCI:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">go</span>
+<span class="na">before_script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 &gt; ./cc-test-reporter</span>
+  <span class="pi">-</span> <span class="s">chmod +x ./cc-test-reporter</span>
+  <span class="pi">-</span> <span class="s">./cc-test-reporter before-build</span>
+<span class="na">script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">go test ./... -coverprofile c.out</span>
+<span class="na">after_script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT</span>
 </code></pre></div></div>
 
-<p>If the key is found in map, it returns the value, otherwise, it returns zero value - in this examaple it returns <code class="highlighter-rouge">0</code>.</p>
+<h2 id="reference">Reference</h2>
 
-<h2 id="multiple-assignment">Multiple Assignment</h2>
+<ul>
+  <li><a href="https://github.com/codeclimate/test-reporter/blob/master/examples/go_examples.md">test-reporter/go_examples.md at master · codeclimate/test-reporter</a></li>
+  <li><a href="https://blog.golang.org/cover">The cover story - The Go Blog</a></li>
+  <li><a href="https://docs.codeclimate.com/docs/configuring-test-coverage">Configuring Test Coverage</a></li>
+</ul>
 
-<p>How about multiple assignment? let’s see an examaple.</p>
+<h2 id="see-also">See Also</h2>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">val1</span><span class="p">,</span> <span class="n">ok1</span> <span class="o">=</span> <span class="n">timeZone</span><span class="p">[</span><span class="s">"PST"</span><span class="p">]</span>
-<span class="k">var</span> <span class="n">val2</span><span class="p">,</span> <span class="n">ok2</span> <span class="o">=</span> <span class="n">timeZone</span><span class="p">[</span><span class="s">"invalid"</span><span class="p">]</span>
-<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"val1: %d ok1: %t val2: %d ok2: %t</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">val1</span><span class="p">,</span> <span class="n">ok1</span><span class="p">,</span> <span class="n">val2</span><span class="p">,</span> <span class="n">ok2</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>The output is:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val1: -28800 ok1: true val2: 0 ok2: false
-</code></pre></div></div>
-
-<p>If the key is found in map, it returns the value with <code class="highlighter-rouge">true</code>, otherwise, it returns <code class="highlighter-rouge">0</code> with <code class="highlighter-rouge">false</code>.</p>
-
-<h2 id="comma-ok-idiom">comma ok idiom</h2>
-
-<p>Let’s back to the first exmaple:</p>
-
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">seconds</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">timeZone</span><span class="p">[</span><span class="n">tz</span><span class="p">];</span> <span class="n">ok</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">seconds</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>This means that if the key(<code class="highlighter-rouge">tz</code>) is found in <code class="highlighter-rouge">timeZone</code> map, it returns <code class="highlighter-rouge">seconds</code> with  <code class="highlighter-rouge">true</code>(<code class="highlighter-rouge">ok</code>).</p>
-
-<p>This idiom is handy when you’d like to configure fallback value:</p>
-
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">seconds</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">timeZone</span><span class="p">[</span><span class="n">tz</span><span class="p">];</span> <span class="n">ok</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">seconds</span>
-<span class="p">}</span>
-
-<span class="n">log</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"unknown time zone:"</span><span class="p">,</span> <span class="n">tz</span><span class="p">)</span>
-<span class="k">return</span> <span class="n">fallbackValue</span>
-</code></pre></div></div>
+<ul>
+  <li><a href="/2019/08/08/enable-go-module-cache-on-travisci.html">Enable Go Module Cache on TravisCI</a></li>
+</ul>
 
   </div>
 
