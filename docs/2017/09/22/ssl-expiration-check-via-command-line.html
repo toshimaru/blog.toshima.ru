@@ -16,7 +16,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Check SSL Certificate Expiration Date via Command Line | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.0.pre.beta1" />
+<meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="Check SSL Certificate Expiration Date via Command Line" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -84,7 +84,7 @@
 
 <p>Let’s check <code class="highlighter-rouge">google.com:443</code> certificate expiration date using <code class="highlighter-rouge">openssl</code>.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> openssl s_client <span class="nt">-connect</span> google.com:443 <span class="nt">-servername</span> google.com &lt; /dev/null 2&gt; /dev/null | openssl x509 <span class="nt">-text</span> | <span class="nb">grep</span> <span class="s2">"After"</span>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>openssl s_client <span class="nt">-connect</span> google.com:443 <span class="nt">-servername</span> google.com &lt; /dev/null 2&gt; /dev/null | openssl x509 <span class="nt">-text</span> | <span class="nb">grep</span> <span class="s2">"After"</span>
 <span class="go">            Not After : Dec  6 17:09:00 2017 GMT
 </span></code></pre></div></div>
 

@@ -16,7 +16,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Basic gcloud Commands for Google App Engine | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.0.pre.beta1" />
+<meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="Basic gcloud Commands for Google App Engine" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -82,7 +82,7 @@
 
 <h2 id="install-gcloud-command-on-macos">Install gcloud command on MacOS</h2>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> brew cask <span class="nb">install </span>google-cloud-sdk
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>brew cask <span class="nb">install </span>google-cloud-sdk
 </code></pre></div></div>
 
 <p>If you’re not a MacOS user, please visit <a href="https://cloud.google.com/sdk/docs/">here</a>.</p>
@@ -91,24 +91,24 @@
 
 <p><code class="highlighter-rouge">dev_appserver.py</code> is useful for local development.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> dev_appserver.py app.yaml
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>dev_appserver.py app.yaml
 </code></pre></div></div>
 
 <p>If command not found on MacOS, create a symbolic link.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> <span class="nb">ln</span> <span class="nt">-s</span> /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/dev_appserver.py /usr/local/bin/dev_appserver.py
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">ln</span> <span class="nt">-s</span> /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/dev_appserver.py /usr/local/bin/dev_appserver.py
 </code></pre></div></div>
 
 <h2 id="deploy">Deploy</h2>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> gcloud app deploy
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>gcloud app deploy
 </code></pre></div></div>
 
 <p>This command deploys your application to Google App Engine.</p>
 
 <h3 id="deploy-log-sample">Deploy Log Sample</h3>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> gcloud app deploy <span class="nt">--project</span> <span class="o">{</span>your_project_name<span class="o">}</span>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>gcloud app deploy <span class="nt">--project</span> <span class="o">{</span>your_project_name<span class="o">}</span>
 <span class="go">Services to deploy:
 
 descriptor:      [/your/project/path/app.yaml]
@@ -156,7 +156,7 @@ Deployed service [default] to [https://your_project_name.appspot.com]
 
 <p>You can list your own projects on GCP.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> gcloud projects list
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>gcloud projects list
 <span class="go">PROJECT_ID   NAME        PROJECT_NUMBER
 project-name project     xxxxxxx
 project-name project     xxxxxxx

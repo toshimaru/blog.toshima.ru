@@ -16,7 +16,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Get started with docker on Mac | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.0.pre.beta1" />
+<meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="Get started with docker on Mac" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -91,7 +91,7 @@
 
 <p>Then, run <code class="highlighter-rouge">docker info</code> to make sure <a href="https://docs.docker.com/">docker</a> is installed.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker info
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>docker info
 <span class="go">Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 </span></code></pre></div></div>
 
@@ -109,7 +109,7 @@ $ brew cask install virtualbox
 
 <p>Okay, then, create default machine with virtualbox driver.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">--driver</span> virtualbox default
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>docker-machine create <span class="nt">--driver</span> virtualbox default
 <span class="go">Running pre-create checks...
 Creating machine...
 (default) Copying /Users/toshimaru/.docker/machine/cache/boot2docker.iso to /Users/toshimaru/.docker/machine/machines/default/boot2docker.iso...
@@ -137,13 +137,13 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
   <p>run: docker-machine env default</p>
 </blockquote>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine <span class="nb">env </span>default
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>docker-machine <span class="nb">env </span>default
 <span class="go">export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.x.x:xxxx"
 export DOCKER_CERT_PATH="/Users/toshimaru/.docker/machine/machines/default"
 export DOCKER_MACHINE_NAME="default"
-</span><span class="gp">#</span> Run this <span class="nb">command </span>to configure your shell:
-<span class="gp">#</span> <span class="nb">eval</span> <span class="si">$(</span>docker-machine <span class="nb">env </span>default<span class="si">)</span>
+</span><span class="gp">#</span><span class="w"> </span>Run this <span class="nb">command </span>to configure your shell:
+<span class="gp">#</span><span class="w"> </span><span class="nb">eval</span> <span class="si">$(</span>docker-machine <span class="nb">env </span>default<span class="si">)</span>
 </code></pre></div></div>
 
 <p>The output says:</p>
@@ -174,16 +174,16 @@ Server Version: 17.06.0-ce
 
 <h3 id="docker-machine-status">docker-machine status</h3>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine status
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>docker-machine status
 <span class="go">Running
-</span><span class="gp">$</span> docker-machine <span class="nb">ls</span>
+</span><span class="gp">$</span><span class="w"> </span>docker-machine <span class="nb">ls</span>
 <span class="go">NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER        ERRORS
 default   -        virtualbox   Running   tcp://192.x.x.x:xxx           v17.06.0-ce
 </span></code></pre></div></div>
 
 <h3 id="docker-status-1">docker status</h3>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker ps
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>docker ps
 <span class="go">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 </span><span class="c">...
 </span></code></pre></div></div>

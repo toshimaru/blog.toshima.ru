@@ -16,7 +16,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>MySQL Load CSV Data into Table | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.0.pre.beta1" />
+<meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="MySQL Load CSV Data into Table" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -92,7 +92,7 @@
 
 <p>Let’s use it on the command line.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> mysql <span class="nt">-u</span> root <span class="nt">-e</span> <span class="s2">"LOAD DATA INFILE './data.csv' INTO TABLE db_development.users(email, password);"</span>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>mysql <span class="nt">-u</span> root <span class="nt">-e</span> <span class="s2">"LOAD DATA INFILE './data.csv' INTO TABLE db_development.users(email, password);"</span>
 <span class="go">ERROR 1290 (HY000) at line 1: The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
 </span></code></pre></div></div>
 
@@ -102,7 +102,7 @@
 
 <p><a href="https://stackoverflow.com/a/40630313">A stackoverflow answer</a> says it’s good to use <code class="highlighter-rouge">LOAD DATA LOCAL</code>.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> mysql <span class="nt">-u</span> root <span class="nt">-e</span> <span class="s2">"LOAD DATA LOCAL INFILE './data.csv' INTO TABLE db_development.users(email, password);"</span>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>mysql <span class="nt">-u</span> root <span class="nt">-e</span> <span class="s2">"LOAD DATA LOCAL INFILE './data.csv' INTO TABLE db_development.users(email, password);"</span>
 <span class="go">ERROR 1148 (42000) at line 1: The used command is not allowed with this MySQL version
 </span></code></pre></div></div>
 
@@ -112,12 +112,12 @@
 
 <p><a href="https://stackoverflow.com/a/10762399">Another answer</a> says it should be used with <code class="highlighter-rouge">--local-infile</code> option.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> mysql <span class="nt">-u</span> root <span class="nt">--local-infile</span> <span class="nt">-e</span> <span class="s2">"LOAD DATA LOCAL INFILE './data.csv' INTO TABLE db_development.users(email, password);"</span>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>mysql <span class="nt">-u</span> root <span class="nt">--local-infile</span> <span class="nt">-e</span> <span class="s2">"LOAD DATA LOCAL INFILE './data.csv' INTO TABLE db_development.users(email, password);"</span>
 </code></pre></div></div>
 
 <p>It worked, but imported data was a bit wrong because I didn’t specify fields separator. The CSV data was separated by comma(<code class="highlighter-rouge">,</code>), so let’s specify comma.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> mysql <span class="nt">-u</span> root <span class="nt">--local-infile</span> <span class="nt">-e</span> <span class="s2">"LOAD DATA LOCAL INFILE './data.csv' INTO TABLE db_development.users FIELDS TERMINATED BY ',' (email, password);"</span>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>mysql <span class="nt">-u</span> root <span class="nt">--local-infile</span> <span class="nt">-e</span> <span class="s2">"LOAD DATA LOCAL INFILE './data.csv' INTO TABLE db_development.users FIELDS TERMINATED BY ',' (email, password);"</span>
 </code></pre></div></div>
 
 <p>It properly worked!</p>

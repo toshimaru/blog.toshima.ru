@@ -16,7 +16,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Run and Connect to MySQL on Docker | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.0.pre.beta1" />
+<meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="Run and Connect to MySQL on Docker" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -86,7 +86,7 @@
 
 <p>First of all, let’s run <code class="highlighter-rouge">docker pull</code> and pull MySQL v8.0 image.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker pull mysql:8.0
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>docker pull mysql:8.0
 </code></pre></div></div>
 
 <p>(<code class="highlighter-rouge">8.0</code> means a tag. if it’s not specified, latest MySQL docker image is used.)</p>
@@ -95,7 +95,7 @@
 
 <p>Then, run <code class="highlighter-rouge">docker run</code>.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker run <span class="nt">--name</span> mysql <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>xxxx <span class="nt">-p</span> 3306:3306 mysql:8.0
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>docker run <span class="nt">--name</span> mysql <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>xxxx <span class="nt">-p</span> 3306:3306 mysql:8.0
 </code></pre></div></div>
 
 <ul>
@@ -108,7 +108,7 @@
 
 <p>Finally, let’s conect to MySQL running on the docker.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> mysql <span class="nt">-h</span> 127.0.0.1 <span class="nt">-u</span> root <span class="nt">-p</span>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>mysql <span class="nt">-h</span> 127.0.0.1 <span class="nt">-u</span> root <span class="nt">-p</span>
 <span class="go">Enter password:
 ERROR 2059 (HY000): Authentication plugin 'caching_sha2_password' cannot be loaded: dlopen(/usr/local/Cellar/mysql/5.7.22/lib/plugin/caching_sha2_password.so, 2): image not found
 </span></code></pre></div></div>
@@ -117,16 +117,16 @@ ERROR 2059 (HY000): Authentication plugin 'caching_sha2_password' cannot be load
 
 <p>Let’s connect to mysql using mysql client on the docker.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker <span class="nb">exec</span> <span class="nt">-it</span> mysql bash
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>docker <span class="nb">exec</span> <span class="nt">-it</span> mysql bash
 </code></pre></div></div>
 
 <p>The folloing commands are run inside the docker.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">root@xxx:/#</span> mysql <span class="nt">--version</span>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">root@xxx:/#</span><span class="w"> </span>mysql <span class="nt">--version</span>
 <span class="go">mysql  Ver 8.0.17 for Linux on x86_64 (MySQL Community Server - GPL)
-</span><span class="gp">root@xxx:/#</span> mysql <span class="nt">-uroot</span> <span class="nt">-p</span>
+</span><span class="gp">root@xxx:/#</span><span class="w"> </span>mysql <span class="nt">-uroot</span> <span class="nt">-p</span>
 <span class="go">Enter password:
-</span><span class="gp">Welcome to the MySQL monitor.  Commands end with ;</span> or <span class="se">\g</span><span class="nb">.</span>
+</span><span class="gp">Welcome to the MySQL monitor.  Commands end with ;</span><span class="w"> </span>or <span class="se">\g</span><span class="nb">.</span>
 <span class="go">Your MySQL connection id is 8
 Server version: 8.0.17 MySQL Community Server - GPL
 
@@ -138,8 +138,8 @@ owners.
 
 </span><span class="gp">Type 'help;</span><span class="s1">' or '</span><span class="se">\h</span><span class="s1">' for help. Type '</span><span class="se">\c</span><span class="s1">' to clear the current input statement.
 </span><span class="go">
-</span><span class="gp">mysql&gt;</span>
-</code></pre></div></div>
+</span><span class="gp">mysql&gt;</span><span class="w">
+</span></code></pre></div></div>
 
 <p>It works!</p>
 

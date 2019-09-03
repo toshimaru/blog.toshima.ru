@@ -15,26 +15,26 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>How to Find MySQL my.cnf file | Toshimaru’s Blog</title>
+<title>Explain SQL on Rails Console | Toshimaru’s Blog</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="How to Find MySQL my.cnf file" />
+<meta property="og:title" content="Explain SQL on Rails Console" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="MySQL Version" />
-<meta property="og:description" content="MySQL Version" />
-<link rel="canonical" href="https://blog.toshima.ru/2018/08/19/how-to-find-mycnf.html" />
-<meta property="og:url" content="https://blog.toshima.ru/2018/08/19/how-to-find-mycnf.html" />
+<meta name="description" content="Lets’s say you’d like to explain the following SQL." />
+<meta property="og:description" content="Lets’s say you’d like to explain the following SQL." />
+<link rel="canonical" href="https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html" />
+<meta property="og:url" content="https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
 <meta property="og:image" content="https://avatars2.githubusercontent.com/u/803398" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-08-19T00:00:00+09:00" />
+<meta property="article:published_time" content="2019-09-03T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="https://avatars2.githubusercontent.com/u/803398" />
-<meta property="twitter:title" content="How to Find MySQL my.cnf file" />
+<meta property="twitter:title" content="Explain SQL on Rails Console" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"url":"https://blog.toshima.ru/2018/08/19/how-to-find-mycnf.html","headline":"How to Find MySQL my.cnf file","dateModified":"2018-08-19T00:00:00+09:00","datePublished":"2018-08-19T00:00:00+09:00","image":"https://avatars2.githubusercontent.com/u/803398","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2018/08/19/how-to-find-mycnf.html"},"author":{"@type":"Person","name":"toshimaru"},"description":"MySQL Version","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"url":"https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html","headline":"Explain SQL on Rails Console","dateModified":"2019-09-03T00:00:00+09:00","datePublished":"2019-09-03T00:00:00+09:00","image":"https://avatars2.githubusercontent.com/u/803398","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html"},"author":{"@type":"Person","name":"toshimaru"},"description":"Lets’s say you’d like to explain the following SQL.","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -63,49 +63,43 @@
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
 <div class="content post">
-  <h1 class="post-title">How to Find MySQL my.cnf file</h1>
+  <h1 class="post-title">Explain SQL on Rails Console</h1>
   <div class="post-meta">
     <div class="post-date">
-      <time>19 Aug 2018</time>
+      <time>03 Sep 2019</time>
     </div>
     <div class="post-tags">
       <ul class="tags">
         
-          <li><a href="/tag/mysql" class="tag">mysql</a></li>
+          <li><a href="/tag/rails" class="tag">rails</a></li>
         
       </ul>
     </div>
   </div>
 
   <div class="post-body">
-    <h2 id="mysql-version">MySQL Version</h2>
+    <p>Lets’s say you’d like to explain the following SQL.</p>
 
-<ul>
-  <li>MySQL 5.7</li>
-</ul>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="no">User</span><span class="p">.</span><span class="nf">all</span>
+  <span class="no">User</span> <span class="no">Load</span> <span class="p">(</span><span class="mf">0.9</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span> <span class="sb">`users`</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="sb">`users`</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="c1">#&lt;User: ...snip...</span>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>mysql <span class="nt">--version</span>
-<span class="go">mysql  Ver 14.14 Distrib 5.7.22, for osx10.13 (x86_64) using  EditLine wrapper
-</span></code></pre></div></div>
+<span class="o">&gt;</span> <span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">to_sql</span>
+<span class="o">=&gt;</span> <span class="s2">"SELECT `users`.* FROM `users`"</span>
+</code></pre></div></div>
 
-<h2 id="how-to-find-mycnf">How to find my.cnf</h2>
+<p>All you need to do is adding <code class="highlighter-rouge">.explain</code> to the method.</p>
 
-<p><code class="highlighter-rouge">mysql --help</code> outputs your possible <code class="highlighter-rouge">my.cnf</code> path. So, what you need to do is <code class="highlighter-rouge">grep my.cnf</code>.</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>mysql <span class="nt">--help</span> | <span class="nb">grep </span>my.cnf
-<span class="gp"> order of preference, my.cnf, $</span>MYSQL_TCP_PORT,
-<span class="go">/etc/my.cnf /etc/mysql/my.cnf /usr/local/etc/my.cnf ~/.my.cnf
-</span></code></pre></div></div>
-
-<p>One of which is your MySQL configuration file(in this case, <code class="highlighter-rouge">/usr/local/etc/my.cnf</code>).</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">cat</span> /usr/local/etc/my.cnf
-<span class="gp">#</span><span class="w"> </span>Default Homebrew MySQL server config
-<span class="go">[mysqld]
-</span><span class="gp">#</span><span class="w"> </span>Only allow connections from localhost
-<span class="go">bind-address = 127.0.0.1
-</span></code></pre></div></div>
-
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">explain</span>
+  <span class="no">User</span> <span class="no">Load</span> <span class="p">(</span><span class="mf">0.6</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span> <span class="sb">`users`</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="sb">`users`</span>
+<span class="o">=&gt;</span> <span class="no">EXPLAIN</span> <span class="ss">for: </span><span class="no">SELECT</span> <span class="sb">`users`</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="sb">`users`</span>
+<span class="o">+----+-------------+-------+------+---------------+------+---------+------+------+-------+</span>
+<span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">select_type</span> <span class="o">|</span> <span class="n">table</span> <span class="o">|</span> <span class="n">type</span> <span class="o">|</span> <span class="n">possible_keys</span> <span class="o">|</span> <span class="n">key</span>  <span class="o">|</span> <span class="n">key_len</span> <span class="o">|</span> <span class="n">ref</span>  <span class="o">|</span> <span class="n">rows</span> <span class="o">|</span> <span class="no">Extra</span> <span class="o">|</span>
+<span class="o">+----+-------------+-------+------+---------------+------+---------+------+------+-------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="no">SIMPLE</span>      <span class="o">|</span> <span class="n">users</span> <span class="o">|</span> <span class="no">ALL</span>  <span class="o">|</span> <span class="no">NULL</span>          <span class="o">|</span> <span class="no">NULL</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span> <span class="no">NULL</span> <span class="o">|</span> <span class="n">xxxx</span> <span class="o">|</span>       <span class="o">|</span>
+<span class="o">+----+-------------+-------+------+---------------+------+---------+------+------+-------+</span>
+<span class="mi">1</span> <span class="n">row</span> <span class="k">in</span> <span class="n">set</span> <span class="p">(</span><span class="mf">0.00</span> <span class="n">sec</span><span class="p">)</span>
+</code></pre></div></div>
 
   </div>
 
