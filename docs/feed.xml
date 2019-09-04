@@ -1,5 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2019-09-03T11:57:24+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">Explain SQL on Rails Console</title><link href="https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html" rel="alternate" type="text/html" title="Explain SQL on Rails Console" /><published>2019-09-03T00:00:00+09:00</published><updated>2019-09-03T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/09/03/explain-on-rails-console</id><content type="html" xml:base="https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html">&lt;p&gt;Lets’s say you’d like to explain the following SQL.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2019-09-04T18:47:47+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">How to specify Git SSH key for different hosts</title><link href="https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key.html" rel="alternate" type="text/html" title="How to specify Git SSH key for different hosts" /><published>2019-09-04T00:00:00+09:00</published><updated>2019-09-04T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key</id><content type="html" xml:base="https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key.html">&lt;p&gt;When you run &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;, you might specify which SSH key to use. It’s not possible to add option to specify which SSH key to use, but it’s possible to tell git which SSH key to use with &lt;code class=&quot;highlighter-rouge&quot;&gt;.ssh/config&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here is the example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# .ssh/config
+Host github.com
+  Hostname github.com
+  User git
+  IdentityFile ~/.ssh/your_private_key
+
+Host github.yourcompany.com
+  Hostname github.yourcompany.com
+  User git
+  IdentityFile ~/.ssh/your_another_private_key
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This means that &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; uses &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/your_private_key&lt;/code&gt; SSH key for host &lt;code class=&quot;highlighter-rouge&quot;&gt;github.com&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/your_another_private_key&lt;/code&gt; SSH key for host &lt;code class=&quot;highlighter-rouge&quot;&gt;github.yourcompany.com&lt;/code&gt;.&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="git" /><category term="ssh" /><summary type="html">When you run git push, you might specify which SSH key to use. It’s not possible to add option to specify which SSH key to use, but it’s possible to tell git which SSH key to use with .ssh/config.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry><entry><title type="html">Explain SQL on Rails Console</title><link href="https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html" rel="alternate" type="text/html" title="Explain SQL on Rails Console" /><published>2019-09-03T00:00:00+09:00</published><updated>2019-09-03T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/09/03/explain-on-rails-console</id><content type="html" xml:base="https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html">&lt;p&gt;Lets’s say you’d like to explain the following SQL.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;all&lt;/span&gt;
   &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Load&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.9&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;no&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`users`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`users`&lt;/span&gt;
@@ -424,52 +440,4 @@ owners.
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/rubyide/vscode-ruby&quot;&gt;rubyide/vscode-ruby&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="vscode" /><category term="ruby" /><summary type="html">Intellisense</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry><entry><title type="html">MySQL Load CSV Data into Table</title><link href="https://blog.toshima.ru/2018/02/17/mysql-load-data-infile.html" rel="alternate" type="text/html" title="MySQL Load CSV Data into Table" /><published>2018-02-17T00:00:00+09:00</published><updated>2018-02-17T00:00:00+09:00</updated><id>https://blog.toshima.ru/2018/02/17/mysql-load-data-infile</id><content type="html" xml:base="https://blog.toshima.ru/2018/02/17/mysql-load-data-infile.html">&lt;h2 id=&quot;environment&quot;&gt;Environment&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;MySQL 5.7&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;load-data-infile&quot;&gt;LOAD DATA INFILE&lt;/h2&gt;
-
-&lt;p&gt;If you want to import CSV data into MySQL table, it’d be good to use MySQL &lt;code class=&quot;highlighter-rouge&quot;&gt;LOAD DATA INFILE&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;ref. &lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/load-data.html&quot;&gt;MySQL :: MySQL 5.7 Reference Manual :: 13.2.6 LOAD DATA INFILE Syntax&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Let’s use it on the command line.&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;LOAD DATA INFILE './data.csv' INTO TABLE db_development.users(email, password);&quot;&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;ERROR 1290 (HY000) at line 1: The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;But I’ve got an error, which says &lt;em&gt;The MySQL server is running with the –secure-file-priv option&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;load-data-local-infile&quot;&gt;LOAD DATA LOCAL INFILE&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/40630313&quot;&gt;A stackoverflow answer&lt;/a&gt; says it’s good to use &lt;code class=&quot;highlighter-rouge&quot;&gt;LOAD DATA LOCAL&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;LOAD DATA LOCAL INFILE './data.csv' INTO TABLE db_development.users(email, password);&quot;&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;ERROR 1148 (42000) at line 1: The used command is not allowed with this MySQL version
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Hmm, we’ve got another error, which says &lt;em&gt;The used command is not allowed with this MySQL version&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;local-infile-option&quot;&gt;local-infile option&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/10762399&quot;&gt;Another answer&lt;/a&gt; says it should be used with &lt;code class=&quot;highlighter-rouge&quot;&gt;--local-infile&lt;/code&gt; option.&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;--local-infile&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;LOAD DATA LOCAL INFILE './data.csv' INTO TABLE db_development.users(email, password);&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It worked, but imported data was a bit wrong because I didn’t specify fields separator. The CSV data was separated by comma(&lt;code class=&quot;highlighter-rouge&quot;&gt;,&lt;/code&gt;), so let’s specify comma.&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;--local-infile&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;LOAD DATA LOCAL INFILE './data.csv' INTO TABLE db_development.users FIELDS TERMINATED BY ',' (email, password);&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It properly worked!&lt;/p&gt;
-
-&lt;h2 id=&quot;other-reference&quot;&gt;Other Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/command-line-options.html&quot;&gt;MySQL :: MySQL 5.7 Reference Manual :: 4.2.4 Using Options on the Command Line&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="mysql" /><summary type="html">Environment</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://github.com/rubyide/vscode-ruby&quot;&gt;rubyide/vscode-ruby&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="vscode" /><category term="ruby" /><summary type="html">Intellisense</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry></feed>
