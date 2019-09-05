@@ -1,5 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2019-09-04T18:47:47+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">How to specify Git SSH key for different hosts</title><link href="https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key.html" rel="alternate" type="text/html" title="How to specify Git SSH key for different hosts" /><published>2019-09-04T00:00:00+09:00</published><updated>2019-09-04T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key</id><content type="html" xml:base="https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key.html">&lt;p&gt;When you run &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;, you might specify which SSH key to use. It’s not possible to add option to specify which SSH key to use, but it’s possible to tell git which SSH key to use with &lt;code class=&quot;highlighter-rouge&quot;&gt;.ssh/config&lt;/code&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2019-09-06T02:18:22+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">Rails can create a table having composite primary key</title><link href="https://blog.toshima.ru/2019/09/06/rails-create-composite-primary-key.html" rel="alternate" type="text/html" title="Rails can create a table having composite primary key" /><published>2019-09-06T00:00:00+09:00</published><updated>2019-09-06T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/09/06/rails-create-composite-primary-key</id><content type="html" xml:base="https://blog.toshima.ru/2019/09/06/rails-create-composite-primary-key.html">&lt;p&gt;Rails is able to create a table which has composite primary key without a gem.&lt;/p&gt;
+
+&lt;p&gt;This is documented in Rails like below:&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:orders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;primary_key: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:product_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:client_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:product&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:client&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ref. &lt;a href=&quot;https://github.com/rails/rails/pull/29135&quot;&gt;Document support for composite primary keys by Nerian · Pull Request #29135 · rails/rails&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;create-composite-primary-key&quot;&gt;Create composite primary key&lt;/h2&gt;
+
+&lt;p&gt;Let’s create a table having composite primary key step by step.&lt;/p&gt;
+
+&lt;p&gt;First, generate migration file which has two types of &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; columns.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rails generate migration createRelationship follower_id:bigint followed_id:bigint
+&lt;span class=&quot;go&quot;&gt;      invoke  active_record
+      create    db/migrate/20190905xxxxxx_create_relationship.rb
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The created file is like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#  db/migrate/20190905xxxxxx_create_relationship.rb&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreateRelationship&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;5.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:relationships&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bigint&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:follower_id&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bigint&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:followed_id&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;What we’d like to do is creating a composite primary key of &lt;code class=&quot;highlighter-rouge&quot;&gt;follower_id&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;followed_id&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;So, add &lt;code class=&quot;highlighter-rouge&quot;&gt;primary_key&lt;/code&gt; option and pass Array of composite primary key as a value.&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#  db/migrate/20190905xxxxxx_create_relationship.rb&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreateRelationship&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;5.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:relationships&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;primary_key: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:follower_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:followed_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bigint&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:follower_id&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bigint&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:followed_id&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After running &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:migrate&lt;/code&gt;, you can see composite primary key in the table. This is a created schema on my local MySQL.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; desc relationships;
++-------------+------------+------+-----+---------+-------+
+| Field       | Type       | Null | Key | Default | Extra |
++-------------+------------+------+-----+---------+-------+
+| follower_id | bigint(20) | NO   | PRI | NULL    |       |
+| followed_id | bigint(20) | NO   | PRI | NULL    |       |
++-------------+------------+------+-----+---------+-------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is composite primary key, so:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You can’t insert &lt;code class=&quot;highlighter-rouge&quot;&gt;null&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;You can’t insert same record&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;insert relationships values  (null, null);
+ERROR 1048 (23000): Column 'follower_id' cannot be null
+mysql&amp;gt; insert relationships values  (1, 1);
+Query OK, 1 row affected (0.01 sec)
+mysql&amp;gt; insert relationships values  (1, 1);
+ERROR 1062 (23000): Duplicate entry '1-1' for key 'PRIMARY'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;heads-up&quot;&gt;Heads-up&lt;/h2&gt;
+
+&lt;p&gt;ActiveRecord can’t find composite primary key record since it does not support.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;irb&amp;gt; Relationship.find(1)
+WARNING: Active Record does not support composite primary key.
+
+relationships has composite primary key. Composite primary key is ignored.
+Traceback (most recent call last):
+        1: from (irb):2
+ActiveRecord::UnknownPrimaryKey (Unknown primary key for table relationships in model Relationship.)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you want to get composite primary key support, use &lt;a href=&quot;https://github.com/composite-primary-keys/composite_primary_keys&quot;&gt;composite_primary_keys&lt;/a&gt; gem.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://railsdoc.github.io/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-create_table-label-Create+a+composite+primary+key&quot;&gt;ActiveRecord::ConnectionAdapters::SchemaStatements - Create a composite primary key | RailsDoc(β)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="rails" /><summary type="html">Rails is able to create a table which has composite primary key without a gem.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry><entry><title type="html">How to specify Git SSH key for different hosts</title><link href="https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key.html" rel="alternate" type="text/html" title="How to specify Git SSH key for different hosts" /><published>2019-09-04T00:00:00+09:00</published><updated>2019-09-04T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key</id><content type="html" xml:base="https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key.html">&lt;p&gt;When you run &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;, you might specify which SSH key to use. It’s not possible to add option to specify which SSH key to use, but it’s possible to tell git which SSH key to use with &lt;code class=&quot;highlighter-rouge&quot;&gt;.ssh/config&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Here is the example:&lt;/p&gt;
 
@@ -402,42 +498,4 @@ owners.
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/9658881/rails-select-unique-values-from-a-column&quot;&gt;activerecord - Rails: select unique values from a column - Stack Overflow&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="activerecord" /><category term="rails" /><summary type="html">IF you want to select unique values from a column in ActiveRecord, you can use distinct + pluck.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry><entry><title type="html">VSCode Setting for Rubyist</title><link href="https://blog.toshima.ru/2018/07/12/vscode-for-ruby.html" rel="alternate" type="text/html" title="VSCode Setting for Rubyist" /><published>2018-07-12T00:00:00+09:00</published><updated>2018-07-12T00:00:00+09:00</updated><id>https://blog.toshima.ru/2018/07/12/vscode-for-ruby</id><content type="html" xml:base="https://blog.toshima.ru/2018/07/12/vscode-for-ruby.html">&lt;h2 id=&quot;intellisense&quot;&gt;Intellisense&lt;/h2&gt;
-
-&lt;p&gt;To use VSCode &lt;code class=&quot;highlighter-rouge&quot;&gt;go to&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;peek definition&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;symbol&lt;/code&gt;, you have to set &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby.intellisense&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Valid options are &lt;code class=&quot;highlighter-rouge&quot;&gt;rubyLocate&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;. Default option is &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;, so set &lt;code class=&quot;highlighter-rouge&quot;&gt;rubyLocate&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;ruby.intellisense&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;rubyLocate&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;Go to Symbols&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Go to Definition&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;lint&quot;&gt;Lint&lt;/h2&gt;
-
-&lt;p&gt;You can also use &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby -wc&lt;/code&gt; syntax check as a lint(By default no linters are turned on).&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;ruby.lint&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;ruby&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If you are unicode user, set &lt;code class=&quot;highlighter-rouge&quot;&gt;unicode&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;ruby.lint&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;ruby&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;unicode&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/rubyide/vscode-ruby&quot;&gt;rubyide/vscode-ruby&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="vscode" /><category term="ruby" /><summary type="html">Intellisense</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry></feed>
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="activerecord" /><category term="rails" /><summary type="html">IF you want to select unique values from a column in ActiveRecord, you can use distinct + pluck.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /></entry></feed>
