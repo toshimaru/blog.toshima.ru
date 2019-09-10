@@ -1,6 +1,7 @@
 ---
-title: how to fix uglifier Bundler::GemRequireError
+title: How to fix uglifier Bundler::GemRequireError
 tags: rails
+last_modified_at: 2019-09-10
 ---
 
 I got an error below when I tried to run `rails server` after running `rails new`.
