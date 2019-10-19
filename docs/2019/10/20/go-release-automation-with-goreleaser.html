@@ -15,24 +15,26 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Toshimaru’s Blog | Where there’s a will, there’s a way.</title>
+<title>Go Release Automation with goreleaser + GitHub Actions | Toshimaru’s Blog</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Toshimaru’s Blog" />
+<meta property="og:title" content="Go Release Automation with goreleaser + GitHub Actions" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Where there’s a will, there’s a way." />
-<meta property="og:description" content="Where there’s a will, there’s a way." />
-<link rel="canonical" href="https://blog.toshima.ru/2019/10/" />
-<meta property="og:url" content="https://blog.toshima.ru/2019/10/" />
+<meta name="description" content="I created a workflow to automate my go CLI tool with goreleaser + GitHub actions." />
+<meta property="og:description" content="I created a workflow to automate my go CLI tool with goreleaser + GitHub actions." />
+<link rel="canonical" href="https://blog.toshima.ru/2019/10/20/go-release-automation-with-goreleaser.html" />
+<meta property="og:url" content="https://blog.toshima.ru/2019/10/20/go-release-automation-with-goreleaser.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
+<meta property="og:image" content="https://blog.toshima.ru/images/goreleaser.jpg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-10-01T00:00:00+09:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Toshimaru’s Blog" />
+<meta property="article:published_time" content="2019-10-20T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://blog.toshima.ru/images/goreleaser.jpg" />
+<meta property="twitter:title" content="Go Release Automation with goreleaser + GitHub Actions" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"datePublished":"2019-10-01T00:00:00+09:00","dateModified":"2019-10-01T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/10/"},"url":"https://blog.toshima.ru/2019/10/","author":{"@type":"Person","name":"toshimaru"},"description":"Where there’s a will, there’s a way.","headline":"Toshimaru’s Blog","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"datePublished":"2019-10-20T00:00:00+09:00","dateModified":"2019-10-20T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/10/20/go-release-automation-with-goreleaser.html"},"image":"https://blog.toshima.ru/images/goreleaser.jpg","url":"https://blog.toshima.ru/2019/10/20/go-release-automation-with-goreleaser.html","author":{"@type":"Person","name":"toshimaru"},"description":"I created a workflow to automate my go CLI tool with goreleaser + GitHub actions.","headline":"Go Release Automation with goreleaser + GitHub Actions","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -60,27 +62,138 @@
       <header class="masthead">
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
-<div class="content page">
-  <h1 class="page-title"></h1>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2019/10/20/go-release-automation-with-goreleaser.html">Go Release Automation with goreleaser + GitHub Actions</a>
-    </h2>
-    <div class="list-post-date">
+<div class="content post">
+  <h1 class="post-title">Go Release Automation with goreleaser + GitHub Actions</h1>
+  <div class="post-meta">
+    <div class="post-date">
       <time>20 Oct 2019</time>
     </div>
-  </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2019/10/14/bundle-from-bundler-conflicts.html">Bundler Error: bundle from bundler conflicts</a>
-    </h2>
-    <div class="list-post-date">
-      <time>14 Oct 2019</time>
+    <div class="post-tags">
+      <ul class="tags">
+        
+          <li><a href="/tag/go" class="tag">go</a></li>
+        
+      </ul>
     </div>
   </div>
-  
+
+  <div class="post-body">
+    <p>I created a workflow to automate <a href="https://github.com/toshimaru/nyan">my go CLI tool</a> with goreleaser + GitHub actions.</p>
+
+<h2 id="tools-i-used">Tools I used</h2>
+
+<ul>
+  <li><a href="https://goreleaser.com/">GoReleaser</a> (<a href="https://github.com/goreleaser/goreleaser">GitHub Source</a>)</li>
+  <li><a href="https://goreleaser.com/actions/">GitHub Actions · GoReleaser</a> (<a href="https://github.com/goreleaser/goreleaser-action">GitHub Source</a>)</li>
+</ul>
+
+<h2 id="what-i-want-to-do">What I want to do</h2>
+
+<p>When a new tag is pushed, I’d like to release new go binary with goreleaser.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>git tag <span class="nt">-a</span> v0.1.0 <span class="nt">-m</span> <span class="s2">"First release"</span>
+<span class="gp">$</span><span class="w"> </span>git push origin v0.1.0 <span class="c"># =&gt; want to release v0.1.0</span>
+</code></pre></div></div>
+
+<h2 id="trigger-tagcreated-event">Trigger TagCreated-Event</h2>
+
+<p>I want to trigger an event - <_A new="" tag="" is="" pushed_="">. How can I do this on GitHub Actions?</_A></p>
+
+<p>The example:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Release with goreleaser</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">!*"</span>
+    <span class="na">tags</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">v*.*.*"</span>
+</code></pre></div></div>
+
+<p>The points are:</p>
+
+<ul>
+  <li>Disabling an event - <_A new="" branch="" is="" pushed_=""></_A></li>
+  <li>Enabling an event - &lt;<em>A new tag named <code class="highlighter-rouge">v*.*.*</code> is pushed</em>&gt;</li>
+</ul>
+
+<h2 id="release-workflow-definition">Release Workflow Definition</h2>
+
+<p>Release Workflow is:</p>
+
+<ol>
+  <li>Set up Go</li>
+  <li>Checkout Code</li>
+  <li>Run <code class="highlighter-rouge">goreleaser</code> command using <a href="https://github.com/goreleaser/goreleaser-action">goreleaser/goreleaser-action</a></li>
+</ol>
+
+<p>The workflow definition sample is:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">goreleaser</span>
+    <span class="na">steps</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Set up Go 1.13.x</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-go@v1</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">go-version</span><span class="pi">:</span> <span class="m">1.13</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="s">go</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Check out code into the Go module directory</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v1</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Release via goreleaser</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">goreleaser/goreleaser-action@master</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">args</span><span class="pi">:</span> <span class="s">release</span>
+      <span class="na">env</span><span class="pi">:</span>
+        <span class="na">GITHUB_TOKEN</span><span class="pi">:</span> <span class="s">$</span>
+</code></pre></div></div>
+
+<p>I use <code class="highlighter-rouge">CUSTOM_GITHUB_TOKEN</code> because I need to update <a href="https://github.com/toshimaru/homebrew-nyan">another repository for homebrew</a> in release process.</p>
+
+<p>If you don’t need an additional permission for another repository, you can use default <code class="highlighter-rouge">GITHUB_TOKEN</code>.</p>
+
+<blockquote>
+  <p>GitHub automatically creates a GITHUB_TOKEN secret to use in your workflow.</p>
+</blockquote>
+
+<p>ref. <a href="https://help.github.com/en/articles/virtual-environments-for-github-actions#github_token-secret">Virtual environments for GitHub Actions - GitHub Help</a></p>
+
+<h3 id="tips-no-tag-found-snapshot-forced">Tips: No tag found. Snapshot forced</h3>
+
+<p>If no tag is found, snapshop option is forced.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`⚠️ No tag found. Snapshot forced`</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">args</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="dl">'</span><span class="s1">--snapshot</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">snapshot</span> <span class="o">=</span> <span class="dl">'</span><span class="s1"> --snapshot</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>ref. <a href="https://github.com/goreleaser/goreleaser-action/blob/7550dd03404a4d4f35fc4ebf1bc8442767cc4545/src/main.ts#L18-L21">https://github.com/goreleaser/goreleaser-action/blob/7550dd03404a4d4f35fc4ebf1bc8442767cc4545/src/main.ts#L18-L21</a></p>
+
+<h2 id="whole-sample">Whole Sample</h2>
+
+<p>You can watch whole sample on my repository:</p>
+
+<ul>
+  <li>Repository: <a href="https://github.com/toshimaru/nyan">toshimaru/nyan: Colored <code class="highlighter-rouge">cat</code> command.</a></li>
+  <li>GitHub Actions configuration: <a href="https://github.com/toshimaru/nyan/blob/master/.github/workflows/release.yml">nyan/release.yml at master · toshimaru/nyan</a></li>
+</ul>
+
+  </div>
+
+  <div class="social-share">
+    <amp-social-share type="twitter"></amp-social-share>
+    <amp-social-share type="facebook"></amp-social-share>
+    <amp-social-share type="gplus"></amp-social-share>
+  </div>
+
+  <div class="post-ad">
+    <amp-ad width="100vw" height=320 type="adsense" data-ad-client="ca-pub-8616720383995770" data-ad-slot="4570107466" data-auto-format="rspv"
+      data-full-width>
+      <div overflow></div>
+    </amp-ad>
+  </div>
 </div>
 
     </div>
