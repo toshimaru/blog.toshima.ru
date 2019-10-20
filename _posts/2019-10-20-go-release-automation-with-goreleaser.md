@@ -24,7 +24,7 @@ $ git push origin v0.1.0 # => want to release v0.1.0
 
 ## Trigger TagCreated-Event
 
-I want to trigger an event - <_A new tag is pushed_>. How can I do this on GitHub Actions?
+I want to trigger an event - _\<A new tag is pushed\>_. How can I do this on GitHub Actions?
 
 The example:
 
@@ -40,8 +40,8 @@ on:
 
 The points are:
 
-- Disabling an event - <_A new branch is pushed_>
-- Enabling an event - <_A new tag named `v*.*.*` is pushed_>
+- Disabling an event - _\<A new branch is pushed\>_
+- Enabling an event - _\<A new tag named `v*.*.*` is pushed\>_
 
 ## Release Workflow Definition
 
@@ -71,7 +71,7 @@ jobs:
       with:
         args: release
       env:
-        GITHUB_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${% raw %}{{ secrets.CUSTOM_GITHUB_TOKEN }}{% endraw %}
 ```
 
 I use `CUSTOM_GITHUB_TOKEN` because I need to update [another repository for homebrew](https://github.com/toshimaru/homebrew-nyan) in release process.
@@ -99,7 +99,7 @@ ref. <https://github.com/goreleaser/goreleaser-action/blob/7550dd03404a4d4f35fc4
 
 You can watch whole sample on my repository:
 
-- Repository: [toshimaru/nyan: Colored `cat` command.](https://github.com/toshimaru/nyan)
+- Repository: [toshimaru/nyan: Colored cat command.](https://github.com/toshimaru/nyan)
 - GitHub Actions configuration: [nyan/release.yml at master · toshimaru/nyan](https://github.com/toshimaru/nyan/blob/master/.github/workflows/release.yml)
 
 ## Reference
