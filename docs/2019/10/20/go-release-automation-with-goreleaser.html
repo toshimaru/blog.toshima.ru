@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"datePublished":"2019-10-20T00:00:00+09:00","dateModified":"2019-10-20T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/10/20/go-release-automation-with-goreleaser.html"},"image":"https://blog.toshima.ru/images/goreleaser.jpg","url":"https://blog.toshima.ru/2019/10/20/go-release-automation-with-goreleaser.html","author":{"@type":"Person","name":"toshimaru"},"description":"I created a workflow to automate my go CLI tool with goreleaser + GitHub actions.","headline":"Go Release Automation with goreleaser + GitHub Actions","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"image":"https://blog.toshima.ru/images/goreleaser.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/10/20/go-release-automation-with-goreleaser.html"},"url":"https://blog.toshima.ru/2019/10/20/go-release-automation-with-goreleaser.html","author":{"@type":"Person","name":"toshimaru"},"headline":"Go Release Automation with goreleaser + GitHub Actions","dateModified":"2019-10-20T00:00:00+09:00","datePublished":"2019-10-20T00:00:00+09:00","description":"I created a workflow to automate my go CLI tool with goreleaser + GitHub actions.","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -98,7 +98,7 @@
 
 <h2 id="trigger-tagcreated-event">Trigger TagCreated-Event</h2>
 
-<p>I want to trigger an event - <_A new="" tag="" is="" pushed_="">. How can I do this on GitHub Actions?</_A></p>
+<p>I want to trigger an event - <em>&lt;A new tag is pushed&gt;</em>. How can I do this on GitHub Actions?</p>
 
 <p>The example:</p>
 
@@ -114,8 +114,8 @@
 <p>The points are:</p>
 
 <ul>
-  <li>Disabling an event - <_A new="" branch="" is="" pushed_=""></_A></li>
-  <li>Enabling an event - &lt;<em>A new tag named <code class="highlighter-rouge">v*.*.*</code> is pushed</em>&gt;</li>
+  <li>Disabling an event - <em>&lt;A new branch is pushed&gt;</em></li>
+  <li>Enabling an event - <em>&lt;A new tag named <code class="highlighter-rouge">v*.*.*</code> is pushed&gt;</em></li>
 </ul>
 
 <h2 id="release-workflow-definition">Release Workflow Definition</h2>
@@ -147,7 +147,7 @@
       <span class="na">with</span><span class="pi">:</span>
         <span class="na">args</span><span class="pi">:</span> <span class="s">release</span>
       <span class="na">env</span><span class="pi">:</span>
-        <span class="na">GITHUB_TOKEN</span><span class="pi">:</span> <span class="s">$</span>
+        <span class="na">GITHUB_TOKEN</span><span class="pi">:</span> <span class="s">${{ secrets.CUSTOM_GITHUB_TOKEN }}</span>
 </code></pre></div></div>
 
 <p>I use <code class="highlighter-rouge">CUSTOM_GITHUB_TOKEN</code> because I need to update <a href="https://github.com/toshimaru/homebrew-nyan">another repository for homebrew</a> in release process.</p>
@@ -177,7 +177,7 @@
 <p>You can watch whole sample on my repository:</p>
 
 <ul>
-  <li>Repository: <a href="https://github.com/toshimaru/nyan">toshimaru/nyan: Colored <code class="highlighter-rouge">cat</code> command.</a></li>
+  <li>Repository: <a href="https://github.com/toshimaru/nyan">toshimaru/nyan: Colored cat command.</a></li>
   <li>GitHub Actions configuration: <a href="https://github.com/toshimaru/nyan/blob/master/.github/workflows/release.yml">nyan/release.yml at master · toshimaru/nyan</a></li>
 </ul>
 
