@@ -10,7 +10,8 @@ I created a workflow to automate [my go CLI tool](https://github.com/toshimaru/n
 ## Tools I used
 
 - [GoReleaser](https://goreleaser.com/) ([GitHub Source](https://github.com/goreleaser/goreleaser))
-- [GitHub Actions · GoReleaser](https://goreleaser.com/actions/) ([GitHub Source](https://github.com/goreleaser/goreleaser-action))
+- [GitHub Actions](https://github.com/features/actions)
+- [goreleaser/goreleaser-action](https://github.com/goreleaser/goreleaser-action)
 
 ## What I want to do
 
@@ -47,7 +48,7 @@ The points are:
 Release Workflow is:
 
 1. Set up Go
-1. Checkout Code
+1. Check out Code
 1. Run `goreleaser` command using [goreleaser/goreleaser-action](https://github.com/goreleaser/goreleaser-action)
 
 The workflow definition sample is:
@@ -58,14 +59,14 @@ jobs:
     runs-on: ubuntu-latest
     name: goreleaser
     steps:
-    - name: Set up Go 1.13.x
+    - name: Set up Go
       uses: actions/setup-go@v1
       with:
         go-version: 1.13
       id: go
     - name: Check out code into the Go module directory
       uses: actions/checkout@v1
-    - name: Release via goreleaser
+    - name: goreleaser
       uses: goreleaser/goreleaser-action@master
       with:
         args: release
@@ -83,7 +84,7 @@ ref. [Virtual environments for GitHub Actions - GitHub Help](https://help.github
 
 ### Tips: No tag found. Snapshot forced
 
-If no tag is found, snapshop option is forced.
+If no tag is found, snapshot option is forced.
 
 ```ts
 console.log(`⚠️ No tag found. Snapshot forced`);
@@ -100,3 +101,8 @@ You can watch whole sample on my repository:
 
 - Repository: [toshimaru/nyan: Colored `cat` command.](https://github.com/toshimaru/nyan)
 - GitHub Actions configuration: [nyan/release.yml at master · toshimaru/nyan](https://github.com/toshimaru/nyan/blob/master/.github/workflows/release.yml)
+
+## Reference
+
+- [GitHub Actions · GoReleaser](https://goreleaser.com/actions/)
+- [Virtual environments for GitHub Actions - GitHub Help](https://help.github.com/en/articles/virtual-environments-for-github-actions)
