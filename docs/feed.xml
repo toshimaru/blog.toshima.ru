@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2019-10-20T08:00:22+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2019-10-20T16:32:35+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
 </subtitle><author><name>toshimaru</name></author><entry><title type="html">Go Release Automation with goreleaser + GitHub Actions</title><link href="https://blog.toshima.ru/2019/10/20/go-release-automation-with-goreleaser.html" rel="alternate" type="text/html" title="Go Release Automation with goreleaser + GitHub Actions" /><published>2019-10-20T00:00:00+09:00</published><updated>2019-10-20T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/10/20/go-release-automation-with-goreleaser</id><content type="html" xml:base="https://blog.toshima.ru/2019/10/20/go-release-automation-with-goreleaser.html">&lt;p&gt;I created a workflow to automate &lt;a href=&quot;https://github.com/toshimaru/nyan&quot;&gt;my go CLI tool&lt;/a&gt; with goreleaser + GitHub actions.&lt;/p&gt;
 
 &lt;h2 id=&quot;tools-i-used&quot;&gt;Tools I used&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://goreleaser.com/&quot;&gt;GoReleaser&lt;/a&gt; (&lt;a href=&quot;https://github.com/goreleaser/goreleaser&quot;&gt;GitHub Source&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://goreleaser.com/actions/&quot;&gt;GitHub Actions · GoReleaser&lt;/a&gt; (&lt;a href=&quot;https://github.com/goreleaser/goreleaser-action&quot;&gt;GitHub Source&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/features/actions&quot;&gt;GitHub Actions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/goreleaser/goreleaser-action&quot;&gt;goreleaser/goreleaser-action&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;what-i-want-to-do&quot;&gt;What I want to do&lt;/h2&gt;
@@ -44,7 +45,7 @@
 
 &lt;ol&gt;
   &lt;li&gt;Set up Go&lt;/li&gt;
-  &lt;li&gt;Checkout Code&lt;/li&gt;
+  &lt;li&gt;Check out Code&lt;/li&gt;
   &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;goreleaser&lt;/code&gt; command using &lt;a href=&quot;https://github.com/goreleaser/goreleaser-action&quot;&gt;goreleaser/goreleaser-action&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -55,14 +56,14 @@
     &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;goreleaser&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Set up Go 1.13.x&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Set up Go&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/setup-go@v1&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
         &lt;span class=&quot;na&quot;&gt;go-version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1.13&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;go&lt;/span&gt;
     &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Check out code into the Go module directory&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/checkout@v1&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Release via goreleaser&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;goreleaser&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;goreleaser/goreleaser-action@master&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
         &lt;span class=&quot;na&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;release&lt;/span&gt;
@@ -82,7 +83,7 @@
 
 &lt;h3 id=&quot;tips-no-tag-found-snapshot-forced&quot;&gt;Tips: No tag found. Snapshot forced&lt;/h3&gt;
 
-&lt;p&gt;If no tag is found, snapshop option is forced.&lt;/p&gt;
+&lt;p&gt;If no tag is found, snapshot option is forced.&lt;/p&gt;
 
 &lt;div class=&quot;language-ts highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`⚠️ No tag found. Snapshot forced`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;includes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;--snapshot&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -99,6 +100,13 @@
 &lt;ul&gt;
   &lt;li&gt;Repository: &lt;a href=&quot;https://github.com/toshimaru/nyan&quot;&gt;toshimaru/nyan: Colored &lt;code class=&quot;highlighter-rouge&quot;&gt;cat&lt;/code&gt; command.&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;GitHub Actions configuration: &lt;a href=&quot;https://github.com/toshimaru/nyan/blob/master/.github/workflows/release.yml&quot;&gt;nyan/release.yml at master · toshimaru/nyan&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://goreleaser.com/actions/&quot;&gt;GitHub Actions · GoReleaser&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/virtual-environments-for-github-actions&quot;&gt;Virtual environments for GitHub Actions - GitHub Help&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="go" /><summary type="html">I created a workflow to automate my go CLI tool with goreleaser + GitHub actions.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/images/goreleaser.jpg" /></entry><entry><title type="html">Bundler Error: bundle from bundler conflicts</title><link href="https://blog.toshima.ru/2019/10/14/bundle-from-bundler-conflicts.html" rel="alternate" type="text/html" title="Bundler Error: bundle from bundler conflicts" /><published>2019-10-14T00:00:00+09:00</published><updated>2019-10-14T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/10/14/bundle-from-bundler-conflicts</id><content type="html" xml:base="https://blog.toshima.ru/2019/10/14/bundle-from-bundler-conflicts.html">&lt;p&gt;One day I installed &lt;code class=&quot;highlighter-rouge&quot;&gt;bundler&lt;/code&gt; and got an error.&lt;/p&gt;
 
 &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;bundler

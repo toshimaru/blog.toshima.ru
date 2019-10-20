@@ -84,7 +84,8 @@
 
 <ul>
   <li><a href="https://goreleaser.com/">GoReleaser</a> (<a href="https://github.com/goreleaser/goreleaser">GitHub Source</a>)</li>
-  <li><a href="https://goreleaser.com/actions/">GitHub Actions · GoReleaser</a> (<a href="https://github.com/goreleaser/goreleaser-action">GitHub Source</a>)</li>
+  <li><a href="https://github.com/features/actions">GitHub Actions</a></li>
+  <li><a href="https://github.com/goreleaser/goreleaser-action">goreleaser/goreleaser-action</a></li>
 </ul>
 
 <h2 id="what-i-want-to-do">What I want to do</h2>
@@ -123,7 +124,7 @@
 
 <ol>
   <li>Set up Go</li>
-  <li>Checkout Code</li>
+  <li>Check out Code</li>
   <li>Run <code class="highlighter-rouge">goreleaser</code> command using <a href="https://github.com/goreleaser/goreleaser-action">goreleaser/goreleaser-action</a></li>
 </ol>
 
@@ -134,14 +135,14 @@
     <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
     <span class="na">name</span><span class="pi">:</span> <span class="s">goreleaser</span>
     <span class="na">steps</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Set up Go 1.13.x</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Set up Go</span>
       <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-go@v1</span>
       <span class="na">with</span><span class="pi">:</span>
         <span class="na">go-version</span><span class="pi">:</span> <span class="m">1.13</span>
       <span class="na">id</span><span class="pi">:</span> <span class="s">go</span>
     <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Check out code into the Go module directory</span>
       <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v1</span>
-    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Release via goreleaser</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">goreleaser</span>
       <span class="na">uses</span><span class="pi">:</span> <span class="s">goreleaser/goreleaser-action@master</span>
       <span class="na">with</span><span class="pi">:</span>
         <span class="na">args</span><span class="pi">:</span> <span class="s">release</span>
@@ -161,7 +162,7 @@
 
 <h3 id="tips-no-tag-found-snapshot-forced">Tips: No tag found. Snapshot forced</h3>
 
-<p>If no tag is found, snapshop option is forced.</p>
+<p>If no tag is found, snapshot option is forced.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`⚠️ No tag found. Snapshot forced`</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">args</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="dl">'</span><span class="s1">--snapshot</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
@@ -178,6 +179,13 @@
 <ul>
   <li>Repository: <a href="https://github.com/toshimaru/nyan">toshimaru/nyan: Colored <code class="highlighter-rouge">cat</code> command.</a></li>
   <li>GitHub Actions configuration: <a href="https://github.com/toshimaru/nyan/blob/master/.github/workflows/release.yml">nyan/release.yml at master · toshimaru/nyan</a></li>
+</ul>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="https://goreleaser.com/actions/">GitHub Actions · GoReleaser</a></li>
+  <li><a href="https://help.github.com/en/articles/virtual-environments-for-github-actions">Virtual environments for GitHub Actions - GitHub Help</a></li>
 </ul>
 
   </div>
