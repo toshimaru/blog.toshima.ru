@@ -26,7 +26,7 @@ The style is:
 }
 ```
 
-You can change whatever you want.
+You can change the color or style whatever you want.
 
 The result is:
 
@@ -37,7 +37,7 @@ The header background color has changed to `#511e80`.
 ## Use Case in Read World
 
 - Change style for each environments(`development`, `staging`, `production`)
-- Change sytle for your own secret/important page(e.g. Password page)
+- Change style for your own very secret/important page(e.g. Password admin page)
 
 ## Reference
 
