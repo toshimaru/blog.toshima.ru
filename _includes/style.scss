@@ -83,6 +83,7 @@ ul {
 
   ul,
   ol {
+    margin-left: 1rem;
     margin-top: .25rem;
     margin-bottom: .5rem;
   }
@@ -161,6 +162,7 @@ code {
   color: #bf616a;
   background-color: #f9f9f9;
   border-radius: 3px;
+  white-space: pre;
 }
 
 pre {
@@ -173,8 +175,9 @@ pre {
   white-space: pre;
   white-space: pre-wrap;
   word-break: break-all;
-  // word-wrap: break-word;
+  word-wrap: break-word;
   background-color: #f5f5f5;
+  overflow-x: scroll;
 }
 
 pre code {
