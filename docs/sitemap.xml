@@ -189,6 +189,10 @@
 <lastmod>2019-12-17T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version.html</loc>
+<lastmod>2019-12-20T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>https://blog.toshima.ru/</loc>
 </url>
 <url>
@@ -268,6 +272,9 @@
 </url>
 <url>
 <loc>https://blog.toshima.ru/tag/chrome/</loc>
+</url>
+<url>
+<loc>https://blog.toshima.ru/tag/ci/</loc>
 </url>
 <url>
 <loc>https://blog.toshima.ru/2016/</loc>
