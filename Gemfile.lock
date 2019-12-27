@@ -99,6 +99,3 @@ DEPENDENCIES
   jekyll-sitemap
   kramdown-amp
   rake
-
-BUNDLED WITH
-   1.17.3
