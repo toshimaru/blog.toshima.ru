@@ -1,33 +1,34 @@
 ---
 layout: post
 title: Run and Connect to MySQL on Docker
-last_modified_at: 2019-07-26
+last_modified_at: 2019-12-27
 tags: mysql docker
 ---
 
-I wanted to run MySQL v8.0.x on docker aside from MySQL 5.7 running on my localhost, so I'll give a instruction for it.
+I wanted to run MySQL v8.0.x on docker aside from MySQL v5.7 running on my localhost, so I'll give a instruction for it.
 
 ## docker pull
 
-First of all, let's run `docker pull` and pull MySQL v8.0 image.
+First of all, let's run `docker pull` and get MySQL v8.0 image.
 
 ```console
 $ docker pull mysql:8.0
 ```
 
-(`8.0` means a tag. if it's not specified, latest MySQL docker image is used.)
+`8.0` means a tag. if it's not specified, latest MySQL docker image is used.
 
 ## docker run
 
 Then, run `docker run`.
 
 ```console
-$ docker run --name mysql -e MYSQL_ROOT_PASSWORD=xxxx -p 3306:3306 mysql:8.0
+$ docker run --name mysql -e MYSQL_ROOT_PASSWORD={your_password} -p 3306:3306 mysql:8.0
 ```
 
-- `MYSQL_ROOT_PASSWORD` is required, you can set whatever password you like.
+- `MYSQL_ROOT_PASSWORD` is required, you can set whatever password you like
 - `--name mysql` option assigns a name(`mysql`) to the container
 - `-p 3306:3306` option publishes a container's `3306` port to the host
+  - If you want to change port, change it to `-p 3307:3306`. Then, `3307` port is used
 
 ## Connect to MySQL
 
@@ -35,7 +36,7 @@ Finally, let's conect to MySQL running on the docker.
 
 ```console
 $ mysql -h 127.0.0.1 -u root -p
-Enter password:
+Enter password: {your_password}
 ERROR 2059 (HY000): Authentication plugin 'caching_sha2_password' cannot be loaded: dlopen(/usr/local/Cellar/mysql/5.7.22/lib/plugin/caching_sha2_password.so, 2): image not found
 ```
 
@@ -53,7 +54,7 @@ The folloing commands are run inside the docker.
 root@xxx:/# mysql --version
 mysql  Ver 8.0.17 for Linux on x86_64 (MySQL Community Server - GPL)
 root@xxx:/# mysql -uroot -p
-Enter password:
+Enter password: {your_password}
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 8
 Server version: 8.0.17 MySQL Community Server - GPL
@@ -70,6 +71,20 @@ mysql>
 ```
 
 It works!
+
+## Stop MySQL continer
+
+```console
+$ docker stop mysql
+mysql
+```
+
+## Remove created continer
+
+```console
+$ docker rm mysql
+mysql
+```
 
 ## Reference
 
