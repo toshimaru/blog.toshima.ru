@@ -15,24 +15,26 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Toshimaru’s Blog | Where there’s a will, there’s a way.</title>
+<title>MySQL ADD COLUMN statements | Toshimaru’s Blog</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Toshimaru’s Blog" />
+<meta property="og:title" content="MySQL ADD COLUMN statements" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Where there’s a will, there’s a way." />
-<meta property="og:description" content="Where there’s a will, there’s a way." />
-<link rel="canonical" href="https://blog.toshima.ru/2018/08/" />
-<meta property="og:url" content="https://blog.toshima.ru/2018/08/" />
+<meta name="description" content="MySQL Version" />
+<meta property="og:description" content="MySQL Version" />
+<link rel="canonical" href="https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html" />
+<meta property="og:url" content="https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
+<meta property="og:image" content="https://avatars2.githubusercontent.com/u/803398" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-08-01T00:00:00+09:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Toshimaru’s Blog" />
+<meta property="article:published_time" content="2019-12-27T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://avatars2.githubusercontent.com/u/803398" />
+<meta property="twitter:title" content="MySQL ADD COLUMN statements" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"toshimaru"},"headline":"Toshimaru’s Blog","dateModified":"2018-08-01T00:00:00+09:00","description":"Where there’s a will, there’s a way.","datePublished":"2018-08-01T00:00:00+09:00","url":"https://blog.toshima.ru/2018/08/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2018/08/"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"toshimaru"},"headline":"MySQL ADD COLUMN statements","dateModified":"2019-12-27T00:00:00+09:00","description":"MySQL Version","datePublished":"2019-12-27T00:00:00+09:00","url":"https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html","@type":"BlogPosting","image":"https://avatars2.githubusercontent.com/u/803398","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -60,27 +62,126 @@
       <header class="masthead">
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
-<div class="content page">
-  <h1 class="page-title"></h1>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2018/08/19/how-to-find-mycnf.html">How to Find MySQL my.cnf file</a>
-    </h2>
-    <div class="list-post-date">
-      <time>19 Aug 2018</time>
+<div class="content post">
+  <h1 class="post-title">MySQL ADD COLUMN statements</h1>
+  <div class="post-meta">
+    <div class="post-date">
+      <time>27 Dec 2019</time>
+    </div>
+    <div class="post-tags">
+      <ul class="tags">
+        
+          <li><a href="/tag/mysql" class="tag">mysql</a></li>
+        
+      </ul>
     </div>
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2018/08/04/activerecord-distinct-pluck.html">Select Unique Values from a Column in ActiveRecord</a>
-    </h2>
-    <div class="list-post-date">
-      <time>04 Aug 2018</time>
-    </div>
+
+  <div class="post-body">
+    <h2 id="mysql-version">MySQL Version</h2>
+
+<p>MySQL 8.0</p>
+
+<h2 id="table-schema">Table Schema</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users</span><span class="p">(</span><span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">);</span>
+<span class="c1">-- Query OK, 0 rows affected</span>
+</code></pre></div></div>
+
+<p>The result is:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; desc users
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int(11)      | NO   | PRI | &lt;null&gt;  | auto_increment |
+| name  | varchar(255) | NO   |     | &lt;null&gt;  |                |
++-------+--------------+------+-----+---------+----------------+
+</code></pre></div></div>
+
+<h2 id="add-a-column-to-the-last-field">Add a column to the last field</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">new_column1</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The result is:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; desc users;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int(11)      | NO   | PRI | &lt;null&gt;  | auto_increment |
+| name        | varchar(255) | NO   |     | &lt;null&gt;  |                |
+| new_column1 | varchar(255) | YES  |     | &lt;null&gt;  |                |
++-------------+--------------+------+-----+---------+----------------+
+</code></pre></div></div>
+
+<h2 id="add-a-column-to-the-first-field">Add a column to the first field</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">new_column1</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">FIRST</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The result is:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; desc users
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| new_column1 | varchar(255) | YES  |     | &lt;null&gt;  |                |
+| id          | int(11)      | NO   | PRI | &lt;null&gt;  | auto_increment |
+| name        | varchar(255) | NO   |     | &lt;null&gt;  |                |
++-------------+--------------+------+-----+---------+----------------+
+</code></pre></div></div>
+
+<h2 id="add-a-column-after-another-column">Add a column after another column</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">new_column1</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">AFTER</span> <span class="n">id</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The result is:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; desc users
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int(11)      | NO   | PRI | &lt;null&gt;  | auto_increment |
+| new_column1 | varchar(255) | YES  |     | &lt;null&gt;  |                |
+| name        | varchar(255) | NO   |     | &lt;null&gt;  |                |
++-------------+--------------+------+-----+---------+----------------+
+</code></pre></div></div>
+
+<h3 id="what-about-before">What about “before”?</h3>
+
+<p>Let’s use <code class="highlighter-rouge">BEFORE</code> instead of <code class="highlighter-rouge">AFTER</code>.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">new_column1</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">BEFORE</span> <span class="n">id</span><span class="p">;</span>
+<span class="c1">-- (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BEFORE id' at line 1")</span>
+</code></pre></div></div>
+
+<p>It causes syntax error!</p>
+
+<p><strong>We can’t use <code class="highlighter-rouge">BEFORE</code> for <code class="highlighter-rouge">ADD COLUMN</code> statement.</strong></p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="https://dev.mysql.com/doc/refman/8.0/en/alter-table.html">MySQL :: MySQL 8.0 Reference Manual :: 13.1.9 ALTER TABLE Statement</a></li>
+</ul>
+
   </div>
-  
+
+  <div class="social-share">
+    <amp-social-share type="twitter"></amp-social-share>
+    <amp-social-share type="facebook"></amp-social-share>
+    <amp-social-share type="gplus"></amp-social-share>
+  </div>
+
+  <div class="post-ad">
+    <amp-ad width="100vw" height=320 type="adsense" data-ad-client="ca-pub-8616720383995770" data-ad-slot="4570107466" data-auto-format="rspv"
+      data-full-width>
+      <div overflow></div>
+    </amp-ad>
+  </div>
 </div>
 
     </div>

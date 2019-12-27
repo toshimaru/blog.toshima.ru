@@ -1,5 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2019-12-24T11:17:52+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">How to fix “This version of ChromeDriver only supports Chrome version xx” on Ubuntu</title><link href="https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version.html" rel="alternate" type="text/html" title="How to fix &quot;This version of ChromeDriver only supports Chrome version xx&quot; on Ubuntu" /><published>2019-12-20T00:00:00+09:00</published><updated>2019-12-20T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version</id><content type="html" xml:base="https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version.html">&lt;h2 id=&quot;issue&quot;&gt;Issue&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2019-12-27T14:15:55+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">MySQL ADD COLUMN statements</title><link href="https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html" rel="alternate" type="text/html" title="MySQL ADD COLUMN statements" /><published>2019-12-27T00:00:00+09:00</published><updated>2019-12-27T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/12/27/new-mysql-add-column</id><content type="html" xml:base="https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html">&lt;h2 id=&quot;mysql-version&quot;&gt;MySQL Version&lt;/h2&gt;
+
+&lt;p&gt;MySQL 8.0&lt;/p&gt;
+
+&lt;h2 id=&quot;table-schema&quot;&gt;Table Schema&lt;/h2&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;INTEGER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AUTO_INCREMENT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- Query OK, 0 rows affected&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The result is:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; desc users
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int(11)      | NO   | PRI | &amp;lt;null&amp;gt;  | auto_increment |
+| name  | varchar(255) | NO   |     | &amp;lt;null&amp;gt;  |                |
++-------+--------------+------+-----+---------+----------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;add-a-column-to-the-last-field&quot;&gt;Add a column to the last field&lt;/h2&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_column1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The result is:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; desc users;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int(11)      | NO   | PRI | &amp;lt;null&amp;gt;  | auto_increment |
+| name        | varchar(255) | NO   |     | &amp;lt;null&amp;gt;  |                |
+| new_column1 | varchar(255) | YES  |     | &amp;lt;null&amp;gt;  |                |
++-------------+--------------+------+-----+---------+----------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;add-a-column-to-the-first-field&quot;&gt;Add a column to the first field&lt;/h2&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_column1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FIRST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The result is:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; desc users
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| new_column1 | varchar(255) | YES  |     | &amp;lt;null&amp;gt;  |                |
+| id          | int(11)      | NO   | PRI | &amp;lt;null&amp;gt;  | auto_increment |
+| name        | varchar(255) | NO   |     | &amp;lt;null&amp;gt;  |                |
++-------------+--------------+------+-----+---------+----------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;add-a-column-after-another-column&quot;&gt;Add a column after another column&lt;/h2&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_column1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AFTER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The result is:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; desc users
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int(11)      | NO   | PRI | &amp;lt;null&amp;gt;  | auto_increment |
+| new_column1 | varchar(255) | YES  |     | &amp;lt;null&amp;gt;  |                |
+| name        | varchar(255) | NO   |     | &amp;lt;null&amp;gt;  |                |
++-------------+--------------+------+-----+---------+----------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;what-about-before&quot;&gt;What about “before”?&lt;/h3&gt;
+
+&lt;p&gt;Let’s use &lt;code class=&quot;highlighter-rouge&quot;&gt;BEFORE&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;AFTER&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_column1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BEFORE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- (1064, &quot;You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BEFORE id' at line 1&quot;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It causes syntax error!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;We can’t use &lt;code class=&quot;highlighter-rouge&quot;&gt;BEFORE&lt;/code&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;ADD COLUMN&lt;/code&gt; statement.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/alter-table.html&quot;&gt;MySQL :: MySQL 8.0 Reference Manual :: 13.1.9 ALTER TABLE Statement&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="mysql" /><summary type="html">MySQL Version</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">How to fix “This version of ChromeDriver only supports Chrome version xx” on Ubuntu</title><link href="https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version.html" rel="alternate" type="text/html" title="How to fix &quot;This version of ChromeDriver only supports Chrome version xx&quot; on Ubuntu" /><published>2019-12-20T00:00:00+09:00</published><updated>2019-12-20T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version</id><content type="html" xml:base="https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version.html">&lt;h2 id=&quot;issue&quot;&gt;Issue&lt;/h2&gt;
 
 &lt;p&gt;When I was running CI on &lt;a href=&quot;https://github.com/features/actions&quot;&gt;GitHub Actions&lt;/a&gt;, CI on Ubuntu suddenly gets an error.&lt;/p&gt;
 
@@ -453,56 +541,4 @@ Host github.yourcompany.com
 &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SIMPLE&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ALL&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;NULL&lt;/span&gt;          &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;NULL&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xxxx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;+----+-------------+-------+------+---------------+------+---------+------+------+-------+&lt;/span&gt;
 &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.00&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>toshimaru</name></author><category term="rails" /><summary type="html">Lets’s say you’d like to explain the following SQL.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">How to Measure Code Coverage on CodeClimate in Go</title><link href="https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html" rel="alternate" type="text/html" title="How to Measure Code Coverage on CodeClimate in Go" /><published>2019-08-11T00:00:00+09:00</published><updated>2019-08-11T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage</id><content type="html" xml:base="https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html">&lt;p&gt;Would you like to measure code coverage on &lt;a href=&quot;https://codeclimate.com/&quot;&gt;Code Climate&lt;/a&gt; in Go?&lt;/p&gt;
-
-&lt;p&gt;&lt;amp-img src=&quot;/images/coverage.png&quot; alt=&quot;coverage&quot; width='1584' height='1256' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;viewing-coverage-result&quot;&gt;Viewing Coverage Result&lt;/h2&gt;
-
-&lt;p&gt;All you need to is adding &lt;code class=&quot;highlighter-rouge&quot;&gt;-coverprofile c.out&lt;/code&gt; option to &lt;code class=&quot;highlighter-rouge&quot;&gt;go test&lt;/code&gt; command.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ go test ./... -coverprofile c.out
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;c.out&lt;/code&gt; is a test coverage result file.&lt;/p&gt;
-
-&lt;h2 id=&quot;sending-coverage-result&quot;&gt;Sending Coverage Result&lt;/h2&gt;
-
-&lt;p&gt;This is a sample to send coverage result on TravisCI.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; ./cc-test-reporter
-&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x ./cc-test-reporter
-./cc-test-reporter before-build
-&lt;span class=&quot;c&quot;&gt;# RUN TEST HERE&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# go test ./... -coverprofile c.out&lt;/span&gt;
-./cc-test-reporter after-build &lt;span class=&quot;nt&quot;&gt;--exit-code&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$TRAVIS_TEST_RESULT&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;sample-setting-for-travisci&quot;&gt;Sample Setting for TravisCI&lt;/h2&gt;
-
-&lt;p&gt;Whole sample for TravisCI:&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;go&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;before_script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 &amp;gt; ./cc-test-reporter&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;chmod +x ./cc-test-reporter&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./cc-test-reporter before-build&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;go test ./... -coverprofile c.out&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;after_script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/codeclimate/test-reporter/blob/master/examples/go_examples.md&quot;&gt;test-reporter/go_examples.md at master · codeclimate/test-reporter&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.golang.org/cover&quot;&gt;The cover story - The Go Blog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.codeclimate.com/docs/configuring-test-coverage&quot;&gt;Configuring Test Coverage&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;see-also&quot;&gt;See Also&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/2019/08/08/enable-go-module-cache-on-travisci.html&quot;&gt;Enable Go Module Cache on TravisCI&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="go" /><summary type="html">Would you like to measure code coverage on Code Climate in Go?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>toshimaru</name></author><category term="rails" /><summary type="html">Lets’s say you’d like to explain the following SQL.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
