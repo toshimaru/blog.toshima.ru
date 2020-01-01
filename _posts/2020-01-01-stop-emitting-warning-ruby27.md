@@ -28,3 +28,7 @@ To stop emitting the warnings, just add `RUBYOPT=-W:no-deprecated`.
 $ RUBYOPT=-W:no-deprecated bundle exec rails db:migrate
 # no Ruby warnings
 ```
+
+## See Also
+
+[Ruby 2.7.0 Released](https://www.ruby-lang.org/en/news/2019/12/25/ruby-2-7-0-released/)
