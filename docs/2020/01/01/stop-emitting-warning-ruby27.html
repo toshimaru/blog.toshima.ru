@@ -15,22 +15,26 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>ruby | Toshimaru’s Blog</title>
+<title>Stop emitting warnings in Ruby 2.7 | Toshimaru’s Blog</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="ruby" />
+<meta property="og:title" content="Stop emitting warnings in Ruby 2.7" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Where there’s a will, there’s a way." />
-<meta property="og:description" content="Where there’s a will, there’s a way." />
-<link rel="canonical" href="https://blog.toshima.ru/tag/ruby/" />
-<meta property="og:url" content="https://blog.toshima.ru/tag/ruby/" />
+<meta name="description" content="Ruby 2.7 emits many warnings." />
+<meta property="og:description" content="Ruby 2.7 emits many warnings." />
+<link rel="canonical" href="https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html" />
+<meta property="og:url" content="https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="ruby" />
+<meta property="og:image" content="https://avatars2.githubusercontent.com/u/803398" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-01-01T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://avatars2.githubusercontent.com/u/803398" />
+<meta property="twitter:title" content="Stop emitting warnings in Ruby 2.7" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"toshimaru"},"headline":"ruby","description":"Where there’s a will, there’s a way.","url":"https://blog.toshima.ru/tag/ruby/","@type":"WebPage","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"toshimaru"},"headline":"Stop emitting warnings in Ruby 2.7","dateModified":"2020-01-01T00:00:00+09:00","description":"Ruby 2.7 emits many warnings.","datePublished":"2020-01-01T00:00:00+09:00","url":"https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html","@type":"BlogPosting","image":"https://avatars2.githubusercontent.com/u/803398","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -58,81 +62,59 @@
       <header class="masthead">
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
-<div class="content page">
-  <h1 class="page-title">ruby</h1>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2020/01/01/stop-emitting-warning-ruby27.html">Stop emitting warnings in Ruby 2.7</a>
-    </h2>
-    <div class="list-post-date">
+<div class="content post">
+  <h1 class="post-title">Stop emitting warnings in Ruby 2.7</h1>
+  <div class="post-meta">
+    <div class="post-date">
       <time>01 Jan 2020</time>
     </div>
-  </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2019/12/17/make-puma-silent-on-test.html">Make Puma test output silent</a>
-    </h2>
-    <div class="list-post-date">
-      <time>17 Dec 2019</time>
+    <div class="post-tags">
+      <ul class="tags">
+        
+          <li><a href="/tag/ruby" class="tag">ruby</a></li>
+        
+      </ul>
     </div>
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2019/10/14/bundle-from-bundler-conflicts.html">Bundler Error: bundle from bundler conflicts</a>
-    </h2>
-    <div class="list-post-date">
-      <time>14 Oct 2019</time>
-    </div>
+
+  <div class="post-body">
+    <p>Ruby 2.7 emits many warnings.</p>
+
+<p>For example:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>bundle <span class="nb">exec </span>rails db:migrate
+<span class="gp">/usr/local/bundle/ruby/2.7.0/gems/actionpack-6.0.2.1/lib/action_dispatch/middleware/stack.rb:37: warning: Using the last argument as keyword parameters is deprecated;</span><span class="w"> </span>maybe <span class="k">**</span> should be added to the call
+<span class="go">/usr/local/bundle/ruby/2.7.0/gems/actionpack-6.0.2.1/lib/action_dispatch/middleware/static.rb:110: warning: The called method `initialize' is defined here
+</span><span class="gp">/usr/local/bundle/ruby/2.7.0/gems/activerecord-6.0.2.1/lib/active_record/connection_adapters/mysql/database_statements.rb:12: warning: Using the last argument as keyword parameters is deprecated;</span><span class="w"> </span>maybe <span class="k">**</span> should be added to the call
+<span class="go">/usr/local/bundle/ruby/2.7.0/gems/activerecord-6.0.2.1/lib/active_record/connection_adapters/abstract/query_cache.rb:96: warning: The called method `select_all' is defined here
+</span><span class="gp">/usr/local/bundle/ruby/2.7.0/gems/activerecord-6.0.2.1/lib/active_record/transactions.rb:212: warning: Using the last argument as keyword parameters is deprecated;</span><span class="w"> </span>maybe <span class="k">**</span> should be added to the call
+<span class="go">/usr/local/bundle/ruby/2.7.0/gems/activerecord-6.0.2.1/lib/active_record/connection_adapters/abstract/database_statements.rb:274: warning: The called method `transaction' is defined here
+</span><span class="gp">/usr/local/bundle/ruby/2.7.0/gems/activerecord-6.0.2.1/lib/active_record/persistence.rb:503: warning: Using the last argument as keyword parameters is deprecated;</span><span class="w"> </span>maybe <span class="k">**</span> should be added to the call
+<span class="go">/usr/local/bundle/ruby/2.7.0/gems/activerecord-6.0.2.1/lib/active_record/timestamp.rb:127: warning: The called method `create_or_update' is defined here
+</span><span class="gp">/usr/local/bundle/ruby/2.7.0/gems/activemodel-6.0.2.1/lib/active_model/type/integer.rb:13: warning: Using the last argument as keyword parameters is deprecated;</span><span class="w"> </span>maybe <span class="k">**</span> should be added to the call
+<span class="go">/usr/local/bundle/ruby/2.7.0/gems/activemodel-6.0.2.1/lib/active_model/type/value.rb:8: warning: The called method `initialize' is defined here
+</span></code></pre></div></div>
+
+<p>To stop emitting the warnings, just add <code class="highlighter-rouge">RUBYOPT=-W:no-deprecated</code>.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nv">RUBYOPT</span><span class="o">=</span><span class="nt">-W</span>:no-deprecated bundle <span class="nb">exec </span>rails db:migrate
+<span class="gp">#</span><span class="w"> </span>no Ruby warnings
+</code></pre></div></div>
+
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2019/09/10/how-to-set-rubygems-credentials.html">How to set your rubygems credentials</a>
-    </h2>
-    <div class="list-post-date">
-      <time>10 Sep 2019</time>
-    </div>
+
+  <div class="social-share">
+    <amp-social-share type="twitter"></amp-social-share>
+    <amp-social-share type="facebook"></amp-social-share>
+    <amp-social-share type="gplus"></amp-social-share>
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2018/07/12/vscode-for-ruby.html">VSCode Setting for Rubyist</a>
-    </h2>
-    <div class="list-post-date">
-      <time>12 Jul 2018</time>
-    </div>
+
+  <div class="post-ad">
+    <amp-ad width="100vw" height=320 type="adsense" data-ad-client="ca-pub-8616720383995770" data-ad-slot="4570107466" data-auto-format="rspv"
+      data-full-width>
+      <div overflow></div>
+    </amp-ad>
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/11/18/escape-erb-tag-in-erb.html">Escape ERB tag string in ERB file</a>
-    </h2>
-    <div class="list-post-date">
-      <time>18 Nov 2016</time>
-    </div>
-  </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/08/09/get-uri-in-ruby.html">Get HTML/JSON response from URL simply in Ruby</a>
-    </h2>
-    <div class="list-post-date">
-      <time>09 Aug 2016</time>
-    </div>
-  </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/04/28/ruby-private-method-in-module.html">Private method in module in Ruby</a>
-    </h2>
-    <div class="list-post-date">
-      <time>28 Apr 2016</time>
-    </div>
-  </div>
-  
 </div>
 
     </div>
