@@ -1,5 +1,91 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-02T01:26:20+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">Stop emitting warnings in Ruby 2.7</title><link href="https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html" rel="alternate" type="text/html" title="Stop emitting warnings in Ruby 2.7" /><published>2020-01-01T00:00:00+09:00</published><updated>2020-01-01T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html">&lt;p&gt;Ruby 2.7 emits many warnings.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-02T02:52:29+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">Rails Bulk Migration</title><link href="https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html" rel="alternate" type="text/html" title="Rails Bulk Migration" /><published>2020-01-02T00:00:00+09:00</published><updated>2020-01-02T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html">&lt;p&gt;Schema change on RDB might be a dangerous operation.&lt;/p&gt;
+
+&lt;p&gt;That’s the same as Rails, so it’s important to run migrations with &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option.&lt;/p&gt;
+
+&lt;p&gt;This article explains how &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option changes the schema change operation.&lt;/p&gt;
+
+&lt;h2 id=&quot;user-table-schema&quot;&gt;User table schema&lt;/h2&gt;
+
+&lt;p&gt;This is &lt;code class=&quot;highlighter-rouge&quot;&gt;users&lt;/code&gt; table for a sample.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; desc users;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | bigint(20)   | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(255) | YES  |     | NULL    |                |
+| created_at | datetime(6)  | NO   |     | NULL    |                |
+| updated_at | datetime(6)  | NO   |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;migration-without-bulk-option&quot;&gt;Migration without bulk option&lt;/h2&gt;
+
+&lt;p&gt;Let’s add three columns named &lt;code class=&quot;highlighter-rouge&quot;&gt;new_column1&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;new_column2&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;new_column3&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rails g migration addColumnsToUser new_column1:integer new_column2:string new_column3:boolean
+&lt;span class=&quot;go&quot;&gt;Running via Spring preloader in process 408
+      invoke  active_record
+      create    db/migrate/20200101164105_add_columns_to_user.rb
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The migration file is the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AddColumnsToUser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;6.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;add_column&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:new_column1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:integer&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;add_column&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:new_column2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:string&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;add_column&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:new_column3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:boolean&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rails db:migrate
+&lt;span class=&quot;go&quot;&gt;== 20200101164105 AddColumnsToUser: migrating =================================
+-- add_column(:users, :new_column1, :integer)
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;   -&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;0.2708s
+&lt;span class=&quot;go&quot;&gt;-- add_column(:users, :new_column2, :string)
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;   -&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;0.0496s
+&lt;span class=&quot;go&quot;&gt;-- add_column(:users, :new_column3, :boolean)
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;   -&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;0.0347s
+&lt;span class=&quot;go&quot;&gt;== 20200101164105 AddColumnsToUser: migrated (0.3771s) ========================
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As you can see, &lt;code class=&quot;highlighter-rouge&quot;&gt;add_column&lt;/code&gt;, which may be a dangerous operation, is invoked three times.&lt;/p&gt;
+
+&lt;h2 id=&quot;migration-with-bulk-option&quot;&gt;Migration with bulk option&lt;/h2&gt;
+
+&lt;p&gt;Let’t create a migration with &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option.&lt;/p&gt;
+
+&lt;p&gt;Modify the migration file like below:&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AddColumnsToUser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;6.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;change_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;bulk: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;integer&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:new_column1&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt;  &lt;span class=&quot;ss&quot;&gt;:new_column2&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:new_column3&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bulk: true&lt;/code&gt; means the schema change will be squashed into one.&lt;/p&gt;
+
+&lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rails db:migrate
+&lt;span class=&quot;go&quot;&gt;== 20200101164105 AddColumnsToUser: migrating =================================
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;-- change_table(:users, {:bulk=&amp;gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;   -&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;0.1296s
+&lt;span class=&quot;go&quot;&gt;== 20200101164105 AddColumnsToUser: migrated (0.1300s) ========================
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Yes! &lt;code class=&quot;highlighter-rouge&quot;&gt;change_table&lt;/code&gt; is invoked just one time!&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="rails" /><category term="activerecord" /><summary type="html">Schema change on RDB might be a dangerous operation.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Stop emitting warnings in Ruby 2.7</title><link href="https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html" rel="alternate" type="text/html" title="Stop emitting warnings in Ruby 2.7" /><published>2020-01-01T00:00:00+09:00</published><updated>2020-01-01T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html">&lt;p&gt;Ruby 2.7 emits many warnings.&lt;/p&gt;
 
 &lt;p&gt;For example:&lt;/p&gt;
 
@@ -20,7 +106,11 @@
 
 &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;RUBYOPT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt;:no-deprecated bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rails db:migrate
 &lt;span class=&quot;gp&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;no Ruby warnings
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>toshimaru</name></author><category term="ruby" /><summary type="html">Ruby 2.7 emits many warnings.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">MySQL ADD COLUMN statements</title><link href="https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html" rel="alternate" type="text/html" title="MySQL ADD COLUMN statements" /><published>2019-12-27T00:00:00+09:00</published><updated>2019-12-27T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/12/27/new-mysql-add-column</id><content type="html" xml:base="https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html">&lt;h2 id=&quot;mysql-version&quot;&gt;MySQL Version&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;see-also&quot;&gt;See Also&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.ruby-lang.org/en/news/2019/12/25/ruby-2-7-0-released/&quot;&gt;Ruby 2.7.0 Released&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="ruby" /><summary type="html">Ruby 2.7 emits many warnings.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">MySQL ADD COLUMN statements</title><link href="https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html" rel="alternate" type="text/html" title="MySQL ADD COLUMN statements" /><published>2019-12-27T00:00:00+09:00</published><updated>2019-12-27T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/12/27/new-mysql-add-column</id><content type="html" xml:base="https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html">&lt;h2 id=&quot;mysql-version&quot;&gt;MySQL Version&lt;/h2&gt;
 
 &lt;p&gt;MySQL 8.0&lt;/p&gt;
 
@@ -525,20 +615,4 @@ ActiveRecord::UnknownPrimaryKey (Unknown primary key for table relationships in 
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://railsdoc.github.io/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-create_table-label-Create+a+composite+primary+key&quot;&gt;ActiveRecord::ConnectionAdapters::SchemaStatements - Create a composite primary key | RailsDoc(β)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="rails" /><summary type="html">Rails is able to create a table which has composite primary key without a gem.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">How to specify Git SSH key for different hosts</title><link href="https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key.html" rel="alternate" type="text/html" title="How to specify Git SSH key for different hosts" /><published>2019-09-04T00:00:00+09:00</published><updated>2019-09-04T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key</id><content type="html" xml:base="https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key.html">&lt;p&gt;When you run &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;, you might specify which SSH key to use. It’s not possible to add option to specify which SSH key to use, but it’s possible to tell git which SSH key to use with &lt;code class=&quot;highlighter-rouge&quot;&gt;.ssh/config&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Here is the example:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# .ssh/config
-Host github.com
-  Hostname github.com
-  User git
-  IdentityFile ~/.ssh/your_private_key
-
-Host github.yourcompany.com
-  Hostname github.yourcompany.com
-  User git
-  IdentityFile ~/.ssh/your_another_private_key
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This means that &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; uses &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/your_private_key&lt;/code&gt; SSH key for host &lt;code class=&quot;highlighter-rouge&quot;&gt;github.com&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/your_another_private_key&lt;/code&gt; SSH key for host &lt;code class=&quot;highlighter-rouge&quot;&gt;github.yourcompany.com&lt;/code&gt;.&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="git" /><category term="ssh" /><summary type="html">When you run git push, you might specify which SSH key to use. It’s not possible to add option to specify which SSH key to use, but it’s possible to tell git which SSH key to use with .ssh/config.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="rails" /><summary type="html">Rails is able to create a table which has composite primary key without a gem.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
