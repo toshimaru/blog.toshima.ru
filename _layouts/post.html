@@ -39,7 +39,7 @@ layout: default
             layout="responsive"
             sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
             resizable
-            src="https://disqus.toshima.ru/blog-toshima-ru.html#{{ page.id }}">
+            src="https://disqus.toshima.ru/blog-toshima-ru.html?id={{ page.id | uri_escape }}&url=https://blog.toshima.ru{{ page.url | uri_escape }}&title={{ page.title | uri_escape }}">
     <div overflow
          tabindex=0
          role=button
