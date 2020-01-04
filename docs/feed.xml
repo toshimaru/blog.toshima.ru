@@ -1,5 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-05T01:36:09+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">Rails Bulk Migration</title><link href="https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html" rel="alternate" type="text/html" title="Rails Bulk Migration" /><published>2020-01-02T00:00:00+09:00</published><updated>2020-01-02T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html">&lt;p&gt;Schema change on RDB might be a dangerous operation.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-05T03:11:19+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">Get Query Parameters in JavaScript</title><link href="https://blog.toshima.ru/2020/01/04/get-query-parameters-in-javascript.html" rel="alternate" type="text/html" title="Get Query Parameters in JavaScript" /><published>2020-01-04T00:00:00+09:00</published><updated>2020-01-04T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/04/get-query-parameters-in-javascript</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/04/get-query-parameters-in-javascript.html">&lt;h2 id=&quot;get-current-uri-query-params&quot;&gt;Get current URI query params&lt;/h2&gt;
+
+&lt;p&gt;You can get query parameters from current URL using &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams&quot;&gt;URLSearchParams&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;URLSearchParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;iterate-query-params&quot;&gt;Iterate query params&lt;/h2&gt;
+
+&lt;p&gt;Let’s say your access URL is &lt;code class=&quot;highlighter-rouge&quot;&gt;http://example.com/query_param?a=1&amp;amp;b=2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can iterate the query parameters with &lt;code class=&quot;highlighter-rouge&quot;&gt;URLSearchParams&lt;/code&gt; and &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of&quot;&gt;for…of statement&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;URLSearchParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`key: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, value: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;key: a, value: 1
+key: b, value: 2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;get-value-from-key&quot;&gt;Get value from key&lt;/h2&gt;
+
+&lt;p&gt;You can get the value from the key.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;URLSearchParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1
+2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams&quot;&gt;URLSearchParams - Web APIs | MDN&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="javascript" /><summary type="html">Get current URI query params</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Rails Bulk Migration</title><link href="https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html" rel="alternate" type="text/html" title="Rails Bulk Migration" /><published>2020-01-02T00:00:00+09:00</published><updated>2020-01-02T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html">&lt;p&gt;Schema change on RDB might be a dangerous operation.&lt;/p&gt;
 
 &lt;p&gt;That’s the same as Rails, so it’s important to run migrations with &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option.&lt;/p&gt;
 
@@ -519,100 +559,4 @@ Pushed rubocop-rails_config 0.7.2 to rubygems.org
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://michaelrigart.be/easily-publish-ruby-gems/&quot;&gt;Easily publish your ruby gems&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="ruby" /><category term="gem" /><summary type="html">One day, I tried to publish my gem, but it failed.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Rails can create a table having composite primary key</title><link href="https://blog.toshima.ru/2019/09/06/rails-create-composite-primary-key.html" rel="alternate" type="text/html" title="Rails can create a table having composite primary key" /><published>2019-09-06T00:00:00+09:00</published><updated>2019-09-06T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/09/06/rails-create-composite-primary-key</id><content type="html" xml:base="https://blog.toshima.ru/2019/09/06/rails-create-composite-primary-key.html">&lt;p&gt;Rails is able to create a table which has composite primary key without a gem.&lt;/p&gt;
-
-&lt;p&gt;This is documented in Rails like below:&lt;/p&gt;
-
-&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:orders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;primary_key: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:product_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:client_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:product&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:client&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;ref. &lt;a href=&quot;https://github.com/rails/rails/pull/29135&quot;&gt;Document support for composite primary keys by Nerian · Pull Request #29135 · rails/rails&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;create-composite-primary-key&quot;&gt;Create composite primary key&lt;/h2&gt;
-
-&lt;p&gt;Let’s create a table having composite primary key step by step.&lt;/p&gt;
-
-&lt;p&gt;First, generate migration file which has two types of &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; columns.&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rails generate migration createRelationship follower_id:bigint followed_id:bigint
-&lt;span class=&quot;go&quot;&gt;      invoke  active_record
-      create    db/migrate/20190905xxxxxx_create_relationship.rb
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The created file is like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#  db/migrate/20190905xxxxxx_create_relationship.rb&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreateRelationship&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;5.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:relationships&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bigint&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:follower_id&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bigint&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:followed_id&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;What we’d like to do is creating a composite primary key of &lt;code class=&quot;highlighter-rouge&quot;&gt;follower_id&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;followed_id&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;So, add &lt;code class=&quot;highlighter-rouge&quot;&gt;primary_key&lt;/code&gt; option and pass Array of composite primary key as a value.&lt;/p&gt;
-
-&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#  db/migrate/20190905xxxxxx_create_relationship.rb&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreateRelationship&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;5.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:relationships&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;primary_key: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:follower_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:followed_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bigint&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:follower_id&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bigint&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:followed_id&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;After running &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:migrate&lt;/code&gt;, you can see composite primary key in the table. This is a created schema on my local MySQL.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; desc relationships;
-+-------------+------------+------+-----+---------+-------+
-| Field       | Type       | Null | Key | Default | Extra |
-+-------------+------------+------+-----+---------+-------+
-| follower_id | bigint(20) | NO   | PRI | NULL    |       |
-| followed_id | bigint(20) | NO   | PRI | NULL    |       |
-+-------------+------------+------+-----+---------+-------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This is composite primary key, so:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;You can’t insert &lt;code class=&quot;highlighter-rouge&quot;&gt;null&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;You can’t insert same record&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;insert relationships values  (null, null);
-ERROR 1048 (23000): Column 'follower_id' cannot be null
-mysql&amp;gt; insert relationships values  (1, 1);
-Query OK, 1 row affected (0.01 sec)
-mysql&amp;gt; insert relationships values  (1, 1);
-ERROR 1062 (23000): Duplicate entry '1-1' for key 'PRIMARY'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;heads-up&quot;&gt;Heads-up&lt;/h2&gt;
-
-&lt;p&gt;ActiveRecord can’t find composite primary key record since it does not support.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;irb&amp;gt; Relationship.find(1)
-WARNING: Active Record does not support composite primary key.
-
-relationships has composite primary key. Composite primary key is ignored.
-Traceback (most recent call last):
-        1: from (irb):2
-ActiveRecord::UnknownPrimaryKey (Unknown primary key for table relationships in model Relationship.)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If you want to get composite primary key support, use &lt;a href=&quot;https://github.com/composite-primary-keys/composite_primary_keys&quot;&gt;composite_primary_keys&lt;/a&gt; gem.&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://railsdoc.github.io/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-create_table-label-Create+a+composite+primary+key&quot;&gt;ActiveRecord::ConnectionAdapters::SchemaStatements - Create a composite primary key | RailsDoc(β)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="rails" /><summary type="html">Rails is able to create a table which has composite primary key without a gem.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="ruby" /><category term="gem" /><summary type="html">One day, I tried to publish my gem, but it failed.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
