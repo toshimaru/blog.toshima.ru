@@ -36,8 +36,9 @@ jekyll-archives:
   enabled: [year, month, tags]
 
 jekyll_compose:
-  post_default_front_matter:
-    tags: ''
+  default_front_matter:
+    posts:
+      tags: tag
 
 # Scopes
 defaults:
