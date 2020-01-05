@@ -1,5 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-05T03:11:19+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">Get Query Parameters in JavaScript</title><link href="https://blog.toshima.ru/2020/01/04/get-query-parameters-in-javascript.html" rel="alternate" type="text/html" title="Get Query Parameters in JavaScript" /><published>2020-01-04T00:00:00+09:00</published><updated>2020-01-04T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/04/get-query-parameters-in-javascript</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/04/get-query-parameters-in-javascript.html">&lt;h2 id=&quot;get-current-uri-query-params&quot;&gt;Get current URI query params&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-05T17:39:16+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">Comment is now available!</title><link href="https://blog.toshima.ru/2020/01/05/add-disqus.html" rel="alternate" type="text/html" title="Comment is now available!" /><published>2020-01-05T00:00:00+09:00</published><updated>2020-01-05T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/05/add-disqus</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/05/add-disqus.html">&lt;p&gt;Comment is now available in this blog! 📝&lt;/p&gt;
+
+&lt;p&gt;&lt;amp-img src=&quot;/images/disqus.png&quot; alt=&quot;disqus commentable&quot; width='1526' height='928' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Please give me any feedbacks!&lt;/strong&gt; 👍&lt;/p&gt;
+
+&lt;p&gt;Thanks. 😃&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="disqus" /><summary type="html">Comment is now available in this blog! 📝</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/images/disqus.png" /><media:content medium="image" url="https://blog.toshima.ru/images/disqus.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Get Query Parameters in JavaScript</title><link href="https://blog.toshima.ru/2020/01/04/get-query-parameters-in-javascript.html" rel="alternate" type="text/html" title="Get Query Parameters in JavaScript" /><published>2020-01-04T00:00:00+09:00</published><updated>2020-01-04T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/04/get-query-parameters-in-javascript</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/04/get-query-parameters-in-javascript.html">&lt;h2 id=&quot;get-current-uri-query-params&quot;&gt;Get current URI query params&lt;/h2&gt;
 
 &lt;p&gt;You can get query parameters from current URL using &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams&quot;&gt;URLSearchParams&lt;/a&gt;.&lt;/p&gt;
 
@@ -507,56 +513,4 @@ Done installing documentation for bundler after 5 seconds
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://aminoeditor.com/&quot;&gt;Amino: Live CSS Editor for Chrome&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="chrome" /><summary type="html">If you’d like to customize CSS style for a website, Amino Chrome Extension is useful.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/images/amino.png" /><media:content medium="image" url="https://blog.toshima.ru/images/amino.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">How to set your rubygems credentials</title><link href="https://blog.toshima.ru/2019/09/10/how-to-set-rubygems-credentials.html" rel="alternate" type="text/html" title="How to set your rubygems credentials" /><published>2019-09-10T00:00:00+09:00</published><updated>2019-09-10T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/09/10/how-to-set-rubygems-credentials</id><content type="html" xml:base="https://blog.toshima.ru/2019/09/10/how-to-set-rubygems-credentials.html">&lt;p&gt;One day, I tried to publish &lt;a href=&quot;https://github.com/toshimaru/rubocop-rails_config&quot;&gt;my gem&lt;/a&gt;, but it failed.&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rake release
-&lt;span class=&quot;go&quot;&gt;rubocop-rails_config 0.7.2 built to pkg/rubocop-rails_config-0.7.2.gem.
-Tagged v0.7.2.
-Pushed git commits and tags.
-rake aborted!
-Your rubygems.org credentials aren't set. Run `gem push` to set them.
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To resolve this, you need to put gem credential on &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.gem/credentials&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;your_gem_account_name&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; https://rubygems.org/api/v1/api_key.yaml &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; ~/.gem/credentials
-&lt;span class=&quot;go&quot;&gt;Enter host password for user '{your_gem_account_name}': {your_password}
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then, let’s run &lt;code class=&quot;highlighter-rouge&quot;&gt;rake release&lt;/code&gt; command again.&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rake release
-&lt;span class=&quot;go&quot;&gt;rubocop-rails_config 0.7.2 built to pkg/rubocop-rails_config-0.7.2.gem.
-Tag v0.7.2 has already been created.
-rake aborted!
-ERROR:  Your gem push credentials file located at:
-
-	~/.gem/credentials
-
-has file permissions of 0644 but 0600 is required.
-
-To fix this error run:
-
-	chmod 0600 ~/.gem/credentials
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Okay, let’s fix the permission.&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;0600 ~/.gem/credentials
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Re-try:&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rake release
-&lt;span class=&quot;go&quot;&gt;rubocop-rails_config 0.7.2 built to pkg/rubocop-rails_config-0.7.2.gem.
-Tag v0.7.2 has already been created.
-Pushed rubocop-rails_config 0.7.2 to rubygems.org
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Success! That’s it! :)&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://michaelrigart.be/easily-publish-ruby-gems/&quot;&gt;Easily publish your ruby gems&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="ruby" /><category term="gem" /><summary type="html">One day, I tried to publish my gem, but it failed.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="chrome" /><summary type="html">If you’d like to customize CSS style for a website, Amino Chrome Extension is useful.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/images/amino.png" /><media:content medium="image" url="https://blog.toshima.ru/images/amino.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
