@@ -1,3 +1,7 @@
+$base-font-color: #333;
+$theme-color: #505;
+$white-color: #fff;
+
 * {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -21,7 +25,7 @@ html {
 }
 
 body {
-  color: #515151;
+  color: $base-font-color;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -36,7 +40,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: .9rem;
   font-weight: 600;
   line-height: 1.1;
-  color: #333;
 }
 
 h1 {
@@ -150,16 +153,15 @@ blockquote {
   }
 }
 
-code,
-pre {
+code, pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
 }
 
 code {
   padding: .25em .5em;
   font-size: 85%;
-  color: #bf616a;
-  background-color: #f9f9f9;
+  color: #707;
+  background-color: #f2f2f2;
   border-radius: 3px;
   white-space: pre;
 }
@@ -231,69 +233,40 @@ tbody tr:nth-child(odd) th {
   margin-right: auto;
 
   @media (min-width: 38rem) {
-    padding: 5rem 1rem;
+    padding: 4rem 1rem;
   }
 }
 
 .masthead {
-
   &-title {
     font-weight: 300;
-
-    a {
-      color: #333;
-
-      &:hover,
-      &:focus {
-        text-decoration: none;
-      }
-    }
-
-    span {
-      color: #ddd;
-    }
-
-  }
-
-  &-title--small {
-    margin-bottom: .75rem;
-    font-size: .75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-
-    a {
-      color: #333;
-
-      &:hover,
-      &:focus {
-        text-decoration: none;
-      }
-    }
-  }
-
-  .masthead-nav {
     margin-bottom: 2rem;
 
     a {
-      color: #aaa;
-      font-weight: 300;
-      text-transform: lowercase;
-      -webkit-transition: all .2s ease;
-         -moz-transition: all .2s ease;
-              transition: all .2s ease;
-
-      &:hover,
-      &:focus {
-        color: #333;
+      color: $base-font-color;
+      &:hover, &:focus {
         text-decoration: none;
-      }
-
-      + a {
-        margin-left: .25rem;
       }
     }
   }
 
+  &-title--small {
+    display: inline-block;
+    background-color: $theme-color;
+    padding: 0.2rem .8rem;
+    margin-bottom: 1rem;
+    font-size: .7rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    text-transform: uppercase;
+
+    a {
+      color: $white-color;
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 .page {
@@ -367,12 +340,11 @@ tbody tr:nth-child(odd) th {
   }
 
   &:hover {
-    background-color: DodgerBlue;
-    color: white;
+    background-color: $theme-color;
+    color: $white-color;
   }
-
   &:hover::after {
-    border-left-color: DodgerBlue;
+    border-left-color: $theme-color;
   }
 }
 
@@ -383,9 +355,9 @@ tbody tr:nth-child(odd) th {
     a {
       color: #333;
 
-      &:hover,
-      &:focus {
+      &:hover, &:focus {
         text-decoration: none;
+        color: $theme-color;
       }
     }
   }
