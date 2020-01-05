@@ -88,7 +88,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  jekyll (= 4.0.0)
+  jekyll (~> 4.0)
   jekyll-archives
   jekyll-compose
   jekyll-feed
@@ -99,3 +99,6 @@ DEPENDENCIES
   jekyll-sitemap
   kramdown-amp
   rake
+
+BUNDLED WITH
+   2.1.2
