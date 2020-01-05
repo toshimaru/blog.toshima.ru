@@ -55,10 +55,3 @@ defaults:
     values:
       layout: "post"
       image: https://avatars2.githubusercontent.com/u/803398
-
-# Navigation
-# nav:
-#   - name:           "About"
-#     href:           "//kiko.gfjaru.com/about"
-#   - name:           "Download"
-#     href:           "//github.com/gfjaru/Kiko/releases"
