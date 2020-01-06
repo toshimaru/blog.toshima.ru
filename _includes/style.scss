@@ -1,5 +1,7 @@
 $base-font-color: #333;
 $theme-color: #505;
+$light-theme-color: #909;
+$dark-theme-color: #303;
 $white-color: #fff;
 
 * {
@@ -83,8 +85,7 @@ ul {
     margin-bottom: .25rem;
   }
 
-  ul,
-  ol {
+  ul, ol {
     margin-left: 1rem;
     margin-top: .25rem;
     margin-bottom: .5rem;
@@ -99,8 +100,8 @@ ol {
     margin-bottom: .25rem;
   }
 
-  ul,
-  ol {
+  ul, ol {
+    margin-left: 1rem;
     margin-top: .25rem;
     margin-bottom: .5rem;
   }
@@ -160,7 +161,7 @@ code, pre {
 code {
   padding: .25em .5em;
   font-size: 85%;
-  color: #707;
+  color: $light-theme-color;
   background-color: #f2f2f2;
   border-radius: 3px;
   white-space: pre;
@@ -314,7 +315,6 @@ tbody tr:nth-child(odd) th {
   position: relative;
   margin: 0 10px 10px 0;
   text-decoration: none;
-  -webkit-transition: color 0.2s;
 
   &::before {
     background: #fff;
@@ -338,7 +338,6 @@ tbody tr:nth-child(odd) th {
     right: 0;
     top: 0;
   }
-
   &:hover {
     background-color: $theme-color;
     color: $white-color;
@@ -453,8 +452,7 @@ tbody tr:nth-child(odd) th {
 .highlight .vg { color: #f8f8f2 } /* Name.Variable.Global */
 .highlight .vi { color: #f8f8f2 } /* Name.Variable.Instance */
 .highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
-
-.highlight .gh { } /* Generic Heading & Diff Header */
+// .highlight .gh { } /* Generic Heading & Diff Header */
 .highlight .gu { color: #75715e; } /* Generic.Subheading & Diff Unified/Comment? */
 .highlight .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
 .highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */
