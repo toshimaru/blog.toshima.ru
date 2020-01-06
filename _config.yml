@@ -28,6 +28,7 @@ kramdown:
 # jekyll-seo
 twitter:
   username: toshimaru_e
+  card: summary
 author:
   name: toshimaru
   twitter: toshimaru_e
