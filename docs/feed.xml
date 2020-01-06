@@ -1,5 +1,116 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-06T00:18:30+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">Comment is now available!</title><link href="https://blog.toshima.ru/2020/01/05/add-disqus.html" rel="alternate" type="text/html" title="Comment is now available!" /><published>2020-01-05T00:00:00+09:00</published><updated>2020-01-05T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/05/add-disqus</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/05/add-disqus.html">&lt;p&gt;Comment is now available in this blog! 📝&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-06T15:55:32+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">Check supported TLS version with openssl command</title><link href="https://blog.toshima.ru/2020/01/06/check-supported-tls-version.html" rel="alternate" type="text/html" title="Check supported TLS version with openssl command" /><published>2020-01-06T00:00:00+09:00</published><updated>2020-01-06T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/06/check-supported-tls-version</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/06/check-supported-tls-version.html">&lt;ol id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#web-tls-checker&quot; id=&quot;markdown-toc-web-tls-checker&quot;&gt;Web TLS Checker&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#openssl-command&quot; id=&quot;markdown-toc-openssl-command&quot;&gt;openssl command&lt;/a&gt;    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#check-tls-v1-is-supported&quot; id=&quot;markdown-toc-check-tls-v1-is-supported&quot;&gt;Check TLS v1 is supported&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#check-tls-v11-is-supported&quot; id=&quot;markdown-toc-check-tls-v11-is-supported&quot;&gt;Check TLS v1.1 is supported&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#check-tls-v12-is-supported&quot; id=&quot;markdown-toc-check-tls-v12-is-supported&quot;&gt;Check TLS v1.2 is supported&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#related-post&quot; id=&quot;markdown-toc-related-post&quot;&gt;Related Post&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;web-tls-checker&quot;&gt;Web TLS Checker&lt;/h2&gt;
+
+&lt;p&gt;You can check if a specific version of TLS is supported with the following TLS Checker.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cdn77.com/tls-test&quot;&gt;TLS Checker - Instant Results | CDN77.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ssllabs.com/ssltest/&quot;&gt;SSL Server Test (Powered by Qualys SSL Labs)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;openssl-command&quot;&gt;openssl command&lt;/h2&gt;
+
+&lt;p&gt;You can also check supported TLS version by using &lt;code class=&quot;highlighter-rouge&quot;&gt;openssl s_client&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ openssl s_client -connect {domain}:443 -servername {domain} -tls{version}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If supported, valid SSL Certificate is shown.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;openssl s_client &lt;span class=&quot;nt&quot;&gt;-connect&lt;/span&gt; google.com:443 &lt;span class=&quot;nt&quot;&gt;-servername&lt;/span&gt; google.com &lt;span class=&quot;nt&quot;&gt;-tls1&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;CONNECTED(00000005)
+depth=2 OU = GlobalSign Root CA - R2, O = GlobalSign, CN = GlobalSign
+verify return:1
+depth=1 C = US, O = Google Trust Services, CN = GTS CA 1O1
+verify return:1
+depth=0 C = US, ST = California, L = Mountain View, O = Google LLC, CN = *.google.com
+verify return:1
+---
+Certificate chain
+ 0 s:/C=US/ST=California/L=Mountain View/O=Google LLC/CN=*.google.com
+   i:/C=US/O=Google Trust Services/CN=GTS CA 1O1
+ 1 s:/C=US/O=Google Trust Services/CN=GTS CA 1O1
+   i:/OU=GlobalSign Root CA - R2/O=GlobalSign/CN=GlobalSign
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIJRDCCCCygAwIBAgIRAOXiH3ntcKfZAwAAAABmVK4wDQYJKoZIhvcNAQELBQAw
+...(snip)...
+rRUF99NVPWhf8+q+LIkUf60Gr2V3ZfVf
+-----END CERTIFICATE-----
+subject=/C=US/ST=California/L=Mountain View/O=Google LLC/CN=*.google.com
+issuer=/C=US/O=Google Trust Services/CN=GTS CA 1O1
+---
+No client certificate CA names sent
+Server Temp Key: ECDH, X25519, 253 bits
+---
+SSL handshake has read 3973 bytes and written 242 bytes
+---
+New, TLSv1/SSLv3, Cipher is ECDHE-ECDSA-AES128-SHA
+Server public key is 256 bit
+Secure Renegotiation IS supported
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If not supported, the following messages are shown.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;openssl s_client &lt;span class=&quot;nt&quot;&gt;-connect&lt;/span&gt; yahoo.co.jp:443 &lt;span class=&quot;nt&quot;&gt;-servername&lt;/span&gt; yahoo.co.jp &lt;span class=&quot;nt&quot;&gt;-tls1&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;CONNECTED(00000006)
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;...
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;---
+no peer certificate available
+---
+No client certificate CA names sent
+---
+SSL handshake has read 7 bytes and written 0 bytes
+---
+New, (NONE), Cipher is (NONE)
+Secure Renegotiation IS NOT supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1
+    Cipher    : 0000
+    Session-ID:
+    Session-ID-ctx:
+    Master-Key:
+    Start Time: 1578292633
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+---
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;check-tls-v1-is-supported&quot;&gt;Check TLS v1 is supported&lt;/h3&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;openssl s_client &lt;span class=&quot;nt&quot;&gt;-connect&lt;/span&gt; google.com:443 &lt;span class=&quot;nt&quot;&gt;-servername&lt;/span&gt; google.com &lt;span class=&quot;nt&quot;&gt;-tls1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;check-tls-v11-is-supported&quot;&gt;Check TLS v1.1 is supported&lt;/h3&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;openssl s_client &lt;span class=&quot;nt&quot;&gt;-connect&lt;/span&gt; google.com:443 &lt;span class=&quot;nt&quot;&gt;-servername&lt;/span&gt; google.com &lt;span class=&quot;nt&quot;&gt;-tls1_1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;check-tls-v12-is-supported&quot;&gt;Check TLS v1.2 is supported&lt;/h3&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;openssl s_client &lt;span class=&quot;nt&quot;&gt;-connect&lt;/span&gt; google.com:443 &lt;span class=&quot;nt&quot;&gt;-servername&lt;/span&gt; google.com &lt;span class=&quot;nt&quot;&gt;-tls1_2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;related-post&quot;&gt;Related Post&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/2017/09/22/ssl-expiration-check-via-command-line.html&quot;&gt;Check SSL Certificate Expiration Date via Command Line | Toshimaru’s Blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="tls" /><category term="ssl" /><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Comment is now available!</title><link href="https://blog.toshima.ru/2020/01/05/add-disqus.html" rel="alternate" type="text/html" title="Comment is now available!" /><published>2020-01-05T00:00:00+09:00</published><updated>2020-01-05T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/05/add-disqus</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/05/add-disqus.html">&lt;p&gt;Comment is now available in this blog! 📝&lt;/p&gt;
 
 &lt;p&gt;&lt;amp-img src=&quot;/images/disqus.png&quot; alt=&quot;disqus commentable&quot; width='1526' height='928' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
 
@@ -475,42 +586,4 @@ Done installing documentation for bundler after 5 seconds
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/rubygems/rubygems/issues/2058&quot;&gt;Bundler fails to install after RubyGems update · Issue #2058 · rubygems/rubygems&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="bundler" /><category term="ruby" /><summary type="html">One day I installed bundler and got an error.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Customize CSS with Amino(Chrome Extension)</title><link href="https://blog.toshima.ru/2019/09/30/customize-css-with-amino.html" rel="alternate" type="text/html" title="Customize CSS with Amino(Chrome Extension)" /><published>2019-09-30T00:00:00+09:00</published><updated>2019-09-30T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/09/30/customize-css-with-amino</id><content type="html" xml:base="https://blog.toshima.ru/2019/09/30/customize-css-with-amino.html">&lt;p&gt;If you’d like to customize CSS style for a website, &lt;a href=&quot;https://chrome.google.com/webstore/detail/amino-live-css-editor/pbcpfbcibpcbfbmddogfhcijfpboeaaf&quot;&gt;Amino&lt;/a&gt; Chrome Extension is useful.&lt;/p&gt;
-
-&lt;p&gt;&lt;amp-img src=&quot;/images/amino.png&quot; alt=&quot;&quot; width='1516' height='944' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://chrome.google.com/webstore/detail/amino-live-css-editor/pbcpfbcibpcbfbmddogfhcijfpboeaaf?lang=en&quot;&gt;Amino: Live CSS Editor&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;customize-css-style&quot;&gt;Customize CSS Style&lt;/h2&gt;
-
-&lt;p&gt;Let’s say you want to change header &lt;code class=&quot;highlighter-rouge&quot;&gt;background-color&lt;/code&gt; on github.com. Just set custom CSS for the domain.&lt;/p&gt;
-
-&lt;p&gt;&lt;amp-img src=&quot;/images/amino2.png&quot; alt=&quot;&quot; width='1332' height='608' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
-
-&lt;p&gt;The style is:&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.Header&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#511e80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can change the color or style whatever you want.&lt;/p&gt;
-
-&lt;p&gt;The result is:&lt;/p&gt;
-
-&lt;p&gt;&lt;amp-img src=&quot;/images/amino-header.png&quot; alt=&quot;&quot; width='1630' height='572' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
-
-&lt;p&gt;The header background color has changed to &lt;code class=&quot;highlighter-rouge&quot;&gt;#511e80&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;use-case-in-read-world&quot;&gt;Use Case in Read World&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Change style for each environments(&lt;code class=&quot;highlighter-rouge&quot;&gt;development&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;staging&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt;)&lt;/li&gt;
-  &lt;li&gt;Change style for your own very secret/important page(e.g. Password admin page)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://aminoeditor.com/&quot;&gt;Amino: Live CSS Editor for Chrome&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="chrome" /><summary type="html">If you’d like to customize CSS style for a website, Amino Chrome Extension is useful.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/images/amino.png" /><media:content medium="image" url="https://blog.toshima.ru/images/amino.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="bundler" /><category term="ruby" /><summary type="html">One day I installed bundler and got an error.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
