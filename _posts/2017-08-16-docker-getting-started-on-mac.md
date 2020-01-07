@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Get started with docker on Mac
+title: Get started with Docker on Mac
 tags: docker mac
 ---
 

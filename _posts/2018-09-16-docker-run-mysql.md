@@ -1,11 +1,11 @@
 ---
 layout: post
 title: Run and Connect to MySQL on Docker
-last_modified_at: 2019-12-27
+last_modified_at: 2020-01-08
 tags: mysql docker
 ---
 
-I wanted to run MySQL v8.0.x on docker aside from MySQL v5.7 running on my localhost, so I'll give a instruction for it.
+I wanted to run MySQL v8.0.x on Docker aside from MySQL v5.7 running on my localhost, so I'll give a instruction for it.
 
 ## docker pull
 
@@ -15,14 +15,14 @@ First of all, let's run `docker pull` and get MySQL v8.0 image.
 $ docker pull mysql:8.0
 ```
 
-`8.0` means a tag. if it's not specified, latest MySQL docker image is used.
+`8.0` means a tag. if it's not specified, latest MySQL docker image well be used.
 
 ## docker run
 
 Then, run `docker run`.
 
 ```console
-$ docker run --name mysql -e MYSQL_ROOT_PASSWORD={your_password} -p 3306:3306 mysql:8.0
+$ docker run --name mysql8 -e MYSQL_ROOT_PASSWORD={your_password} -p 3306:3306 mysql:8.0
 ```
 
 - `MYSQL_ROOT_PASSWORD` is required, you can set whatever password you like
@@ -30,9 +30,35 @@ $ docker run --name mysql -e MYSQL_ROOT_PASSWORD={your_password} -p 3306:3306 my
 - `-p 3306:3306` option publishes a container's `3306` port to the host
   - If you want to change port, change it to `-p 3307:3306`. Then, `3307` port is used
 
+### Simple docker run
+
+Just setting `MYSQL_ROOT_PASSWORD` is enough. :)
+
+```console
+$ docker run -e MYSQL_ROOT_PASSWORD={your_password} mysql:8.0
+2020-01-07 16:06:52+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.18-1debian9 started.
+2020-01-07 16:06:52+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+2020-01-07 16:06:52+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.18-1debian9 started.
+2020-01-07 16:06:52+00:00 [Note] [Entrypoint]: Initializing database files
+```
+
+## docker ps
+
+```console
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
+77ecf2eb0b98        mysql:8.0           "docker-entrypoint.s…"   8 seconds ago       Up 6 seconds        0.0.0.0:3306->3306/tcp, 33060/tcp   mysql8
+```
+
+You can see:
+
+- image is `mysql:8.0`
+- Name is `mysql8`
+- Port setting is `0.0.0.0:3306->3306/`
+
 ## Connect to MySQL
 
-Finally, let's conect to MySQL running on the docker.
+Finally, let's connect to MySQL running on the docker.
 
 ```console
 $ mysql -h 127.0.0.1 -u root -p
@@ -45,10 +71,10 @@ But we've got an error. This is because **MySQL server version and client versio
 Let's connect to mysql using mysql client on the docker.
 
 ```console
-$ docker exec -it mysql bash
+$ docker exec -it mysql8 bash
 ```
 
-The folloing commands are run inside the docker.
+The following commands are run inside the docker.
 
 ```console
 root@xxx:/# mysql --version
@@ -72,18 +98,18 @@ mysql>
 
 It works!
 
-## Stop MySQL continer
+## Stop MySQL container
 
 ```console
-$ docker stop mysql
-mysql
+$ docker stop mysql8
+mysql8
 ```
 
-## Remove created continer
+## Remove created container
 
 ```console
-$ docker rm mysql
-mysql
+$ docker rm mysql8
+mysql8
 ```
 
 ## Reference
