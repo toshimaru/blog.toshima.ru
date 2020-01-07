@@ -1,5 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-07T03:20:41+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">Check supported TLS version with openssl command</title><link href="https://blog.toshima.ru/2020/01/06/check-supported-tls-version.html" rel="alternate" type="text/html" title="Check supported TLS version with openssl command" /><published>2020-01-06T00:00:00+09:00</published><updated>2020-01-06T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/06/check-supported-tls-version</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/06/check-supported-tls-version.html">&lt;ol id=&quot;markdown-toc&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-07T20:08:28+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">Run MySQL query from command line</title><link href="https://blog.toshima.ru/2020/01/07/mysql-result-via-command-line.html" rel="alternate" type="text/html" title="Run MySQL query from command line" /><published>2020-01-07T00:00:00+09:00</published><updated>2020-01-07T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/07/mysql-result-via-command-line</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/07/mysql-result-via-command-line.html">&lt;h2 id=&quot;mysql-version&quot;&gt;MySQL Version&lt;/h2&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;mysql &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;mysql  Ver 8.0.18 for Linux on x86_64 (MySQL Community Server - GPL)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;table-output-from-command-line&quot;&gt;Table output from command line&lt;/h2&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;select User from mysql.user&quot;&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;Enter password:
++------------------+
+| User             |
++------------------+
+| root             |
+| mysql.infoschema |
+| mysql.session    |
+| mysql.sys        |
+| root             |
++------------------+
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;table-output-without-header-from-command-line&quot;&gt;Table output without header from command line&lt;/h2&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;mysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-N&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;select User from mysql.user&quot;&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;Enter password:
++------------------+
+| root             |
+| mysql.infoschema |
+| mysql.session    |
+| mysql.sys        |
+| root             |
++------------------+
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;tsv-output-from-command-line&quot;&gt;TSV output from command line&lt;/h2&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;mmysql &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-B&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;select User, Host from mysql.user&quot;&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;Enter password:
+User	Host
+root	%
+mysql.infoschema	localhost
+mysql.session	localhost
+mysql.sys	localhost
+root	localhost
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[Japanese] &lt;a href=&quot;https://tkuchiki.hatenablog.com/entry/2012/11/30/114946&quot;&gt;MySQLをコマンドラインから直接実行&amp;amp;出力形式の変更方法 - tkuchikiの日記&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="mysql" /><category term="bash" /><summary type="html">MySQL Version</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Check supported TLS version with openssl command</title><link href="https://blog.toshima.ru/2020/01/06/check-supported-tls-version.html" rel="alternate" type="text/html" title="Check supported TLS version with openssl command" /><published>2020-01-06T00:00:00+09:00</published><updated>2020-01-06T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/06/check-supported-tls-version</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/06/check-supported-tls-version.html">&lt;ol id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#web-tls-checker&quot; id=&quot;markdown-toc-web-tls-checker&quot;&gt;Web TLS Checker&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#openssl-command&quot; id=&quot;markdown-toc-openssl-command&quot;&gt;openssl command&lt;/a&gt;    &lt;ol&gt;
       &lt;li&gt;&lt;a href=&quot;#check-tls-v1-is-supported&quot; id=&quot;markdown-toc-check-tls-v1-is-supported&quot;&gt;Check TLS v1 is supported&lt;/a&gt;&lt;/li&gt;
@@ -559,31 +609,4 @@ Finished in 11.6 seconds (files took 5.29 seconds to load)
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://goreleaser.com/actions/&quot;&gt;GitHub Actions · GoReleaser&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/virtual-environments-for-github-actions&quot;&gt;Virtual environments for GitHub Actions - GitHub Help&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="go" /><summary type="html">I created a workflow to automate my go CLI tool with goreleaser + GitHub actions.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/images/goreleaser.jpg" /><media:content medium="image" url="https://blog.toshima.ru/images/goreleaser.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Bundler Error: bundle from bundler conflicts</title><link href="https://blog.toshima.ru/2019/10/14/bundle-from-bundler-conflicts.html" rel="alternate" type="text/html" title="Bundler Error: bundle from bundler conflicts" /><published>2019-10-14T00:00:00+09:00</published><updated>2019-10-14T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/10/14/bundle-from-bundler-conflicts</id><content type="html" xml:base="https://blog.toshima.ru/2019/10/14/bundle-from-bundler-conflicts.html">&lt;p&gt;One day I installed &lt;code class=&quot;highlighter-rouge&quot;&gt;bundler&lt;/code&gt; and got an error.&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;bundler
-&lt;span class=&quot;go&quot;&gt;ERROR:  Error installing bundler:
-	&quot;bundle&quot; from bundler conflicts with ...../bin/bundle
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Adding &lt;code class=&quot;highlighter-rouge&quot;&gt;--force&lt;/code&gt; option resolves this error.&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;bundler &lt;span class=&quot;nt&quot;&gt;--force&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;Parsing documentation for bundler-2.0.2
-Installing ri documentation for bundler-2.0.2
-Done installing documentation for bundler after 5 seconds
-1 gem installed
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;tips&quot;&gt;Tips&lt;/h2&gt;
-
-&lt;p&gt;Adding &lt;code class=&quot;highlighter-rouge&quot;&gt;--no-document&lt;/code&gt; option is good practice if you don’t need it.&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;bundler &lt;span class=&quot;nt&quot;&gt;--no-document&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--force&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/rubygems/rubygems/issues/2058&quot;&gt;Bundler fails to install after RubyGems update · Issue #2058 · rubygems/rubygems&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="bundler" /><category term="ruby" /><summary type="html">One day I installed bundler and got an error.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://avatars2.githubusercontent.com/u/803398" /><media:content medium="image" url="https://avatars2.githubusercontent.com/u/803398" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="go" /><summary type="html">I created a workflow to automate my go CLI tool with goreleaser + GitHub actions.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/images/goreleaser.jpg" /><media:content medium="image" url="https://blog.toshima.ru/images/goreleaser.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
