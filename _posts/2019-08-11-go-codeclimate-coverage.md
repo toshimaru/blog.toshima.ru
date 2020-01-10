@@ -1,10 +1,15 @@
 ---
 layout: post
-title: How to Measure Code Coverage on CodeClimate in Go
+title: How to measure code coverage on CodeClimate in Go
+image: /images/coverage.png
 tags: go
+last_modified_at: 2020-01-10
 ---
 
 Would you like to measure code coverage on [Code Climate](https://codeclimate.com/) in Go?
+
+* Table of Contents
+{:toc}
 
 ![coverage](/images/coverage.png)
 
@@ -23,11 +28,17 @@ $ go test ./... -coverprofile c.out
 This is a sample to send coverage result on TravisCI.
 
 ```bash
+# Install test-reporter
 curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
 chmod +x ./cc-test-reporter
+
+# before build step
 ./cc-test-reporter before-build
+
 # RUN TEST HERE
-# go test ./... -coverprofile c.out
+go test ./... -coverprofile c.out
+
+# after build step
 ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 ```
 
