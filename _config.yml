@@ -55,4 +55,4 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      image: https://avatars2.githubusercontent.com/u/803398
+      image: /android-chrome-512x512.png
