@@ -46,13 +46,11 @@ defaults:
   -
     scope:
       path: ""
-      type: "pages"
     values:
-      layout: "page"
+      image: /android-chrome-512x512.png
   -
     scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
-      image: /android-chrome-512x512.png
