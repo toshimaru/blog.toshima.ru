@@ -41,6 +41,9 @@ body {
   &--title {
     padding-left: .4rem;
     font-size: 1.2rem;
+    @media (max-width: 38rem) {
+      display: none;
+    }
   }
 }
 
@@ -234,7 +237,7 @@ tbody tr:nth-child(odd) th {
 
 .container {
   max-width: 38rem;
-  padding: 2rem .8rem;
+  padding: 3.5rem .8rem;
   margin-left: auto;
   margin-right: auto;
 
