@@ -32,6 +32,18 @@ body {
       -ms-text-size-adjust: 100%;
 }
 
+.hamburger-menu {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+
+  &--title {
+    padding-left: .4rem;
+    font-size: 1.2rem;
+  }
+}
+
 a {
   color: #268bd2;
   text-decoration: none;
