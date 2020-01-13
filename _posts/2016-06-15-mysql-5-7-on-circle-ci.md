@@ -19,8 +19,6 @@ This build image has MySQL 5.7.x by default.
 
 Please use [my forked script](https://gist.github.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/).
 
-{% gist toshimaru/06ffbf2e8ad7d4e3dab889fa27681835 %}
-
 The raw source is: <https://gist.githubusercontent.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/raw/install-mysql5.7-circleci.sh>
 
 ---
