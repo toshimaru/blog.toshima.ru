@@ -9,8 +9,6 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     eventmachine (1.2.7)
-    faraday (1.0.0)
-      multipart-post (>= 1.2, < 3)
     fastimage (2.1.7)
     ffi (1.11.3)
     forwardable-extended (2.6.0)
@@ -38,8 +36,6 @@ GEM
       jekyll (>= 3.7, < 5.0)
     jekyll-feed (0.13.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-gist (1.5.0)
-      octokit (~> 4.2)
     jekyll-include_sass (0.4.0)
       jekyll (>= 3.0, < 5.0)
     jekyll-redirect-from (0.15.0)
@@ -63,10 +59,6 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.3.6)
-    multipart-post (2.1.1)
-    octokit (4.15.0)
-      faraday (>= 0.9)
-      sawyer (~> 0.8.0, >= 0.5.3)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (4.0.3)
@@ -78,9 +70,6 @@ GEM
     safe_yaml (1.0.5)
     sassc (2.2.1)
       ffi (~> 1.9)
-    sawyer (0.8.2)
-      addressable (>= 2.3.5)
-      faraday (> 0.8, < 2.0)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     unicode-display_width (1.6.0)
@@ -93,7 +82,6 @@ DEPENDENCIES
   jekyll-archives
   jekyll-compose
   jekyll-feed
-  jekyll-gist
   jekyll-include_sass
   jekyll-redirect-from
   jekyll-seo-tag

@@ -6,7 +6,6 @@ group :jekyll_plugins do
   gem 'jekyll-archives'
   gem 'jekyll-compose'
   gem 'jekyll-feed'
-  gem 'jekyll-gist'
   gem 'jekyll-include_sass'
   gem 'jekyll-redirect-from'
   gem 'jekyll-seo-tag'
