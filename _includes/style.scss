@@ -283,6 +283,9 @@ tbody tr:nth-child(odd) th {
   &-body {
     margin-bottom: 1.5rem;
   }
+  &--ad {
+    margin-top: 15px;
+  }
 
   img, amp-img {
     display: block;
@@ -378,16 +381,17 @@ tbody tr:nth-child(odd) th {
   }
 }
 
-.post-ad {
-  margin-top: 15px;
-}
-
 .green {
   color: green;
 }
 
 .red {
   color: red;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
 }
 
 .highlight { color: #f8f8f2; }
