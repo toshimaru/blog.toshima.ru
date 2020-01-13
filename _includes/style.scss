@@ -237,12 +237,16 @@ tbody tr:nth-child(odd) th {
 
 .container {
   max-width: 38rem;
-  padding: 3.5rem .8rem;
+  padding: 4rem .8rem;
   margin-left: auto;
   margin-right: auto;
+}
 
-  @media (min-width: 38rem) {
-    padding: 4rem 1rem;
+#sidebar {
+  padding: 1rem 1.5rem;
+
+  a {
+    color: $dark-theme-color;
   }
 }
 
