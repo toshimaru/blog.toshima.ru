@@ -232,15 +232,17 @@ tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
 }
 
-.lead {
-  font-size: 1.25rem;
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
 }
 
-.container {
-  max-width: 38rem;
-  padding: 4rem .8rem;
-  margin-left: auto;
-  margin-right: auto;
+#markdown-toc {
+  padding: 1em;
+  font-size: .9em;
+  border: solid 1px #aaa;
+  border-radius: .3em;
+  list-style: inside square;
 }
 
 #sidebar {
@@ -254,6 +256,17 @@ tbody tr:nth-child(odd) th {
   a {
     color: $dark-theme-color;
   }
+}
+
+.lead {
+  font-size: 1.25rem;
+}
+
+.container {
+  max-width: 38rem;
+  padding: 4rem .8rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .masthead {
@@ -412,11 +425,6 @@ tbody tr:nth-child(odd) th {
 
 .red {
   color: red;
-}
-
-footer {
-  text-align: center;
-  padding: 1.5rem 0;
 }
 
 .highlight { color: #f8f8f2; }
