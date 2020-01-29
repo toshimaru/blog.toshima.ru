@@ -2,13 +2,22 @@
 layout: post
 title: Rails Bulk Migration
 tags: rails activerecord
+last_modified_at: 2020-01-30
 ---
 
-Schema change on RDB might be a dangerous operation.
+Schema change on RDB could be a dangerous operation.
 
-That's the same as Rails, so it's important to run migrations with `bulk` option.
+That's the same on Rails, so it's important to run migrations with `bulk` option.
 
-This article explains how `bulk` option changes the schema change operation.
+This article explains how `bulk` option changes Rails migration.
+
+* Table Of Contents
+{:toc}
+
+## Prerequisite
+
+- Rails 6.0
+- MySQL 8.0
 
 ## User table schema
 
@@ -27,13 +36,12 @@ mysql> desc users;
 4 rows in set (0.01 sec)
 ```
 
-## Migration without bulk option
+## Migration without `bulk` option
 
 Let's add three columns named `new_column1`, `new_column2` and `new_column3`.
 
 ```console
 $ bundle exec rails g migration addColumnsToUser new_column1:integer new_column2:string new_column3:boolean
-Running via Spring preloader in process 408
       invoke  active_record
       create    db/migrate/20200101164105_add_columns_to_user.rb
 ```
@@ -64,11 +72,11 @@ $ bundle exec rails db:migrate
 == 20200101164105 AddColumnsToUser: migrated (0.3771s) ========================
 ```
 
-As you can see, `add_column`, which may be a dangerous operation, is invoked three times.
+As you can see, `add_column`, which may be a dangerous operation, is invoked three times. That's not good.
 
-## Migration with bulk option
+## Migration with `bulk` option
 
-Let't create a migration with `bulk` option.
+Let's create a migration with `bulk` option.
 
 Modify the migration file like below:
 
@@ -84,7 +92,7 @@ class AddColumnsToUser < ActiveRecord::Migration[6.0]
 end
 ```
 
-`bulk: true` means the schema change will be squashed into one.
+`bulk: true` means the schema changes will be squashed into one.
 
 Run `db:migrate`.
 
