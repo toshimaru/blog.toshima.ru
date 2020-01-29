@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-28T08:11:03+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">How to install Disqus for AMP</title><link href="https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html" rel="alternate" type="text/html" title="How to install Disqus for AMP" /><published>2020-01-27T00:00:00+09:00</published><updated>2020-01-27T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html">&lt;p&gt;I’ve installed &lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt; to my blog.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-30T01:16:27+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">How to install Disqus for AMP</title><link href="https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html" rel="alternate" type="text/html" title="How to install Disqus for AMP" /><published>2020-01-27T00:00:00+09:00</published><updated>2020-01-30T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html">&lt;p&gt;I’ve installed &lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt; to my blog.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;/2020/01/05/add-disqus.html&quot;&gt;Comment is now available! | Toshimaru’s Blog&lt;/a&gt;&lt;/p&gt;
 
@@ -56,7 +56,7 @@
 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// DON'T EDIT BELOW THIS LINE&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-    &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;https://toshimarusblog.disqus.com/embed.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;https://{your_disqus_id}.disqus.com/embed.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
     &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;data-timestamp&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -91,14 +91,60 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
+&lt;p&gt;ref. &lt;a href=&quot;https://help.disqus.com/en/articles/1717084-javascript-configuration-variables&quot;&gt;JavaScript configuration variables | Disqus&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;url-format&quot;&gt;URL Format&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https:{hostname}/disqus.html?id={id}&amp;amp;url={url}&amp;amp;title={title}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;how-to-install-disqus-on-your-amp&quot;&gt;How to install Disqus on your AMP&lt;/h2&gt;
+
+&lt;p&gt;Set the URL to &lt;code class=&quot;highlighter-rouge&quot;&gt;amp-iframe&lt;/code&gt; src attribute value.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;amp-iframe&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;600&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;140&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;layout=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;responsive&quot;&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;sandbox=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;allow-scripts allow-same-origin allow-modals allow-popups allow-forms&quot;&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;resizable&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https:{hostname}/disqus.html?id={id}&amp;amp;url={url}&amp;amp;title={title}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  ...(snip)...
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/amp-iframe&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;iframe-origin-error&quot;&gt;iframe origin error&lt;/h2&gt;
+
+&lt;p&gt;If you use same FQDN in iframe &lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt;, you’ll get the following error.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Origin of &amp;lt;amp-iframe&amp;gt; must not be equal to container &amp;lt;amp-iframe&amp;gt;​…​&amp;lt;/amp-iframe&amp;gt;​ if allow-same-origin is set. See &lt;a href=&quot;https://github.com/ampproject/amphtml/blob/master/spec/amp-iframe-origin-policy.md&quot;&gt;https://github.com/ampproject/amphtml/blob/master/spec/amp-iframe-origin-policy.md&lt;/a&gt; for details.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;what-is-sandbox-attribute&quot;&gt;What is sandbox attribute?&lt;/h2&gt;
+
 &lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;sadbox value&lt;/th&gt;
+      &lt;th&gt;description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;ref. [JavaScript configuration variables&lt;/td&gt;
-      &lt;td&gt;Disqus](https://help.disqus.com/en/articles/1717084-javascript-configuration-variables)&lt;/td&gt;
+      &lt;td&gt;empty&lt;/td&gt;
+      &lt;td&gt;all restrictions are applied&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;allow-scripts&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Allows the resource to run scripts.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;allow-same-origin&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Treat as same origin even if different origin is specified in &lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt;.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;p&gt;ref. &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox&quot;&gt;&amp;lt;iframe&amp;gt;: The Inline Frame element - HTML: Hypertext Markup Language | MDN&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 
@@ -111,11 +157,8 @@
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;/2020/01/04/get-query-parameters-in-javascript.html&quot;&gt;Get Query Parameters in JavaScript | Toshimaru’s Blog&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="disqus" /><summary type="html">I’ve installed Disqus to my blog.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Run MySQL query from command line</title><link href="https://blog.toshima.ru/2020/01/07/mysql-result-via-command-line.html" rel="alternate" type="text/html" title="Run MySQL query from command line" /><published>2020-01-07T00:00:00+09:00</published><updated>2020-01-07T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/07/mysql-result-via-command-line</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/07/mysql-result-via-command-line.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#mysql-version&quot; id=&quot;markdown-toc-mysql-version&quot;&gt;MySQL Version&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#use-mysql-on-docker&quot; id=&quot;markdown-toc-use-mysql-on-docker&quot;&gt;Use MySQL on Docker&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="disqus" /><category term="amp" /><summary type="html">I’ve installed Disqus to my blog.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Run MySQL query from command line</title><link href="https://blog.toshima.ru/2020/01/07/mysql-result-via-command-line.html" rel="alternate" type="text/html" title="Run MySQL query from command line" /><published>2020-01-07T00:00:00+09:00</published><updated>2020-01-07T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/07/mysql-result-via-command-line</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/07/mysql-result-via-command-line.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#mysql-version&quot; id=&quot;markdown-toc-mysql-version&quot;&gt;MySQL Version&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#table-output-from-command-line&quot; id=&quot;markdown-toc-table-output-from-command-line&quot;&gt;Table output from command line&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#table-output-without-header-from-command-line&quot; id=&quot;markdown-toc-table-output-without-header-from-command-line&quot;&gt;Table output without header from command line&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#tsv-output-from-command-line&quot; id=&quot;markdown-toc-tsv-output-from-command-line&quot;&gt;TSV output from command line&lt;/a&gt;&lt;/li&gt;
@@ -129,9 +172,9 @@
 &lt;span class=&quot;go&quot;&gt;mysql  Ver 8.0.18 for Linux on x86_64 (MySQL Community Server - GPL)
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;use-mysql-on-docker&quot;&gt;Use MySQL on Docker&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Use MySQL on Docker?&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;See my another post: &lt;a href=&quot;/2018/09/16/docker-run-mysql.html&quot;&gt;Run and Connect to MySQL on Docker | Toshimaru’s Blog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See my another post: &lt;a href=&quot;/2018/09/16/docker-run-mysql.html&quot;&gt;Run and Connect to MySQL on Docker&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;table-output-from-command-line&quot;&gt;Table output from command line&lt;/h2&gt;
 
@@ -353,11 +396,25 @@ key: b, value: 2
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams&quot;&gt;URLSearchParams - Web APIs | MDN&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="javascript" /><summary type="html">Get current URI query params</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Rails Bulk Migration</title><link href="https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html" rel="alternate" type="text/html" title="Rails Bulk Migration" /><published>2020-01-02T00:00:00+09:00</published><updated>2020-01-02T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html">&lt;p&gt;Schema change on RDB might be a dangerous operation.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams&quot;&gt;URLSearchParams - Web APIs | MDN&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="javascript" /><summary type="html">Get current URI query params</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Rails Bulk Migration</title><link href="https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html" rel="alternate" type="text/html" title="Rails Bulk Migration" /><published>2020-01-02T00:00:00+09:00</published><updated>2020-01-30T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html">&lt;p&gt;Schema change on RDB could be a dangerous operation.&lt;/p&gt;
 
-&lt;p&gt;That’s the same as Rails, so it’s important to run migrations with &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option.&lt;/p&gt;
+&lt;p&gt;That’s the same on Rails, so it’s important to run migrations with &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option.&lt;/p&gt;
 
-&lt;p&gt;This article explains how &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option changes the schema change operation.&lt;/p&gt;
+&lt;p&gt;This article explains how &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option changes Rails migration.&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#prerequisite&quot; id=&quot;markdown-toc-prerequisite&quot;&gt;Prerequisite&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#user-table-schema&quot; id=&quot;markdown-toc-user-table-schema&quot;&gt;User table schema&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#migration-without-bulk-option&quot; id=&quot;markdown-toc-migration-without-bulk-option&quot;&gt;Migration without &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#migration-with-bulk-option&quot; id=&quot;markdown-toc-migration-with-bulk-option&quot;&gt;Migration with &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;prerequisite&quot;&gt;Prerequisite&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rails 6.0&lt;/li&gt;
+  &lt;li&gt;MySQL 8.0&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;user-table-schema&quot;&gt;User table schema&lt;/h2&gt;
 
@@ -375,13 +432,12 @@ key: b, value: 2
 4 rows in set (0.01 sec)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;migration-without-bulk-option&quot;&gt;Migration without bulk option&lt;/h2&gt;
+&lt;h2 id=&quot;migration-without-bulk-option&quot;&gt;Migration without &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option&lt;/h2&gt;
 
 &lt;p&gt;Let’s add three columns named &lt;code class=&quot;highlighter-rouge&quot;&gt;new_column1&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;new_column2&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;new_column3&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rails g migration addColumnsToUser new_column1:integer new_column2:string new_column3:boolean
-&lt;span class=&quot;go&quot;&gt;Running via Spring preloader in process 408
-      invoke  active_record
+&lt;span class=&quot;go&quot;&gt;      invoke  active_record
       create    db/migrate/20200101164105_add_columns_to_user.rb
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -409,11 +465,11 @@ key: b, value: 2
 &lt;span class=&quot;go&quot;&gt;== 20200101164105 AddColumnsToUser: migrated (0.3771s) ========================
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;As you can see, &lt;code class=&quot;highlighter-rouge&quot;&gt;add_column&lt;/code&gt;, which may be a dangerous operation, is invoked three times.&lt;/p&gt;
+&lt;p&gt;As you can see, &lt;code class=&quot;highlighter-rouge&quot;&gt;add_column&lt;/code&gt;, which may be a dangerous operation, is invoked three times. That’s not good.&lt;/p&gt;
 
-&lt;h2 id=&quot;migration-with-bulk-option&quot;&gt;Migration with bulk option&lt;/h2&gt;
+&lt;h2 id=&quot;migration-with-bulk-option&quot;&gt;Migration with &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option&lt;/h2&gt;
 
-&lt;p&gt;Let’t create a migration with &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option.&lt;/p&gt;
+&lt;p&gt;Let’s create a migration with &lt;code class=&quot;highlighter-rouge&quot;&gt;bulk&lt;/code&gt; option.&lt;/p&gt;
 
 &lt;p&gt;Modify the migration file like below:&lt;/p&gt;
 
@@ -428,7 +484,7 @@ key: b, value: 2
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bulk: true&lt;/code&gt; means the schema change will be squashed into one.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bulk: true&lt;/code&gt; means the schema changes will be squashed into one.&lt;/p&gt;
 
 &lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate&lt;/code&gt;.&lt;/p&gt;
 
@@ -439,7 +495,7 @@ key: b, value: 2
 &lt;span class=&quot;go&quot;&gt;== 20200101164105 AddColumnsToUser: migrated (0.1300s) ========================
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Yes! &lt;code class=&quot;highlighter-rouge&quot;&gt;change_table&lt;/code&gt; is invoked just one time!&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="rails" /><category term="activerecord" /><summary type="html">Schema change on RDB might be a dangerous operation.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Stop emitting warnings in Ruby 2.7</title><link href="https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html" rel="alternate" type="text/html" title="Stop emitting warnings in Ruby 2.7" /><published>2020-01-01T00:00:00+09:00</published><updated>2020-01-01T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html">&lt;p&gt;Ruby 2.7 emits many warnings.&lt;/p&gt;
+&lt;p&gt;Yes! &lt;code class=&quot;highlighter-rouge&quot;&gt;change_table&lt;/code&gt; is invoked just one time!&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="rails" /><category term="activerecord" /><summary type="html">Schema change on RDB could be a dangerous operation.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Stop emitting warnings in Ruby 2.7</title><link href="https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html" rel="alternate" type="text/html" title="Stop emitting warnings in Ruby 2.7" /><published>2020-01-01T00:00:00+09:00</published><updated>2020-01-01T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html">&lt;p&gt;Ruby 2.7 emits many warnings.&lt;/p&gt;
 
 &lt;p&gt;For example:&lt;/p&gt;
 

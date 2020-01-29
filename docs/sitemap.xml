@@ -202,7 +202,7 @@
 </url>
 <url>
 <loc>https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html</loc>
-<lastmod>2020-01-02T00:00:00+09:00</lastmod>
+<lastmod>2020-01-30T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>https://blog.toshima.ru/2020/01/04/get-query-parameters-in-javascript.html</loc>
@@ -222,7 +222,7 @@
 </url>
 <url>
 <loc>https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html</loc>
-<lastmod>2020-01-27T00:00:00+09:00</lastmod>
+<lastmod>2020-01-30T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>https://blog.toshima.ru/</loc>
@@ -313,6 +313,9 @@
 </url>
 <url>
 <loc>https://blog.toshima.ru/tag/tls/</loc>
+</url>
+<url>
+<loc>https://blog.toshima.ru/tag/amp/</loc>
 </url>
 <url>
 <loc>https://blog.toshima.ru/2016/</loc>
