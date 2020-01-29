@@ -1,7 +1,8 @@
 ---
 layout: post
 title: How to install Disqus for AMP
-tags: disqus
+tags: disqus amp
+last_modified_at: 2020-01-30
 ---
 
 I've installed [Disqus](https://disqus.com/) to my blog.
@@ -62,7 +63,7 @@ var disqus_config = function () {
 (function() {  // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
 
-    s.src = 'https://toshimarusblog.disqus.com/embed.js';
+    s.src = 'https://{your_disqus_id}.disqus.com/embed.js';
 
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
@@ -80,7 +81,43 @@ Source code: <https://github.com/toshimaru/disqus.toshima.ru/blob/master/blog-to
 | `url`  | Tells the Disqus service the URL of the current page. |
 | `title`  | Tells the Disqus service the title of the current page. |
 
-ref. [JavaScript configuration variables | Disqus](https://help.disqus.com/en/articles/1717084-javascript-configuration-variables)
+ref. [JavaScript configuration variables \| Disqus](https://help.disqus.com/en/articles/1717084-javascript-configuration-variables)
+
+## URL Format
+
+```
+https:{hostname}/disqus.html?id={id}&url={url}&title={title}
+```
+
+## How to install Disqus on your AMP
+
+Set the URL to `amp-iframe` src attribute value.
+
+```html
+<amp-iframe width=600 height=140
+          layout="responsive"
+          sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+          resizable
+          src="https:{hostname}/disqus.html?id={id}&url={url}&title={title}">
+  ...(snip)...
+</amp-iframe>
+```
+
+## iframe origin error
+
+If you use same FQDN in iframe `src`, you'll get the following error.
+
+> Origin of &lt;amp-iframe&gt; must not be equal to container &lt;amp-iframe&gt;​&hellip;​&lt;/amp-iframe&gt;​ if allow-same-origin is set. See <https://github.com/ampproject/amphtml/blob/master/spec/amp-iframe-origin-policy.md> for details.
+
+## What is sandbox attribute?
+
+| sadbox value | description |
+| --- | --- |
+| empty  | all restrictions are applied  |
+| `allow-scripts` | Allows the resource to run scripts. |
+| `allow-same-origin` | Treat as same origin even if different origin is specified in `src`. |
+
+ref. [<iframe>: The Inline Frame element - HTML: Hypertext Markup Language \| MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox)
 
 ## Reference
 

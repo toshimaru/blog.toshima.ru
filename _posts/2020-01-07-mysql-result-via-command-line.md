@@ -14,9 +14,9 @@ $ mysql --version
 mysql  Ver 8.0.18 for Linux on x86_64 (MySQL Community Server - GPL)
 ```
 
-### Use MySQL on Docker
+**Use MySQL on Docker?**
 
-See my another post: [Run and Connect to MySQL on Docker \| Toshimaru’s Blog](/2018/09/16/docker-run-mysql.html)
+See my another post: [Run and Connect to MySQL on Docker](/2018/09/16/docker-run-mysql.html)
 
 ## Table output from command line
 
