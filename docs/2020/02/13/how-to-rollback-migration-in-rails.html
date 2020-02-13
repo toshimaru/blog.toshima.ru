@@ -19,26 +19,26 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Show Active Record Model column names | Toshimaru’s Blog</title>
+<title>How to rollback migration in Rails | Toshimaru’s Blog</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Show Active Record Model column names" />
+<meta property="og:title" content="How to rollback migration in Rails" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Active Record provides a column_names method to show column names of a Model." />
-<meta property="og:description" content="Active Record provides a column_names method to show column names of a Model." />
-<link rel="canonical" href="https://blog.toshima.ru/2016/06/18/active-record-model-columns.html" />
-<meta property="og:url" content="https://blog.toshima.ru/2016/06/18/active-record-model-columns.html" />
+<meta name="description" content="Where there’s a will, there’s a way." />
+<meta property="og:description" content="Where there’s a will, there’s a way." />
+<link rel="canonical" href="https://blog.toshima.ru/2020/02/13/how-to-rollback-migration-in-rails.html" />
+<meta property="og:url" content="https://blog.toshima.ru/2020/02/13/how-to-rollback-migration-in-rails.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
 <meta property="og:image" content="https://blog.toshima.ru/android-chrome-512x512.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-06-18T00:00:00+09:00" />
+<meta property="article:published_time" content="2020-02-13T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:image" content="https://blog.toshima.ru/android-chrome-512x512.png" />
-<meta property="twitter:title" content="Show Active Record Model column names" />
+<meta property="twitter:title" content="How to rollback migration in Rails" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"toshimaru"},"description":"Active Record provides a column_names method to show column names of a Model.","headline":"Show Active Record Model column names","url":"https://blog.toshima.ru/2016/06/18/active-record-model-columns.html","datePublished":"2016-06-18T00:00:00+09:00","dateModified":"2016-06-18T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/06/18/active-record-model-columns.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"toshimaru"},"description":"Where there’s a will, there’s a way.","headline":"How to rollback migration in Rails","url":"https://blog.toshima.ru/2020/02/13/how-to-rollback-migration-in-rails.html","datePublished":"2020-02-13T00:00:00+09:00","dateModified":"2020-02-13T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/02/13/how-to-rollback-migration-in-rails.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -78,34 +78,75 @@
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
 <article class="content post">
-  <h1 class="post-title">Show Active Record Model column names</h1>
+  <h1 class="post-title">How to rollback migration in Rails</h1>
   <div class="post-meta">
     <div class="post-date">
-      <time>18 Jun 2016</time>
+      <time>13 Feb 2020</time>
       
     </div>
     <div class="post-tags">
       <ul class="tags">
         
-          <li><a href="/tag/activerecord" class="tag">activerecord</a></li>
-        
           <li><a href="/tag/rails" class="tag">rails</a></li>
+        
+          <li><a href="/tag/activerecord" class="tag">activerecord</a></li>
         
       </ul>
     </div>
   </div>
 
   <div class="post-body">
-    <p>Active Record provides a <code class="highlighter-rouge">column_names</code> method to show column names of a Model.</p>
+    <ul id="markdown-toc">
+  <li><a href="#rollback-last-migration" id="markdown-toc-rollback-last-migration">Rollback last migration</a></li>
+  <li><a href="#rollback-specific-migration" id="markdown-toc-rollback-specific-migration">Rollback specific migration</a></li>
+  <li><a href="#check-migration-status" id="markdown-toc-check-migration-status">Check migration status</a></li>
+  <li><a href="#migration-down-and-up" id="markdown-toc-migration-down-and-up">Migration down and up</a></li>
+  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+</ul>
 
-<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">User</span><span class="p">.</span><span class="nf">column_names</span>
-<span class="c1"># =&gt; ["id", "name", "email", "password_digest", "created_at", "updated_at"]</span>
+<h2 id="rollback-last-migration">Rollback last migration</h2>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>rails db:rollback <span class="nv">STEP</span><span class="o">=</span>1
 </code></pre></div></div>
 
-<h2 id="see-also">See also</h2>
-<ul>
-  <li><a href="http://stackoverflow.com/questions/5575970/activerecord-list-columns-in-table-from-console">sql - ActiveRecord: List columns in table from console - Stack Overflow</a></li>
-</ul>
+<p>If you specify <code class="highlighter-rouge">STEP=2</code>, the last two migrations are rollbacked.</p>
+
+<h2 id="rollback-specific-migration">Rollback specific migration</h2>
+
+<p>You can rollback a specific migration with <code class="highlighter-rouge">db:migrate:down</code> and <code class="highlighter-rouge">VERSION=xxxx</code>.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>rails db:migrate:down <span class="nv">VERSION</span><span class="o">=</span>20200905201547
+</code></pre></div></div>
+
+<p>if you want to run the migration again:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>rails db:migrate:up <span class="nv">VERSION</span><span class="o">=</span>20200905201547
+</code></pre></div></div>
+
+<h2 id="check-migration-status">Check migration status</h2>
+
+<p>You can check your migrations are up or down with <code class="highlighter-rouge">db:migrate:status</code>.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>rails db:migrate:status
+<span class="go">Status   Migration ID    Migration Name
+--------------------------------------------------
+  up     20190307124026  Create users
+  up     20190315090930  Add index to users email
+ down    20190315xxxxxx  xxxx
+</span></code></pre></div></div>
+
+<h2 id="migration-down-and-up">Migration down and up</h2>
+
+<p>You can run <code class="highlighter-rouge">db:migrate:down</code> and <code class="highlighter-rouge">db:migrate:up</code> with one command, which is <code class="highlighter-rouge">db:migrate:redo</code>.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>rails db:migrate:redo <span class="nv">VERSION</span><span class="o">=</span>20200905201547
+</code></pre></div></div>
+
+<p>You can check if a specific migration is reversible. If not, <a href="https://railsdoc.github.io/classes/ActiveRecord/IrreversibleMigration.html">ActiveRecord::IrreversibleMigration</a> error will be raised.</p>
+
+<h2 id="reference">Reference</h2>
+
+<p><a href="https://stackoverflow.com/questions/3647685/how-to-rollback-a-specific-migration">ruby on rails - How to rollback a specific migration? - Stack Overflow</a></p>
 
   </div>
 
@@ -125,7 +166,7 @@
             layout="responsive"
             sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
             resizable
-            src="https://disqus.toshima.ru/blog-toshima-ru.html?id=/2016/06/18/active-record-model-columns&url=https://blog.toshima.ru/2016/06/18/active-record-model-columns.html&title=Show%20Active%20Record%20Model%20column%20names">
+            src="https://disqus.toshima.ru/blog-toshima-ru.html?id=/2020/02/13/how-to-rollback-migration-in-rails&url=https://blog.toshima.ru/2020/02/13/how-to-rollback-migration-in-rails.html&title=How%20to%20rollback%20migration%20in%20Rails">
     <div overflow
          tabindex=0
          role=button

@@ -1,5 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-01-30T01:16:27+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">How to install Disqus for AMP</title><link href="https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html" rel="alternate" type="text/html" title="How to install Disqus for AMP" /><published>2020-01-27T00:00:00+09:00</published><updated>2020-01-30T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html">&lt;p&gt;I’ve installed &lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt; to my blog.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-02-13T19:06:43+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">How to rollback migration in Rails</title><link href="https://blog.toshima.ru/2020/02/13/how-to-rollback-migration-in-rails.html" rel="alternate" type="text/html" title="How to rollback migration in Rails" /><published>2020-02-13T00:00:00+09:00</published><updated>2020-02-13T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/02/13/how-to-rollback-migration-in-rails</id><content type="html" xml:base="https://blog.toshima.ru/2020/02/13/how-to-rollback-migration-in-rails.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#rollback-last-migration&quot; id=&quot;markdown-toc-rollback-last-migration&quot;&gt;Rollback last migration&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#rollback-specific-migration&quot; id=&quot;markdown-toc-rollback-specific-migration&quot;&gt;Rollback specific migration&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#check-migration-status&quot; id=&quot;markdown-toc-check-migration-status&quot;&gt;Check migration status&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#migration-down-and-up&quot; id=&quot;markdown-toc-migration-down-and-up&quot;&gt;Migration down and up&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#reference&quot; id=&quot;markdown-toc-reference&quot;&gt;Reference&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;rollback-last-migration&quot;&gt;Rollback last migration&lt;/h2&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rails db:rollback &lt;span class=&quot;nv&quot;&gt;STEP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you specify &lt;code class=&quot;highlighter-rouge&quot;&gt;STEP=2&lt;/code&gt;, the last two migrations are rollbacked.&lt;/p&gt;
+
+&lt;h2 id=&quot;rollback-specific-migration&quot;&gt;Rollback specific migration&lt;/h2&gt;
+
+&lt;p&gt;You can rollback a specific migration with &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate:down&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;VERSION=xxxx&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rails db:migrate:down &lt;span class=&quot;nv&quot;&gt;VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20200905201547
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;if you want to run the migration again:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rails db:migrate:up &lt;span class=&quot;nv&quot;&gt;VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20200905201547
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;check-migration-status&quot;&gt;Check migration status&lt;/h2&gt;
+
+&lt;p&gt;You can check your migrations are up or down with &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate:status&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rails db:migrate:status
+&lt;span class=&quot;go&quot;&gt;Status   Migration ID    Migration Name
+--------------------------------------------------
+  up     20190307124026  Create users
+  up     20190315090930  Add index to users email
+ down    20190315xxxxxx  xxxx
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;migration-down-and-up&quot;&gt;Migration down and up&lt;/h2&gt;
+
+&lt;p&gt;You can run &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate:down&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate:up&lt;/code&gt; with one command, which is &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate:redo&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rails db:migrate:redo &lt;span class=&quot;nv&quot;&gt;VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20200905201547
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can check if a specific migration is reversible. If not, &lt;a href=&quot;https://railsdoc.github.io/classes/ActiveRecord/IrreversibleMigration.html&quot;&gt;ActiveRecord::IrreversibleMigration&lt;/a&gt; error will be raised.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/3647685/how-to-rollback-a-specific-migration&quot;&gt;ruby on rails - How to rollback a specific migration? - Stack Overflow&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="rails" /><category term="activerecord" /><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">How to install Disqus for AMP</title><link href="https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html" rel="alternate" type="text/html" title="How to install Disqus for AMP" /><published>2020-01-27T00:00:00+09:00</published><updated>2020-01-30T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus</id><content type="html" xml:base="https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html">&lt;p&gt;I’ve installed &lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt; to my blog.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;/2020/01/05/add-disqus.html&quot;&gt;Comment is now available! | Toshimaru’s Blog&lt;/a&gt;&lt;/p&gt;
 
@@ -661,47 +711,4 @@ key: b, value: 2
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.omgubuntu.co.uk/2019/08/install-chromium-browser-ubuntu&quot;&gt;Install Chromium on Ubuntu 18.04 LTS &amp;amp; Linux Mint&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="ci" /><category term="chrome" /><summary type="html">Issue</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Make Puma test output silent</title><link href="https://blog.toshima.ru/2019/12/17/make-puma-silent-on-test.html" rel="alternate" type="text/html" title="Make Puma test output silent" /><published>2019-12-17T00:00:00+09:00</published><updated>2019-12-17T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/12/17/make-puma-silent-on-test</id><content type="html" xml:base="https://blog.toshima.ru/2019/12/17/make-puma-silent-on-test.html">&lt;p&gt;When you run RSpec, you might see the following output:&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rspec
-&lt;span class=&quot;go&quot;&gt;Randomized with seed 59799
-............................................................................................Capybara starting Puma...
-* Version 4.3.1 , codename: Mysterious Traveller
-* Min threads: 0, max threads: 4
-* Listening on tcp://127.0.0.1:42837
-&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;...................................................................
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Capybara starting Puma&lt;/code&gt; is shown in the RSpec output.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Capybara starting Puma...
-* Version 4.3.1 , codename: Mysterious Traveller
-* Min threads: 0, max threads: 4
-* Listening on tcp://127.0.0.1:42837
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This is because Puma is started by Capybara when system test is invoked.&lt;/p&gt;
-
-&lt;p&gt;You can make it silent by setting. In your test helper, add the line:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Capybara.server = :puma, { Silent: true }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It means run puma server silently.&lt;/p&gt;
-
-&lt;p&gt;After this setting:&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rspec
-&lt;span class=&quot;go&quot;&gt;
-Randomized with seed 45766
-&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;...............................................................................................................................................................
-&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;
-Finished in 11.6 seconds (files took 5.29 seconds to load)
-159 examples, 0 failures
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Test output is now clean!&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/teamcapybara/capybara#setup&quot;&gt;teamcapybara/capybara: Acceptance test framework for web applications&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="ruby" /><summary type="html">When you run RSpec, you might see the following output:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="ci" /><category term="chrome" /><summary type="html">Issue</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

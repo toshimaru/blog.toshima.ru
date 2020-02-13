@@ -154,7 +154,7 @@
 </url>
 <url>
 <loc>https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html</loc>
-<lastmod>2019-08-11T00:00:00+09:00</lastmod>
+<lastmod>2020-01-10T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html</loc>
@@ -223,6 +223,10 @@
 <url>
 <loc>https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html</loc>
 <lastmod>2020-01-30T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>https://blog.toshima.ru/2020/02/13/how-to-rollback-migration-in-rails.html</loc>
+<lastmod>2020-02-13T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>https://blog.toshima.ru/</loc>
@@ -406,6 +410,9 @@
 </url>
 <url>
 <loc>https://blog.toshima.ru/2020/</loc>
+</url>
+<url>
+<loc>https://blog.toshima.ru/2020/02/</loc>
 </url>
 <url>
 <loc>https://blog.toshima.ru/2020/01/</loc>
