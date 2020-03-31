@@ -1,5 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-02-23T00:14:48+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
-</subtitle><author><name>toshimaru</name></author><entry><title type="html">Ruby Private Constant</title><link href="https://blog.toshima.ru/2020/02/22/ruby-private-constant.html" rel="alternate" type="text/html" title="Ruby Private Constant" /><published>2020-02-22T00:00:00+09:00</published><updated>2020-02-22T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/02/22/ruby-private-constant</id><content type="html" xml:base="https://blog.toshima.ru/2020/02/22/ruby-private-constant.html">&lt;p&gt;How can we define a private constant in Ruby.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-04-01T08:19:01+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+</subtitle><author><name>toshimaru</name></author><entry><title type="html">How to output HTML for Go code coverage</title><link href="https://blog.toshima.ru/2020/04/01/go-coverage-html-output.html" rel="alternate" type="text/html" title="How to output HTML for Go code coverage" /><published>2020-04-01T00:00:00+09:00</published><updated>2020-04-01T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/04/01/go-coverage-html-output</id><content type="html" xml:base="https://blog.toshima.ru/2020/04/01/go-coverage-html-output.html">&lt;h2 id=&quot;normal-test-in-go&quot;&gt;Normal test in Go&lt;/h2&gt;
+
+&lt;p&gt;Let’s run tests normally for &lt;a href=&quot;https://github.com/toshimaru/nyan&quot;&gt;my go repository&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;go &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; ./...
+&lt;span class=&quot;go&quot;&gt;ok  	github.com/toshimaru/nyan	0.432s
+ok  	github.com/toshimaru/nyan/styles	0.253s
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;test-with-coverage-profile-output&quot;&gt;Test with coverage profile output&lt;/h2&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;go &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; ./... &lt;span class=&quot;nt&quot;&gt;-coverprofile&lt;/span&gt; coverage.out
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;coverage-profile-content&quot;&gt;Coverage profile content&lt;/h3&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;coverage.out
+&lt;span class=&quot;go&quot;&gt;mode: set
+github.com/toshimaru/nyan/styles/api.go:16.50,19.2 2 1
+github.com/toshimaru/nyan/styles/api.go:22.23,24.29 2 1
+github.com/toshimaru/nyan/styles/api.go:27.2,28.12 2 1
+github.com/toshimaru/nyan/styles/api.go:24.29,26.3 1 1
+github.com/toshimaru/nyan/styles/api.go:32.37,33.37 1 1
+github.com/toshimaru/nyan/styles/api.go:36.2,36.17 1 1
+github.com/toshimaru/nyan/styles/api.go:33.37,35.3 1 1
+github.com/toshimaru/nyan/main.go:39.13,47.2 6 1
+github.com/toshimaru/nyan/main.go:49.13,50.42 1 1
+github.com/toshimaru/nyan/main.go:50.42,52.3 1 0
+github.com/toshimaru/nyan/main.go:55.61,56.17 1 1
+github.com/toshimaru/nyan/main.go:64.2,67.37 3 1
+&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;...
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;coverage-output-as-html&quot;&gt;Coverage output as HTML&lt;/h2&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;go tool cover &lt;span class=&quot;nt&quot;&gt;-html&lt;/span&gt; coverage.out &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; coverage.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;screenshot&quot;&gt;Screenshot&lt;/h3&gt;
+
+&lt;p&gt;&lt;amp-img src=&quot;/images/gocoverage.png&quot; alt=&quot;coverage.html&quot; width='1532' height='904' layout='responsive'&gt;&lt;/amp-img&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;related-post&quot;&gt;Related post&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/2019/08/11/go-codeclimate-coverage.html&quot;&gt;How to measure code coverage on CodeClimate in Go&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.golang.org/cover&quot;&gt;The cover story - The Go Blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="go" /><summary type="html">Normal test in Go</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Ruby Private Constant</title><link href="https://blog.toshima.ru/2020/02/22/ruby-private-constant.html" rel="alternate" type="text/html" title="Ruby Private Constant" /><published>2020-02-22T00:00:00+09:00</published><updated>2020-02-22T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/02/22/ruby-private-constant</id><content type="html" xml:base="https://blog.toshima.ru/2020/02/22/ruby-private-constant.html">&lt;p&gt;How can we define a private constant in Ruby.&lt;/p&gt;
 
 &lt;p&gt;Let’ define &lt;code class=&quot;highlighter-rouge&quot;&gt;PRIVATE_CONSTANT&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;private&lt;/code&gt; section.&lt;/p&gt;
 
@@ -619,92 +671,4 @@ key: b, value: 2
 
 &lt;h2 id=&quot;see-also&quot;&gt;See Also&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.ruby-lang.org/en/news/2019/12/25/ruby-2-7-0-released/&quot;&gt;Ruby 2.7.0 Released&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="ruby" /><summary type="html">Ruby 2.7 emits many warnings.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">MySQL ADD COLUMN statements</title><link href="https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html" rel="alternate" type="text/html" title="MySQL ADD COLUMN statements" /><published>2019-12-27T00:00:00+09:00</published><updated>2019-12-27T00:00:00+09:00</updated><id>https://blog.toshima.ru/2019/12/27/new-mysql-add-column</id><content type="html" xml:base="https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html">&lt;h2 id=&quot;mysql-version&quot;&gt;MySQL Version&lt;/h2&gt;
-
-&lt;p&gt;MySQL 8.0&lt;/p&gt;
-
-&lt;h2 id=&quot;table-schema&quot;&gt;Table Schema&lt;/h2&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;INTEGER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AUTO_INCREMENT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- Query OK, 0 rows affected&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The result is:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; desc users
-+-------+--------------+------+-----+---------+----------------+
-| Field | Type         | Null | Key | Default | Extra          |
-+-------+--------------+------+-----+---------+----------------+
-| id    | int(11)      | NO   | PRI | &amp;lt;null&amp;gt;  | auto_increment |
-| name  | varchar(255) | NO   |     | &amp;lt;null&amp;gt;  |                |
-+-------+--------------+------+-----+---------+----------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;add-a-column-to-the-last-field&quot;&gt;Add a column to the last field&lt;/h2&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_column1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The result is:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; desc users;
-+-------------+--------------+------+-----+---------+----------------+
-| Field       | Type         | Null | Key | Default | Extra          |
-+-------------+--------------+------+-----+---------+----------------+
-| id          | int(11)      | NO   | PRI | &amp;lt;null&amp;gt;  | auto_increment |
-| name        | varchar(255) | NO   |     | &amp;lt;null&amp;gt;  |                |
-| new_column1 | varchar(255) | YES  |     | &amp;lt;null&amp;gt;  |                |
-+-------------+--------------+------+-----+---------+----------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;add-a-column-to-the-first-field&quot;&gt;Add a column to the first field&lt;/h2&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_column1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FIRST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The result is:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; desc users
-+-------------+--------------+------+-----+---------+----------------+
-| Field       | Type         | Null | Key | Default | Extra          |
-+-------------+--------------+------+-----+---------+----------------+
-| new_column1 | varchar(255) | YES  |     | &amp;lt;null&amp;gt;  |                |
-| id          | int(11)      | NO   | PRI | &amp;lt;null&amp;gt;  | auto_increment |
-| name        | varchar(255) | NO   |     | &amp;lt;null&amp;gt;  |                |
-+-------------+--------------+------+-----+---------+----------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;add-a-column-after-another-column&quot;&gt;Add a column after another column&lt;/h2&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_column1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AFTER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The result is:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; desc users
-+-------------+--------------+------+-----+---------+----------------+
-| Field       | Type         | Null | Key | Default | Extra          |
-+-------------+--------------+------+-----+---------+----------------+
-| id          | int(11)      | NO   | PRI | &amp;lt;null&amp;gt;  | auto_increment |
-| new_column1 | varchar(255) | YES  |     | &amp;lt;null&amp;gt;  |                |
-| name        | varchar(255) | NO   |     | &amp;lt;null&amp;gt;  |                |
-+-------------+--------------+------+-----+---------+----------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;what-about-before&quot;&gt;What about “before”?&lt;/h3&gt;
-
-&lt;p&gt;Let’s use &lt;code class=&quot;highlighter-rouge&quot;&gt;BEFORE&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;AFTER&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_column1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BEFORE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- (1064, &quot;You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BEFORE id' at line 1&quot;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It causes syntax error!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;We can’t use &lt;code class=&quot;highlighter-rouge&quot;&gt;BEFORE&lt;/code&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;ADD COLUMN&lt;/code&gt; statement.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/alter-table.html&quot;&gt;MySQL :: MySQL 8.0 Reference Manual :: 13.1.9 ALTER TABLE Statement&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="mysql" /><summary type="html">MySQL Version</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://www.ruby-lang.org/en/news/2019/12/25/ruby-2-7-0-released/&quot;&gt;Ruby 2.7.0 Released&lt;/a&gt;&lt;/p&gt;</content><author><name>toshimaru</name></author><category term="ruby" /><summary type="html">Ruby 2.7 emits many warnings.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
