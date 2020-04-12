@@ -19,24 +19,26 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>ruby | Toshimaru’s Blog</title>
+<title>My custom attr_accessor in Ruby | Toshimaru’s Blog</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="ruby" />
+<meta property="og:title" content="My custom attr_accessor in Ruby" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Where there’s a will, there’s a way." />
-<meta property="og:description" content="Where there’s a will, there’s a way." />
-<link rel="canonical" href="https://blog.toshima.ru/tag/ruby/" />
-<meta property="og:url" content="https://blog.toshima.ru/tag/ruby/" />
+<meta name="description" content="Do you imagin how attr_accessor is implemented in Ruby? Let’s implement it by yourself." />
+<meta property="og:description" content="Do you imagin how attr_accessor is implemented in Ruby? Let’s implement it by yourself." />
+<link rel="canonical" href="https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html" />
+<meta property="og:url" content="https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
 <meta property="og:image" content="https://blog.toshima.ru/android-chrome-512x512.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-12T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:image" content="https://blog.toshima.ru/android-chrome-512x512.png" />
-<meta property="twitter:title" content="ruby" />
+<meta property="twitter:title" content="My custom attr_accessor in Ruby" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"toshimaru"},"headline":"ruby","image":"https://blog.toshima.ru/android-chrome-512x512.png","description":"Where there’s a will, there’s a way.","url":"https://blog.toshima.ru/tag/ruby/","@type":"WebPage","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"toshimaru"},"headline":"My custom attr_accessor in Ruby","dateModified":"2020-04-12T00:00:00+09:00","datePublished":"2020-04-12T00:00:00+09:00","image":"https://blog.toshima.ru/android-chrome-512x512.png","description":"Do you imagin how attr_accessor is implemented in Ruby? Let’s implement it by yourself.","url":"https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -75,100 +77,133 @@
       <header class="masthead">
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
-<div class="content page">
-  <h1 class="page-title">ruby</h1>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2020/04/12/ruby-custom-attr-accessor.html">My custom attr_accessor in Ruby</a>
-    </h2>
-    <div class="list-post-date">
+<article class="content post">
+  <h1 class="post-title">My custom attr_accessor in Ruby</h1>
+  <div class="post-meta">
+    <div class="post-date">
       <time>12 Apr 2020</time>
+      
+    </div>
+    <div class="post-tags">
+      <ul class="tags">
+        
+          <li><a href="/tag/ruby" class="tag">ruby</a></li>
+        
+      </ul>
     </div>
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2020/02/22/ruby-private-constant.html">Ruby Private Constant</a>
-    </h2>
-    <div class="list-post-date">
-      <time>22 Feb 2020</time>
-    </div>
+
+  <div class="post-body">
+    <p>Do you imagin how <code class="highlighter-rouge">attr_accessor</code> is implemented in Ruby? Let’s implement it by yourself.</p>
+
+<h2 id="my-attr_accessor-module">My <code class="highlighter-rouge">attr_accessor</code> module</h2>
+
+<p>Create <code class="highlighter-rouge">CustomAttrAccessor</code> module which overrides Ruby’s <code class="highlighter-rouge">attr_accessor</code> method.</p>
+
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">CustomAttrAccessor</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+    <span class="n">base</span><span class="p">.</span><span class="nf">extend</span> <span class="no">ClassMethods</span>
+  <span class="k">end</span>
+
+  <span class="k">module</span> <span class="nn">ClassMethods</span>
+    <span class="k">def</span> <span class="nf">attr_accessor</span><span class="p">(</span><span class="kp">attr</span><span class="p">)</span>
+      <span class="n">define_method</span><span class="p">(</span><span class="kp">attr</span><span class="p">)</span> <span class="k">do</span>
+        <span class="nb">puts</span> <span class="s2">"trying to get @</span><span class="si">#{</span><span class="kp">attr</span><span class="si">}</span><span class="s2">"</span>
+        <span class="nb">instance_variable_get</span> <span class="s2">"@</span><span class="si">#{</span><span class="kp">attr</span><span class="si">}</span><span class="s2">"</span>
+      <span class="k">end</span>
+
+      <span class="n">define_method</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="kp">attr</span><span class="si">}</span><span class="s2">="</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">value</span><span class="o">|</span>
+        <span class="nb">instance_variable_set</span> <span class="s2">"@</span><span class="si">#{</span><span class="kp">attr</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">value</span>  
+        <span class="nb">puts</span> <span class="s2">"@</span><span class="si">#{</span><span class="kp">attr</span><span class="si">}</span><span class="s2"> has been set"</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="inlcude-attr_accessor-module">inlcude <code class="highlighter-rouge">attr_accessor</code> module</h2>
+
+<p>You can use your custom <code class="highlighter-rouge">attr_accessor</code> by including the module you’ve created in the class.</p>
+
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span>
+  <span class="kp">include</span> <span class="no">CustomAttrAccessor</span>
+
+  <span class="nb">attr_accessor</span> <span class="ss">:bar</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="test-your-attr_accessor">Test your <code class="highlighter-rouge">attr_accessor</code></h2>
+
+<p>Let’s test the <code class="highlighter-rouge">attr_accessor</code>.</p>
+
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="no">A</span><span class="p">.</span><span class="nf">new</span>
+
+<span class="n">val</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="nf">bar</span> <span class="c1"># trying to get @bar</span>
+<span class="nb">p</span> <span class="n">val</span> <span class="c1"># =&gt; nil</span>
+
+<span class="n">a</span><span class="p">.</span><span class="nf">bar</span> <span class="o">=</span> <span class="s2">"my value"</span> <span class="c1"># @bar has been set</span>
+
+<span class="n">val</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="nf">bar</span> <span class="c1"># trying to get @bar</span>
+<span class="nb">p</span> <span class="n">val</span> <span class="c1"># =&gt; "my value"</span>
+</code></pre></div></div>
+
+<h2 id="ruby-technique-class-macro">Ruby Technique: Class Macro</h2>
+
+<p>You can create your own class macro like the following:</p>
+
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">ClassMacro</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+    <span class="n">base</span><span class="p">.</span><span class="nf">extend</span> <span class="no">ClassMethods</span>
+  <span class="k">end</span>
+
+  <span class="k">module</span> <span class="nn">ClassMethods</span>
+    <span class="k">def</span> <span class="nf">my_class_macro</span>
+      <span class="nb">puts</span> <span class="s2">"my_class_macro!"</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Macro</span>
+  <span class="kp">include</span> <span class="no">ClassMacro</span>
+  <span class="n">my_class_macro</span> <span class="c1"># =&gt; my_class_macro!</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="https://pragprog.com/book/ppmetr2/metaprogramming-ruby-2">Metaprogramming Ruby 2: Program Like the Ruby Pros by Paolo Perrotta | The Pragmatic Bookshelf</a></li>
+  <li><a href="https://www.thegreatcodeadventure.com/ruby-custom-class-macros-with-class-instance-variables/">Ruby Custom Class Macros with Class Instance Variables</a></li>
+</ul>
+
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2020/01/01/stop-emitting-warning-ruby27.html">Stop emitting warnings in Ruby 2.7</a>
-    </h2>
-    <div class="list-post-date">
-      <time>01 Jan 2020</time>
-    </div>
+
+  <div class="social-share">
+    <amp-social-share type="twitter"></amp-social-share>
+    <amp-social-share type="facebook"></amp-social-share>
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2019/12/17/make-puma-silent-on-test.html">Make Puma test output silent</a>
-    </h2>
-    <div class="list-post-date">
-      <time>17 Dec 2019</time>
-    </div>
+
+  <div class="post-ad">
+    <amp-ad width="100vw" height=320 type="adsense" data-ad-client="ca-pub-8616720383995770" data-ad-slot="4570107466" data-auto-format="rspv"
+      data-full-width>
+      <div overflow></div>
+    </amp-ad>
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2019/10/14/bundle-from-bundler-conflicts.html">Bundler Error: bundle from bundler conflicts</a>
-    </h2>
-    <div class="list-post-date">
-      <time>14 Oct 2019</time>
+
+  <amp-iframe width=600 height=140
+            layout="responsive"
+            sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+            resizable
+            src="https://disqus.toshima.ru/blog-toshima-ru.html?id=/2020/04/12/ruby-custom-attr-accessor&url=https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html&title=My%20custom%20attr_accessor%20in%20Ruby">
+    <div overflow
+         tabindex=0
+         role=button
+         aria-label="Load more"
+         style="display:block;font-size:12px;font-weight:500;font-family:Helvetica Neue, arial, sans-serif;text-align:center;line-height:1.1;padding:12px 16px;border-radius:4px;background:rgba(29,47,58,0.6);color:rgb(255,255,255)">
+        Load more
     </div>
-  </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2019/09/10/how-to-set-rubygems-credentials.html">How to set your rubygems credentials</a>
-    </h2>
-    <div class="list-post-date">
-      <time>10 Sep 2019</time>
-    </div>
-  </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2018/07/12/vscode-for-ruby.html">VSCode Setting for Rubyist</a>
-    </h2>
-    <div class="list-post-date">
-      <time>12 Jul 2018</time>
-    </div>
-  </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/11/18/escape-erb-tag-in-erb.html">Escape ERB tag string in ERB file</a>
-    </h2>
-    <div class="list-post-date">
-      <time>18 Nov 2016</time>
-    </div>
-  </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/08/09/get-uri-in-ruby.html">Get HTML/JSON response from URL simply in Ruby</a>
-    </h2>
-    <div class="list-post-date">
-      <time>09 Aug 2016</time>
-    </div>
-  </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/04/28/ruby-private-method-in-module.html">Private method in module in Ruby</a>
-    </h2>
-    <div class="list-post-date">
-      <time>28 Apr 2016</time>
-    </div>
-  </div>
-  
-</div>
+  </amp-iframe>
+</article>
 
     </div>
     <footer>
