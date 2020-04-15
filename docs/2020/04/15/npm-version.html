@@ -20,24 +20,26 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>github | Toshimaru’s Blog</title>
+<title>Bump version with npm-version | Toshimaru’s Blog</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="github" />
+<meta property="og:title" content="Bump version with npm-version" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Where there’s a will, there’s a way." />
-<meta property="og:description" content="Where there’s a will, there’s a way." />
-<link rel="canonical" href="https://blog.toshima.ru/tag/github/" />
-<meta property="og:url" content="https://blog.toshima.ru/tag/github/" />
+<meta name="description" content="What is semantic versioning?" />
+<meta property="og:description" content="What is semantic versioning?" />
+<link rel="canonical" href="https://blog.toshima.ru/2020/04/15/npm-version.html" />
+<meta property="og:url" content="https://blog.toshima.ru/2020/04/15/npm-version.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
 <meta property="og:image" content="https://blog.toshima.ru/android-chrome-512x512.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-15T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:image" content="https://blog.toshima.ru/android-chrome-512x512.png" />
-<meta property="twitter:title" content="github" />
+<meta property="twitter:title" content="Bump version with npm-version" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"toshimaru"},"headline":"github","description":"Where there’s a will, there’s a way.","url":"https://blog.toshima.ru/tag/github/","image":"https://blog.toshima.ru/android-chrome-512x512.png","@type":"WebPage","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"toshimaru"},"headline":"Bump version with npm-version","dateModified":"2020-04-15T00:00:00+09:00","datePublished":"2020-04-15T00:00:00+09:00","description":"What is semantic versioning?","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/04/15/npm-version.html"},"url":"https://blog.toshima.ru/2020/04/15/npm-version.html","image":"https://blog.toshima.ru/android-chrome-512x512.png","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -76,19 +78,118 @@
       <header class="masthead">
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
-<div class="content page">
-  <h1 class="page-title">github</h1>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/08/24/publish-jekyll-without-gh-pages.html">Publish Jekyll site without gh-pages branch</a>
-    </h2>
-    <div class="list-post-date">
-      <time>24 Aug 2016</time>
+<article class="content post">
+  <h1 class="post-title">Bump version with npm-version</h1>
+  <div class="post-meta">
+    <div class="post-date">
+      <time>15 Apr 2020</time>
+      
+    </div>
+    <div class="post-tags">
+      <ul class="tags">
+        
+          <li><a href="/tag/npm" class="tag">npm</a></li>
+        
+      </ul>
     </div>
   </div>
-  
-</div>
+
+  <div class="post-body">
+    <h2 id="what-is-semantic-versioning">What is semantic versioning?</h2>
+
+<p>See the video below (npm official video):</p>
+
+<p><amp-youtube data-videoid="kK4Meix58R4" layout="responsive" width="480" height="270"></amp-youtube></p>
+
+<h2 id="bump-version-with-npm-version">Bump version with npm-version</h2>
+
+<p><code class="highlighter-rouge">package.json</code>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test package"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index.js"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="bump-major-version">Bump major version</h3>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>npm version major
+<span class="go">v1.0.0
+</span></code></pre></div></div>
+
+<p>The result:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>git tag
+<span class="go">v1.0.0
+
+</span><span class="gp">$</span><span class="w"> </span>git show <span class="nt">-q</span>
+<span class="gp">commit a1e9473677f10b863eacf3289b9c34e759f47b1b (HEAD -&gt;</span><span class="w"> </span>master, tag: v1.0.0<span class="o">)</span>
+<span class="gp">Author: toshimaru &lt;me@toshimaru.net&gt;</span><span class="w">
+</span><span class="go">Date:   Thu Apr 15 03:18:09 2020
+
+    1.0.0
+</span></code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test package"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index.js"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="bump-minorpatch-version">Bump minor/patch version</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm version minor
+v1.1.0
+
+$ npm version patch
+v1.1.1
+</code></pre></div></div>
+
+<h3 id="another-version-option">another version option</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm version [major | minor | patch | premajor | preminor | prepatch | prerelease]
+</code></pre></div></div>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="https://docs.npmjs.com/cli/version">npm-version | npm Documentation</a></li>
+</ul>
+
+  </div>
+
+  <div class="social-share">
+    <amp-social-share type="twitter"></amp-social-share>
+    <amp-social-share type="facebook"></amp-social-share>
+  </div>
+
+  <div class="post-ad">
+    <amp-ad width="100vw" height=320 type="adsense" data-ad-client="ca-pub-8616720383995770" data-ad-slot="4570107466" data-auto-format="rspv"
+      data-full-width>
+      <div overflow></div>
+    </amp-ad>
+  </div>
+
+  <amp-iframe width=600 height=140
+            layout="responsive"
+            sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+            resizable
+            src="https://disqus.toshima.ru/blog-toshima-ru.html?id=/2020/04/15/npm-version&url=https://blog.toshima.ru/2020/04/15/npm-version.html&title=Bump%20version%20with%20npm-version">
+    <div overflow
+         tabindex=0
+         role=button
+         aria-label="Load more"
+         style="display:block;font-size:12px;font-weight:500;font-family:Helvetica Neue, arial, sans-serif;text-align:center;line-height:1.1;padding:12px 16px;border-radius:4px;background:rgba(29,47,58,0.6);color:rgb(255,255,255)">
+        Load more
+    </div>
+  </amp-iframe>
+</article>
 
     </div>
     <footer>
