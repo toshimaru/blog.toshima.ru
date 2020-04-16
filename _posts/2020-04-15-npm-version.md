@@ -74,3 +74,5 @@ $ npm version [major | minor | patch | premajor | preminor | prepatch | prerelea
 ## Reference
 
 - [npm-version \| npm Documentation](https://docs.npmjs.com/cli/version)
+- [npm-semver \| npm Documentation](https://docs.npmjs.com/misc/semver)
+- [Semantic Versioning 2.0.0 \| Semantic Versioning](https://semver.org/)
