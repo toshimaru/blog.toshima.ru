@@ -11,7 +11,10 @@ MySQL 8.0
 ## Table Schema
 
 ```sql
-CREATE TABLE users(id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL);
+CREATE TABLE users(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
 -- Query OK, 0 rows affected
 ```
 
