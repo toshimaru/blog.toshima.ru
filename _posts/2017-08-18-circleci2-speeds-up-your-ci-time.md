@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CircleCI 2 speeds up your CI build time drastically
-tags: circleci
+tags: circleci ci
 ---
 
 [CircleCI 2 has been released](https://circleci.com/blog/launching-today-circleci-2-0-reaches-general-availability/), which makes your CI faster and flexible.
