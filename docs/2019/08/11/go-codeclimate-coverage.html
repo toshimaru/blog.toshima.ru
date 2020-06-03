@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>How to measure code coverage on CodeClimate in Go | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="How to measure code coverage on CodeClimate in Go" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/images/coverage.png","author":{"@type":"Person","name":"toshimaru"},"description":"Would you like to measure code coverage on Code Climate in Go?","headline":"How to measure code coverage on CodeClimate in Go","url":"https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html","datePublished":"2019-08-11T00:00:00+09:00","dateModified":"2020-01-10T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html"},"image":"https://blog.toshima.ru/images/coverage.png","author":{"@type":"Person","name":"toshimaru"},"description":"Would you like to measure code coverage on Code Climate in Go?","url":"https://blog.toshima.ru/2019/08/11/go-codeclimate-coverage.html","headline":"How to measure code coverage on CodeClimate in Go","dateModified":"2020-01-10T00:00:00+09:00","datePublished":"2019-08-11T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -109,12 +109,12 @@
 
 <h2 id="viewing-coverage-result">Viewing Coverage Result</h2>
 
-<p>All you need to is adding <code class="highlighter-rouge">-coverprofile c.out</code> option to <code class="highlighter-rouge">go test</code> command.</p>
+<p>All you need to is adding <code class="language-plaintext highlighter-rouge">-coverprofile c.out</code> option to <code class="language-plaintext highlighter-rouge">go test</code> command.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ go test ./... -coverprofile c.out
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ go test ./... -coverprofile c.out
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">c.out</code> is a test coverage result file.</p>
+<p><code class="language-plaintext highlighter-rouge">c.out</code> is a test coverage result file.</p>
 
 <h2 id="sending-coverage-result">Sending Coverage Result</h2>
 

@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Ruby Private Constant | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Ruby Private Constant" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"How can we define a private constant in Ruby.","headline":"Ruby Private Constant","url":"https://blog.toshima.ru/2020/02/22/ruby-private-constant.html","datePublished":"2020-02-22T00:00:00+09:00","dateModified":"2020-02-22T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/02/22/ruby-private-constant.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/02/22/ruby-private-constant.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"How can we define a private constant in Ruby.","url":"https://blog.toshima.ru/2020/02/22/ruby-private-constant.html","headline":"Ruby Private Constant","dateModified":"2020-02-22T00:00:00+09:00","datePublished":"2020-02-22T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -97,7 +97,7 @@
   <div class="post-body">
     <p>How can we define a private constant in Ruby.</p>
 
-<p>Let’ define <code class="highlighter-rouge">PRIVATE_CONSTANT</code> in the <code class="highlighter-rouge">private</code> section.</p>
+<p>Let’ define <code class="language-plaintext highlighter-rouge">PRIVATE_CONSTANT</code> in the <code class="language-plaintext highlighter-rouge">private</code> section.</p>
 
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># private_constant.rb</span>
 <span class="k">module</span> <span class="nn">MyModule</span>
@@ -117,7 +117,7 @@
 
 <h2 id="private_constant">private_constant</h2>
 
-<p>To make it private, use <code class="highlighter-rouge">private_constant</code>.</p>
+<p>To make it private, use <code class="language-plaintext highlighter-rouge">private_constant</code>.</p>
 
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># private_constant.rb</span>
 <span class="k">module</span> <span class="nn">MyModule</span>
@@ -134,14 +134,14 @@
 
 <p>The error:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private constant MyModule::PRIVATE_CONSTANT referenced (NameError)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private constant MyModule::PRIVATE_CONSTANT referenced (NameError)
 </code></pre></div></div>
 
-<p>It raises <code class="highlighter-rouge">NameError</code> because the code tries to reference private constant.</p>
+<p>It raises <code class="language-plaintext highlighter-rouge">NameError</code> because the code tries to reference private constant.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>Use <code class="highlighter-rouge">private_constant</code> to make a private constant in Ruby.</p>
+<p>Use <code class="language-plaintext highlighter-rouge">private_constant</code> to make a private constant in Ruby.</p>
 
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">private_constant</span> <span class="ss">:YOUR_CONSTANT</span>
 </code></pre></div></div>

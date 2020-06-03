@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>How to fix uglifier Bundler::GemRequireError | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="How to fix uglifier Bundler::GemRequireError" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"I got an error below when I tried to run rails server after running rails new.","headline":"How to fix uglifier Bundler::GemRequireError","url":"https://blog.toshima.ru/2016/04/09/rails-new-uglifier-error.html","datePublished":"2016-04-09T00:00:00+09:00","dateModified":"2019-09-10T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/04/09/rails-new-uglifier-error.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/04/09/rails-new-uglifier-error.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"I got an error below when I tried to run rails server after running rails new.","url":"https://blog.toshima.ru/2016/04/09/rails-new-uglifier-error.html","headline":"How to fix uglifier Bundler::GemRequireError","dateModified":"2019-09-10T00:00:00+09:00","datePublished":"2016-04-09T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -95,12 +95,12 @@
   </div>
 
   <div class="post-body">
-    <p>I got an error below when I tried to run <code class="highlighter-rouge">rails server</code> after running <code class="highlighter-rouge">rails new</code>.</p>
+    <p>I got an error below when I tried to run <code class="language-plaintext highlighter-rouge">rails server</code> after running <code class="language-plaintext highlighter-rouge">rails new</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>web_1 | /usr/local/lib/ruby/gems/2.3.0/gems/bundler-1.11.2/lib/bundler/runtime.rb:80:in `rescue in block (2 levels) in require': There was an error while trying to load the gem 'uglifier'. (Bundler::GemRequireError)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>web_1 | /usr/local/lib/ruby/gems/2.3.0/gems/bundler-1.11.2/lib/bundler/runtime.rb:80:in `rescue in block (2 levels) in require': There was an error while trying to load the gem 'uglifier'. (Bundler::GemRequireError)
 </code></pre></div></div>
 
-<p>All you need to do is the uncomment <code class="highlighter-rouge"># gem 'therubyracer', platforms: :ruby</code> in your <code class="highlighter-rouge">Gemfile</code>.</p>
+<p>All you need to do is the uncomment <code class="language-plaintext highlighter-rouge"># gem 'therubyracer', platforms: :ruby</code> in your <code class="language-plaintext highlighter-rouge">Gemfile</code>.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># See https://github.com/rails/execjs#readme for more supported runtimes</span>
 <span class="n">gem</span> <span class="s1">'therubyracer'</span><span class="p">,</span> <span class="ss">platforms: :ruby</span>

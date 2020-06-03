@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Get HTML/JSON response from URL simply in Ruby | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Get HTML/JSON response from URL simply in Ruby" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"GET HTML response from URL","headline":"Get HTML/JSON response from URL simply in Ruby","url":"https://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html","datePublished":"2016-08-09T00:00:00+09:00","dateModified":"2016-08-09T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"GET HTML response from URL","url":"https://blog.toshima.ru/2016/08/09/get-uri-in-ruby.html","headline":"Get HTML/JSON response from URL simply in Ruby","dateModified":"2016-08-09T00:00:00+09:00","datePublished":"2016-08-09T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -97,7 +97,7 @@
   <div class="post-body">
     <h2 id="get-html-response-from-url">GET HTML response from URL</h2>
 
-<p>To <code class="highlighter-rouge">GET</code> URL and the response simply in Ruby:</p>
+<p>To <code class="language-plaintext highlighter-rouge">GET</code> URL and the response simply in Ruby:</p>
 
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'uri'</span>
@@ -108,7 +108,7 @@
 
 <ol>
   <li>Parse URL from URI string</li>
-  <li><code class="highlighter-rouge">Net::HTTP.get</code> the parsed URL</li>
+  <li><code class="language-plaintext highlighter-rouge">Net::HTTP.get</code> the parsed URL</li>
 </ol>
 
 <h2 id="get-http-status-code-from-url">GET HTTP status code from URL</h2>
@@ -120,7 +120,7 @@
 <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">get_response</span><span class="p">(</span><span class="n">uri</span><span class="p">).</span><span class="nf">code</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">get_response</code> method returns <code class="highlighter-rouge">Net::HTTPResponse</code> which has methods like <code class="highlighter-rouge">code</code>, <code class="highlighter-rouge">body</code>, etc.</p>
+<p><code class="language-plaintext highlighter-rouge">get_response</code> method returns <code class="language-plaintext highlighter-rouge">Net::HTTPResponse</code> which has methods like <code class="language-plaintext highlighter-rouge">code</code>, <code class="language-plaintext highlighter-rouge">body</code>, etc.</p>
 
 <h2 id="get-json-response-from-url">GET JSON response from URL</h2>
 

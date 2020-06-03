@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Installing MySQL 5.7 on CircleCI | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Installing MySQL 5.7 on CircleCI" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"CircleCI doesn’t support MySQL 5.7 by default. To install MySQL 5.7, add below configuration to your circle.yml.","headline":"Installing MySQL 5.7 on CircleCI","url":"https://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html","datePublished":"2016-06-15T00:00:00+09:00","dateModified":"2016-06-15T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"CircleCI doesn’t support MySQL 5.7 by default. To install MySQL 5.7, add below configuration to your circle.yml.","url":"https://blog.toshima.ru/2016/06/15/mysql-5-7-on-circle-ci.html","headline":"Installing MySQL 5.7 on CircleCI","dateModified":"2016-06-15T00:00:00+09:00","datePublished":"2016-06-15T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -99,7 +99,7 @@
   <div class="post-body">
     <h2 id="update-2">[UPDATE 2]</h2>
 
-<p>Current best approach is changing CircleCI <strong>Build Environment</strong> to the latest version which is <code class="highlighter-rouge">Ubuntu 14.04</code>.</p>
+<p>Current best approach is changing CircleCI <strong>Build Environment</strong> to the latest version which is <code class="language-plaintext highlighter-rouge">Ubuntu 14.04</code>.</p>
 
 <p><a href="https://circleci.com/docs/build-image-trusty/">Ubuntu 14.04 (Trusty) - CircleCI</a></p>
 
@@ -107,7 +107,7 @@
 
 <h2 id="update">[UPDATE]</h2>
 
-<p><a href="https://s3.amazonaws.com/circle-downloads/install-mysql5.7-circleci.sh">Original script</a> currently doesn’t work because it refers to <code class="highlighter-rouge">mysql-5.7-dmr</code><sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup> which is outdated.</p>
+<p><a href="https://s3.amazonaws.com/circle-downloads/install-mysql5.7-circleci.sh">Original script</a> currently doesn’t work because it refers to <code class="language-plaintext highlighter-rouge">mysql-5.7-dmr</code><sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup> which is outdated.</p>
 
 <p>Please use <a href="https://gist.github.com/toshimaru/06ffbf2e8ad7d4e3dab889fa27681835/">my forked script</a>.</p>
 
@@ -119,7 +119,7 @@
 
 <p><a href="https://discuss.circleci.com/users/kimh/activity">kimh</a>, CircleCI employee, created a script to install MySQL 5.7 on CircleCI.</p>
 
-<p>To use this script, add below configuration to your <code class="highlighter-rouge">circle.yml</code>:</p>
+<p>To use this script, add below configuration to your <code class="language-plaintext highlighter-rouge">circle.yml</code>:</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">dependencies</span><span class="pi">:</span>
   <span class="na">pre</span><span class="pi">:</span>
@@ -128,7 +128,7 @@
 
 <p>The output on CircleCI is:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(snip)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(snip)
 ..
 * MySQL Community Server 5.7.14 is started
 Setting up mysql-server (5.7.14-1ubuntu12.04) ...

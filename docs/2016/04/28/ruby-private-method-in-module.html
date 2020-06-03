@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Private method in module in Ruby | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Private method in module in Ruby" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"In Ruby, private method can be defined in module:","headline":"Private method in module in Ruby","url":"https://blog.toshima.ru/2016/04/28/ruby-private-method-in-module.html","datePublished":"2016-04-28T00:00:00+09:00","dateModified":"2016-04-28T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/04/28/ruby-private-method-in-module.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/04/28/ruby-private-method-in-module.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"In Ruby, private method can be defined in module:","url":"https://blog.toshima.ru/2016/04/28/ruby-private-method-in-module.html","headline":"Private method in module in Ruby","dateModified":"2016-04-28T00:00:00+09:00","datePublished":"2016-04-28T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -112,13 +112,13 @@
 
 <p>Try it on IRB.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb(main)&gt; Foo.new.p_method
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb(main)&gt; Foo.new.p_method
 NoMethodError: private method `p_method' called for #&lt;Foo:0x007fd660b9de88&gt;
 	from (irb):13
 	from /Users/toshi/.rbenv/versions/2.2.4/bin/irb:11:in `&lt;main&gt;'
 </code></pre></div></div>
 
-<p>As expected, private method defined in <code class="highlighter-rouge">Hoge</code> module cannot be called from <code class="highlighter-rouge">Foo</code> instance.</p>
+<p>As expected, private method defined in <code class="language-plaintext highlighter-rouge">Hoge</code> module cannot be called from <code class="language-plaintext highlighter-rouge">Foo</code> instance.</p>
 
   </div>
 

@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Rails Bulk Migration | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Rails Bulk Migration" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Schema change on RDB could be a dangerous operation.","headline":"Rails Bulk Migration","url":"https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html","datePublished":"2020-01-02T00:00:00+09:00","dateModified":"2020-01-30T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Schema change on RDB could be a dangerous operation.","url":"https://blog.toshima.ru/2020/01/02/rails-migration-bulk-true.html","headline":"Rails Bulk Migration","dateModified":"2020-01-30T00:00:00+09:00","datePublished":"2020-01-02T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -99,15 +99,15 @@
   <div class="post-body">
     <p>Schema change on RDB could be a dangerous operation.</p>
 
-<p>That’s the same on Rails, so it’s important to run migrations with <code class="highlighter-rouge">bulk</code> option.</p>
+<p>That’s the same on Rails, so it’s important to run migrations with <code class="language-plaintext highlighter-rouge">bulk</code> option.</p>
 
-<p>This article explains how <code class="highlighter-rouge">bulk</code> option changes Rails migration.</p>
+<p>This article explains how <code class="language-plaintext highlighter-rouge">bulk</code> option changes Rails migration.</p>
 
 <ul id="markdown-toc">
   <li><a href="#prerequisite" id="markdown-toc-prerequisite">Prerequisite</a></li>
   <li><a href="#user-table-schema" id="markdown-toc-user-table-schema">User table schema</a></li>
-  <li><a href="#migration-without-bulk-option" id="markdown-toc-migration-without-bulk-option">Migration without <code class="highlighter-rouge">bulk</code> option</a></li>
-  <li><a href="#migration-with-bulk-option" id="markdown-toc-migration-with-bulk-option">Migration with <code class="highlighter-rouge">bulk</code> option</a></li>
+  <li><a href="#migration-without-bulk-option" id="markdown-toc-migration-without-bulk-option">Migration without <code class="language-plaintext highlighter-rouge">bulk</code> option</a></li>
+  <li><a href="#migration-with-bulk-option" id="markdown-toc-migration-with-bulk-option">Migration with <code class="language-plaintext highlighter-rouge">bulk</code> option</a></li>
 </ul>
 
 <h2 id="prerequisite">Prerequisite</h2>
@@ -119,9 +119,9 @@
 
 <h2 id="user-table-schema">User table schema</h2>
 
-<p>This is <code class="highlighter-rouge">users</code> table for a sample.</p>
+<p>This is <code class="language-plaintext highlighter-rouge">users</code> table for a sample.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc users;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc users;
 +------------+--------------+------+-----+---------+----------------+
 | Field      | Type         | Null | Key | Default | Extra          |
 +------------+--------------+------+-----+---------+----------------+
@@ -133,9 +133,9 @@
 4 rows in set (0.01 sec)
 </code></pre></div></div>
 
-<h2 id="migration-without-bulk-option">Migration without <code class="highlighter-rouge">bulk</code> option</h2>
+<h2 id="migration-without-bulk-option">Migration without <code class="language-plaintext highlighter-rouge">bulk</code> option</h2>
 
-<p>Let’s add three columns named <code class="highlighter-rouge">new_column1</code>, <code class="highlighter-rouge">new_column2</code> and <code class="highlighter-rouge">new_column3</code>.</p>
+<p>Let’s add three columns named <code class="language-plaintext highlighter-rouge">new_column1</code>, <code class="language-plaintext highlighter-rouge">new_column2</code> and <code class="language-plaintext highlighter-rouge">new_column3</code>.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>bundle <span class="nb">exec </span>rails g migration addColumnsToUser new_column1:integer new_column2:string new_column3:boolean
 <span class="go">      invoke  active_record
@@ -153,7 +153,7 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p>Run <code class="highlighter-rouge">db:migrate</code>.</p>
+<p>Run <code class="language-plaintext highlighter-rouge">db:migrate</code>.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>bundle <span class="nb">exec </span>rails db:migrate
 <span class="go">== 20200101164105 AddColumnsToUser: migrating =================================
@@ -166,11 +166,11 @@
 <span class="go">== 20200101164105 AddColumnsToUser: migrated (0.3771s) ========================
 </span></code></pre></div></div>
 
-<p>As you can see, <code class="highlighter-rouge">add_column</code>, which may be a dangerous operation, is invoked three times. That’s not good.</p>
+<p>As you can see, <code class="language-plaintext highlighter-rouge">add_column</code>, which may be a dangerous operation, is invoked three times. That’s not good.</p>
 
-<h2 id="migration-with-bulk-option">Migration with <code class="highlighter-rouge">bulk</code> option</h2>
+<h2 id="migration-with-bulk-option">Migration with <code class="language-plaintext highlighter-rouge">bulk</code> option</h2>
 
-<p>Let’s create a migration with <code class="highlighter-rouge">bulk</code> option.</p>
+<p>Let’s create a migration with <code class="language-plaintext highlighter-rouge">bulk</code> option.</p>
 
 <p>Modify the migration file like below:</p>
 
@@ -185,9 +185,9 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">bulk: true</code> means the schema changes will be squashed into one.</p>
+<p><code class="language-plaintext highlighter-rouge">bulk: true</code> means the schema changes will be squashed into one.</p>
 
-<p>Run <code class="highlighter-rouge">db:migrate</code>.</p>
+<p>Run <code class="language-plaintext highlighter-rouge">db:migrate</code>.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>bundle <span class="nb">exec </span>rails db:migrate
 <span class="go">== 20200101164105 AddColumnsToUser: migrating =================================
@@ -196,7 +196,7 @@
 <span class="go">== 20200101164105 AddColumnsToUser: migrated (0.1300s) ========================
 </span></code></pre></div></div>
 
-<p>Yes! <code class="highlighter-rouge">change_table</code> is invoked just one time!</p>
+<p>Yes! <code class="language-plaintext highlighter-rouge">change_table</code> is invoked just one time!</p>
 
   </div>
 

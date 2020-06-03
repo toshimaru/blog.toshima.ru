@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-06-01T10:27:07+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.0">Jekyll</generator><link href="https://blog.toshima.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.toshima.ru/" rel="alternate" type="text/html" /><updated>2020-06-04T00:40:30+09:00</updated><id>https://blog.toshima.ru/feed.xml</id><title type="html">Toshimaru’s Blog</title><subtitle>Where there's a will, there's a way.
 </subtitle><author><name>toshimaru</name></author><entry><title type="html">[MySQL] Delete with join query</title><link href="https://blog.toshima.ru/2020/06/01/mysql-delete-with-join.html" rel="alternate" type="text/html" title="[MySQL] Delete with join query" /><published>2020-06-01T00:00:00+09:00</published><updated>2020-06-01T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/06/01/mysql-delete-with-join</id><content type="html" xml:base="https://blog.toshima.ru/2020/06/01/mysql-delete-with-join.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#preparation&quot; id=&quot;markdown-toc-preparation&quot;&gt;Preparation&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#create-table&quot; id=&quot;markdown-toc-create-table&quot;&gt;Create Table&lt;/a&gt;&lt;/li&gt;
@@ -50,7 +50,7 @@
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;join&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_types&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+----+-------+---------+------+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+----+-------+---------+------+
 | id | name  | user_id | type |
 +----+-------+---------+------+
 |  2 | name2 |       2 |    2 |
@@ -61,7 +61,7 @@
 
 &lt;h3 id=&quot;error-case&quot;&gt;Error case&lt;/h3&gt;
 
-&lt;p&gt;Just changing from &lt;code class=&quot;highlighter-rouge&quot;&gt;select&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;delete&lt;/code&gt; doesn’t work.&lt;/p&gt;
+&lt;p&gt;Just changing from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;select&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delete&lt;/code&gt; doesn’t work.&lt;/p&gt;
 
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;join&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_types&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;-- ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from users join user_types on id = user_id where type = 2' at line 1&lt;/span&gt;
@@ -69,15 +69,15 @@
 
 &lt;h3 id=&quot;success-case&quot;&gt;Success case&lt;/h3&gt;
 
-&lt;p&gt;You need to add alias like &lt;code class=&quot;highlighter-rouge&quot;&gt;users u&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You need to add alias like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;users u&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;join&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_types&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;-- Query OK, 1 row affected (0.02 sec)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Make sure the data is deleted from &lt;code class=&quot;highlighter-rouge&quot;&gt;users&lt;/code&gt; table.&lt;/p&gt;
+&lt;p&gt;Make sure the data is deleted from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;users&lt;/code&gt; table.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; select * from users join user_types on id = user_id;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; select * from users join user_types on id = user_id;
 +----+-------+---------+------+
 | id | name  | user_id | type |
 +----+-------+---------+------+
@@ -114,7 +114,7 @@ mysql&amp;gt; select * from user_types;
 &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ary&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This code can be refactored with &lt;code class=&quot;highlighter-rouge&quot;&gt;Array.new&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;This code can be refactored with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Array.new&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]&lt;/span&gt;
@@ -122,7 +122,7 @@ mysql&amp;gt; select * from user_types;
 
 &lt;h2 id=&quot;create-array-with-arraynew&quot;&gt;Create array with Array.new&lt;/h2&gt;
 
-&lt;p&gt;The initial value is &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The initial value is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nil&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [nil, nil, nil]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -157,7 +157,7 @@ mysql&amp;gt; select * from user_types;
 
 &lt;p&gt;Just add the snippet to the position where you want to show the ToC.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* toc
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* toc
 {:toc}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -229,7 +229,7 @@ mysql&amp;gt; select * from user_types;
 
 &lt;h2 id=&quot;bump-version-with-npm-version&quot;&gt;Bump version with npm-version&lt;/h2&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -270,7 +270,7 @@ mysql&amp;gt; select * from user_types;
 
 &lt;h3 id=&quot;bump-minorpatch-version&quot;&gt;Bump minor/patch version&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npm version minor
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npm version minor
 v1.1.0
 
 $ npm version patch
@@ -279,7 +279,7 @@ v1.1.1
 
 &lt;h3 id=&quot;another-version-option&quot;&gt;another version option&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npm version [major | minor | patch | premajor | preminor | prepatch | prerelease]
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npm version [major | minor | patch | premajor | preminor | prepatch | prerelease]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
@@ -288,11 +288,11 @@ v1.1.1
   &lt;li&gt;&lt;a href=&quot;https://docs.npmjs.com/cli/version&quot;&gt;npm-version | npm Documentation&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.npmjs.com/misc/semver&quot;&gt;npm-semver | npm Documentation&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://semver.org/&quot;&gt;Semantic Versioning 2.0.0 | Semantic Versioning&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="npm" /><summary type="html">What is semantic versioning?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">My custom attr_accessor in Ruby</title><link href="https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html" rel="alternate" type="text/html" title="My custom attr_accessor in Ruby" /><published>2020-04-12T00:00:00+09:00</published><updated>2020-04-12T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor</id><content type="html" xml:base="https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html">&lt;p&gt;Do you imagin how &lt;code class=&quot;highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt; is implemented in Ruby? Let’s implement it by yourself.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="npm" /><summary type="html">What is semantic versioning?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">My custom attr_accessor in Ruby</title><link href="https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html" rel="alternate" type="text/html" title="My custom attr_accessor in Ruby" /><published>2020-04-12T00:00:00+09:00</published><updated>2020-04-12T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor</id><content type="html" xml:base="https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html">&lt;p&gt;Do you imagin how &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt; is implemented in Ruby? Let’s implement it by yourself.&lt;/p&gt;
 
-&lt;h2 id=&quot;my-attr_accessor-module&quot;&gt;My &lt;code class=&quot;highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt; module&lt;/h2&gt;
+&lt;h2 id=&quot;my-attr_accessor-module&quot;&gt;My &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt; module&lt;/h2&gt;
 
-&lt;p&gt;Create &lt;code class=&quot;highlighter-rouge&quot;&gt;CustomAttrAccessor&lt;/code&gt; module which overrides Ruby’s &lt;code class=&quot;highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt; method.&lt;/p&gt;
+&lt;p&gt;Create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CustomAttrAccessor&lt;/code&gt; module which overrides Ruby’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt; method.&lt;/p&gt;
 
 &lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;CustomAttrAccessor&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;included&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -315,9 +315,9 @@ v1.1.1
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;inlcude-attr_accessor-module&quot;&gt;inlcude &lt;code class=&quot;highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt; module&lt;/h2&gt;
+&lt;h2 id=&quot;inlcude-attr_accessor-module&quot;&gt;inlcude &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt; module&lt;/h2&gt;
 
-&lt;p&gt;You can use your custom &lt;code class=&quot;highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt; by including the module you’ve created in the class.&lt;/p&gt;
+&lt;p&gt;You can use your custom &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt; by including the module you’ve created in the class.&lt;/p&gt;
 
 &lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;
   &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CustomAttrAccessor&lt;/span&gt;
@@ -326,9 +326,9 @@ v1.1.1
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;test-your-attr_accessor&quot;&gt;Test your &lt;code class=&quot;highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;test-your-attr_accessor&quot;&gt;Test your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt;&lt;/h2&gt;
 
-&lt;p&gt;Let’s test the &lt;code class=&quot;highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s test the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;attr_accessor&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
 
@@ -422,7 +422,7 @@ github.com/toshimaru/nyan/main.go:64.2,67.37 3 1
   &lt;li&gt;&lt;a href=&quot;https://blog.golang.org/cover&quot;&gt;The cover story - The Go Blog&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>toshimaru</name></author><category term="go" /><summary type="html">Normal test in Go</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Ruby Private Constant</title><link href="https://blog.toshima.ru/2020/02/22/ruby-private-constant.html" rel="alternate" type="text/html" title="Ruby Private Constant" /><published>2020-02-22T00:00:00+09:00</published><updated>2020-02-22T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/02/22/ruby-private-constant</id><content type="html" xml:base="https://blog.toshima.ru/2020/02/22/ruby-private-constant.html">&lt;p&gt;How can we define a private constant in Ruby.&lt;/p&gt;
 
-&lt;p&gt;Let’ define &lt;code class=&quot;highlighter-rouge&quot;&gt;PRIVATE_CONSTANT&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;private&lt;/code&gt; section.&lt;/p&gt;
+&lt;p&gt;Let’ define &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PRIVATE_CONSTANT&lt;/code&gt; in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;private&lt;/code&gt; section.&lt;/p&gt;
 
 &lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# private_constant.rb&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;MyModule&lt;/span&gt;
@@ -442,7 +442,7 @@ github.com/toshimaru/nyan/main.go:64.2,67.37 3 1
 
 &lt;h2 id=&quot;private_constant&quot;&gt;private_constant&lt;/h2&gt;
 
-&lt;p&gt;To make it private, use &lt;code class=&quot;highlighter-rouge&quot;&gt;private_constant&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To make it private, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;private_constant&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# private_constant.rb&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;MyModule&lt;/span&gt;
@@ -459,14 +459,14 @@ github.com/toshimaru/nyan/main.go:64.2,67.37 3 1
 
 &lt;p&gt;The error:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private constant MyModule::PRIVATE_CONSTANT referenced (NameError)
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private constant MyModule::PRIVATE_CONSTANT referenced (NameError)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;It raises &lt;code class=&quot;highlighter-rouge&quot;&gt;NameError&lt;/code&gt; because the code tries to reference private constant.&lt;/p&gt;
+&lt;p&gt;It raises &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NameError&lt;/code&gt; because the code tries to reference private constant.&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;private_constant&lt;/code&gt; to make a private constant in Ruby.&lt;/p&gt;
+&lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;private_constant&lt;/code&gt; to make a private constant in Ruby.&lt;/p&gt;
 
 &lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;private_constant&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:YOUR_CONSTANT&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>toshimaru</name></author><category term="ruby" /><summary type="html">How can we define a private constant in Ruby.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://blog.toshima.ru/android-chrome-512x512.png" /><media:content medium="image" url="https://blog.toshima.ru/android-chrome-512x512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">How to rollback migration in Rails</title><link href="https://blog.toshima.ru/2020/02/13/how-to-rollback-migration-in-rails.html" rel="alternate" type="text/html" title="How to rollback migration in Rails" /><published>2020-02-13T00:00:00+09:00</published><updated>2020-02-13T00:00:00+09:00</updated><id>https://blog.toshima.ru/2020/02/13/how-to-rollback-migration-in-rails</id><content type="html" xml:base="https://blog.toshima.ru/2020/02/13/how-to-rollback-migration-in-rails.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -482,11 +482,11 @@ github.com/toshimaru/nyan/main.go:64.2,67.37 3 1
 &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rails db:rollback &lt;span class=&quot;nv&quot;&gt;STEP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;If you specify &lt;code class=&quot;highlighter-rouge&quot;&gt;STEP=2&lt;/code&gt;, the last two migrations are rollbacked.&lt;/p&gt;
+&lt;p&gt;If you specify &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STEP=2&lt;/code&gt;, the last two migrations are rollbacked.&lt;/p&gt;
 
 &lt;h2 id=&quot;rollback-specific-migration&quot;&gt;Rollback specific migration&lt;/h2&gt;
 
-&lt;p&gt;You can rollback a specific migration with &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate:down&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;VERSION=xxxx&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can rollback a specific migration with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;db:migrate:down&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VERSION=xxxx&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rails db:migrate:down &lt;span class=&quot;nv&quot;&gt;VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20200905201547
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -498,7 +498,7 @@ github.com/toshimaru/nyan/main.go:64.2,67.37 3 1
 
 &lt;h2 id=&quot;check-migration-status&quot;&gt;Check migration status&lt;/h2&gt;
 
-&lt;p&gt;You can check your migrations are up or down with &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate:status&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can check your migrations are up or down with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;db:migrate:status&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rails db:migrate:status
 &lt;span class=&quot;go&quot;&gt;Status   Migration ID    Migration Name
@@ -510,7 +510,7 @@ github.com/toshimaru/nyan/main.go:64.2,67.37 3 1
 
 &lt;h2 id=&quot;migration-down-and-up&quot;&gt;Migration down and up&lt;/h2&gt;
 
-&lt;p&gt;You can run &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate:down&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate:up&lt;/code&gt; with one command, which is &lt;code class=&quot;highlighter-rouge&quot;&gt;db:migrate:redo&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;db:migrate:down&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;db:migrate:up&lt;/code&gt; with one command, which is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;db:migrate:redo&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rails db:migrate:redo &lt;span class=&quot;nv&quot;&gt;VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20200905201547
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -529,13 +529,13 @@ github.com/toshimaru/nyan/main.go:64.2,67.37 3 1
 
 &lt;h2 id=&quot;create-different-domain&quot;&gt;Create different domain&lt;/h2&gt;
 
-&lt;p&gt;The domain of this blog is &lt;code class=&quot;highlighter-rouge&quot;&gt;blog.toshima.ru&lt;/code&gt;. Firstly, You need to create another domain (FQDN) to host Disqus HTML.&lt;/p&gt;
+&lt;p&gt;The domain of this blog is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blog.toshima.ru&lt;/code&gt;. Firstly, You need to create another domain (FQDN) to host Disqus HTML.&lt;/p&gt;
 
 &lt;p&gt;I’ve created &lt;a href=&quot;https://disqus.toshima.ru/&quot;&gt;disqus.toshima.ru&lt;/a&gt; and put the Disqus HTML on it (Hosted by GitHub Pages).&lt;/p&gt;
 
 &lt;h2 id=&quot;disqus-html&quot;&gt;Disqus HTML&lt;/h2&gt;
 
-&lt;p&gt;I made a little change to &lt;code class=&quot;highlighter-rouge&quot;&gt;disqus_config&lt;/code&gt; function to build &lt;code class=&quot;highlighter-rouge&quot;&gt;identifier&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt; values from query parameter.&lt;/p&gt;
+&lt;p&gt;I made a little change to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;disqus_config&lt;/code&gt; function to build &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;identifier&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;url&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt; values from query parameter.&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;disqus_thread&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
@@ -597,15 +597,15 @@ github.com/toshimaru/nyan/main.go:64.2,67.37 3 1
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;identifier&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;identifier&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Tells the Disqus service how to identify the current page.&lt;br /&gt;If this.page.identifier is undefined, the page’s URL will be used. The URL can be unreliable, such as when renaming an article slug or changing domains.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;url&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Tells the Disqus service the URL of the current page.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Tells the Disqus service the title of the current page.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -615,12 +615,12 @@ github.com/toshimaru/nyan/main.go:64.2,67.37 3 1
 
 &lt;h2 id=&quot;url-format&quot;&gt;URL Format&lt;/h2&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https:{hostname}/disqus.html?id={id}&amp;amp;url={url}&amp;amp;title={title}
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https:{hostname}/disqus.html?id={id}&amp;amp;url={url}&amp;amp;title={title}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;how-to-install-disqus-on-your-amp&quot;&gt;How to install Disqus on your AMP&lt;/h2&gt;
 
-&lt;p&gt;Set the URL to &lt;code class=&quot;highlighter-rouge&quot;&gt;amp-iframe&lt;/code&gt; src attribute value.&lt;/p&gt;
+&lt;p&gt;Set the URL to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;amp-iframe&lt;/code&gt; src attribute value.&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;amp-iframe&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;600&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;140&lt;/span&gt;
           &lt;span class=&quot;na&quot;&gt;layout=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;responsive&quot;&lt;/span&gt;
@@ -633,7 +633,7 @@ github.com/toshimaru/nyan/main.go:64.2,67.37 3 1
 
 &lt;h2 id=&quot;iframe-origin-error&quot;&gt;iframe origin error&lt;/h2&gt;
 
-&lt;p&gt;If you use same FQDN in iframe &lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt;, you’ll get the following error.&lt;/p&gt;
+&lt;p&gt;If you use same FQDN in iframe &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src&lt;/code&gt;, you’ll get the following error.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Origin of &amp;lt;amp-iframe&amp;gt; must not be equal to container &amp;lt;amp-iframe&amp;gt;​…​&amp;lt;/amp-iframe&amp;gt;​ if allow-same-origin is set. See &lt;a href=&quot;https://github.com/ampproject/amphtml/blob/master/spec/amp-iframe-origin-policy.md&quot;&gt;https://github.com/ampproject/amphtml/blob/master/spec/amp-iframe-origin-policy.md&lt;/a&gt; for details.&lt;/p&gt;
@@ -654,12 +654,12 @@ github.com/toshimaru/nyan/main.go:64.2,67.37 3 1
       &lt;td&gt;all restrictions are applied&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;allow-scripts&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;allow-scripts&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Allows the resource to run scripts.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;allow-same-origin&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Treat as same origin even if different origin is specified in &lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt;.&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;allow-same-origin&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Treat as same origin even if different origin is specified in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src&lt;/code&gt;.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;

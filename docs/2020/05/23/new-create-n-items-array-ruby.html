@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Create an Array of n items in Ruby | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Create an Array of n items in Ruby" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Where there’s a will, there’s a way.","headline":"Create an Array of n items in Ruby","url":"https://blog.toshima.ru/2020/05/23/new-create-n-items-array-ruby.html","datePublished":"2020-05-23T00:00:00+09:00","dateModified":"2020-05-23T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/05/23/new-create-n-items-array-ruby.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/05/23/new-create-n-items-array-ruby.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Where there’s a will, there’s a way.","url":"https://blog.toshima.ru/2020/05/23/new-create-n-items-array-ruby.html","headline":"Create an Array of n items in Ruby","dateModified":"2020-05-23T00:00:00+09:00","datePublished":"2020-05-23T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -114,7 +114,7 @@
 <span class="nb">p</span> <span class="n">ary</span> <span class="c1"># =&gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
 </code></pre></div></div>
 
-<p>This code can be refactored with <code class="highlighter-rouge">Array.new</code>:</p>
+<p>This code can be refactored with <code class="language-plaintext highlighter-rouge">Array.new</code>:</p>
 
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Array</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span> <span class="p">}</span>
 <span class="c1"># =&gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
@@ -122,7 +122,7 @@
 
 <h2 id="create-array-with-arraynew">Create array with Array.new</h2>
 
-<p>The initial value is <code class="highlighter-rouge">nil</code>.</p>
+<p>The initial value is <code class="language-plaintext highlighter-rouge">nil</code>.</p>
 
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Array</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">#=&gt; [nil, nil, nil]</span>
 </code></pre></div></div>

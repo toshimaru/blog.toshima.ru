@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Rails can create a table having composite primary key | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Rails can create a table having composite primary key" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Rails is able to create a table which has composite primary key without a gem.","headline":"Rails can create a table having composite primary key","url":"https://blog.toshima.ru/2019/09/06/rails-create-composite-primary-key.html","datePublished":"2019-09-06T00:00:00+09:00","dateModified":"2019-09-06T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/09/06/rails-create-composite-primary-key.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/09/06/rails-create-composite-primary-key.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Rails is able to create a table which has composite primary key without a gem.","url":"https://blog.toshima.ru/2019/09/06/rails-create-composite-primary-key.html","headline":"Rails can create a table having composite primary key","dateModified":"2019-09-06T00:00:00+09:00","datePublished":"2019-09-06T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -111,7 +111,7 @@
 
 <p>Let’s create a table having composite primary key step by step.</p>
 
-<p>First, generate migration file which has two types of <code class="highlighter-rouge">id</code> columns.</p>
+<p>First, generate migration file which has two types of <code class="language-plaintext highlighter-rouge">id</code> columns.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>rails generate migration createRelationship follower_id:bigint followed_id:bigint
 <span class="go">      invoke  active_record
@@ -131,9 +131,9 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p>What we’d like to do is creating a composite primary key of <code class="highlighter-rouge">follower_id</code> and <code class="highlighter-rouge">followed_id</code>.</p>
+<p>What we’d like to do is creating a composite primary key of <code class="language-plaintext highlighter-rouge">follower_id</code> and <code class="language-plaintext highlighter-rouge">followed_id</code>.</p>
 
-<p>So, add <code class="highlighter-rouge">primary_key</code> option and pass Array of composite primary key as a value.</p>
+<p>So, add <code class="language-plaintext highlighter-rouge">primary_key</code> option and pass Array of composite primary key as a value.</p>
 
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#  db/migrate/20190905xxxxxx_create_relationship.rb</span>
 <span class="k">class</span> <span class="nc">CreateRelationship</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">5.2</span><span class="p">]</span>
@@ -146,9 +146,9 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p>After running <code class="highlighter-rouge">rails db:migrate</code>, you can see composite primary key in the table. This is a created schema on my local MySQL.</p>
+<p>After running <code class="language-plaintext highlighter-rouge">rails db:migrate</code>, you can see composite primary key in the table. This is a created schema on my local MySQL.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc relationships;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; desc relationships;
 +-------------+------------+------+-----+---------+-------+
 | Field       | Type       | Null | Key | Default | Extra |
 +-------------+------------+------+-----+---------+-------+
@@ -160,11 +160,11 @@
 <p>This is composite primary key, so:</p>
 
 <ul>
-  <li>You can’t insert <code class="highlighter-rouge">null</code></li>
+  <li>You can’t insert <code class="language-plaintext highlighter-rouge">null</code></li>
   <li>You can’t insert same record</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>insert relationships values  (null, null);
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>insert relationships values  (null, null);
 ERROR 1048 (23000): Column 'follower_id' cannot be null
 mysql&gt; insert relationships values  (1, 1);
 Query OK, 1 row affected (0.01 sec)
@@ -176,7 +176,7 @@ ERROR 1062 (23000): Duplicate entry '1-1' for key 'PRIMARY'
 
 <p>ActiveRecord can’t find composite primary key record since it does not support.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb&gt; Relationship.find(1)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb&gt; Relationship.find(1)
 WARNING: Active Record does not support composite primary key.
 
 relationships has composite primary key. Composite primary key is ignored.

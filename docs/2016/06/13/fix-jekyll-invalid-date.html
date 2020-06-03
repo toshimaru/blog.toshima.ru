@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Fix Jekyll build error: Invalid date error | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Fix Jekyll build error: Invalid date error" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"When I ran jekyll build, I got an error:","headline":"Fix Jekyll build error: Invalid date error","url":"https://blog.toshima.ru/2016/06/13/fix-jekyll-invalid-date.html","datePublished":"2016-06-13T00:00:00+09:00","dateModified":"2016-06-13T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/06/13/fix-jekyll-invalid-date.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/06/13/fix-jekyll-invalid-date.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"When I ran jekyll build, I got an error:","url":"https://blog.toshima.ru/2016/06/13/fix-jekyll-invalid-date.html","headline":"Fix Jekyll build error: Invalid date error","dateModified":"2016-06-13T00:00:00+09:00","datePublished":"2016-06-13T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -95,9 +95,9 @@
   </div>
 
   <div class="post-body">
-    <p>When I ran <code class="highlighter-rouge">jekyll build</code>, I got an error:</p>
+    <p>When I ran <code class="language-plaintext highlighter-rouge">jekyll build</code>, I got an error:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Configuration file: blog.toshima.ru/_config.yml
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Configuration file: blog.toshima.ru/_config.yml
             Source: blog.toshima.ru
        Destination: blog.toshima.ru/_site
  Incremental build: disabled. Enable with --incremental
@@ -107,7 +107,7 @@
                     Invalid date '&lt;%= Time.now.strftime('%Y-%m-%d %H:%M:%S %z') %&gt;': Document 'gems/jekyll-3.1.6/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb' does not have a valid date in the YAML front matter.
 </code></pre></div></div>
 
-<p>This is because I didn’t exclude <code class="highlighter-rouge">vendor</code> directory in <code class="highlighter-rouge">_config.yml</code>, so I added the following Configuration:</p>
+<p>This is because I didn’t exclude <code class="language-plaintext highlighter-rouge">vendor</code> directory in <code class="language-plaintext highlighter-rouge">_config.yml</code>, so I added the following Configuration:</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">exclude</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">...</span>

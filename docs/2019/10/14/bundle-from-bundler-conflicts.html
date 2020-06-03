@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Bundler Error: bundle from bundler conflicts | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Bundler Error: bundle from bundler conflicts" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"One day I installed bundler and got an error.","headline":"Bundler Error: bundle from bundler conflicts","url":"https://blog.toshima.ru/2019/10/14/bundle-from-bundler-conflicts.html","datePublished":"2019-10-14T00:00:00+09:00","dateModified":"2019-10-14T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/10/14/bundle-from-bundler-conflicts.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/10/14/bundle-from-bundler-conflicts.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"One day I installed bundler and got an error.","url":"https://blog.toshima.ru/2019/10/14/bundle-from-bundler-conflicts.html","headline":"Bundler Error: bundle from bundler conflicts","dateModified":"2019-10-14T00:00:00+09:00","datePublished":"2019-10-14T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -97,14 +97,14 @@
   </div>
 
   <div class="post-body">
-    <p>One day I installed <code class="highlighter-rouge">bundler</code> and got an error.</p>
+    <p>One day I installed <code class="language-plaintext highlighter-rouge">bundler</code> and got an error.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>gem <span class="nb">install </span>bundler
 <span class="go">ERROR:  Error installing bundler:
 	"bundle" from bundler conflicts with ...../bin/bundle
 </span></code></pre></div></div>
 
-<p>Adding <code class="highlighter-rouge">--force</code> option resolves this error.</p>
+<p>Adding <code class="language-plaintext highlighter-rouge">--force</code> option resolves this error.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>gem <span class="nb">install </span>bundler <span class="nt">--force</span>
 <span class="go">Parsing documentation for bundler-2.0.2
@@ -115,7 +115,7 @@ Done installing documentation for bundler after 5 seconds
 
 <h2 id="tips">Tips</h2>
 
-<p>Adding <code class="highlighter-rouge">--no-document</code> option is good practice if you don’t need it.</p>
+<p>Adding <code class="language-plaintext highlighter-rouge">--no-document</code> option is good practice if you don’t need it.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>gem <span class="nb">install </span>bundler <span class="nt">--no-document</span> <span class="nt">--force</span>
 </code></pre></div></div>

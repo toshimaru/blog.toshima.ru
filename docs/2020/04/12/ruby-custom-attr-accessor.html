@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>My custom attr_accessor in Ruby | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="My custom attr_accessor in Ruby" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Do you imagin how attr_accessor is implemented in Ruby? Let’s implement it by yourself.","headline":"My custom attr_accessor in Ruby","url":"https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html","datePublished":"2020-04-12T00:00:00+09:00","dateModified":"2020-04-12T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Do you imagin how attr_accessor is implemented in Ruby? Let’s implement it by yourself.","url":"https://blog.toshima.ru/2020/04/12/ruby-custom-attr-accessor.html","headline":"My custom attr_accessor in Ruby","dateModified":"2020-04-12T00:00:00+09:00","datePublished":"2020-04-12T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -95,11 +95,11 @@
   </div>
 
   <div class="post-body">
-    <p>Do you imagin how <code class="highlighter-rouge">attr_accessor</code> is implemented in Ruby? Let’s implement it by yourself.</p>
+    <p>Do you imagin how <code class="language-plaintext highlighter-rouge">attr_accessor</code> is implemented in Ruby? Let’s implement it by yourself.</p>
 
-<h2 id="my-attr_accessor-module">My <code class="highlighter-rouge">attr_accessor</code> module</h2>
+<h2 id="my-attr_accessor-module">My <code class="language-plaintext highlighter-rouge">attr_accessor</code> module</h2>
 
-<p>Create <code class="highlighter-rouge">CustomAttrAccessor</code> module which overrides Ruby’s <code class="highlighter-rouge">attr_accessor</code> method.</p>
+<p>Create <code class="language-plaintext highlighter-rouge">CustomAttrAccessor</code> module which overrides Ruby’s <code class="language-plaintext highlighter-rouge">attr_accessor</code> method.</p>
 
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">CustomAttrAccessor</span>
   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
@@ -122,9 +122,9 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
-<h2 id="inlcude-attr_accessor-module">inlcude <code class="highlighter-rouge">attr_accessor</code> module</h2>
+<h2 id="inlcude-attr_accessor-module">inlcude <code class="language-plaintext highlighter-rouge">attr_accessor</code> module</h2>
 
-<p>You can use your custom <code class="highlighter-rouge">attr_accessor</code> by including the module you’ve created in the class.</p>
+<p>You can use your custom <code class="language-plaintext highlighter-rouge">attr_accessor</code> by including the module you’ve created in the class.</p>
 
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span>
   <span class="kp">include</span> <span class="no">CustomAttrAccessor</span>
@@ -133,9 +133,9 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
-<h2 id="test-your-attr_accessor">Test your <code class="highlighter-rouge">attr_accessor</code></h2>
+<h2 id="test-your-attr_accessor">Test your <code class="language-plaintext highlighter-rouge">attr_accessor</code></h2>
 
-<p>Let’s test the <code class="highlighter-rouge">attr_accessor</code>.</p>
+<p>Let’s test the <code class="language-plaintext highlighter-rouge">attr_accessor</code>.</p>
 
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="no">A</span><span class="p">.</span><span class="nf">new</span>
 

@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Run and Connect to MySQL on Docker | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Run and Connect to MySQL on Docker" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"I wanted to run MySQL v8.0.x on Docker aside from MySQL v5.7 running on my localhost, so I’ll give a instruction for it.","headline":"Run and Connect to MySQL on Docker","url":"https://blog.toshima.ru/2018/09/16/docker-run-mysql.html","datePublished":"2018-09-16T00:00:00+09:00","dateModified":"2020-01-08T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2018/09/16/docker-run-mysql.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2018/09/16/docker-run-mysql.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"I wanted to run MySQL v8.0.x on Docker aside from MySQL v5.7 running on my localhost, so I’ll give a instruction for it.","url":"https://blog.toshima.ru/2018/09/16/docker-run-mysql.html","headline":"Run and Connect to MySQL on Docker","dateModified":"2020-01-08T00:00:00+09:00","datePublished":"2018-09-16T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -101,33 +101,33 @@
 
 <h2 id="docker-pull">docker pull</h2>
 
-<p>First of all, let’s run <code class="highlighter-rouge">docker pull</code> and get MySQL v8.0 image.</p>
+<p>First of all, let’s run <code class="language-plaintext highlighter-rouge">docker pull</code> and get MySQL v8.0 image.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>docker pull mysql:8.0
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">8.0</code> means a tag. if it’s not specified, latest MySQL docker image well be used.</p>
+<p><code class="language-plaintext highlighter-rouge">8.0</code> means a tag. if it’s not specified, latest MySQL docker image well be used.</p>
 
 <h2 id="docker-run">docker run</h2>
 
-<p>Then, run <code class="highlighter-rouge">docker run</code>.</p>
+<p>Then, run <code class="language-plaintext highlighter-rouge">docker run</code>.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>docker run <span class="nt">--name</span> mysql8 <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">={</span>your_password<span class="o">}</span> <span class="nt">-p</span> 3306:3306 mysql:8.0
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">MYSQL_ROOT_PASSWORD</code> is required, you can set whatever password you like</li>
-  <li><code class="highlighter-rouge">--name mysql</code> option assigns a name(<code class="highlighter-rouge">mysql</code>) to the container</li>
-  <li><code class="highlighter-rouge">-p 3306:3306</code> option publishes a container’s <code class="highlighter-rouge">3306</code> port to the host
+  <li><code class="language-plaintext highlighter-rouge">MYSQL_ROOT_PASSWORD</code> is required, you can set whatever password you like</li>
+  <li><code class="language-plaintext highlighter-rouge">--name mysql</code> option assigns a name(<code class="language-plaintext highlighter-rouge">mysql</code>) to the container</li>
+  <li><code class="language-plaintext highlighter-rouge">-p 3306:3306</code> option publishes a container’s <code class="language-plaintext highlighter-rouge">3306</code> port to the host
     <ul>
-      <li>If you want to change port, change it to <code class="highlighter-rouge">-p 3307:3306</code>. Then, <code class="highlighter-rouge">3307</code> port is used</li>
+      <li>If you want to change port, change it to <code class="language-plaintext highlighter-rouge">-p 3307:3306</code>. Then, <code class="language-plaintext highlighter-rouge">3307</code> port is used</li>
     </ul>
   </li>
 </ul>
 
 <h3 id="simple-docker-run">Simple docker run</h3>
 
-<p>Just setting <code class="highlighter-rouge">MYSQL_ROOT_PASSWORD</code> is enough. :)</p>
+<p>Just setting <code class="language-plaintext highlighter-rouge">MYSQL_ROOT_PASSWORD</code> is enough. :)</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>docker run <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">={</span>your_password<span class="o">}</span> mysql:8.0
 <span class="go">2020-01-07 16:06:52+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.18-1debian9 started.
@@ -146,9 +146,9 @@
 <p>You can see:</p>
 
 <ul>
-  <li>image is <code class="highlighter-rouge">mysql:8.0</code></li>
-  <li>Name is <code class="highlighter-rouge">mysql8</code></li>
-  <li>Port setting is <code class="highlighter-rouge">0.0.0.0:3306-&gt;3306/</code></li>
+  <li>image is <code class="language-plaintext highlighter-rouge">mysql:8.0</code></li>
+  <li>Name is <code class="language-plaintext highlighter-rouge">mysql8</code></li>
+  <li>Port setting is <code class="language-plaintext highlighter-rouge">0.0.0.0:3306-&gt;3306/</code></li>
 </ul>
 
 <h2 id="connect-to-mysql">Connect to MySQL</h2>

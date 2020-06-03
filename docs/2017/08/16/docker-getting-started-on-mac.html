@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Get started with Docker on Mac | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Get started with Docker on Mac" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Let’s get started with docker on Mac.","headline":"Get started with Docker on Mac","url":"https://blog.toshima.ru/2017/08/16/docker-getting-started-on-mac.html","datePublished":"2017-08-16T00:00:00+09:00","dateModified":"2017-08-16T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2017/08/16/docker-getting-started-on-mac.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2017/08/16/docker-getting-started-on-mac.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Let’s get started with docker on Mac.","url":"https://blog.toshima.ru/2017/08/16/docker-getting-started-on-mac.html","headline":"Get started with Docker on Mac","dateModified":"2017-08-16T00:00:00+09:00","datePublished":"2017-08-16T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -103,10 +103,10 @@
 
 <p>First of all, install docker.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install docker
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install docker
 </code></pre></div></div>
 
-<p>Then, run <code class="highlighter-rouge">docker info</code> to make sure <a href="https://docs.docker.com/">docker</a> is installed.</p>
+<p>Then, run <code class="language-plaintext highlighter-rouge">docker info</code> to make sure <a href="https://docs.docker.com/">docker</a> is installed.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>docker info
 <span class="go">Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
@@ -118,7 +118,7 @@
 
 <p>To solve this, we need to create a machine for Docker. let’s install <a href="https://docs.docker.com/machine/">docker-machine</a> with <a href="https://www.virtualbox.org/">virtualbox</a>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install docker-machine
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install docker-machine
 $ brew cask install virtualbox
 </code></pre></div></div>
 
@@ -169,14 +169,14 @@ export DOCKER_MACHINE_NAME="default"
   <p>Run this command to configure your shell:</p>
 </blockquote>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ eval $(docker-machine env default)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ eval $(docker-machine env default)
 </code></pre></div></div>
 
 <h2 id="docker-is-ready">Docker is ready</h2>
 
 <p>Docker is ready to run.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker info
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker info
 Containers: 0
  Running: 0
  Paused: 0

@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>MySQL ADD COLUMN statements | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="MySQL ADD COLUMN statements" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"MySQL Version","headline":"MySQL ADD COLUMN statements","url":"https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html","datePublished":"2019-12-27T00:00:00+09:00","dateModified":"2019-12-27T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"MySQL Version","url":"https://blog.toshima.ru/2019/12/27/new-mysql-add-column.html","headline":"MySQL ADD COLUMN statements","dateModified":"2019-12-27T00:00:00+09:00","datePublished":"2019-12-27T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -110,7 +110,7 @@
 
 <p>The result is:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; desc users
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; desc users
 +-------+--------------+------+-----+---------+----------------+
 | Field | Type         | Null | Key | Default | Extra          |
 +-------+--------------+------+-----+---------+----------------+
@@ -126,7 +126,7 @@
 
 <p>The result is:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; desc users;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; desc users;
 +-------------+--------------+------+-----+---------+----------------+
 | Field       | Type         | Null | Key | Default | Extra          |
 +-------------+--------------+------+-----+---------+----------------+
@@ -143,7 +143,7 @@
 
 <p>The result is:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; desc users
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; desc users
 +-------------+--------------+------+-----+---------+----------------+
 | Field       | Type         | Null | Key | Default | Extra          |
 +-------------+--------------+------+-----+---------+----------------+
@@ -160,7 +160,7 @@
 
 <p>The result is:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; desc users
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; desc users
 +-------------+--------------+------+-----+---------+----------------+
 | Field       | Type         | Null | Key | Default | Extra          |
 +-------------+--------------+------+-----+---------+----------------+
@@ -172,7 +172,7 @@
 
 <h3 id="what-about-before">What about “before”?</h3>
 
-<p>Let’s use <code class="highlighter-rouge">BEFORE</code> instead of <code class="highlighter-rouge">AFTER</code>.</p>
+<p>Let’s use <code class="language-plaintext highlighter-rouge">BEFORE</code> instead of <code class="language-plaintext highlighter-rouge">AFTER</code>.</p>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">new_column1</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">BEFORE</span> <span class="n">id</span><span class="p">;</span>
 <span class="c1">-- (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BEFORE id' at line 1")</span>
@@ -180,7 +180,7 @@
 
 <p>It causes syntax error!</p>
 
-<p><strong>We can’t use <code class="highlighter-rouge">BEFORE</code> for <code class="highlighter-rouge">ADD COLUMN</code> statement.</strong></p>
+<p><strong>We can’t use <code class="language-plaintext highlighter-rouge">BEFORE</code> for <code class="language-plaintext highlighter-rouge">ADD COLUMN</code> statement.</strong></p>
 
 <h2 id="reference">Reference</h2>
 

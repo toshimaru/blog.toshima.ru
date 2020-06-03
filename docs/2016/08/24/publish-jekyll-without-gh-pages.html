@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Publish Jekyll site without gh-pages branch | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Publish Jekyll site without gh-pages branch" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Github releases supports variety of sources of Github Pages in Github blog, which allows developer to publish Github Pages without gh-pages branch. Since this feature, you can publish your Jekyll site without using gh-pages branch and Github deployment can be more simpler now. Build page on docs directory First step: Configure build destination.","headline":"Publish Jekyll site without gh-pages branch","url":"https://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html","datePublished":"2016-08-24T00:00:00+09:00","dateModified":"2016-08-24T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Github releases supports variety of sources of Github Pages in Github blog, which allows developer to publish Github Pages without gh-pages branch. Since this feature, you can publish your Jekyll site without using gh-pages branch and Github deployment can be more simpler now. Build page on docs directory First step: Configure build destination.","url":"https://blog.toshima.ru/2016/08/24/publish-jekyll-without-gh-pages.html","headline":"Publish Jekyll site without gh-pages branch","dateModified":"2016-08-24T00:00:00+09:00","datePublished":"2016-08-24T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -97,7 +97,7 @@
   </div>
 
   <div class="post-body">
-    <p>Github announced <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">variety of sources of Github Pages</a> is supported in <a href="https://github.com/blog/2233-publish-your-project-documentation-with-github-pages">their official blog</a>. It allows developers to publish Github Pages with master branch instead of <code class="highlighter-rouge">gh-pages</code> branch. Since this feature, you can publish your Jekyll site without using <code class="highlighter-rouge">gh-pages</code> branch and Github Pages deployment now can be much simpler.</p>
+    <p>Github announced <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">variety of sources of Github Pages</a> is supported in <a href="https://github.com/blog/2233-publish-your-project-documentation-with-github-pages">their official blog</a>. It allows developers to publish Github Pages with master branch instead of <code class="language-plaintext highlighter-rouge">gh-pages</code> branch. Since this feature, you can publish your Jekyll site without using <code class="language-plaintext highlighter-rouge">gh-pages</code> branch and Github Pages deployment now can be much simpler.</p>
 
 <h2 id="build-page-on-docs-directory">Build page on docs directory</h2>
 
@@ -107,9 +107,9 @@
 <span class="na">destination</span><span class="pi">:</span> <span class="s">./docs</span>
 </code></pre></div></div>
 
-<p>Now Jekyll pages are built on <code class="highlighter-rouge">./docs</code> directory.</p>
+<p>Now Jekyll pages are built on <code class="language-plaintext highlighter-rouge">./docs</code> directory.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ jekyll build
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ jekyll build
 Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
             Source: /Users/toshimaru/blog.toshima.ru
        Destination: ./docs
@@ -131,7 +131,7 @@ Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
 
 <h2 id="pro-tip">Pro Tip</h2>
 
-<p>By using <a href="https://github.com/ruby/rake">rake</a>, you can deploy your Jekyll site with one command, <code class="highlighter-rouge">rake deploy</code>.</p>
+<p>By using <a href="https://github.com/ruby/rake">rake</a>, you can deploy your Jekyll site with one command, <code class="language-plaintext highlighter-rouge">rake deploy</code>.</p>
 
 <div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Rakefile</span>
 <span class="n">desc</span> <span class="s1">'deploy Jekyll site to Github Pages'</span>
@@ -144,7 +144,7 @@ Configuration file: /Users/toshimaru/blog.toshima.ru/_config.yml
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p>In this task, <code class="highlighter-rouge">rake deploy</code> builds Jekyll site and push it to Github for you. This is useful if you’d like to release your site on CI such as TravisCI, CircleCi.</p>
+<p>In this task, <code class="language-plaintext highlighter-rouge">rake deploy</code> builds Jekyll site and push it to Github for you. This is useful if you’d like to release your site on CI such as TravisCI, CircleCi.</p>
 
 <h2 id="see-also">See also</h2>
 

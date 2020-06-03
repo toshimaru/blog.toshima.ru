@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>mysqldump command for existing Rails app | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="mysqldump command for existing Rails app" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Environment","headline":"mysqldump command for existing Rails app","url":"https://blog.toshima.ru/2016/12/16/mysqldump-command.html","datePublished":"2016-12-16T00:00:00+09:00","dateModified":"2016-12-16T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/12/16/mysqldump-command.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/12/16/mysqldump-command.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Environment","url":"https://blog.toshima.ru/2016/12/16/mysqldump-command.html","headline":"mysqldump command for existing Rails app","dateModified":"2016-12-16T00:00:00+09:00","datePublished":"2016-12-16T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -105,7 +105,7 @@
 
 <h2 id="how-to-export-dumpsql-using-mysqldump">How to export dump.sql using mysqldump</h2>
 
-<p>The following command generates <code class="highlighter-rouge">dump.sql</code> for existing Rails app.</p>
+<p>The following command generates <code class="language-plaintext highlighter-rouge">dump.sql</code> for existing Rails app.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysqldump <span class="nt">-u</span> <span class="o">{</span>USER_NAME<span class="o">}</span> <span class="nt">-h</span> <span class="o">{</span>HOST_NAME<span class="o">}</span> <span class="nt">-p</span> <span class="nt">--no-create-info</span> <span class="nt">--ignore-table</span><span class="o">=</span>DATABASE_NAME.schema_migrations <span class="nt">--ignore-table</span><span class="o">=</span>DATABASE_NAME.ar_internal_metadata <span class="o">{</span>DATABASE_NAME<span class="o">}</span> <span class="o">&gt;</span> dump.sql
 </code></pre></div></div>
@@ -115,27 +115,27 @@
 <p>Change following variables depending on your environment.</p>
 
 <ul>
-  <li><code class="highlighter-rouge">USER_NAME</code>: database user name</li>
-  <li><code class="highlighter-rouge">HOST_NAME</code>: MySQL host name</li>
-  <li><code class="highlighter-rouge">DATABASE_NAME</code>: your rails app database name</li>
+  <li><code class="language-plaintext highlighter-rouge">USER_NAME</code>: database user name</li>
+  <li><code class="language-plaintext highlighter-rouge">HOST_NAME</code>: MySQL host name</li>
+  <li><code class="language-plaintext highlighter-rouge">DATABASE_NAME</code>: your rails app database name</li>
 </ul>
 
 <h3 id="command-explanation">Command explanation</h3>
 
-<p><code class="highlighter-rouge">--no-create-info</code> flag means do not include <code class="highlighter-rouge">CREATE TABLE</code> information. It’s needed because we already have create table information file in Rails <code class="highlighter-rouge">schema.rb</code>.</p>
+<p><code class="language-plaintext highlighter-rouge">--no-create-info</code> flag means do not include <code class="language-plaintext highlighter-rouge">CREATE TABLE</code> information. It’s needed because we already have create table information file in Rails <code class="language-plaintext highlighter-rouge">schema.rb</code>.</p>
 
-<p><code class="highlighter-rouge">--ignore-table</code> is needed to ignore those two tables.</p>
+<p><code class="language-plaintext highlighter-rouge">--ignore-table</code> is needed to ignore those two tables.</p>
 
 <ul>
-  <li><code class="highlighter-rouge">schema_migrations</code>: This table has version information(e.g. <code class="highlighter-rouge">20161205083433</code>)</li>
-  <li><code class="highlighter-rouge">ar_internal_metadata</code>: This table has your Rails app environment information</li>
+  <li><code class="language-plaintext highlighter-rouge">schema_migrations</code>: This table has version information(e.g. <code class="language-plaintext highlighter-rouge">20161205083433</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">ar_internal_metadata</code>: This table has your Rails app environment information</li>
 </ul>
 
 <p>These are automatically created by Rails, so you don’t need it.</p>
 
 <h2 id="how-to-import-dumpsql">How to import dump.sql</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle exec rails db:reset
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle exec rails db:reset
 $ mysql -u root DATABASE_NAME &lt; ./dump.sql
 </code></pre></div></div>
 

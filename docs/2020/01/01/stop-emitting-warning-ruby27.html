@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Stop emitting warnings in Ruby 2.7 | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Stop emitting warnings in Ruby 2.7" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Ruby 2.7 emits many warnings.","headline":"Stop emitting warnings in Ruby 2.7","url":"https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html","datePublished":"2020-01-01T00:00:00+09:00","dateModified":"2020-01-01T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Ruby 2.7 emits many warnings.","url":"https://blog.toshima.ru/2020/01/01/stop-emitting-warning-ruby27.html","headline":"Stop emitting warnings in Ruby 2.7","dateModified":"2020-01-01T00:00:00+09:00","datePublished":"2020-01-01T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -112,7 +112,7 @@
 <span class="go">/usr/local/bundle/ruby/2.7.0/gems/activemodel-6.0.2.1/lib/active_model/type/value.rb:8: warning: The called method `initialize' is defined here
 </span></code></pre></div></div>
 
-<p>To stop emitting the warnings, just add <code class="highlighter-rouge">RUBYOPT=-W:no-deprecated</code>.</p>
+<p>To stop emitting the warnings, just add <code class="language-plaintext highlighter-rouge">RUBYOPT=-W:no-deprecated</code>.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nv">RUBYOPT</span><span class="o">=</span><span class="nt">-W</span>:no-deprecated bundle <span class="nb">exec </span>rails db:migrate
 <span class="gp">#</span><span class="w"> </span>no Ruby warnings

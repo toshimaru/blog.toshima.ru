@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Explain SQL on Rails Console | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Explain SQL on Rails Console" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Lets’s say you’d like to explain the following SQL.","headline":"Explain SQL on Rails Console","url":"https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html","datePublished":"2019-09-03T00:00:00+09:00","dateModified":"2019-09-03T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Lets’s say you’d like to explain the following SQL.","url":"https://blog.toshima.ru/2019/09/03/explain-on-rails-console.html","headline":"Explain SQL on Rails Console","dateModified":"2019-09-03T00:00:00+09:00","datePublished":"2019-09-03T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -105,7 +105,7 @@
 <span class="o">=&gt;</span> <span class="s2">"SELECT `users`.* FROM `users`"</span>
 </code></pre></div></div>
 
-<p>All you need to do is adding <code class="highlighter-rouge">.explain</code> to the method.</p>
+<p>All you need to do is adding <code class="language-plaintext highlighter-rouge">.explain</code> to the method.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">explain</span>
   <span class="no">User</span> <span class="no">Load</span> <span class="p">(</span><span class="mf">0.6</span><span class="n">ms</span><span class="p">)</span>  <span class="no">SELECT</span> <span class="sb">`users`</span><span class="p">.</span><span class="nf">*</span> <span class="no">FROM</span> <span class="sb">`users`</span>

@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Escape ERB tag string in ERB file | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Escape ERB tag string in ERB file" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"How can we output erb tag string like &lt;% erb %&gt; in erb file without being interpreted as erb? You can do this by using double percent &lt;%% %&gt;!","headline":"Escape ERB tag string in ERB file","url":"https://blog.toshima.ru/2016/11/18/escape-erb-tag-in-erb.html","datePublished":"2016-11-18T00:00:00+09:00","dateModified":"2016-11-18T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/11/18/escape-erb-tag-in-erb.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/11/18/escape-erb-tag-in-erb.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"How can we output erb tag string like &lt;% erb %&gt; in erb file without being interpreted as erb? You can do this by using double percent &lt;%% %&gt;!","url":"https://blog.toshima.ru/2016/11/18/escape-erb-tag-in-erb.html","headline":"Escape ERB tag string in ERB file","dateModified":"2016-11-18T00:00:00+09:00","datePublished":"2016-11-18T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -97,14 +97,14 @@
   </div>
 
   <div class="post-body">
-    <p>How can we output erb tag string like <code class="highlighter-rouge">&lt;% erb %&gt;</code> in erb file without being interpreted as erb? You can do this by using double percent <code class="highlighter-rouge">&lt;%% %&gt;</code>!</p>
+    <p>How can we output erb tag string like <code class="language-plaintext highlighter-rouge">&lt;% erb %&gt;</code> in erb file without being interpreted as erb? You can do this by using double percent <code class="language-plaintext highlighter-rouge">&lt;%% %&gt;</code>!</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%%</span> <span class="n">escaped</span> <span class="cp">%&gt;</span>
 </code></pre></div></div>
 
-<p>Let’s look at how it changes on <code class="highlighter-rouge">irb</code>.</p>
+<p>Let’s look at how it changes on <code class="language-plaintext highlighter-rouge">irb</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$  irb
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$  irb
 &gt;  ERB.new("&lt;%% escaped? %&gt;").result
 =&gt; "&lt;% escaped? %&gt;"
 &gt;  ERB.new("&lt;% escaped? %&gt;").result
@@ -112,7 +112,7 @@ NoMethodError: undefined method `escaped?' for main:Object
 	from (erb):1:in `&lt;main&gt;'
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">&lt;%%</code> becomes string without an error.</p>
+<p><code class="language-plaintext highlighter-rouge">&lt;%%</code> becomes string without an error.</p>
 
 <h2 id="see-also">See also</h2>
 

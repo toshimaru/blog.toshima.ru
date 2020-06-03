@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1 | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"As of Ruby on Rails 5.1, attribute_changed? ActiveRecord method will be deprecated.","headline":"Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1","url":"https://blog.toshima.ru/2017/04/06/saved-change-to-attribute.html","datePublished":"2017-04-06T00:00:00+09:00","dateModified":"2017-04-06T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2017/04/06/saved-change-to-attribute.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2017/04/06/saved-change-to-attribute.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"As of Ruby on Rails 5.1, attribute_changed? ActiveRecord method will be deprecated.","url":"https://blog.toshima.ru/2017/04/06/saved-change-to-attribute.html","headline":"Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1","dateModified":"2017-04-06T00:00:00+09:00","datePublished":"2017-04-06T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -97,14 +97,14 @@
   </div>
 
   <div class="post-body">
-    <p>As of <a href="http://edgeguides.rubyonrails.org/5_1_release_notes.html">Ruby on Rails 5.1</a>, <code class="highlighter-rouge">attribute_changed?</code> ActiveRecord method will be deprecated.</p>
+    <p>As of <a href="http://edgeguides.rubyonrails.org/5_1_release_notes.html">Ruby on Rails 5.1</a>, <code class="language-plaintext highlighter-rouge">attribute_changed?</code> ActiveRecord method will be deprecated.</p>
 
 <p>The deprecation message:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DEPRECATION WARNING: The behavior of `attribute_changed?` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute?` instead.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DEPRECATION WARNING: The behavior of `attribute_changed?` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute?` instead.
 </code></pre></div></div>
 
-<p>As the messages says, using <code class="highlighter-rouge">saved_change_to_attribute?</code> instead of <code class="highlighter-rouge">attribute_changed?</code> is recommended.</p>
+<p>As the messages says, using <code class="language-plaintext highlighter-rouge">saved_change_to_attribute?</code> instead of <code class="language-plaintext highlighter-rouge">attribute_changed?</code> is recommended.</p>
 
 <h2 id="example">Example</h2>
 
@@ -136,16 +136,16 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
-<h2 id="use-attribute_before_last_save-instead-of-attribute_was">Use <code class="highlighter-rouge">attribute_before_last_save</code> instead of <code class="highlighter-rouge">attribute_was</code></h2>
+<h2 id="use-attribute_before_last_save-instead-of-attribute_was">Use <code class="language-plaintext highlighter-rouge">attribute_before_last_save</code> instead of <code class="language-plaintext highlighter-rouge">attribute_was</code></h2>
 
-<p>Also, <code class="highlighter-rouge">attribute_was</code> is deprecated in Rails 5.1. which is one of methods in <a href="http://api.rubyonrails.org/classes/ActiveModel/Dirty.html">ActiveModel::Dirty</a>.</p>
+<p>Also, <code class="language-plaintext highlighter-rouge">attribute_was</code> is deprecated in Rails 5.1. which is one of methods in <a href="http://api.rubyonrails.org/classes/ActiveModel/Dirty.html">ActiveModel::Dirty</a>.</p>
 
 <p>The deprecation message is:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DEPRECATION WARNING: The behavior of `attribute_was` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `attribute_before_last_save` instead.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DEPRECATION WARNING: The behavior of `attribute_was` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `attribute_before_last_save` instead.
 </code></pre></div></div>
 
-<p>As message says, we need to replace <code class="highlighter-rouge">attribute_was</code> with <code class="highlighter-rouge">attribute_before_last_save</code>.</p>
+<p>As message says, we need to replace <code class="language-plaintext highlighter-rouge">attribute_was</code> with <code class="language-plaintext highlighter-rouge">attribute_before_last_save</code>.</p>
 
 <p>For example:</p>
 

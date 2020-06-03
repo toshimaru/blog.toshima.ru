@@ -21,12 +21,12 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>How to fix “This version of ChromeDriver only supports Chrome version xx” on Ubuntu | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="How to fix “This version of ChromeDriver only supports Chrome version xx” on Ubuntu" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Issue" />
-<meta property="og:description" content="Issue" />
+<meta name="description" content="When I was running CI on GitHub Actions, CI for Ubuntu suddenly gets an error. The error message is: Selenium::WebDriver::Error::SessionNotCreatedError:" />
+<meta property="og:description" content="When I was running CI on GitHub Actions, CI for Ubuntu suddenly gets an error. The error message is: Selenium::WebDriver::Error::SessionNotCreatedError:" />
 <link rel="canonical" href="https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version.html" />
 <meta property="og:url" content="https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Issue","headline":"How to fix “This version of ChromeDriver only supports Chrome version xx” on Ubuntu","url":"https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version.html","datePublished":"2019-12-20T00:00:00+09:00","dateModified":"2019-12-20T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"When I was running CI on GitHub Actions, CI for Ubuntu suddenly gets an error. The error message is: Selenium::WebDriver::Error::SessionNotCreatedError:","url":"https://blog.toshima.ru/2019/12/20/fix-chromedriver-only-supports-chrome-version.html","headline":"How to fix “This version of ChromeDriver only supports Chrome version xx” on Ubuntu","dateModified":"2020-06-04T00:00:00+09:00","datePublished":"2019-12-20T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -83,7 +83,7 @@
   <div class="post-meta">
     <div class="post-date">
       <time>20 Dec 2019</time>
-      
+      (Updated on 04 Jun 2020)
     </div>
     <div class="post-tags">
       <ul class="tags">
@@ -97,13 +97,20 @@
   </div>
 
   <div class="post-body">
-    <h2 id="issue">Issue</h2>
+    <ul id="markdown-toc">
+  <li><a href="#issue" id="markdown-toc-issue">Issue</a></li>
+  <li><a href="#solution-1-install-latest-chrome" id="markdown-toc-solution-1-install-latest-chrome">Solution 1: Install latest Chrome</a></li>
+  <li><a href="#solution-remove-outdated-chrome" id="markdown-toc-solution-remove-outdated-chrome">Solution: Remove outdated Chrome</a></li>
+  <li><a href="#see-also" id="markdown-toc-see-also">See also</a></li>
+</ul>
 
-<p>When I was running CI on <a href="https://github.com/features/actions">GitHub Actions</a>, CI on Ubuntu suddenly gets an error.</p>
+<h2 id="issue">Issue</h2>
+
+<p>When I was running CI on <a href="https://github.com/features/actions">GitHub Actions</a>, CI for Ubuntu suddenly gets an error.</p>
 
 <p>The error says:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Failures:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Failures:
 
   1) ...
      Got 0 failures and 2 other errors:
@@ -121,21 +128,22 @@
 
 <p>The error message is:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Selenium::WebDriver::Error::SessionNotCreatedError:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Selenium::WebDriver::Error::SessionNotCreatedError:
   session not created: This version of ChromeDriver only supports Chrome version 79
 </code></pre></div></div>
 
-<h2 id="solution-1">Solution 1</h2>
+<h2 id="solution-1-install-latest-chrome">Solution 1: Install latest Chrome</h2>
 
-<p>The error message basically says “your Chrome version is outdated”, so install the latest chrome with chromedriver (<code class="highlighter-rouge">chromium-driver</code>).</p>
+<p>The error message basically says “your Chrome version is outdated”, so install the latest chrome with chromedriver.</p>
 
 <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">- sudo apt-get install libsqlite3-dev chromium-driver
-</span><span class="gi">+ sudo apt-get install libsqlite3-dev chromium-driver google-chrome-stable
+</span><span class="gi">+ sudo apt-get update
++ sudo apt-get install libsqlite3-dev chromium-driver google-chrome-stable
 </span></code></pre></div></div>
 
-<h2 id="solution-2">Solution 2</h2>
+<h2 id="solution-remove-outdated-chrome">Solution: Remove outdated Chrome</h2>
 
-<p>Another solution is removing outdated Google Chrome (<code class="highlighter-rouge">google-chrome-stable</code>) on the machine. By doing so, CI uses chromium as a browser instead of google-chrome.</p>
+<p>Another solution is removing outdated Google Chrome (<code class="language-plaintext highlighter-rouge">google-chrome-stable</code>) on the machine. By doing so, CI uses chromium instead of google-chrome as the browser.</p>
 
 <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gi">+ sudo apt-get remove google-chrome-stable
 </span>  sudo apt-get install libsqlite3-dev chromium-driver
@@ -144,9 +152,10 @@
 <h2 id="see-also">See also</h2>
 
 <ul>
-  <li>The Pull Request where I encountered the issue (First Solution): <a href="https://github.com/toshimaru/RailsTwitterClone/pull/619">Bump faker from 2.8.1 to 2.9.0</a>
+  <li>Pull Request examples
     <ul>
-      <li>Another solution: <a href="https://github.com/toshimaru/RailsTwitterClone/pull/625">Use chromium-browser instead of google-chrome-stable</a></li>
+      <li>Solution 1: <a href="https://github.com/toshimaru/RailsTwitterClone/pull/619">Bump faker from 2.8.1 to 2.9.0</a></li>
+      <li>Solution 2: <a href="https://github.com/toshimaru/RailsTwitterClone/pull/625">Use chromium-browser instead of google-chrome-stable</a></li>
     </ul>
   </li>
   <li><a href="https://www.omgubuntu.co.uk/2019/08/install-chromium-browser-ubuntu">Install Chromium on Ubuntu 18.04 LTS &amp; Linux Mint</a></li>

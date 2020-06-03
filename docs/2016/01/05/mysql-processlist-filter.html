@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Filter MySQL processlist | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Filter MySQL processlist" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"You can see MySQL processes by show processlist.","headline":"Filter MySQL processlist","url":"https://blog.toshima.ru/2016/01/05/mysql-processlist-filter.html","datePublished":"2016-01-05T00:00:00+09:00","dateModified":"2016-01-05T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/01/05/mysql-processlist-filter.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/01/05/mysql-processlist-filter.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"You can see MySQL processes by show processlist.","url":"https://blog.toshima.ru/2016/01/05/mysql-processlist-filter.html","headline":"Filter MySQL processlist","dateModified":"2016-01-05T00:00:00+09:00","datePublished":"2016-01-05T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -95,7 +95,7 @@
   </div>
 
   <div class="post-body">
-    <p>You can see MySQL processes by <code class="highlighter-rouge">show processlist</code>.</p>
+    <p>You can see MySQL processes by <code class="language-plaintext highlighter-rouge">show processlist</code>.</p>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">show</span> <span class="n">processlist</span><span class="p">;</span>
 <span class="c1">-- Or</span>
@@ -107,7 +107,7 @@
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">PROCESSLIST</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>Now, you can filter process with <code class="highlighter-rouge">WHERE</code> clause.</p>
+<p>Now, you can filter process with <code class="language-plaintext highlighter-rouge">WHERE</code> clause.</p>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">PROCESSLIST</span>
 <span class="k">WHERE</span> 
@@ -127,7 +127,7 @@
 <h2 id="see-also">See also</h2>
 
 <ul>
-  <li><a href="http://stackoverflow.com/questions/929612/how-to-customize-show-processlist-in-mysql">how to customize <code class="highlighter-rouge">show processlist</code> in mysql? - Stack Overflow</a></li>
+  <li><a href="http://stackoverflow.com/questions/929612/how-to-customize-show-processlist-in-mysql">how to customize <code class="language-plaintext highlighter-rouge">show processlist</code> in mysql? - Stack Overflow</a></li>
 </ul>
 
   </div>

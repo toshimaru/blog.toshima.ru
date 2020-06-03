@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Basic gcloud Commands for Google App Engine | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Basic gcloud Commands for Google App Engine" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Let’s see basic gcloud commands for Google App Engine.","headline":"Basic gcloud Commands for Google App Engine","url":"https://blog.toshima.ru/2019/05/17/google-app-engine-gcloud-commands.html","datePublished":"2019-05-17T00:00:00+09:00","dateModified":"2019-05-17T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/05/17/google-app-engine-gcloud-commands.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/05/17/google-app-engine-gcloud-commands.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Let’s see basic gcloud commands for Google App Engine.","url":"https://blog.toshima.ru/2019/05/17/google-app-engine-gcloud-commands.html","headline":"Basic gcloud Commands for Google App Engine","dateModified":"2019-05-17T00:00:00+09:00","datePublished":"2019-05-17T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -95,7 +95,7 @@
   </div>
 
   <div class="post-body">
-    <p>Let’s see basic <code class="highlighter-rouge">gcloud</code> commands for Google App Engine.</p>
+    <p>Let’s see basic <code class="language-plaintext highlighter-rouge">gcloud</code> commands for Google App Engine.</p>
 
 <h2 id="install-gcloud-command-on-macos">Install gcloud command on MacOS</h2>
 
@@ -106,7 +106,7 @@
 
 <h2 id="local-development">Local Development</h2>
 
-<p><code class="highlighter-rouge">dev_appserver.py</code> is useful for local development.</p>
+<p><code class="language-plaintext highlighter-rouge">dev_appserver.py</code> is useful for local development.</p>
 
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>dev_appserver.py app.yaml
 </code></pre></div></div>
@@ -150,23 +150,23 @@ Deployed service [default] to [https://your_project_name.appspot.com]
 
 <h2 id="browse-app">Browse App</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gcloud app browse
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gcloud app browse
 </code></pre></div></div>
 
-<p>This command opens your application url(<code class="highlighter-rouge">https://your_project_name.appspot.com</code>) on the browser.</p>
+<p>This command opens your application url(<code class="language-plaintext highlighter-rouge">https://your_project_name.appspot.com</code>) on the browser.</p>
 
 <h2 id="see-log">See log</h2>
 
 <p>You can watch your application log.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gcloud app logs tail -s default
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gcloud app logs tail -s default
 </code></pre></div></div>
 
 <h2 id="cron-deployment">Cron deployment</h2>
 
 <p>If you want to deploy your cron, run the following command.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gcloud app deploy cron.yaml
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gcloud app deploy cron.yaml
 </code></pre></div></div>
 
 <h2 id="list-projects">list projects</h2>
@@ -184,7 +184,7 @@ project-name project     xxxxxxx
 
 <p>You can specify project by adding below option.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--project={project}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--project={project}
 </code></pre></div></div>
 
   </div>

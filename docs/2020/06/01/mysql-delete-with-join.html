@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>[MySQL] Delete with join query | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="[MySQL] Delete with join query" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Where there’s a will, there’s a way.","headline":"[MySQL] Delete with join query","url":"https://blog.toshima.ru/2020/06/01/mysql-delete-with-join.html","datePublished":"2020-06-01T00:00:00+09:00","dateModified":"2020-06-01T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/06/01/mysql-delete-with-join.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/06/01/mysql-delete-with-join.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Where there’s a will, there’s a way.","url":"https://blog.toshima.ru/2020/06/01/mysql-delete-with-join.html","headline":"[MySQL] Delete with join query","dateModified":"2020-06-01T00:00:00+09:00","datePublished":"2020-06-01T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -146,7 +146,7 @@
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">join</span> <span class="n">user_types</span> <span class="k">on</span> <span class="n">id</span> <span class="o">=</span> <span class="n">user_id</span> <span class="k">where</span> <span class="k">type</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----+-------+---------+------+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----+-------+---------+------+
 | id | name  | user_id | type |
 +----+-------+---------+------+
 |  2 | name2 |       2 |    2 |
@@ -157,7 +157,7 @@
 
 <h3 id="error-case">Error case</h3>
 
-<p>Just changing from <code class="highlighter-rouge">select</code> to <code class="highlighter-rouge">delete</code> doesn’t work.</p>
+<p>Just changing from <code class="language-plaintext highlighter-rouge">select</code> to <code class="language-plaintext highlighter-rouge">delete</code> doesn’t work.</p>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">delete</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">join</span> <span class="n">user_types</span> <span class="k">on</span> <span class="n">id</span> <span class="o">=</span> <span class="n">user_id</span> <span class="k">where</span> <span class="k">type</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="c1">-- ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from users join user_types on id = user_id where type = 2' at line 1</span>
@@ -165,15 +165,15 @@
 
 <h3 id="success-case">Success case</h3>
 
-<p>You need to add alias like <code class="highlighter-rouge">users u</code>.</p>
+<p>You need to add alias like <code class="language-plaintext highlighter-rouge">users u</code>.</p>
 
 <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">delete</span> <span class="n">u</span> <span class="k">from</span> <span class="n">users</span> <span class="n">u</span> <span class="k">join</span> <span class="n">user_types</span> <span class="k">on</span> <span class="n">id</span> <span class="o">=</span> <span class="n">user_id</span> <span class="k">where</span> <span class="k">type</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="c1">-- Query OK, 1 row affected (0.02 sec)</span>
 </code></pre></div></div>
 
-<p>Make sure the data is deleted from <code class="highlighter-rouge">users</code> table.</p>
+<p>Make sure the data is deleted from <code class="language-plaintext highlighter-rouge">users</code> table.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from users join user_types on id = user_id;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; select * from users join user_types on id = user_id;
 +----+-------+---------+------+
 | id | name  | user_id | type |
 +----+-------+---------+------+

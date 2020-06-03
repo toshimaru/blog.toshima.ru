@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>How to install Disqus for AMP | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="How to install Disqus for AMP" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"I’ve installed Disqus to my blog.","headline":"How to install Disqus for AMP","url":"https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html","datePublished":"2020-01-27T00:00:00+09:00","dateModified":"2020-01-30T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"I’ve installed Disqus to my blog.","url":"https://blog.toshima.ru/2020/01/27/how-to-install-amp-disqus.html","headline":"How to install Disqus for AMP","dateModified":"2020-01-30T00:00:00+09:00","datePublished":"2020-01-27T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -107,13 +107,13 @@
 
 <h2 id="create-different-domain">Create different domain</h2>
 
-<p>The domain of this blog is <code class="highlighter-rouge">blog.toshima.ru</code>. Firstly, You need to create another domain (FQDN) to host Disqus HTML.</p>
+<p>The domain of this blog is <code class="language-plaintext highlighter-rouge">blog.toshima.ru</code>. Firstly, You need to create another domain (FQDN) to host Disqus HTML.</p>
 
 <p>I’ve created <a href="https://disqus.toshima.ru/">disqus.toshima.ru</a> and put the Disqus HTML on it (Hosted by GitHub Pages).</p>
 
 <h2 id="disqus-html">Disqus HTML</h2>
 
-<p>I made a little change to <code class="highlighter-rouge">disqus_config</code> function to build <code class="highlighter-rouge">identifier</code>, <code class="highlighter-rouge">url</code> and <code class="highlighter-rouge">title</code> values from query parameter.</p>
+<p>I made a little change to <code class="language-plaintext highlighter-rouge">disqus_config</code> function to build <code class="language-plaintext highlighter-rouge">identifier</code>, <code class="language-plaintext highlighter-rouge">url</code> and <code class="language-plaintext highlighter-rouge">title</code> values from query parameter.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"disqus_thread"</span><span class="nt">&gt;&lt;/div&gt;</span>
 <span class="nt">&lt;script&gt;</span>
@@ -175,15 +175,15 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">identifier</code></td>
+      <td><code class="language-plaintext highlighter-rouge">identifier</code></td>
       <td>Tells the Disqus service how to identify the current page.<br />If this.page.identifier is undefined, the page’s URL will be used. The URL can be unreliable, such as when renaming an article slug or changing domains.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">url</code></td>
+      <td><code class="language-plaintext highlighter-rouge">url</code></td>
       <td>Tells the Disqus service the URL of the current page.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">title</code></td>
+      <td><code class="language-plaintext highlighter-rouge">title</code></td>
       <td>Tells the Disqus service the title of the current page.</td>
     </tr>
   </tbody>
@@ -193,12 +193,12 @@
 
 <h2 id="url-format">URL Format</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https:{hostname}/disqus.html?id={id}&amp;url={url}&amp;title={title}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https:{hostname}/disqus.html?id={id}&amp;url={url}&amp;title={title}
 </code></pre></div></div>
 
 <h2 id="how-to-install-disqus-on-your-amp">How to install Disqus on your AMP</h2>
 
-<p>Set the URL to <code class="highlighter-rouge">amp-iframe</code> src attribute value.</p>
+<p>Set the URL to <code class="language-plaintext highlighter-rouge">amp-iframe</code> src attribute value.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;amp-iframe</span> <span class="na">width=</span><span class="s">600</span> <span class="na">height=</span><span class="s">140</span>
           <span class="na">layout=</span><span class="s">"responsive"</span>
@@ -211,7 +211,7 @@
 
 <h2 id="iframe-origin-error">iframe origin error</h2>
 
-<p>If you use same FQDN in iframe <code class="highlighter-rouge">src</code>, you’ll get the following error.</p>
+<p>If you use same FQDN in iframe <code class="language-plaintext highlighter-rouge">src</code>, you’ll get the following error.</p>
 
 <blockquote>
   <p>Origin of &lt;amp-iframe&gt; must not be equal to container &lt;amp-iframe&gt;​…​&lt;/amp-iframe&gt;​ if allow-same-origin is set. See <a href="https://github.com/ampproject/amphtml/blob/master/spec/amp-iframe-origin-policy.md">https://github.com/ampproject/amphtml/blob/master/spec/amp-iframe-origin-policy.md</a> for details.</p>
@@ -232,12 +232,12 @@
       <td>all restrictions are applied</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">allow-scripts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">allow-scripts</code></td>
       <td>Allows the resource to run scripts.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">allow-same-origin</code></td>
-      <td>Treat as same origin even if different origin is specified in <code class="highlighter-rouge">src</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">allow-same-origin</code></td>
+      <td>Treat as same origin even if different origin is specified in <code class="language-plaintext highlighter-rouge">src</code>.</td>
     </tr>
   </tbody>
 </table>

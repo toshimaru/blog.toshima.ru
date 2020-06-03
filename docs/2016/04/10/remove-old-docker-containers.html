@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Remove old Docker containers | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="Remove old Docker containers" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"When you run docker ps -a, you might have too many containers and want to remove old containers. you can remove those containers as below:","headline":"Remove old Docker containers","url":"https://blog.toshima.ru/2016/04/10/remove-old-docker-containers.html","datePublished":"2016-04-10T00:00:00+09:00","dateModified":"2016-04-10T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/04/10/remove-old-docker-containers.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2016/04/10/remove-old-docker-containers.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"When you run docker ps -a, you might have too many containers and want to remove old containers. you can remove those containers as below:","url":"https://blog.toshima.ru/2016/04/10/remove-old-docker-containers.html","headline":"Remove old Docker containers","dateModified":"2016-04-10T00:00:00+09:00","datePublished":"2016-04-10T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -95,14 +95,14 @@
   </div>
 
   <div class="post-body">
-    <p>When you run <code class="highlighter-rouge">docker ps -a</code>, you might have too many containers and want to remove old containers. you can remove those containers as below:</p>
+    <p>When you run <code class="language-plaintext highlighter-rouge">docker ps -a</code>, you might have too many containers and want to remove old containers. you can remove those containers as below:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker <span class="nb">rm</span> <span class="sb">`</span>docker ps <span class="nt">-aq</span><span class="sb">`</span>
 </code></pre></div></div>
 
 <p>If specified container is running, you will get an error:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Failed to remove container (f6259edb8236): Error response from daemon: Conflict, You cannot remove a running container. Stop the container before attempting removal or use -f
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Failed to remove container (f6259edb8236): Error response from daemon: Conflict, You cannot remove a running container. Stop the container before attempting removal or use -f
 </code></pre></div></div>
 
 <h2 id="see-also">See also</h2>

@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>How to specify Git SSH key for different hosts | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="How to specify Git SSH key for different hosts" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"When you run git push, you might specify which SSH key to use. It’s not possible to add option to specify which SSH key to use, but it’s possible to tell git which SSH key to use with .ssh/config.","headline":"How to specify Git SSH key for different hosts","url":"https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key.html","datePublished":"2019-09-04T00:00:00+09:00","dateModified":"2019-09-04T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"When you run git push, you might specify which SSH key to use. It’s not possible to add option to specify which SSH key to use, but it’s possible to tell git which SSH key to use with .ssh/config.","url":"https://blog.toshima.ru/2019/09/04/how-to-specify-git-ssh-key.html","headline":"How to specify Git SSH key for different hosts","dateModified":"2019-09-04T00:00:00+09:00","datePublished":"2019-09-04T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -97,11 +97,11 @@
   </div>
 
   <div class="post-body">
-    <p>When you run <code class="highlighter-rouge">git push</code>, you might specify which SSH key to use. It’s not possible to add option to specify which SSH key to use, but it’s possible to tell git which SSH key to use with <code class="highlighter-rouge">.ssh/config</code>.</p>
+    <p>When you run <code class="language-plaintext highlighter-rouge">git push</code>, you might specify which SSH key to use. It’s not possible to add option to specify which SSH key to use, but it’s possible to tell git which SSH key to use with <code class="language-plaintext highlighter-rouge">.ssh/config</code>.</p>
 
 <p>Here is the example:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># .ssh/config
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># .ssh/config
 Host github.com
   Hostname github.com
   User git
@@ -113,7 +113,7 @@ Host github.yourcompany.com
   IdentityFile ~/.ssh/your_another_private_key
 </code></pre></div></div>
 
-<p>This means that <code class="highlighter-rouge">git</code> uses <code class="highlighter-rouge">~/.ssh/your_private_key</code> SSH key for host <code class="highlighter-rouge">github.com</code> and <code class="highlighter-rouge">~/.ssh/your_another_private_key</code> SSH key for host <code class="highlighter-rouge">github.yourcompany.com</code>.</p>
+<p>This means that <code class="language-plaintext highlighter-rouge">git</code> uses <code class="language-plaintext highlighter-rouge">~/.ssh/your_private_key</code> SSH key for host <code class="language-plaintext highlighter-rouge">github.com</code> and <code class="language-plaintext highlighter-rouge">~/.ssh/your_another_private_key</code> SSH key for host <code class="language-plaintext highlighter-rouge">github.yourcompany.com</code>.</p>
 
   </div>
 

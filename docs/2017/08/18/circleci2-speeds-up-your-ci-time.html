@@ -21,7 +21,7 @@
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>CircleCI 2 speeds up your CI build time drastically | Toshimaru’s Blog</title>
-<meta name="generator" content="Jekyll v4.0.1" />
+<meta name="generator" content="Jekyll v4.1.0" />
 <meta property="og:title" content="CircleCI 2 speeds up your CI build time drastically" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"CircleCI 2 has been released, which makes your CI faster and flexible.","headline":"CircleCI 2 speeds up your CI build time drastically","url":"https://blog.toshima.ru/2017/08/18/circleci2-speeds-up-your-ci-time.html","datePublished":"2017-08-18T00:00:00+09:00","dateModified":"2017-08-18T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2017/08/18/circleci2-speeds-up-your-ci-time.html"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2017/08/18/circleci2-speeds-up-your-ci-time.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"CircleCI 2 has been released, which makes your CI faster and flexible.","url":"https://blog.toshima.ru/2017/08/18/circleci2-speeds-up-your-ci-time.html","headline":"CircleCI 2 speeds up your CI build time drastically","dateModified":"2017-08-18T00:00:00+09:00","datePublished":"2017-08-18T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -90,6 +90,8 @@
         
           <li><a href="/tag/circleci" class="tag">circleci</a></li>
         
+          <li><a href="/tag/ci" class="tag">ci</a></li>
+        
       </ul>
     </div>
   </div>
@@ -101,7 +103,7 @@
 
 <p><amp-img src="/images/circleci2.png" alt="faster build time" width='1702' height='996' layout='responsive'></amp-img></p>
 
-<p>Here is how I configured my <code class="highlighter-rouge">circle.yml</code>.</p>
+<p>Here is how I configured my <code class="language-plaintext highlighter-rouge">circle.yml</code>.</p>
 
 <h2 id="before-circle-10-configuration">Before: Circle 1.0 configuration</h2>
 
@@ -154,7 +156,7 @@
 
 <h3 id="working-directory">Working Directory</h3>
 
-<p>First of all, set your <code class="highlighter-rouge">working_directory</code>, any name is okay.</p>
+<p>First of all, set your <code class="language-plaintext highlighter-rouge">working_directory</code>, any name is okay.</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">working_directory</span><span class="pi">:</span> <span class="s">~/app</span>
 </code></pre></div></div>
@@ -169,7 +171,7 @@
       <span class="na">RAILS_ENV</span><span class="pi">:</span> <span class="s">test</span>
 </code></pre></div></div>
 
-<p>In <code class="highlighter-rouge">environment</code> section, I configured environment variables for the base image.</p>
+<p>In <code class="language-plaintext highlighter-rouge">environment</code> section, I configured environment variables for the base image.</p>
 
 <h3 id="repository-checkout">Repository checkout</h3>
 
@@ -209,7 +211,7 @@
 
 <h3 id="phantomjs">PhantomJS</h3>
 
-<p><strong>Update: If you use <code class="highlighter-rouge">circleci/ruby:2.5-node-browsers</code> docker image, PhantomJS is bundled in the image. Therefore, you don’t have to follow the following step.</strong></p>
+<p><strong>Update: If you use <code class="language-plaintext highlighter-rouge">circleci/ruby:2.5-node-browsers</code> docker image, PhantomJS is bundled in the image. Therefore, you don’t have to follow the following step.</strong></p>
 
 <p><del>I used <a href="https://github.com/teampoltergeist/poltergeist">poltergeist</a> as a Capybara javascript driver. It requires PhantomJS as a dependency but official Ruby docker image doesn’t include PhantomJS, so I needed to install PhantomJS by myself.</del></p>
 
@@ -223,11 +225,11 @@
       <span class="s">sudo ln -sf ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs</span>
 </code></pre></div></div>
 
-<p><del>I created environment variable of PhantomJS version(<code class="highlighter-rouge">PHANTOM_JS_VERSION</code>) so that we can upgrade PhantomJS version easily.</del></p>
+<p><del>I created environment variable of PhantomJS version(<code class="language-plaintext highlighter-rouge">PHANTOM_JS_VERSION</code>) so that we can upgrade PhantomJS version easily.</del></p>
 
 <h3 id="artifacts">Artifacts</h3>
 
-<p>You can upload artifacts by specifying <code class="highlighter-rouge">store_artifacts</code> and the <code class="highlighter-rouge">path</code>.</p>
+<p>You can upload artifacts by specifying <code class="language-plaintext highlighter-rouge">store_artifacts</code> and the <code class="language-plaintext highlighter-rouge">path</code>.</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">store_artifacts</span><span class="pi">:</span>
     <span class="na">path</span><span class="pi">:</span> <span class="s">coverage</span>
