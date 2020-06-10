@@ -1,11 +1,11 @@
 ---
 layout: post
 title: Enable Go Module Cache on TravisCI
-tags: go
+tags: go ci
 ---
 
 ![Go Mod Cache before/after](/images/go-mod-cache.png)
- 
+
 ## Enbale Go Module Cache on TravisCI
 
 To enbale Go module cache, set `$GOPATH/pkg/mod` as TravisCI cache directory.

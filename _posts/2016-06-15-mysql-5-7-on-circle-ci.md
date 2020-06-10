@@ -2,7 +2,7 @@
 layout: post
 title: Installing MySQL 5.7 on CircleCI
 description: CircleCI doesn’t support MySQL 5.7 by default. To install MySQL 5.7, add below configuration to your circle.yml.
-tags: circleci mysql
+tags: circleci mysql ci
 ---
 
 ## [UPDATE 2]
