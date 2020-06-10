@@ -20,24 +20,26 @@
 
     </style>
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>bash | Toshimaru’s Blog</title>
+<title>Linux man Section Numbers | Toshimaru’s Blog</title>
 <meta name="generator" content="Jekyll v4.1.0" />
-<meta property="og:title" content="bash" />
+<meta property="og:title" content="Linux man Section Numbers" />
 <meta name="author" content="toshimaru" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Where there’s a will, there’s a way." />
-<meta property="og:description" content="Where there’s a will, there’s a way." />
-<link rel="canonical" href="https://blog.toshima.ru/tag/bash/" />
-<meta property="og:url" content="https://blog.toshima.ru/tag/bash/" />
+<meta name="description" content="When you use *nux man command, you’ll see number after commands or system calls. e.g. LS(1), FORK(2)." />
+<meta property="og:description" content="When you use *nux man command, you’ll see number after commands or system calls. e.g. LS(1), FORK(2)." />
+<link rel="canonical" href="https://blog.toshima.ru/2020/06/10/man-section-numbers.html" />
+<meta property="og:url" content="https://blog.toshima.ru/2020/06/10/man-section-numbers.html" />
 <meta property="og:site_name" content="Toshimaru’s Blog" />
 <meta property="og:image" content="https://blog.toshima.ru/android-chrome-512x512.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-10T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:image" content="https://blog.toshima.ru/android-chrome-512x512.png" />
-<meta property="twitter:title" content="bash" />
+<meta property="twitter:title" content="Linux man Section Numbers" />
 <meta name="twitter:site" content="@toshimaru_e" />
 <meta name="twitter:creator" content="@toshimaru_e" />
 <script type="application/ld+json">
-{"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"Where there’s a will, there’s a way.","url":"https://blog.toshima.ru/tag/bash/","headline":"bash","@type":"WebPage","@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.toshima.ru/2020/06/10/man-section-numbers.html"},"image":"https://blog.toshima.ru/android-chrome-512x512.png","author":{"@type":"Person","name":"toshimaru"},"description":"When you use *nux man command, you’ll see number after commands or system calls. e.g. LS(1), FORK(2).","url":"https://blog.toshima.ru/2020/06/10/man-section-numbers.html","headline":"Linux man Section Numbers","dateModified":"2020-06-10T00:00:00+09:00","datePublished":"2020-06-10T00:00:00+09:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="https://blog.toshima.ru/feed.xml" title="Toshimaru's Blog" />
@@ -76,46 +78,122 @@
       <header class="masthead">
   <h1 class="masthead-title--small"><a href="/">Toshimaru's Blog</a></h1>
 </header>
-<div class="content page">
-  <h1 class="page-title">bash</h1>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2020/06/10/man-section-numbers.html">Linux man Section Numbers</a>
-    </h2>
-    <div class="list-post-date">
+<article class="content post">
+  <h1 class="post-title">Linux man Section Numbers</h1>
+  <div class="post-meta">
+    <div class="post-date">
       <time>10 Jun 2020</time>
+      
+    </div>
+    <div class="post-tags">
+      <ul class="tags">
+        
+          <li><a href="/tag/linux" class="tag">linux</a></li>
+        
+          <li><a href="/tag/unix" class="tag">unix</a></li>
+        
+          <li><a href="/tag/mac" class="tag">mac</a></li>
+        
+          <li><a href="/tag/bash" class="tag">bash</a></li>
+        
+      </ul>
     </div>
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2020/01/07/mysql-result-via-command-line.html">Run MySQL query from command line</a>
-    </h2>
-    <div class="list-post-date">
-      <time>07 Jan 2020</time>
-    </div>
+
+  <div class="post-body">
+    <p>When you use *nux <code class="language-plaintext highlighter-rouge">man</code> command, you’ll see number after commands or system calls. e.g. <code class="language-plaintext highlighter-rouge">LS(1)</code>, <code class="language-plaintext highlighter-rouge">FORK(2)</code>.</p>
+
+<p>What’s this number? It’s called <strong>section number</strong>.</p>
+
+<p>The next question is, what does the section number actually mean?</p>
+
+<h2 id="section-numbers">Section numbers</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>section number</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><strong>Executable programs or shell commands</strong>.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>System calls</strong>. This functions are provided by the kernel.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>Library calls</strong>. This functions are used as program libraries.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>Special files</strong>. This is usually found in <code class="language-plaintext highlighter-rouge">/dev</code>.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><strong>File formats and conventions</strong>, e.g. <code class="language-plaintext highlighter-rouge">/etc/passwd</code>.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><strong>Games</strong>.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><strong>Miscellaneous</strong> (including macro packages and conventions), e.g. <code class="language-plaintext highlighter-rouge">man(7)</code>, <code class="language-plaintext highlighter-rouge">groff(7)</code></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td><strong>System administration commands</strong>. This is usually only for root.</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td><strong>Kernel routines</strong> [Non standard]</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>This list is based on Linux <code class="language-plaintext highlighter-rouge">man</code> command (You can see it by runnning <code class="language-plaintext highlighter-rouge">man man</code>).</li>
+</ul>
+
+<h2 id="see-also">See also</h2>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Man_page#Manual_sections">man page - Wikipedia</a></li>
+</ul>
+
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2017/09/22/ssl-expiration-check-via-command-line.html">Check SSL Certificate Expiration Date via Command Line</a>
-    </h2>
-    <div class="list-post-date">
-      <time>22 Sep 2017</time>
-    </div>
+
+  <div class="social-share">
+    <amp-social-share type="twitter"></amp-social-share>
+    <amp-social-share type="facebook"></amp-social-share>
   </div>
-  
-  <div class="list-item">
-    <h2 class="list-post-title">
-      <a href="/2016/11/26/display-disk-usage-command-on-mac.html">Display disk usage on macOS with du command</a>
-    </h2>
-    <div class="list-post-date">
-      <time>26 Nov 2016</time>
-    </div>
+
+  <div class="post-ad">
+    <amp-ad width="100vw" height=320 type="adsense" data-ad-client="ca-pub-8616720383995770" data-ad-slot="4570107466" data-auto-format="rspv"
+      data-full-width>
+      <div overflow></div>
+    </amp-ad>
   </div>
-  
-</div>
+
+  <amp-iframe width=600 height=140
+            layout="responsive"
+            sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+            resizable
+            src="https://disqus.toshima.ru/blog-toshima-ru.html?id=/2020/06/10/man-section-numbers&url=https://blog.toshima.ru/2020/06/10/man-section-numbers.html&title=Linux%20man%20Section%20Numbers">
+    <div overflow
+         tabindex=0
+         role=button
+         aria-label="Load more"
+         style="display:block;font-size:12px;font-weight:500;font-family:Helvetica Neue, arial, sans-serif;text-align:center;line-height:1.1;padding:12px 16px;border-radius:4px;background:rgba(29,47,58,0.6);color:rgb(255,255,255)">
+        Load more
+    </div>
+  </amp-iframe>
+</article>
 
     </div>
     <footer>

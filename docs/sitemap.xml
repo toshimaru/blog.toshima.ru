@@ -261,6 +261,10 @@
 <lastmod>2020-06-01T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>https://blog.toshima.ru/2020/06/10/man-section-numbers.html</loc>
+<lastmod>2020-06-10T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>https://blog.toshima.ru/</loc>
 </url>
 <url>
@@ -286,6 +290,9 @@
 </url>
 <url>
 <loc>https://blog.toshima.ru/tag/circleci/</loc>
+</url>
+<url>
+<loc>https://blog.toshima.ru/tag/ci/</loc>
 </url>
 <url>
 <loc>https://blog.toshima.ru/tag/activerecord/</loc>
@@ -327,9 +334,6 @@
 <loc>https://blog.toshima.ru/tag/linux/</loc>
 </url>
 <url>
-<loc>https://blog.toshima.ru/tag/ci/</loc>
-</url>
-<url>
 <loc>https://blog.toshima.ru/tag/ssl/</loc>
 </url>
 <url>
@@ -358,6 +362,9 @@
 </url>
 <url>
 <loc>https://blog.toshima.ru/tag/markdown/</loc>
+</url>
+<url>
+<loc>https://blog.toshima.ru/tag/unix/</loc>
 </url>
 <url>
 <loc>https://blog.toshima.ru/2016/</loc>
