@@ -5,7 +5,7 @@ on:
       - master
       - gh-pages-action # TODO: 削除
 jobs:
-  deploy:
+  gh-pages-deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -16,8 +16,8 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
-        key: bundler-${{ hashFiles('**/Gemfile.lock')}}
-        restore-keys: bundler-
+        key: ${{ runner.os }}-bundler-${{ hashFiles('**/Gemfile.lock')}}
+        restore-keys: ${{ runner.os }}-bundler-
     - name: bundle install
       run: |
         bundle config set path 'vendor/bundle'
