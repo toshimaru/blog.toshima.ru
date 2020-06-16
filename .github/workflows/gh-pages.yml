@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - gh-pages-action # TODO: 削除
 jobs:
   deploy:
     runs-on: ubuntu-latest
