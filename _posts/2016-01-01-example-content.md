@@ -2,8 +2,6 @@
 title: Example content
 ---
 
-Update by GitHub Actions.
-
 * Table Of Contents
 {:toc}
 
