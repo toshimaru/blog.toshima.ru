@@ -1,9 +1,11 @@
-name: CI
-on: [push]
+name: Jekyll
+on:
+  push:
+    branches:
+      - master
 jobs:
-  build:
+  gh-pages-deploy:
     runs-on: ubuntu-latest
-    name: Jekyll Build
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -17,7 +19,12 @@ jobs:
         restore-keys: ${{ runner.os }}-bundler-
     - name: bundle install
       run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3 --path vendor/bundle
+        bundle config set path 'vendor/bundle'
+        bundle install
     - name: Jekyll Build
       run: bundle exec jekyll build
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site
