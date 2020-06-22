@@ -13,7 +13,6 @@ plugins:
   - jekyll-sitemap
   - kramdown-amp
 exclude:
-  - .travis.yml
   - Gemfile
   - Gemfile.lock
   - Rakefile
