@@ -1,13 +1,13 @@
-[![Build Status](https://travis-ci.org/toshimaru/blog.toshima.ru.svg)](https://travis-ci.org/toshimaru/blog.toshima.ru)
+![CI](https://github.com/toshimaru/blog.toshima.ru/workflows/CI/badge.svg)
 
 # blog.toshima.ru
 
-[blog.toshima.ru](http://blog.toshima.ru/) is my English blog.
+[blog.toshima.ru](https://blog.toshima.ru/) is my English blog.
 
 ## Japanese Blog
 
-[blog.toshimaru.net](http://blog.toshimaru.net/)
+[blog.toshimaru.net](https://blog.toshimaru.net/)
 
 ## Jekyll Theme
 
-Based on [Kiko](http://github.com/gfjaru/Kiko).
+Based on [Kiko](https://github.com/gfjaru/Kiko).
