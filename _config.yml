@@ -21,7 +21,6 @@ exclude:
 # GitHub Flavored Markdown
 kramdown:
   input: GFM
-
 # jekyll-seo
 twitter:
   username: toshimaru_e
@@ -29,15 +28,14 @@ twitter:
 author:
   name: toshimaru
   twitter: toshimaru_e
-
 jekyll-archives:
   enabled: [year, month, tags]
-
 jekyll_compose:
   default_front_matter:
     posts:
       tags: tag
-
+feed:
+  tags: true
 # Scopes
 defaults:
   -
