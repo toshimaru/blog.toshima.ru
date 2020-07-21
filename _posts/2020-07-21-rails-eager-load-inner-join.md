@@ -52,7 +52,6 @@ The output:
 SELECT "tweets"."id" AS t0_r0, /*...snip...*/
 FROM "tweets"
 LEFT OUTER JOIN "users" ON "users"."id" = "tweets"."user_id"
-ORDER BY "tweets"."created_at" DESC
 ```
 
 ### `eager_load` with `INNER JOIN`
@@ -69,5 +68,4 @@ The output:
 SELECT "tweets"."id" , /*...snip...*/
 FROM "tweets"
 INNER JOIN "users" ON "users"."id" = "tweets"."user_id"
-ORDER BY "tweets"."created_at" DESC
 ```
