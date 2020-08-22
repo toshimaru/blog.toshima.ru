@@ -2,9 +2,13 @@
 layout: post
 title: Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1
 tags: rails activerecord
+last_modified_at: 2020-08-22
 ---
 
-As of [Ruby on Rails 5.1](http://edgeguides.rubyonrails.org/5_1_release_notes.html), `attribute_changed?` ActiveRecord method will be deprecated.
+- toc
+{:toc}
+
+**As of [Ruby on Rails 5.1](http://edgeguides.rubyonrails.org/5_1_release_notes.html), `attribute_changed?` ActiveRecord method will be deprecated.**
 
 The deprecation message:
 
@@ -31,19 +35,27 @@ class Post < ApplicationRecord
 end
 ```
 
-Then you need to rewrite it like this:
+### `saved_change_to_attribute?`
+
+Then, you need to rewrite it like this:
 
 ```rb
-if saved_change_to_title?
-  # ...
+def deprecation_after_update
+  if saved_change_to_title?
+    # ...
+  end
 end
 ```
 
-or
+### `saved_change_to_attribute?(:attribute)`
+
+Or you can also rewrite it:
 
 ```rb
-if saved_change_to_attribute?(:title)
-  # ...
+def deprecation_after_update
+  if saved_change_to_attribute?(:title)
+    # ...
+  end
 end
 ```
 
@@ -69,3 +81,19 @@ For example:
 ## Why this change needed?
 
 [sgrif](https://github.com/sgrif) explains why on GitHub issue: [Deprecate the behavior of AR::Dirty inside of after_(create\|update\|save) callbacks by sgrif · Pull Request #25337 · rails/rails](https://github.com/rails/rails/pull/25337)
+
+----
+
+## Conversion Table
+
+| Rails 5.0- | Rails 5.1+ |
+|-------|-------|
+| `attribute_changed?` | `saved_change_to_attribute?` |
+| `attribute_change` | `saved_change_to_attribute` |
+| `attribute_was` | `attribute_before_last_save` |
+| `changes` | `saved_changes` |
+| `changed?` | `saved_changes?` |
+| `changed` | `saved_changes.keys` |
+| `changed_attributes` | `saved_changes.transform_values(&:first)` |
+
+ref. [Japanese] [Rails 5.1 で attribute_was, attribute_change, attribute_changed?, changed?, changed 等が DEPRECATION WARNING - Qiita](https://qiita.com/htz/items/56798d53ec5988733fc6#%E5%A4%89%E6%8F%9B%E8%A1%A8)
