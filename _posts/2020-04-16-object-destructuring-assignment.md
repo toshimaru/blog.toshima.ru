@@ -2,6 +2,7 @@
 layout: post
 title: Object Destructuring Assignment in JavaScript
 tags: javascript
+last_modified_at: 2020-08-31
 ---
 
 TIL: Object destructuring assignment in JavaScript.
@@ -10,7 +11,6 @@ TIL: Object destructuring assignment in JavaScript.
 
 ```js
 const { one, two } = { zero: 0, one: 1, two: 2 }
-
 one // 1
 two // 2
 ```
@@ -31,6 +31,14 @@ foo // 1
 bar // 2
 ```
 
+## Assign another variable name with default value
+
+```js
+const { three: t = 3 } = { zero: 0, one: 1, two: 2 }
+console.log(t) // 3
+```
+
+
 ## Nested object
 
 ```js
@@ -41,7 +49,6 @@ const {
   one: { number: 1, ordinal: "first" },
   two: { number: 2, ordinal: "second" }
 }
-
 one // { number: 1, ordinal: 'first' }
 number // 2
 two // 'second'
