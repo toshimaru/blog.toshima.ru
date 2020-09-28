@@ -17,7 +17,7 @@ jobs:
         restore-keys: ${{ runner.os }}-bundler-
     - name: bundle install
       run: |
-        gem install bundler
+        bundle config set path 'vendor/bundle'
         bundle install --jobs 4 --retry 3 --path vendor/bundle
     - name: Jekyll Build
       run: bundle exec jekyll build
