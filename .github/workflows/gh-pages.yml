@@ -2,7 +2,7 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   gh-pages-deploy:
     runs-on: ubuntu-latest

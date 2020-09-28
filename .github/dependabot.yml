@@ -5,11 +5,12 @@ updates:
   schedule:
     interval: weekly
     time: "21:00"
-  open-pull-requests-limit: 10
   reviewers:
   - toshimaru
-  assignees:
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "21:00"
+  reviewers:
   - toshimaru
-  allow:
-  - dependency-type: direct
-  - dependency-type: indirect
