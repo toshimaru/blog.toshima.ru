@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+env:
+  TZ: 'Asia/Tokyo'
 jobs:
   gh-pages-deploy:
     runs-on: ubuntu-latest
