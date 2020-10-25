@@ -18,4 +18,4 @@ Failed to remove container (f6259edb8236): Error response from daemon: Conflict,
 
 ## See also
 
-[How to remove old Docker containers - Stack Overflow](http://stackoverflow.com/questions/17236796/how-to-remove-old-docker-containers)
+[How to remove old Docker containers - Stack Overflow](https://stackoverflow.com/questions/17236796/how-to-remove-old-docker-containers)

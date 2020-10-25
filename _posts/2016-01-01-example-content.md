@@ -66,9 +66,9 @@ Nam ante lacus, ornare ut lacus in, aliquet gravida orci. Donec non dignissim el
 
 Sed nisi nunc, dictum sit amet gravida in, finibus rhoncus orci. Donec scelerisque commodo turpis ac venenatis.
 
-![Large example image](http://placehold.it/800x400 "Large example image")
-![Medium example image](http://placehold.it/400x200 "Medium example image")
-![Small example image](http://placehold.it/200x200 "Small example image")
+![Large example image](https://placehold.it/800x400 "Large example image")
+![Medium example image](https://placehold.it/400x200 "Medium example image")
+![Small example image](https://placehold.it/200x200 "Small example image")
 
 Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 

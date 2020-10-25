@@ -25,4 +25,4 @@ Your current branch is gh-pages.
 
 See also
 ---
-* [How to get current branch name in Git? - Stack Overflow](http://stackoverflow.com/questions/6245570/how-to-get-current-branch-name-in-git)
+* [How to get current branch name in Git? - Stack Overflow](https://stackoverflow.com/questions/6245570/how-to-get-current-branch-name-in-git)

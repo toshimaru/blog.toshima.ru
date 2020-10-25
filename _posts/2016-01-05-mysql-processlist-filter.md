@@ -38,4 +38,4 @@ ORDER BY TIME DESC;
 
 ## See also
 
-* [how to customize `show processlist` in mysql? - Stack Overflow](http://stackoverflow.com/questions/929612/how-to-customize-show-processlist-in-mysql)
+* [how to customize `show processlist` in mysql? - Stack Overflow](https://stackoverflow.com/questions/929612/how-to-customize-show-processlist-in-mysql)
