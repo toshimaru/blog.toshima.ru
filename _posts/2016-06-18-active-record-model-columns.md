@@ -12,4 +12,5 @@ User.column_names
 ```
 
 ## See also
-* [sql - ActiveRecord: List columns in table from console - Stack Overflow](http://stackoverflow.com/questions/5575970/activerecord-list-columns-in-table-from-console)
+
+* [sql - ActiveRecord: List columns in table from console - Stack Overflow](https://stackoverflow.com/questions/5575970/activerecord-list-columns-in-table-from-console)
