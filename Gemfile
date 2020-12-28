@@ -16,4 +16,5 @@ end
 
 group :development do
   gem 'rake'
+  gem 'webrick'
 end
