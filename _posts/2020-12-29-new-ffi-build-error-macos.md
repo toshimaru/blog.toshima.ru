@@ -62,8 +62,15 @@ In Gemfile:
 
 ## Solution
 
+Install `ffi` with opttion `--disable-system-libffi`.
+
 ```console
 $ gem install ffi -- --disable-system-libffi
+```
+
+```console
+# x.x.x is version
+$ gem install ffi:x.x.x -- --disable-system-libffi
 ```
 
 ## References
