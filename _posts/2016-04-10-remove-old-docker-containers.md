@@ -2,6 +2,29 @@
 layout: post
 title: Remove old Docker containers
 tags: docker
+last_modified_at: 2021-01-13
+---
+
+**[Update]**
+
+> Since Docker 1.13.x you can use Docker container prune:
+> ```
+> docker container prune
+> ```
+
+```console
+$ docker container prune
+```
+
+```console
+$ docker system prune
+```
+
+## Reference
+
+- [docker container prune | Docker Documentation](https://docs.docker.com/engine/reference/commandline/container_prune/)
+- [docker system prune | Docker Documentation](https://docs.docker.com/engine/reference/commandline/system_prune/)
+
 ---
 
 When you run `docker ps -a`, you might have too many containers and want to remove old containers. you can remove those containers as below:
