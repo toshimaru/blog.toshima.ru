@@ -5,7 +5,12 @@ tags: mysql
 last_modified_at: 2021-01-26
 ---
 
+* toc
+{:toc}
+
 ## Normal Insert
+
+Use `INSERT INTO ~ VALUES ~` for normal insert query.
 
 ```sql
 INSERT INTO
@@ -16,7 +21,9 @@ VALUES
 
 ## Insert Result of Select query
 
-You don't need to use `VALUES` after `INSERT INTO`.
+Then, how can you insert result of select query?
+
+You don't need to add `VALUES` after `INSERT INTO`.
 
 Just add `SELECT` after `INSERT INTO`.
 

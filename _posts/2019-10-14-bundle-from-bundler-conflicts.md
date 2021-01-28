@@ -2,9 +2,10 @@
 layout: post
 title: "Bundler Error: bundle from bundler conflicts"
 tags: bundler ruby
+last_modified_at: 2021-01-28
 ---
 
-One day I installed `bundler` and got an error.
+One day, I tyied to install `bundler` and got an error.
 
 ```console
 $ gem install bundler
@@ -24,7 +25,7 @@ Done installing documentation for bundler after 5 seconds
 
 ## Tips
 
-Adding `--no-document` option is good practice if you don't need it.
+Adding `--no-document` option is a good practice if you don't need doc.
 
 ```console
 $ gem install bundler --no-document --force
