@@ -2,7 +2,7 @@
 layout: post
 title: Rails Bulk Migration
 tags: rails activerecord
-last_modified_at: 2020-01-30
+last_modified_at: 2021-01-31
 ---
 
 Schema change on RDB could be a dangerous operation.
@@ -105,3 +105,18 @@ $ bundle exec rails db:migrate
 ```
 
 Yes! `change_table` is invoked just one time!
+
+### after option is available
+
+Tips: `after` option is also available in bulk migration.
+
+```rb
+class AddColumnsToUser < ActiveRecord::Migration[6.0]
+  def change
+    change_table :users, bulk: true do |t|
+      t.integer :new_column1, after: existing_column1
+      t.string  :new_column2, after: existing_column2
+    end
+  end
+end
+```
