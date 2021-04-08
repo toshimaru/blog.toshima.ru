@@ -2,6 +2,7 @@
 layout: post
 title: Rails resources vs resource Routing
 tags: rails
+last_modified_at: 2021-04-08
 ---
 
 ## `resources` routing
@@ -30,6 +31,7 @@ resources :photos
 
 ```rb
 resource :geocoder
+resolve('Geocoder') { [:geocoder] }
 ```
 
 ### Routing result
@@ -42,3 +44,7 @@ resource :geocoder
 | GET       | `/geocoder/edit` | `geocoders#edit`    | return an HTML form for editing the geocoder  |
 | PATCH/PUT | `/geocoder`      | `geocoders#update`  | update the one and only geocoder resource     |
 | DELETE    | `/geocoder`      | `geocoders#destroy` | delete the geocoder resource                  |
+
+## Reference
+
+- [Rails Routing from the Outside In — Ruby on Rails Guides](https://guides.rubyonrails.org/routing.html)
