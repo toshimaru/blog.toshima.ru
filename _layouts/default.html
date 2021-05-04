@@ -19,9 +19,9 @@
     {% include_sass style.scss %}
     </style>
     {% seo %}
-    {%- if page.type == "tag" -%}
+    {%- if page.type == "tag" %}
       <link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed/by_tag/{{ page.title }}.xml" title="Toshimaru's Blog - {{ page.title }}" />
-    {%- else -%}
+    {%- else %}
       {% feed_meta %}
     {%- endif %}
     {% if jekyll.environment == "preview" %}<meta name="robots" content="noindex {{ jekyll.environment }}">{% endif %}
