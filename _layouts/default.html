@@ -19,7 +19,11 @@
     {% include_sass style.scss %}
     </style>
     {% seo %}
-    {% feed_meta %}
+    {% if page.type == "tag" %}
+      <link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed/by_tag/{{ page.title }}.xml" title="Toshimaru's Blog - {{ page.title }}" />
+    {% else %}
+      {% feed_meta %}
+    {% endif %}
   </head>
   <body>
     <amp-analytics type="googleanalytics" id="analytics1">
