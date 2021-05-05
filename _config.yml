@@ -2,8 +2,6 @@ title: "Toshimaru's Blog"
 url: "https://blog.toshima.ru"
 description: >
   Where there's a will, there's a way.
-sass:
-  style: compressed
 plugins:
   - jekyll-archives
   - jekyll-feed
@@ -21,6 +19,10 @@ exclude:
 # GitHub Flavored Markdown
 kramdown:
   input: GFM
+sass:
+  style: compressed
+feed:
+  tags: true
 # jekyll-seo
 twitter:
   username: toshimaru_e
@@ -34,8 +36,7 @@ jekyll_compose:
   default_front_matter:
     posts:
       tags: tag
-feed:
-  tags: true
+
 # Scopes
 defaults:
   -
