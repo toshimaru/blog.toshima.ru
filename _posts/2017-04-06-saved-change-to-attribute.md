@@ -2,13 +2,13 @@
 layout: post
 title: Use saved_change_to_attribute? instead of attribute_changed? as of Rails 5.1
 tags: rails activerecord
-last_modified_at: 2020-08-22
+last_modified_at: 2021-08-09
 ---
 
 - toc
 {:toc}
 
-**As of [Ruby on Rails 5.1](http://edgeguides.rubyonrails.org/5_1_release_notes.html), `attribute_changed?` ActiveRecord method will be deprecated.**
+**As of [Ruby on Rails 5.1](http://edgeguides.rubyonrails.org/5_1_release_notes.html), `attribute_changed?` ActiveRecord method have been deprecated.**
 
 The deprecation message:
 
@@ -18,7 +18,7 @@ DEPRECATION WARNING: The behavior of `attribute_changed?` inside of after callba
 
 As the messages says, using `saved_change_to_attribute?` instead of `attribute_changed?` is recommended.
 
-## Example
+## Use `saved_change_to_attribute?` instead of `attribute_changed?`
 
 Let's say you write code like this:
 
@@ -35,33 +35,23 @@ class Post < ApplicationRecord
 end
 ```
 
-### `saved_change_to_attribute?`
-
 Then, you need to rewrite it like this:
 
 ```rb
-def deprecation_after_update
-  if saved_change_to_title?
-    # ...
-  end
-end
-```
+class Post < ApplicationRecord
+  after_update :deprecation_after_update
 
-### `saved_change_to_attribute?(:attribute)`
-
-Or you can also rewrite it:
-
-```rb
-def deprecation_after_update
-  if saved_change_to_attribute?(:title)
-    # ...
+  def deprecation_after_update
+    if saved_change_to_attribute?(:title)
+      # ...
+    end
   end
 end
 ```
 
 ## Use `attribute_before_last_save` instead of `attribute_was`
 
-Also, `attribute_was` is deprecated in Rails 5.1. which is one of methods in [ActiveModel::Dirty](http://api.rubyonrails.org/classes/ActiveModel/Dirty.html).
+Also, `attribute_was` is deprecated in Rails 5.1. which is one of methods in [ActiveModel::Dirty](https://api.rubyonrails.org/v5.1.0/classes/ActiveModel/Dirty.html).
 
 The deprecation message is:
 
@@ -75,25 +65,27 @@ For example:
 
 ```diff
 -title_was
-+title_before_last_save
++attribute_before_last_save(:title)
 ```
 
 ## Why this change needed?
 
 [sgrif](https://github.com/sgrif) explains why on GitHub issue: [Deprecate the behavior of AR::Dirty inside of after_(create\|update\|save) callbacks by sgrif · Pull Request #25337 · rails/rails](https://github.com/rails/rails/pull/25337)
 
-----
+## Conversion Table (before_update/after_update)
 
-## Conversion Table
-
-| Rails 5.0- | Rails 5.1+ |
+| Rails 5.0- | Rails 5.1+<br>(before_update) | Rails 5.1+<br>(after_update) |
 |-------|-------|
-| `attribute_changed?` | `saved_change_to_attribute?` |
-| `attribute_change` | `saved_change_to_attribute` |
-| `attribute_was` | `attribute_before_last_save` |
-| `changes` | `saved_changes` |
-| `changed?` | `saved_changes?` |
-| `changed` | `saved_changes.keys` |
-| `changed_attributes` | `saved_changes.transform_values(&:first)` |
+| `attribute_changed?` | `will_save_change_to_attribute?` | `saved_change_to_attribute?` |
+| `attribute_change` | `attribute_change_to_be_saved` | `saved_change_to_attribute` |
+| `attribute_was` | `attribute_in_database` | `attribute_before_last_save` |
+| `changes` | `changes_to_save` | `saved_changes` |
+| `changed?` | `has_changes_to_save?` | `saved_changes?` |
+| `changed` | `changed_attribute_names_to_save` | `saved_changes.keys` |
+| `changed_attributes` | `attributes_in_database` | `saved_changes.transform_values(&:first)` |
 
 ref. [Japanese] [Rails 5.1 で attribute_was, attribute_change, attribute_changed?, changed?, changed 等が DEPRECATION WARNING - Qiita](https://qiita.com/htz/items/56798d53ec5988733fc6#%E5%A4%89%E6%8F%9B%E8%A1%A8)
+
+## Reference
+
+- [ActiveRecord::AttributeMethods::Dirty \| RailsDoc](https://railsdoc.github.io/classes/ActiveRecord/AttributeMethods/Dirty.html)
