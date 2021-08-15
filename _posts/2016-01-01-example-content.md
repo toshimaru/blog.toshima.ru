@@ -66,9 +66,9 @@ Nam ante lacus, ornare ut lacus in, aliquet gravida orci. Donec non dignissim el
 
 Sed nisi nunc, dictum sit amet gravida in, finibus rhoncus orci. Donec scelerisque commodo turpis ac venenatis.
 
-![Large example image](https://placehold.it/800x400 "Large example image")
-![Medium example image](https://placehold.it/400x200 "Medium example image")
-![Small example image](https://placehold.it/200x200 "Small example image")
+![Large example image](https://via.placeholder.com/800x400 "Large example image")
+![Medium example image](https://via.placeholder.com/400x200 "Medium example image")
+![Small example image](https://via.placeholder.com/200x200 "Small example image")
 
 Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
@@ -98,5 +98,12 @@ Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, conse
     </tr>
   </tbody>
 </table>
+
+or
+
+| Name | Rank | Score |
+| -- | -- | -- |
+| Cookie | #69 | 169 |
+
 
 Nullam quis risus eget urna mollis ornare vel eu leo.
