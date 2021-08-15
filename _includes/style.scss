@@ -57,11 +57,12 @@ a {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: .8rem;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 h1 {
   font-size: 2rem;
+  line-height: 1.1;
 }
 
 h2 {
@@ -123,18 +124,6 @@ ol {
   }
 }
 
-p + h1,
-p + h2,
-p + h3,
-ul + h1,
-ul + h2,
-ul + h3,
-ol + h1,
-ol + h2,
-ol + h3 {
-  margin-top: 1.5rem;
-}
-
 hr {
   border: 0;
   border-top: .5px solid #eee;
@@ -160,9 +149,9 @@ abbr[title] {
 }
 
 blockquote {
-  padding: 0 0 0 1.5rem;
-  margin: 0 2rem 1rem 0;
   color: $quote-gray-color;
+  padding: 0 0 0 1rem;
+  margin: 0 1rem 1rem 0;
   border-left: .5rem solid #e5e5e5;
 
   p:last-child {
@@ -216,6 +205,7 @@ table {
   border-collapse: collapse;
   width: 100%;
   overflow-x: auto;
+  white-space: nowrap;
   margin-bottom: 1rem;
 }
 
