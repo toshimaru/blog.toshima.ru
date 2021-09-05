@@ -2,6 +2,7 @@
 layout: post
 title: "[MySQL] Delete with join query"
 tags: mysql
+last_modified_at: 2021-09-05
 ---
 
 - toc
@@ -68,10 +69,10 @@ delete * from users join user_types on id = user_id where type = 2;
 
 ### Success case
 
-You need to add alias like `users u`.
+You need to replace `*` with `users`.
 
 ```sql
-delete u from users u join user_types on id = user_id where type = 2;
+delete users from users join user_types on id = user_id where type = 2;
 -- Query OK, 1 row affected (0.02 sec)
 ```
 
