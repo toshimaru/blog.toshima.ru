@@ -2,6 +2,8 @@
 layout: post
 title: How to use lsof command
 tags: linux
+last_modified_at: 2021-10-07
+redirect_from: /2020/11/21/new-lsof-command.html
 ---
 
 ## What is lsof command?
@@ -14,7 +16,7 @@ tags: linux
 $ lsof -p {pid}
 ``` 
 
-Let's list files after runnning irb as an example.
+Let's list files after runnning `irb` as an example.
 
 ```console
 $ irb
@@ -50,11 +52,11 @@ ruby    16340 toshimaru    7   PIPE 0xbe80cf7b978688af    16384                 
 ruby    16340 toshimaru    8   PIPE 0x5fac99197a7632cb    16384                     ->0xbe80cf7b978688af
 ```
 
-- FD
+- `FD`
   - `cwd`: current working directory
   - `txt`: text
   - `0`, `1`, `2`: stdin, stdout, stderr respectively (and `u` means read/write access)
-- TYPE
+- `TYPE`
   - `DIR`: directory
   - `REG`: regular file
   - `CHR`: character special file
@@ -65,7 +67,7 @@ ruby    16340 toshimaru    8   PIPE 0x5fac99197a7632cb    16384                 
 $ lsof -i:{port}
 ```
 
-Let's see the result after runnning `rails server` (port: 3000) as an example.
+Let's see the result after runnning `rails server` (which uses port 3000) as an example.
 
 ```console
 $ lsof -i:3000
@@ -74,10 +76,10 @@ ruby    18077 toshimaru   14u  IPv4 0xc33ab1611224e4b5      0t0  TCP localhost:h
 ruby    18077 toshimaru   15u  IPv6 0xc33ab160fc2911e5      0t0  TCP localhost:hbci (LISTEN)
 ```
 
-But, I prefer port number to port name. Add `-P` option.
+I prefer port number to port name. Add `-P` option.
 
 ```console
-$ ❯ lsof -Pi:3000
+$ lsof -Pi:3000
 COMMAND   PID      USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
 ruby    18077 toshimaru   14u  IPv4 0xc33ab1611224e4b5      0t0  TCP localhost:3000 (LISTEN)
 ruby    18077 toshimaru   15u  IPv6 0xc33ab160fc2911e5      0t0  TCP localhost:3000 (LISTEN)
@@ -113,3 +115,4 @@ ruby    18077 toshimaru  txt      REG                1,4    13320          86218
 
 - [lsof command in Linux with Examples - GeeksforGeeks](https://www.geeksforgeeks.org/lsof-command-in-linux-with-examples/#:~:text=lsof%20command%20stands%20for%20List,open%20files%20in%20output%20console.)
 - [Lsof – A Unix Utility You Should Know About](https://catonmat.net/unix-utilities-lsof)
+- [macos - Who is listening on a given TCP port on Mac OS X? - Stack Overflow](https://stackoverflow.com/questions/4421633/who-is-listening-on-a-given-tcp-port-on-mac-os-x?rq=1)
