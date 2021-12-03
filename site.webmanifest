@@ -1,12 +1,14 @@
 {
-  "short_name": "Toshimaru's Blog",
   "name": "Toshimaru's Blog",
+  "short_name": "Toshimaru's Blog",
+  "description": "Toshimaru's Blog about Enginnering.",
+  "start_url": "/?utm_source=homescreen",
   "icons": [{
     "src": "apple-touch-icon.png",
     "type": "image/png",
     "sizes": "180x180"
   }],
-  "start_url": "/?utm_source=homescreen",
   "background_color": "#fafafa",
-  "theme_color": "#505"
+  "theme_color": "#505",
+  "display": "minimal-ui"
 }
