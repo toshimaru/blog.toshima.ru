@@ -2,11 +2,12 @@
 layout: post
 title: Ruby Private Constant
 tags: ruby
+last_modified_at: 2022-03-23
 ---
 
-How can we define a private constant in Ruby.
+How can we define a private constant in Ruby❓
 
-Let' define `PRIVATE_CONSTANT` in the `private` section.
+Let's define `PRIVATE_CONSTANT` in the `private` section.
 
 ```rb
 # private_constant.rb
@@ -21,14 +22,15 @@ The result:
 
 ```rb
 require './private_constant'
-puts MyModule::PRIVATE_CONSTANT # => Is this private?
+
+puts MyModule::PRIVATE_CONSTANT #=> Is this private?
 ```
 
 **It's not private!** 👎
 
 ## private_constant
 
-To make it private, use `private_constant`.
+To make it private, use `private_constant` keyword.
 
 ```rb
 # private_constant.rb
@@ -42,7 +44,8 @@ The result:
 
 ```rb
 require './private_constant'
-puts MyModule::PRIVATE_CONSTANT # => private constant MyModule::PRIVATE_CONSTANT referenced (NameError)
+
+puts MyModule::PRIVATE_CONSTANT #=> private constant MyModule::PRIVATE_CONSTANT referenced (NameError)
 ```
 
 The error:
@@ -58,5 +61,8 @@ It raises `NameError` because the code tries to reference private constant.
 Use `private_constant` to make a private constant in Ruby.
 
 ```rb
-private_constant :YOUR_CONSTANT
+module YourModule
+  YOUR_CONSTANT = ...
+  private_constant :YOUR_CONSTANT
+end
 ```
