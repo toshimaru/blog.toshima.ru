@@ -2,7 +2,7 @@
 layout: post
 title: "MySQL: How to get the size of tables"
 tags: mysql
-last_modified_at: 2021-09-05
+last_modified_at: 2022-04-18
 ---
 
 You can get the size of tables by using `information_schema` in MySQL.
@@ -21,7 +21,6 @@ SELECT table_schema,
        floor((index_length)/1024/1024) AS 'index(mb)',
        floor((data_free)/1024/1024) AS 'free(mb)'
 FROM information_schema.tables
-WHERE table_schema=database()
 ORDER BY 5 DESC
 limit 10;
 ```
