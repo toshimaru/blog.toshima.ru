@@ -2,14 +2,15 @@
 layout: post
 title: "Rails eager_load with inner join"
 tags: rails activerecord
+last_modified_at: 2022-07-08
 ---
 
 * Table Of Contents
 {:toc}
 
-## `eager_load`
+## Rails eager_load
 
-`eager_load` works with `LEFT OUTER JOIN`.
+Rails `eager_load` works with `LEFT OUTER JOIN` query.
 
 > Forces eager loading by performing a LEFT OUTER JOIN on args:
 >
@@ -20,11 +21,11 @@ tags: rails activerecord
 > # "users"."id"
 > ```
 
-<https://railsdoc.github.io/classes/ActiveRecord/QueryMethods.html#method-i-eager_load>
+[ActiveRecord::QueryMethods eager_load \| RailsDoc(β)](https://railsdoc.github.io/classes/ActiveRecord/QueryMethods.html#method-i-eager_load)
 
-But what about `inner join`?
+But what about `INNER JOIN`?
 
-## `eager_load` + `INNER JOIN`
+## eager_load + INNER JOIN
 
 ### Model
 
@@ -40,13 +41,13 @@ class User < ApplicationRecord
 end
 ```
 
-### Default `eager_load`
+### Default eager_load
 
 ```rb
 Tweet.eager_load(:user).to_sql
 ```
 
-The output:
+The SQL:
 
 ```sql
 SELECT "tweets"."id" AS t0_r0, /*...snip...*/
@@ -54,7 +55,9 @@ FROM "tweets"
 LEFT OUTER JOIN "users" ON "users"."id" = "tweets"."user_id"
 ```
 
-### `eager_load` with `INNER JOIN`
+`LEFT OUTER JOIN` is used.
+
+### eager_load with INNER JOIN
 
 Add `joins` before `eager_load`.
 
@@ -62,10 +65,12 @@ Add `joins` before `eager_load`.
 Tweet.joins(:user).eager_load(:user).to_sql
 ```
 
-The output:
+The SQL:
 
 ```sql
 SELECT "tweets"."id" , /*...snip...*/
 FROM "tweets"
 INNER JOIN "users" ON "users"."id" = "tweets"."user_id"
 ```
+
+`INNER JOIN` is used.
