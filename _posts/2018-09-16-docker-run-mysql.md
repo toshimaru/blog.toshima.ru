@@ -122,3 +122,4 @@ mysql8
 
 - [mysql - Authentication plugin 'caching_sha2_password' cannot be loaded - Stack Overflow](https://stackoverflow.com/questions/49194719/authentication-plugin-caching-sha2-password-cannot-be-loaded)
 - [docker exec \| Docker Documentation](https://docs.docker.com/engine/reference/commandline/exec/)
+- [Mysql - Official Image \| Docker Hub](https://hub.docker.com/_/mysql)
