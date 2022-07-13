@@ -1,21 +1,21 @@
 ---
 layout: post
 title: Run and Connect to MySQL on Docker
-last_modified_at: 2020-01-08
+last_modified_at: 2022-07-13
 tags: mysql docker
 ---
 
-I wanted to run MySQL v8.0.x on Docker aside from MySQL v5.7 running on my localhost, so I'll give a instruction for it.
+I wanted to run MySQL v8.0 on Docker aside from MySQL v5.7 running on my localhost, so I'll give a instruction for it.
 
 ## docker pull
 
-First of all, let's run `docker pull` and get MySQL v8.0 image.
+First of all, let's run `docker pull` and get the latest MySQL v8.0 image.
 
 ```console
 $ docker pull mysql:8.0
 ```
 
-`8.0` means a tag. if it's not specified, latest MySQL docker image well be used.
+`8.0` means a tag. if it's not specified, the latest MySQL docker image will be used.
 
 ## docker run
 
@@ -30,17 +30,19 @@ $ docker run --name mysql8 -e MYSQL_ROOT_PASSWORD={your_password} -p 3306:3306 m
 - `-p 3306:3306` option publishes a container's `3306` port to the host
   - If you want to change port, change it to `-p 3307:3306`. Then, `3307` port is used
 
-### Simple docker run
+### docker run without name and password
 
-Just setting `MYSQL_ROOT_PASSWORD` is enough. :)
+You can run docker mysql without name and root password.
 
 ```console
-$ docker run -e MYSQL_ROOT_PASSWORD={your_password} mysql:8.0
+$ docker run -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql:8.0
 2020-01-07 16:06:52+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.18-1debian9 started.
 2020-01-07 16:06:52+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
 2020-01-07 16:06:52+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.18-1debian9 started.
 2020-01-07 16:06:52+00:00 [Note] [Entrypoint]: Initializing database files
 ```
+
+⚠ `MYSQL_ALLOW_EMPTY_PASSWORD` allows password-less root access. You need to be careful.
 
 ## docker ps
 
@@ -52,9 +54,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 You can see:
 
-- image is `mysql:8.0`
-- Name is `mysql8`
-- Port setting is `0.0.0.0:3306->3306/`
+- Running image is `mysql:8.0`
+- Runnnig container name is `mysql8`
+- Opening Port is `0.0.0.0:3306->3306/`
 
 ## Connect to MySQL
 
@@ -100,12 +102,16 @@ It works!
 
 ## Stop MySQL container
 
+Use `docker stop` command to stop the container.
+
 ```console
 $ docker stop mysql8
 mysql8
 ```
 
 ## Remove created container
+
+Use `docker rm` command to remove the container.
 
 ```console
 $ docker rm mysql8
