@@ -57,6 +57,25 @@ The result:
 2 rows in set (0.01 sec)
 ```
 
+### Customize Separator
+
+```sql
+select group_id,
+       count(*) as tag_count,
+       group_concat(name SEPARATOR '/')
+from tags
+group by group_id;
+```
+
+```
++----------+-----------+--------------------+
+| group_id | tag_count | group_concat(name) |
++----------+-----------+--------------------+
+|        1 |         3 | tag1/tag2/tag3     |
+|        2 |         2 | TAG1/TAG2          |
++----------+-----------+--------------------+
+```
+
 ## Reference
 
 - [MySQL :: MySQL 8.0 Reference Manual :: 12.20.1 Aggregate Function Descriptions](https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html#function_group-concat)
