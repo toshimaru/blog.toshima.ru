@@ -2,13 +2,25 @@
 layout: post
 title: VSCode Setting for Rubyist
 tags: vscode ruby
+last_modified_at: 2022-12-17
 ---
+
+## tl;dr
+
+```json
+"ruby.intellisense": "rubyLocate",
+"ruby.lint": {
+    "ruby": true,
+    "rubocop": true
+},
+"ruby.codeCompletion": "rcodetools",
+```
 
 ## Intellisense
 
 To use VSCode `go to`/`peek definition`/`symbol`, you have to set `ruby.intellisense`.
 
-Valid options are `rubyLocate` and `false`. Default option is `false`, so set `rubyLocate`.
+Valid option is `rubyLocate` or `false`. Default value is `false`, so set `rubyLocate`.
 
 ```json
 {
@@ -17,30 +29,31 @@ Valid options are `rubyLocate` and `false`. Default option is `false`, so set `r
 }
 ```
 
-Now, you can use `Go to Symbols` and `Go to Definition`.
+Now, `Go to Symbols` and `Go to Definition` are avilable.
 
 ## Lint
 
-You can also use `ruby -wc` syntax check as a lint(By default no linters are turned on).
+You can also use `ruby -wc` syntax check as a lint (No linters are turned on by default).
 
+`rubocop` is also available as a Ruby linter.
 
 ```json
 {
     ...
     "ruby.lint": {
-        "ruby": true
+        "ruby": true,
+        "rubocop": true
     }
 }
 ```
 
-If you are unicode user, set `unicode`.
+## Completion
+
+Enable `rcodetools`.
 
 ```json
 {
-    ...
-    "ruby.lint": {
-        "ruby": { "unicode": true }
-    }
+    "ruby.codeCompletion": "rcodetools",
 }
 ```
 
