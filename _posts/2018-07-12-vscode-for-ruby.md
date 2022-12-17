@@ -8,12 +8,14 @@ last_modified_at: 2022-12-17
 ## tl;dr
 
 ```json
-"ruby.intellisense": "rubyLocate",
-"ruby.lint": {
-    "ruby": true,
-    "rubocop": true
-},
-"ruby.codeCompletion": "rcodetools",
+{
+    "ruby.lint": {
+        "ruby": true,
+        "rubocop": true
+    },
+    "ruby.intellisense": "rubyLocate",
+    "ruby.codeCompletion": "rcodetools",
+}
 ```
 
 ## Intellisense
