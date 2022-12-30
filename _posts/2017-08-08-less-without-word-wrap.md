@@ -6,7 +6,7 @@ tags: less linux
 
 When you open up a file with less, word-wrap is sometimes annoying.
 
-```terminal
+```console
 $ less longtext.txt
 ```
 
@@ -14,7 +14,7 @@ $ less longtext.txt
 
 You can open it without word-wrap by passing `-S` option.
 
-```terminal
+```console
 $ less -S longtext.txt
 ```
 
