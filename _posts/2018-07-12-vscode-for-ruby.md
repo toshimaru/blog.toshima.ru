@@ -49,6 +49,18 @@ You can also use `ruby -wc` syntax check as a lint (No linters are turned on by 
 }
 ```
 
+### For multibyte user
+
+For multibyte character user(such as Japanese), use `{ "unicode": true }`.
+
+```json
+{
+    "ruby.lint": {
+        "ruby": { "unicode": true }
+    }
+}
+```
+
 ## Completion
 
 Enable `rcodetools`.
