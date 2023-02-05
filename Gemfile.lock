@@ -9,7 +9,7 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
-    fastimage (2.2.0)
+    fastimage (2.2.6)
     ffi (1.15.5)
     forwardable-extended (2.6.0)
     google-protobuf (3.21.12)
@@ -52,7 +52,7 @@ GEM
       listen (~> 3.0)
     kramdown (2.4.0)
       rexml
-    kramdown-amp (0.1.0)
+    kramdown-amp (0.2.0)
       fastimage
       kramdown
     kramdown-parser-gfm (1.1.0)
