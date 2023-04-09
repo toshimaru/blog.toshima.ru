@@ -1,8 +1,12 @@
 ---
 layout: post
-title: Convet lowercase to uppercase in Ruby
+title: Convert lowercase to uppercase in Ruby
 tags: ruby rails
+last_modified_at: 2023-04-09
 ---
+
+* Table Of Contents
+{:toc}
 
 ## lowercase → uppercase
 
