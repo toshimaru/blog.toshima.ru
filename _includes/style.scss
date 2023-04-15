@@ -6,9 +6,7 @@ $quote-gray-color: #888;
 $white-color: #fff;
 
 * {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html, body {
@@ -201,7 +199,6 @@ figure {
 
 table {
   display: block;
-  border: 1px solid #e5e5e5;
   border-collapse: collapse;
   width: 100%;
   overflow-x: auto;
