@@ -7,11 +7,11 @@ tags: ruby
 ## Prerequisite
 
 - Ruby 3.2
-- Use `ruby:3.2` docker image
+- `ruby:3.2` docker image
 
 ## Enable YJIT
 
-You can enable Ruby YJIT by adding `RUBY_YJIT_ENABLE` environment variable.
+You can enable Ruby YJIT by adding the `RUBY_YJIT_ENABLE` environment variable:
 
 ```console
 $ docker run ruby:3.2 bash -c "RUBY_YJIT_ENABLE=1 ruby -e 'p RubyVM::YJIT.enabled?'"
@@ -23,9 +23,9 @@ false
 
 ## Benchmark
 
-Let's benchmark simple Ruby script to check how fast YJIT is.
+Let's benchmark a simple Ruby script to check how fast YJIT is.
 
-Here is a simple recursive fibonacchi in Ruby:
+Here is a simple recursive Fibonacci sequence in Ruby:
 
 ```rb
 def fibonacci(n)
