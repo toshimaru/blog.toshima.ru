@@ -1,8 +1,8 @@
 ---
 layout: post
-title: VSCode Setting for Rubyist
+title: VSCode Setting for Rubyists
 tags: vscode ruby
-last_modified_at: 2022-12-17
+last_modified_at: 2023-09-16
 ---
 
 ## tl;dr
@@ -13,6 +13,7 @@ last_modified_at: 2022-12-17
         "ruby": true,
         "rubocop": true
     },
+    "ruby.format": "rubocop",
     "ruby.intellisense": "rubyLocate",
     "ruby.codeCompletion": "rcodetools",
 }
@@ -51,13 +52,23 @@ You can also use `ruby -wc` syntax check as a lint (No linters are turned on by 
 
 ### For multibyte user
 
-For multibyte character user(such as Japanese), use `{ "unicode": true }`.
+For multibyte character user(such as Japanese), Add `{ "unicode": true }` option.
 
 ```json
 {
     "ruby.lint": {
         "ruby": { "unicode": true }
     }
+}
+```
+
+## Format
+
+You can configure Ruby formatter.
+
+```json
+{
+    "ruby.format": "rubocop"
 }
 ```
 
