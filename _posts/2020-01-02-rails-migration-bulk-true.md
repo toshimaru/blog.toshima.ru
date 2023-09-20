@@ -14,7 +14,7 @@ This article explains how the `bulk` option affects Rails migrations.
 * Table Of Contents
 {:toc}
 
-## Prerequisite
+## Prerequisites
 
 - Rails 6.0
 - MySQL 8.0
@@ -139,4 +139,13 @@ class AddIndexesToUsers < ActiveRecord::Migration[7.1]
     # add_index :users, :last_name
   end
 end
+```
+
+Run `db:migrate`.
+
+```
+== 20230920001834 AddIndexesToUsers: migrating ================================
+-- change_table(:users, {:bulk=>true})
+   -> 0.0068s
+== 20230920001834 AddIndexesToUsers: migrated (0.0069s) =======================
 ```
