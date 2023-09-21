@@ -149,3 +149,7 @@ Run `db:migrate`.
    -> 0.0068s
 == 20230920001834 AddIndexesToUsers: migrated (0.0069s) =======================
 ```
+
+## See also
+
+- [Ruby with Visual Studio Code](https://code.visualstudio.com/docs/languages/ruby)
