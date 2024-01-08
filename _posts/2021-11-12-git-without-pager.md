@@ -1,12 +1,15 @@
 ---
 layout: post
-title: Using git without pager
+title: Using git without a pager
 tags: git
+last_modified_at: 2024-01-08
 ---
 
-Git uses pager when you run `git diff`, `git show`, `git grep` etc.
+Git employs a pager when you run commands like `git diff`, `git show`, `git grep`, etc.
 
-If you want to see the result without pager, just add `--no-pager` or `-P`.
+If you prefer to view the results without a pager, simply add `--no-pager` or `-P`.
+
+## `--no-pager` option
 
 ```console
 $ git --no-pager diff
@@ -20,8 +23,10 @@ index b413366f..9d9b8837 100644
  source 'https://rubygems.org'
 
  gem 'jekyll', '~> 4.2'
-
+...snip...
 ```
+
+## `-P` option
 
 ```console
 $ git -P grep Toshimaru
