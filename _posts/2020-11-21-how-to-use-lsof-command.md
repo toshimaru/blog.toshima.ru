@@ -2,7 +2,7 @@
 layout: post
 title: How to use lsof command
 tags: linux
-last_modified_at: 2021-10-07
+last_modified_at: 2024-01-28
 redirect_from: /2020/11/21/new-lsof-command.html
 ---
 
@@ -14,9 +14,9 @@ redirect_from: /2020/11/21/new-lsof-command.html
 
 ```console
 $ lsof -p {pid}
-``` 
+```
 
-Let's list files after runnning `irb` as an example.
+Let's list files after runnning `irb`((Interactive Ruby) as an example.
 
 ```console
 $ irb
@@ -67,7 +67,7 @@ ruby    16340 toshimaru    8   PIPE 0x5fac99197a7632cb    16384                 
 $ lsof -i:{port}
 ```
 
-Let's see the result after runnning `rails server` (which uses port 3000) as an example.
+Let's see the result after runnning `rails server` (which uses port 3000 by default) as an example.
 
 ```console
 $ lsof -i:3000
@@ -76,14 +76,14 @@ ruby    18077 toshimaru   14u  IPv4 0xc33ab1611224e4b5      0t0  TCP localhost:h
 ruby    18077 toshimaru   15u  IPv6 0xc33ab160fc2911e5      0t0  TCP localhost:hbci (LISTEN)
 ```
 
-I prefer port number to port name. Add `-P` option.
+I prefer port number to port name, so add `-P` option.
 
 ```console
 $ lsof -Pi:3000
 COMMAND   PID      USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
 ruby    18077 toshimaru   14u  IPv4 0xc33ab1611224e4b5      0t0  TCP localhost:3000 (LISTEN)
 ruby    18077 toshimaru   15u  IPv6 0xc33ab160fc2911e5      0t0  TCP localhost:3000 (LISTEN)
- ```
+```
 
 ## lsof by file
 
