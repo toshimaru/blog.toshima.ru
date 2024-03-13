@@ -1,7 +1,7 @@
 {
   "name": "Toshimaru's Blog",
   "short_name": "Toshimaru's Blog",
-  "description": "Toshimaru's Blog about Enginnering.",
+  "description": "Toshimaru's Blog about Software Engineering.",
   "start_url": "/?utm_source=homescreen",
   "icons": [{
     "src": "apple-touch-icon.png",
