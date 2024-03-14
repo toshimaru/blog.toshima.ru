@@ -11,6 +11,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 env:
   TZ: 'Asia/Tokyo'
 
@@ -24,8 +28,13 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
       - name: Jekyll Build
         run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
   deploy:
