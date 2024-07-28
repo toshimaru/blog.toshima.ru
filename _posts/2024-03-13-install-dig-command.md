@@ -4,19 +4,19 @@ title: How to install dig command
 tags: network linux
 ---
 
-## Alpine
+## Alpine (apk)
 
 ```console
 $ apk add bind-tools
 ```
 
-## Ubuntu(apt)
+## Ubuntu (apt)
 
 ```console
 $ apt install dnsutils
 ```
 
-## CentOS(yum)
+## CentOS (yum)
 
 ```console
 $ yum install bind-utils
