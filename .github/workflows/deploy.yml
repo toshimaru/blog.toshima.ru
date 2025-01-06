@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  TZ: 'Asia/Tokyo'
+  TZ: "Asia/Tokyo"
 
 jobs:
   build:
@@ -26,7 +26,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: 3.4
           bundler-cache: true
       - name: Setup Pages
         id: pages
