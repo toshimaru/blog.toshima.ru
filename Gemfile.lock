@@ -93,8 +93,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  base64
-  csv
   jekyll (~> 4.4)
   jekyll-archives
   jekyll-compose
