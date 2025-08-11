@@ -2,30 +2,32 @@
 layout: post
 title: Install Docker Desktop via brew install
 tags: docker macos
+last_modified_at: 2025-08-12
 ---
+
+## Updates
+
+- 2025-08-12: Use `docker-desktop` instead of `docker`
 
 ## Install Docker Desktop via brew
 
 ```console
-$ brew install --cask docker
+$ brew install docker-desktop
 ```
 
-Dont' forget add `--cask` option since there're formula and cask for docker.
+~~Dont' forget add `--cask` option since there're formula and cask for docker.~~
 
-After the installation, you can see `✔` mark next to Formulae docker and Casks docker.
+After the installation, you can see `✔` mark next to `docker-desktop`.
 
 ```console
 $ brew search docker
 ==> Formulae
-docker ✔                          docker-compose-completion         docker-ls                         docker-machine-driver-vmware      docker-machine-parallels          docker2aci
-docker-clean                      docker-credential-helper          docker-machine                    docker-machine-driver-vultr       docker-slim                       dockerize
-docker-completion                 docker-credential-helper-ecr      docker-machine-completion         docker-machine-driver-xhyve       docker-squash                     lazydocker
-docker-compose                    docker-gen                        docker-machine-driver-hyperkit    docker-machine-nfs                docker-swarm                      mockery
+docker                            docker-credential-helper          docker-machine-driver-vmware      dockerfile-language-server        powerman-dockerize
+docker-buildx                     docker-credential-helper-ecr      docker-machine-driver-vultr       dockerfilegraph                   ducker
+docker-clean                      docker-gen                        docker-machine-nfs                dockerfmt                         decker
+docker-completion                 docker-ls                         docker-machine-parallels          dockerize                         dockly
+docker-compose                    docker-machine                    docker-squash                     lazydocker                        mockery
 
 ==> Casks
-docker-edge                                                         docker ✔                                                            docker-toolbox
+docker-desktop ✔                  docker-toolbox                    dockey                            dockx                             dozer
 ```
-
-## Reference
-
-[macos - Brew install docker does not include docker engine? - Stack Overflow](https://stackoverflow.com/questions/40523307/brew-install-docker-does-not-include-docker-engine)
