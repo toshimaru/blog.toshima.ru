@@ -5,12 +5,8 @@ updates:
   schedule:
     interval: weekly
     time: "21:00"
-  reviewers:
-  - toshimaru
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
     interval: weekly
     time: "21:00"
-  reviewers:
-  - toshimaru
